@@ -33,7 +33,8 @@ that holds this skill in `.claude/skills/city-quest/`).
 published as web pages), while the profile is not. Use the profile to shape
 the quest (age, wording, likes, language), but never copy identifying details
 into `quest.json` or the notes: no names, home address or street, house
-number, school, or "our house" tasks. Start a home-city campaign at a public
+number, school, or "our house" tasks — not even in passing in a story
+("the gate next to our house" gives the neighbourhood away). Start a home-city campaign at a public
 place (a main station or square) and use public landmarks for "find X from
 the tower" tasks. Keep the kid's age and gender out of the visible text
 except through the wording itself.
@@ -73,6 +74,9 @@ preferences you are assuming so the user can correct them.
 What matters, roughly in order:
 1. **When**: date (or season), arrival and departure times / how many hours.
    Opening days, markets, seasonal rides and daylight all depend on it.
+   Never assume the weekday: ask which days they actually go out (many
+   families have busy Saturdays and go on Sundays). Then check every venue
+   for those days.
    For the home city or a long stay, ask whether it is one day or a
    **campaign** of many outings (see campaign mode in step 5).
 2. **Getting there and around**: arrival point (station, car park, hotel) and

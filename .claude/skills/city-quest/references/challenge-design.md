@@ -69,6 +69,14 @@ up the big thing → compare or multiply (with a parent's help for big
 numbers). Give the real number in `answer` when a source has it, otherwise
 make it self-checking. Ask the family to note the child's step, height, arm span and
 hand width at home (`measures` field → blanks on the hunt or rules card).
+The thing to measure must be **right there and small enough to do**: a
+house front, a bridge, one old unit of length. Never "walk 1200 roe" or "how
+many steps in 4.4 km": the kid can't see what to measure, and multiplying
+giant numbers is homework. Make a big or abstract number tangible with the
+body instead ("one roe ≈ 3.7 m: how many times do you fit in it lying down?
+Measure like a caterpillar") and give the big total only as a story ("the bus
+drove 1200 of these"). Old units and distances differ by source — check two
+and say so in `answer` when they disagree.
 
 **Limitations** make a task harder or create a new one: eyes closed (holding
 a parent's hand), on one foot, one hand behind the back ("count the towers
@@ -79,6 +87,9 @@ becomes a race. Give the kid a fair chance: parents count with one hand behind
 their back, kid gets a 10-second head start, etc. — say so in the text.
 **Duel coins**: the kid gets the challenge's coins for playing, win or lose
 (the family is one team); winning adds +1 bonus. State this in the rules.
+Endurance duels need a **clear, safe end condition** that both sides can see:
+"keep making big arm circles — arm down or stopped, you're out", not "spin
+until you fall" (dizziness, falls, and no one knows who lost first).
 
 The **boss** of a zone is tied to its most famous landmark and is a bit bigger:
 a multi-step find, a pose/photo, a build, or a climb. It must be **genuinely
@@ -86,7 +97,10 @@ harder** than the other tasks — something that may fail the first time and
 needs a retry: a limitation with a fail condition ("cross the bridge with eyes
 closed without touching the railings — touched it, start again"; "back down
 the steps backwards, holding the rail"). Finding and counting alone is not a
-boss. An optional brave extra (a swing over the edge) can add bonus coins.
+boss. After drafting a zone, rank its tasks by difficulty: if a regular task
+is harder than the boss (a boat that must float with a passenger vs "pet a
+goat"), swap them — the boss task follows the difficulty, and the famous
+landmark can still be a normal stop. An optional brave extra (a swing over the edge) can add bonus coins.
 **Put the boss last** in the zone's route: the zone ends with its finale. If
 other tasks are at the same venue as the boss (inside a museum, a store),
 list them right before it, so the card reads in the order they happen. Use
@@ -192,6 +206,15 @@ Parents must be able to check results, and wrong "facts" ruin trust. So:
 - Check opening days/hours, closures and renovations for the trip dates, and
   seasonal things (markets, festivals, fountains off in winter). Put this in
   each zone's `logistics` and in `parent.tips`.
+- **Prefer the outdoors to opening hours.** Most tasks should work on any
+  day: facades, bridges, parks, playgrounds, monuments, rides on regular
+  transport. Use a venue only when it is the point (a museum with several
+  tasks, the LEGO store), and check it is open on the family's usual day
+  (Sundays: markets and small shops are often closed, shops open late).
+  Don't build a task on a market or a shop with short hours; mention it as a
+  bonus in `logistics` instead. In a campaign, at most 1–2 outings may need a
+  specific weekday; label `parent.days` "выходной"/"weekend" rather than a
+  weekday the family didn't choose.
 - For taste challenges name a concrete, kid-plausible dish and where in or near
   the zone it is sold, with a rough price.
 - **Stories for the parents**: every task with a place gets `facts` — 50–100
