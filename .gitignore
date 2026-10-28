@@ -1,5 +1,4 @@
 # generated renders (rebuild with build_quest.py)
-*.html
 *.pdf
 
 # private: the family profile and working notes about the family
