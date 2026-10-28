@@ -140,8 +140,10 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   `place` + `lat` + `lon`. Challenges are numbered 1.1, 1.2… on the cards and
   the map, in list order; list them in walking order. If the boss is visited
   mid-route, give it `"order": 3.5` (between stops 3 and 4) so the route line
-  follows the walk. A `trail` challenge's place is hidden from the kid (it is
-  the riddle's answer).
+  follows the walk (prefer the boss last, see challenge-design §1). A stop
+  reached by ferry, tram or another ride gets `"leg": "ferry"` (or `"tram"`…):
+  it is not checked for a walking connection. A `trail`
+  challenge's place is hidden from the kid (it is the riddle's answer).
 - `rules`: `steps`, `perks` (`cost`, `text`), `curse_intro`, `curses`, and
   optional `nav_bonus` (coins per zone when the kid navigates all its stops alone;
   printed as 🧭 dots on the zone's coin line and added to the rank check).
@@ -196,7 +198,14 @@ This writes `quest.md` (full content with Google Maps links, phone-readable),
 `quest-map.png` (used by the markdown), `quest.html` and `quest.pdf`. Street
 maps are drawn from OpenStreetMap data (Overpass API, cached in
 `~/.cache/city-quest/streets`) with bold black street names on top, so the
-kid can navigate by them; a campaign's city overview uses OSM tiles. The
+kid can navigate by them. Stops are joined by straight lines, but the build
+also finds the walk between them over the street network: the view includes
+every street of the way, those streets are named first (more names in a
+smaller font where space allows), and the map zooms out when they cannot all
+be named. The build prints the walking distance per zone, a NOTE for streets
+that still have no name, and a WARNING when two stops have no walking
+connection on the map (wrong coordinates, or a ferry/tram leg that needs
+`"leg"`) — fix every such warning, otherwise the kid cannot navigate it; a campaign's city overview uses OSM tiles. The
 first build of a new area takes a few minutes (busy public servers are
 retried). The map fits the view to the stops, outlines each zone around its
 stops and draws the route. Card text is auto-sized; exit code 2

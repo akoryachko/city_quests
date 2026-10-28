@@ -24,15 +24,26 @@ fails.
 | `spot` | Find / count something visible | Count lions on a fountain; find 3 doors of different colours; spot the year on a building |
 | `trail` | Riddle that leads to the next landmark — this is what moves the family through the zone | "Go where the tower with a golden ship points to the sky"; follow street signs with a symbol |
 | `taste` | Try a local dish/snack, rate it | Name the dish in the local language + Russian; one per day minimum |
-| `photo` | A specific, creative photo | Perspective trick (holding a tower); copy a statue's pose; something in the flag's colours |
-| `build` | Make something on the spot, tied to what they see, from varied materials: found (sticks, bark, stones), bought there (a LEGO Pick & Build box at the store), or food (assemble a local snack from bought parts and take a bite) | Shelter of fallen sticks that stands alone for 10 s; stick-and-bark boat that floats 10 s; herring bun the kid assembles; tower at the LEGO store's demo table |
+| `photo` | Spot it and photograph it — the photo is the proof; especially for things that do not stand still or must be composed | Photograph the stone with the golden coin; 3 canal boats of different companies; 2 different birds in one frame; the tram going the other way; perspective trick (crane as tall as your thumb); copy a statue's pose |
+| `build` | Make something on the spot, tied to what they see, from varied materials: found (sticks, bark, stones) or bought there (a LEGO Pick & Build box at the store). No food builds for now | Shelter of fallen sticks that stands alone for 10 s; stick-and-bark boat that floats 10 s; tower at the LEGO store's demo table |
 | `collect` | Get a flat souvenir for the "Моя коллекция" card | Candy wrapper, museum stamp, ticket, sugar packet, leaf, postcard, sticker from a shop |
 | `ride` | A ride on local or historic transport, with a task during it | Check in with the transport card themselves; count stops; spot the river from the tram; steam-tram ride and find the conductor's whistle; ferry crossing — wave to 3 boats |
-| `talk` | Use a local word/phrase | "Say 'Grazie' 3 times today" — Latin script + Cyrillic transcription. In a language the kid speaks (Dutch): no transcription; make the kid the team's interpreter instead: they order the snack or ask at the museum desk and translate what was said. Only where staff are reliably present (shops, stalls, cafés, ticket desks) — not at city farms or unstaffed sights |
+| `talk` | Use a local word/phrase | "Say 'Grazie' 3 times today" — Latin script + Cyrillic transcription. In a language the kid speaks (Dutch): no transcription; make the kid the team's interpreter instead: they order the snack or ask at the museum desk and translate what was **said** (not "what did they ask" — staff don't always ask anything). Only where staff are reliably present (shops, stalls, cafés, ticket desks) — not at city farms or unstaffed sights |
 | `move` | Physical / route mini-game; ⏱ time pressure (title starts with ⏱) to burn off steam, mostly at playgrounds | Slide 10 times in 3 minutes; touch 20 trees in 3 minutes; jump the stepping stones 5 times in a minute; run up the roof stairs, then beat your record; walk a kerb like a tightrope |
-| `duel` | Kid vs parents head-to-head | Who spots it first; guess-the-number closest wins; count red vs blue bikes |
+| `duel` | Kid vs parents head-to-head with a clear winner | Who spots it first; guess-the-number closest wins; count red vs blue bikes. Not "who guesses more of 3 charades" (ties, and losing by guessing less feels arbitrary): make that co-op with a threshold — "show 5 animals, parents must guess at least 3" |
 | `measure` | Measure with their body, then calculate or compare | Pace the smallest house, then the big one opposite: how many small ones fit? Time the tower lift and compare with the kid's own time for one floor of stairs ("the lift is N times faster"); time 100 m along a canal → how long for the whole canal; palms between two places on a city model |
 | `quiz` | Guess with 2–3 options — use sparingly | Only when the answer is checked on the spot (a sign, an exhibit) |
+
+Every question must have one concrete, checkable answer: "how many floors?",
+"name 5 kinds of rubbish in the last room", "find the spot where the crane is
+as tall as your thumb" — not "what does it look like?" or "find what rubbish
+floats in the sea". If the venue names a room or exhibit on its floor plan, put
+that name in `answer` so the parents can find it.
+
+**Photos.** `photo` suits spotting challenges ("find and photograph…") and
+anything that moves or must be composed (boats, birds, trams, a pose, a
+perspective trick). A zone does not need one; when the quest has photo tasks,
+put the kid's camera in `parent.shopping`.
 
 Every challenge must need being at the place: the answer comes from
 something they see, count, measure or do there. A question they could
@@ -66,9 +77,20 @@ standing on one foot; foot down — start again"). They also work as curses.
 Any non-duel challenge can also be marked `"duel": true` when it naturally
 becomes a race. Give the kid a fair chance: parents count with one hand behind
 their back, kid gets a 10-second head start, etc. — say so in the text.
+**Duel coins**: the kid gets the challenge's coins for playing, win or lose
+(the family is one team); winning adds +1 bonus. State this in the rules.
 
 The **boss** of a zone is tied to its most famous landmark and is a bit bigger:
-a multi-step find, a pose/photo, a build, or a climb. A **paid venue**
+a multi-step find, a pose/photo, a build, or a climb. It must be **genuinely
+harder** than the other tasks — something that may fail the first time and
+needs a retry: a limitation with a fail condition ("cross the bridge with eyes
+closed without touching the railings — touched it, start again"; "back down
+the steps backwards, holding the rail"). Finding and counting alone is not a
+boss. An optional brave extra (a swing over the edge) can add bonus coins.
+**Put the boss last** in the zone's route: the zone ends with its finale. If
+other tasks are at the same venue as the boss (inside a museum, a store),
+list them right before it, so the card reads in the order they happen. Use
+`"order"` for a mid-route boss only when the geography leaves no other way. A **paid venue**
 (museum, tower) must hold more than one thing to do: two or three tasks
 inside, or a multi-step boss — Micropia's stamp card plus a live water bear
 under the microscope is the model. No drawing tasks — this
@@ -88,8 +110,13 @@ completing challenges, with coins and curses. Adapted for a young child:
   making a parent do a curse, ice cream). Spent coins still count for claiming,
   so spending never feels like losing.
 - **Curses** → light, silly, team-wide, never embarrassing in front of
-  strangers or unsafe. Triggered by chance when entering a zone ("think of a
-  number 1–6; 1 = curse"). 5–7 per quest, city-themed where possible.
+  strangers or unsafe, city-themed where possible. The rules must answer, in
+  one or two sentences: **when** a curse falls (entering a zone and the die
+  shows 1; skipping a challenge — a failed attempt is not a skip, retry
+  instead), **which** one (roll again: the number picks it — so exactly **6**
+  curses, matching the die), and **how long** it lasts (until the next
+  completed challenge). A curse that cannot happen in the city's walk (no
+  bridges, no boats) does not belong in the list.
 - **Hide-and-seek style questions** → great for trails: "hotter / colder"
   guiding, "photograph the tallest thing you can see", "is the next place
   closer to the river or to the station?"
@@ -113,7 +140,9 @@ completing challenges, with coins and curses. Adapted for a young child:
   zone when the kid navigates the family to all its stops on their own; it prints
   as 🧭 dots after the zone's coins and counts as guaranteed in the rank
   check, so rescale the ranks when you add it.
-- **Coins**: normal 2, harder 3, boss 6; optional/bookable extras 4–5. Set
+- **Coins**: normal 2, harder 3, boss 6; optional/bookable extras 4–5.
+  Whenever coins per challenge or the number of zones change, **re-price the
+  perks** (below): cheap perks quickly become worthless when the total grows. Set
   `coins_to_claim` to about 60–70 % of the zone's total, so a skipped or
   closed attraction does not block the claim.
 - **Coin economy**: add up the coins of the whole trip (T, typically 70–90 for
@@ -130,12 +159,16 @@ completing challenges, with coins and curses. Adapted for a young child:
 - **Campaign economy** (home city, many outings; `"campaign": true`): coins
   carry over between outings and the rank counts **all coins earned**
   (spending never lowers it), because saving for months would kill the
-  perks. Plan ~25–35 coins per outing; keep the small perks (5/10/15/25),
-  add a souvenir ≈ 40 and a big prize ≈ 80 for saving across outings. Rank
+  perks. Plan ~25–35 coins per outing. Price perks in zones (Z ≈ one zone's
+  coins, ~17): hint ≈ Z/3, small choice ≈ 2Z/3, parent curse ≈ Z, treat ≈ 2Z,
+  souvenir ≈ 3.5Z, big prize ≈ T/2 (Amsterdam, T ≈ 225: 5/12/20/35/60/120). Rank
   steps at roughly T/7, T/3.5, T/2.2, T/1.5 and ~0.85 T (+ all zones). The
   same 95 % check applies. A city-wide `hunt` (bingo rows with coins, e.g.
   city symbols, gable stones, windmills, transport types) keeps every
   outing connected; its coins are a bonus and are not counted in the check.
+- **Food**: at most one food task per zone; skip restaurants that are
+  usually full (no table = a dead challenge) unless it is the zone's only
+  food option — then name a take-away fallback.
 - **Card length**: for text the kid reads on their own (≥ ~11pt), keep a card to
   5 challenges + boss at ≤ ~25 words each (the coin line takes one row);
   6 + boss gets too small. Fold a small task into the boss or the
@@ -149,6 +182,11 @@ Parents must be able to check results, and wrong "facts" ruin trust. So:
 - Anything with a definite answer (heights, counts of statues, dates, what is on
   top of a tower) must come from a source you actually read; put the answer in
   `answer` and the source in `sources`.
+- Physical claims the kid will check against their own body (heights,
+  sizes) are the ones a wrong source exposes at once (a bollard "1.35 m" that
+  reaches the knee: the source gave the length including the underground
+  part). Cross-check such numbers in two sources, or phrase them as a
+  comparison the kid makes on the spot ("up to your knee or your waist?").
 - When you cannot verify, use self-checking challenges instead: "count the
   lions" (answer: "count together"), "guess, then check the sign".
 - Check opening days/hours, closures and renovations for the trip dates, and

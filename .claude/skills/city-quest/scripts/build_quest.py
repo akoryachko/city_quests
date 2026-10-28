@@ -18,6 +18,7 @@ reported as overflowing (exit code 2).
 """
 import argparse
 import base64
+import heapq
 import html
 import json
 import math
@@ -285,6 +286,75 @@ def fetch_streets(s, w, n, e):
     return json.loads(path.read_text())["elements"]
 
 
+def metres(a, b):
+    """Distance between two (lat, lon) points; flat-earth is fine inside a city."""
+    dy = (a[0] - b[0]) * 111320
+    dx = (a[1] - b[1]) * 111320 * math.cos(math.radians(a[0]))
+    return math.hypot(dx, dy)
+
+
+def walk_graph(elements):
+    """Walkable street graph {(lat, lon): [(node, metres, street name)]}, kept to its largest connected part.
+
+    Overpass "out geom" has no node ids, but ways meet at identical coordinates.
+    """
+    g = {}
+    for el in elements:
+        tags = el.get("tags", {})
+        if tags.get("highway") not in ROADS or tags["highway"] in ("motorway", "trunk") or tags.get("foot") == "no":
+            continue
+        if tags.get("access") in ("private", "no") and tags.get("foot") not in ("yes", "designated"):
+            continue
+        geom = [(round(n["lat"], 7), round(n["lon"], 7)) for n in el.get("geometry", []) if n]
+        for a, b in zip(geom, geom[1:]):
+            d = metres(a, b)
+            g.setdefault(a, []).append((b, d, tags.get("name", "")))
+            g.setdefault(b, []).append((a, d, tags.get("name", "")))
+    best, seen = set(), set()
+    for start in g:
+        if start in seen:
+            continue
+        part, todo = {start}, [start]
+        while todo:
+            for m, _, _ in g[todo.pop()]:
+                if m not in part:
+                    part.add(m)
+                    todo.append(m)
+        seen |= part
+        if len(part) > len(best):
+            best = part
+    return {n: e for n, e in g.items() if n in best}
+
+
+def walk_route(g, a, b, snap=150):
+    """Shortest walk between two (lat, lon) points over the street graph: (points, {name: metres}, metres) or None."""
+    if not g:
+        return None
+    na, nb = (min(g, key=lambda n: metres(n, x)) for x in (a, b))
+    if metres(na, a) > snap or metres(nb, b) > snap:
+        return None
+    dist, prev, todo = {na: 0.0}, {}, [(metres(na, nb), 0.0, na)]
+    while todo:
+        _, d, n = heapq.heappop(todo)
+        if n == nb:
+            break
+        if d > dist[n]:
+            continue
+        for m, w, name in g[n]:
+            if d + w < dist.get(m, float("inf")):
+                dist[m], prev[m] = d + w, (n, w, name)
+                heapq.heappush(todo, (d + w + metres(m, nb), d + w, m))
+    if nb not in dist:
+        return None
+    path, names, n = [nb], {}, nb
+    while n != na:
+        n, w, name = prev[n]
+        path.append(n)
+        if name:
+            names[name] = names.get(name, 0) + w
+    return path[::-1], names, dist[nb]
+
+
 def join_chains(lines):
     """Join polylines (lists of points) that share end points into longer ones."""
     chains = [list(l) for l in lines if len(l) > 1]
@@ -311,10 +381,12 @@ def join_chains(lines):
     return [c for c in chains if c]
 
 
-def street_layers(elements, p, W, H, obstacles, uid):
+def street_layers(elements, p, W, H, obstacles, uid, route_names=()):
     """SVG for the map below the zone areas (land, water, roads) and the street names on top.
 
     `obstacles` are (x, y, r) circles that street names keep clear of (stops, zone labels).
+    Streets in `route_names` (the walk between the stops) are labelled first, so the kid
+    can read every street of the way.
     """
     def pts(geom):
         return [p(g["lat"], g["lon"]) for g in geom if g]
@@ -337,7 +409,8 @@ def street_layers(elements, p, W, H, obstacles, uid):
         if tags.get("highway") in ROADS:
             roads.setdefault(tags["highway"], []).append(path)
             if tags.get("name"):
-                names.setdefault(tags["name"], (ROADS.get(tags["highway"], (0, 5))[1], []))[1].append(poly)
+                prio = -1 if tags["name"] in route_names else ROADS.get(tags["highway"], (0, 5))[1]
+                names.setdefault(tags["name"], (prio, []))[1].append(poly)
         elif "building" in tags:
             buildings.append(path)
         elif "railway" in tags:
@@ -372,14 +445,28 @@ def street_layers(elements, p, W, H, obstacles, uid):
 
     occupy(obstacles)
     defs, texts = [], []
-    for name, (prio, polys) in sorted(names.items(), key=lambda kv: (kv[1][0], -len(kv[0]))):
-        L = len(name) * STREET_FONT * 0.6 + 6
+    # route streets that found no room get a second try in a smaller font with looser rules
+    named = set()
+    queue = [(name, prio, polys, STREET_FONT, 0.92) for name, (prio, polys) in
+             sorted(names.items(), key=lambda kv: (kv[1][0], -len(kv[0])))]
+    for name, prio, polys, font, straight in queue:
+        L = len(name) * font * 0.6 + 6
         placed = []
         for chain in sorted(join_chains(polys), key=lambda c: -sum(math.dist(a, b) for a, b in zip(c, c[1:]))):
             cum = [0.0]
             for a, b in zip(chain, chain[1:]):
                 cum.append(cum[-1] + math.dist(a, b))
             total = cum[-1]
+            if font < STREET_FONT and prio < 0 and total > 0.3 * L:
+                # second try: let the name run past the ends of a short block (a canal side between bridges)
+                def ext(p0, p1):
+                    d = math.dist(p0, p1) or 1
+                    return (p1[0] + (p1[0] - p0[0]) / d * 0.6 * L, p1[1] + (p1[1] - p0[1]) / d * 0.6 * L)
+                chain = [ext(chain[1], chain[0])] + chain + [ext(chain[-2], chain[-1])]
+                cum = [0.0]
+                for a, b in zip(chain, chain[1:]):
+                    cum.append(cum[-1] + math.dist(a, b))
+                total = cum[-1]
             if total < L:
                 continue
             starts = sorted(range(0, int(total - L) + 1, 10), key=lambda s0: abs(s0 + L / 2 - total / 2))
@@ -391,14 +478,14 @@ def street_layers(elements, p, W, H, obstacles, uid):
                     t = (dist - cum[k]) / max(cum[k + 1] - cum[k], 1e-9)
                     return (chain[k][0] + t * (chain[k + 1][0] - chain[k][0]), chain[k][1] + t * (chain[k + 1][1] - chain[k][1]))
                 a, b = at(s0), at(s0 + L)
-                if math.dist(a, b) < 0.92 * L:  # too curvy for a straight label
+                if math.dist(a, b) < straight * L:  # too curvy for a straight label
                     continue
                 if any(math.dist(m, c) < 260 for m in placed for c in (a, b)):
                     break
                 samples = [at(s0 + L * i / 8) for i in range(9)]
                 if not all(6 < x < W - 6 and 8 < y < H - 8 for x, y in samples):
                     continue
-                circles = [(x, y, STREET_FONT * 0.55) for x, y in samples]
+                circles = [(x, y, font * 0.55) for x, y in samples]
                 if not free(circles):
                     continue
                 occupy(circles)
@@ -406,16 +493,64 @@ def street_layers(elements, p, W, H, obstacles, uid):
                     a, b = b, a
                 pid = f"{uid}s{len(defs)}"
                 defs.append(f'<path id="{pid}" d="M{a[0]:.1f},{a[1]:.1f}L{b[0]:.1f},{b[1]:.1f}"/>')
-                texts.append(f'<text class="sname" dy="{STREET_FONT * 0.35:.1f}"><textPath href="#{pid}" startOffset="50%">{esc(name)}</textPath></text>')
+                texts.append(f'<text class="sname" style="font-size:{font}px" dy="{font * 0.35:.1f}"><textPath href="#{pid}" startOffset="50%">{esc(name)}</textPath></text>')
                 placed.append(((a[0] + b[0]) / 2, (a[1] + b[1]) / 2))
                 break
             if len(placed) >= 2 or (placed and total < 3 * L):
                 break
+        if not placed and font == STREET_FONT:
+            queue.append((name, prio, polys, STREET_FONT - 2, 0.8))
+        elif placed:
+            named.add(name)
+    missing = sorted(set(route_names) & set(names) - named)
     labels = f'<svg class="snames" viewBox="0 0 {W} {H}" width="{W}" height="{H}"><defs>{"".join(defs)}</defs>{"".join(texts)}</svg>'
-    return "".join(base), labels
+    return "".join(base), labels, missing
 
 
-def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False):
+def route_legs(sel, stops):
+    """Walking paths between consecutive stops of each zone: ({id(task): [(lat, lon)…] or None}, street names).
+
+    A task with "leg" (e.g. "ferry", "tram") is reached by transport: its leg stays a straight line.
+    A walk that finds no street connection in the area is reported, so a map never asks the kid
+    to navigate where the streets are not drawn.
+    """
+    lats, lons = [t["lat"] for _, _, t in stops], [t["lon"] for _, _, t in stops]
+    if len(stops) < 2:
+        return {}, set()
+    m_lat = max(0.25 * (max(lats) - min(lats)), 0.003)
+    m_lon = max(0.25 * (max(lons) - min(lons)), 0.005)
+    try:
+        g = walk_graph(fetch_streets(min(lats) - m_lat, min(lons) - m_lon, max(lats) + m_lat, max(lons) + m_lon))
+    except Exception as e:
+        print(f"WARNING: no street data for routing ({e}); the route is drawn as straight lines")
+        return {}, set()
+    with_stop = {id(t) for _, _, t in stops}
+    legs, names = {}, set()
+    for zi, z in sel:
+        ztasks = [t for t in walking_order(z) if id(t) in with_stop]
+        total = 0.0
+        for a, b in zip(ztasks, ztasks[1:]):
+            if b.get("leg"):
+                legs[id(b)] = None
+                continue
+            r = walk_route(g, (a["lat"], a["lon"]), (b["lat"], b["lon"]))
+            if r is None:
+                print(f"WARNING: zone {zi}: no walking connection from «{a.get('title')}» to «{b.get('title')}» on the map; "
+                      'check the coordinates, or mark the leg "leg": "ferry"/"tram"')
+                legs[id(b)] = None
+                continue
+            path, leg_names, d = r
+            legs[id(b)] = path
+            names |= {n for n, m in leg_names.items() if m >= 25}
+            total += d
+            if d > 3 * metres((a["lat"], a["lon"]), (b["lat"], b["lon"])) + 200:
+                print(f"NOTE: zone {zi}: the walk to «{b.get('title')}» is a {d:.0f} m detour; check the map")
+        if total:
+            print(f"Zone {zi}: {total / 1000:.1f} km on foot between the stops")
+    return legs, names
+
+
+def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=None):
     """Return HTML for a tile map with zone areas, numbered stops and the route.
 
     The view is fitted to the stops (not the start point) with a fractional zoom,
@@ -436,12 +571,17 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False):
         pts.append((hotel["lat"], hotel["lon"]))
     if len(pts) < 2:
         return ""
+    # the walk between stops follows the streets, so every street of the way is on the map and named
+    legs, route_names = {}, set()
+    if not overview:
+        legs, route_names = _legs or route_legs(sel, stops)
+        pts += [pt for path in legs.values() if path for pt in path]
     pad = 50 if not overview else 30
     n_legend = len(sel) if overview else len(stops)
     H = min(H, 630 - 18 * math.ceil(n_legend / 2))  # leave room for the two-column legend
     xy = [merc(la, lo, 18) for la, lo in pts]
     xs, ys = [c[0] for c in xy], [c[1] for c in xy]
-    k = min((W - 2 * pad) / max(max(xs) - min(xs), 1), (H - 2 * pad) / max(max(ys) - min(ys), 1), 1.5)
+    k = min((W - 2 * pad) / max(max(xs) - min(xs), 1), (H - 2 * pad) / max(max(ys) - min(ys), 1), 1.5) * shrink
     zoom_f = 18 + math.log2(k)
     zoom = min(18, math.floor(zoom_f))
     scale = 2 ** (zoom_f - zoom)  # tiles are drawn at 256*scale px
@@ -546,8 +686,14 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False):
             zlabels += [(x + dx, y - 5, 10) for dx in range(-len(text) * 4, len(text) * 4 + 1, 10)]
     labels = ""
     if streets is not None:  # street names last, around the stops and zone labels
-        keep = [(x, y, 15) for x, y in pos.values()] + ([(*hotel_xy, 15)] if hotel_xy else []) + zlabels
-        base, labels = street_layers(streets, p, W, H, keep, "m" + "-".join(str(zi) for zi, _ in sel))
+        keep = [(x, y, 12) for x, y in pos.values()] + ([(*hotel_xy, 15)] if hotel_xy else []) + zlabels
+        base, labels, missing = street_layers(streets, p, W, H, keep, "m" + "-".join(str(zi) for zi, _ in sel), route_names)
+        # the kid must be able to read every street between the stops: zoom out until they fit (twice at most)
+        missing = [n for n in missing if not re.search(r"(brug|plein|tuin|plantsoen)$", n)]
+        if len(missing) > 1 and shrink > 0.75:
+            return build_map(q, W, MAP_H, only, overview, shrink * 0.85, (legs, route_names))
+        if missing:
+            print(f"NOTE: zone map {', '.join(str(zi) for zi, _ in sel)}: no room to name {', '.join(missing)}")
         under.insert(1, base)
     if hotel_xy:
         svg.append(f'<circle class="hotel-bg" cx="{hotel_xy[0]:.1f}" cy="{hotel_xy[1]:.1f}" r="14"/>')

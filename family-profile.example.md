@@ -21,7 +21,7 @@ asks a few questions and creates it for you.
 - Spotting historic details and the stories behind them; the parents want those stories per spot.
 - Variety above all: mix challenge kinds and keep each in proportion.
 - Measuring and simple maths in the wild, but only with a purpose she can see.
-- Builds from varied materials, doable on the spot: found sticks and stones, a store-bought box, assembling a local snack.
+- Builds from varied materials, doable on the spot: found sticks and stones, a store-bought box.
 - ⏱ Timed tasks at playgrounds; limitations (eyes closed, one foot, one hand behind the back).
 - Maps with readable street names, so she can navigate.
 
