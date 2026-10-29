@@ -881,7 +881,7 @@ def hunt_card(q):
     return card(
         f"""<h2>{esc(h.get('emoji', '🎯'))} {esc(h.get('title', ''))}</h2><p class="small">{esc(h.get('hint', ''))}</p>
         <ul class="hunt">{rows}</ul>{measures_html(q)}""",
-        "hunt",
+        "huntcard",
         "#333",
     )
 
@@ -1170,8 +1170,8 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
-.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
-.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
+ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
+ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
@@ -1223,6 +1223,7 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .pz li { margin: .5em 0; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
+.huntcard .measures { margin-top: auto; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
@@ -1245,7 +1246,7 @@ FIT_JS = r"""
     var size = parseFloat(getComputedStyle(el).fontSize);
     var min = size * 0.72;
     // zone cards are read by the kid: grow the text to use free space
-    if (el.closest('.zone, .hunt')) {
+    if (el.closest('.zone, .huntcard')) {
       var max = size * 1.35;
       while (el.scrollHeight <= el.clientHeight && size < max) {
         size += 0.25; el.style.fontSize = size + 'px';
