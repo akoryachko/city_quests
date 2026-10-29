@@ -54,6 +54,8 @@ Each city gets its own folder, e.g. `hoorn/`:
 | `quest.pdf` | Print booklet: A4 landscape, two A5 cards per sheet, black-and-white friendly. Cut along the dashed line. |
 | `quest.md` + `quest-map*.png` | The same quest for the phone, with Google Maps links for every stop. |
 | `quest.json` | The source of the quest. Claude edits this; the other files are generated from it. |
+| `quest.en.json` (+ `.md`, `.pdf`) | The same quest in another booklet language from the family profile; maps without zone names are shared, others get `quest.en-map*.png`. |
+| `quest-pins.json` | Where the stops are on each map picture (clickable pins on the website). |
 | `quest.html` | Intermediate render, can be opened in a browser. |
 
 Booklet order: cover → rules (coins, perks, ranks, curses) → map → one card
@@ -99,6 +101,41 @@ Requirements: Python 3, Google Chrome or Chromium (for the PDF), and internet
 access for the maps on the first build (OpenStreetMap street data and tiles;
 cached in `~/.cache/city-quest/`). A new area takes a few minutes the first time.
 
+## Website for the phone
+
+All quests can also be read as linked web pages: cities, then zones, with a
+kid/parent switch for the same zone, a language switch (RU/EN) and a rules
+button that opens over the page. Places and map pins open Google Maps.
+
+1. Build the booklets first; the site uses their maps (and every language file):
+
+   ```bash
+   python3 .claude/skills/city-quest/scripts/build_quest.py amsterdam/quest.json
+   python3 .claude/skills/city-quest/scripts/build_quest.py amsterdam/quest.en.json
+   ```
+
+2. Build the site into the git-ignored `site/` folder and try it locally:
+
+   ```bash
+   python3 .claude/skills/city-quest/scripts/build_site.py
+   python3 -m http.server -d site 8000        # open http://localhost:8000
+   ```
+
+3. Or build it into another folder, e.g. the personal website, and try it there:
+
+   ```bash
+   python3 .claude/skills/city-quest/scripts/build_site.py --out path/to/your-website/quests
+   cd path/to/your-website
+   python3 -m http.server 8000                # open http://localhost:8000/quests/
+   ```
+
+   Commit and push that repository to publish it (e.g. example.com/quests/).
+
+Stop a local server with Ctrl+C. `-d site` only belongs with the `site/`
+preview; in the website repository serve its root so the paths match the live
+site. The out folder is wiped on every build, but only if it is empty or was
+made by this script, so don't keep your own files in it.
+
 ## Where the skill lives
 
 The skill is a project skill in `.claude/skills/city-quest/` in this repository,
@@ -110,5 +147,6 @@ so Claude Code finds it whenever it runs in this folder (also after a fresh clon
 | `references/challenge-design.md` | Challenge types, volume, coin economy, JetLag mechanics, safety, Russian style |
 | `references/example-quest.json` | The Hoorn quest as a structural example |
 | `scripts/build_quest.py` | Renderer: quest.json → md, html, pdf, map |
+| `scripts/build_site.py` | All quests → a static website with kid/parent and language switches |
 
 The skill and the quests share one history in this repository.

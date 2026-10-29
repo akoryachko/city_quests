@@ -85,8 +85,11 @@ standing on one foot; foot down — start again"). They also work as curses.
 Any non-duel challenge can also be marked `"duel": true` when it naturally
 becomes a race. Give the kid a fair chance: parents count with one hand behind
 their back, kid gets a 10-second head start, etc. — say so in the text.
-**Duel coins**: the kid gets the challenge's coins for playing, win or lose
-(the family is one team); winning adds +1 bonus. State this in the rules.
+**Duel coins**: the kid gets the challenge's `coins` for playing, win or lose
+(the family is one team); the last coin, +1, is only for winning. So a duel
+worth 3 has `coins: 2`; the card prints «🪙×2+1» and the coin line has a dot
+for the win coin, which the rank check does not count as sure. State this in
+the rules.
 Endurance duels need a **clear, safe end condition** that both sides can see:
 "keep making big arm circles — arm down or stopped, you're out", not "spin
 until you fall" (dizziness, falls, and no one knows who lost first).

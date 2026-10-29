@@ -26,7 +26,9 @@ that holds this skill in `.claude/skills/city-quest/`).
   and git-ignored; `family-profile.example.md` shows the shape.
 - Output: `<city-slug>/` (slug =
   lowercase English city name: `hoorn`, `new-york`), holding `quest.json` and
-  the rendered files. Past quests there are good references for what
+  the rendered files. `quest.json` is in the profile's main booklet language;
+  every other booklet language in the profile gets a full translation next to
+  it, `quest.<lang>.json` (e.g. `quest.en.json`). Past quests there are good references for what
   families liked.
 
 **Privacy.** The quests are committed to a public repository (and may be
@@ -58,7 +60,8 @@ Read the family profile.
   interview), then fill them in.
 
 Map the profile onto the quest: `players.gender` (`"m"` or `"f"`),
-`language`, and the wording rules in `references/challenge-design.md` §6.
+`language` (the main booklet language), the other booklet languages
+(translations, step 6) and the wording rules in `references/challenge-design.md` §6.
 
 Check the city folder. If it already holds a quest, ask whether to **update**
 it (edit its `quest.json`) or plan a **new trip** next to it (render with
@@ -138,7 +141,8 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   `cost`, `food`, `toilets`). Zone `lat`/`lon` only if no challenge has coordinates.
 - challenge / boss fields: `type` (spot, trail, taste, photo, build, collect,
   ride, talk, move, measure, duel, quiz), `title`, `text`, `coins`, optional
-  `duel: true`, `optional: true` (for extras that may not happen, e.g. an
+  `duel: true` (for a duel, `coins` is what the kid gets for playing; a win
+  adds one more, printed as «🪙×2+1»), `optional: true` (for extras that may not happen, e.g. an
   unbooked boat ride), `answer` (short, for checking), `facts` (the story of
   the place for the parents, see challenge-design §4), and for anything tied to a spot
   `place` + `lat` + `lon`. Challenges are numbered 1.1, 1.2… on the cards and
@@ -216,6 +220,26 @@ stops and draws the route. Card text is auto-sized; exit code 2
 lists cards that still overflow — shorten those texts (or split a big zone
 into two) and rebuild.
 
+**Translations.** When the profile lists more than one booklet language,
+translate the finished `quest.json` into `quest.<lang>.json` for each other
+language, after the main text is final (and again after every change): the
+same structure, list order, coordinates and coins; only text changes, with
+`"language"` set (built-in labels exist for `ru` and `en`; translate the
+`labels` overrides too). Kid text stays short and playful in that language;
+keep the profile's rules (e.g. no transcription for languages the kid speaks).
+Check with a script that the two files have the same keys, list lengths and
+non-text values, then build each file:
+`build_quest.py <folder>/quest.en.json` writes `quest.en.md/.pdf`. Map
+pictures that show only numbers and local street names (a campaign's) are
+shared with the main quest (`quest-map*.png`, `quest-pins.json`); a map that
+names the zones gets its own files (`quest.en-map.png`, `quest.en-pins.json`).
+
+**Website.** `python3 .claude/skills/city-quest/scripts/build_site.py`
+renders every city and language into the git-ignored `site/` folder (`--out
+DIR` for another place, e.g. the family's website); it uses the maps and pin
+positions from the booklet build, so build the booklets first. The README has
+the commands for trying it locally.
+
 Then look at the result: view `quest-map.png`, and render the zone cards with
 `pdftoppm -r 70 -png -f 2 -l 3 quest.pdf <scratchpad>/page`, to catch an odd
 route, overlapping labels or crowded cards.
@@ -244,7 +268,7 @@ there; those live in the city's `quest.json`.
 - Home city (for campaigns), without the address
 
 ## Booklet
-- Language; printing (colour / black-and-white); phone use
+- Languages: the main one (quest.json) and any translations; printing (colour / black-and-white); phone use
 
 ## Likes
 ## Dislikes

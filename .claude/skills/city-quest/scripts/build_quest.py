@@ -107,6 +107,30 @@ LABELS_F = {
     "certificate_text": "Настоящим подтверждается, что эта отважная путешественница",
 }
 
+# Built-in labels for an English quest (`"language": "en"`); the quest's own `labels` still win.
+LABELS_EN = {
+    "zone": "Zone", "day": "Day", "claimed": "CLAIMED", "sticker": "sticker", "boss": "Zone boss",
+    "coins_needed": "Coins needed", "rules": "How to play", "map": "Conquest map",
+    "map_hint": "Zone claimed: colour it in or put a sticker on it!", "collection": "My collection",
+    "collection_hint": "Collect stamps, stickers, tickets and treasures from every zone.",
+    "treasure": "Treasure", "scorecard": "Score", "zone_col": "Zone", "coins_col": "Coins", "boss_col": "Boss",
+    "claimed_col": "Claimed", "duels": "Duels", "kid": "Me", "parents": "Parents", "total": "Total coins",
+    "spent": "Coins spent", "certificate": "Certificate", "certificate_title": "Conqueror of",
+    "certificate_text": "This certifies that this brave traveller", "certificate_text2": "zones claimed:",
+    "medal": "medal", "date": "Date", "signature": "Signature", "team": "Team", "parent_pages": "For parents",
+    "answers": "Answers and hints", "parent_zone": "for parents", "measures": "My measures (measure at home with a tape):",
+    "plan": "Plan", "curses": "City curses", "perks": "What coins buy", "hotel": "Start",
+    "shopping": "Bring / buy", "notes": "Notes", "bookings": "Tickets and bookings", "b_when": "When",
+    "b_where": "Where", "b_how": "How", "b_cost": "Price", "ranks": "End-of-day rank",
+    "ranks_hint": "The coins left at the end of the day give your rank:", "rank_line": "My rank",
+    "sources": "Sources", "map_link": "map",
+}
+TYPE_NAMES_EN = {
+    "spot": "Find and count", "trail": "Trail", "taste": "Taste", "photo": "Photo task", "build": "Build",
+    "collect": "Collect", "ride": "Ride", "talk": "Speak like a local", "move": "Move", "duel": "Duel",
+    "quiz": "Guess", "measure": "Measure and count",
+}
+
 TILE_URL = os.environ.get("CITY_QUEST_TILES", "https://tile.openstreetmap.org/{z}/{x}/{y}.png")
 TILE_CACHE = Path.home() / ".cache" / "city-quest" / "tiles"
 ATTRIBUTION = "© OpenStreetMap contributors"
@@ -117,8 +141,22 @@ def esc(s):
     return html.escape(str(s or ""))
 
 
+def is_duel(t):
+    return bool(t.get("duel")) or t.get("type") == "duel"
+
+
+def coins_text(t, default=1):
+    """A task's coins; a duel's `coins` are paid for playing and a win adds one more."""
+    n = int(t.get("coins", default))
+    return f"🪙×{n}+1" if is_duel(t) else f"🪙×{n}"
+
+
 def coins_html(n):
     return f'<span class="coins">🪙×{int(n)}</span>' if n else ""
+
+
+def task_coins_html(t, default=1):
+    return f'<span class="coins">{coins_text(t, default)}</span>'
 
 
 def gmaps(lat, lon):
@@ -294,9 +332,10 @@ def metres(a, b):
 
 
 def walk_graph(elements):
-    """Walkable street graph {(lat, lon): [(node, metres, street name)]}, kept to its largest connected part.
+    """Walkable street graph {(lat, lon): [(node, metres, street name)]}, without small disconnected bits.
 
-    Overpass "out geom" has no node ids, but ways meet at identical coordinates.
+    Overpass "out geom" has no node ids, but ways meet at identical coordinates. Every big
+    connected part is kept: banks joined only by a ferry are separate parts of one map.
     """
     g = {}
     for el in elements:
@@ -310,7 +349,7 @@ def walk_graph(elements):
             d = metres(a, b)
             g.setdefault(a, []).append((b, d, tags.get("name", "")))
             g.setdefault(b, []).append((a, d, tags.get("name", "")))
-    best, seen = set(), set()
+    parts, seen = [], set()
     for start in g:
         if start in seen:
             continue
@@ -321,9 +360,10 @@ def walk_graph(elements):
                     part.add(m)
                     todo.append(m)
         seen |= part
-        if len(part) > len(best):
-            best = part
-    return {n: e for n, e in g.items() if n in best}
+        parts.append(part)
+    biggest = max((len(p) for p in parts), default=0)
+    keep = set().union(*(p for p in parts if len(p) >= max(50, 0.05 * biggest)), set())
+    return {n: e for n, e in g.items() if n in keep}
 
 
 def walk_route(g, a, b, snap=150):
@@ -550,13 +590,15 @@ def route_legs(sel, stops):
     return legs, names
 
 
-def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=None):
+def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=None, pins=None):
     """Return HTML for a tile map with zone areas, numbered stops and the route.
 
     The view is fitted to the stops (not the start point) with a fractional zoom,
     so the walk fills the card; a start point outside the view is pinned to the edge.
     `only` limits the map to some zone numbers (a campaign's per-zone map).
     `overview` draws just the zone areas with numbered badges (a campaign's city map).
+    `pins`, a dict, receives the map size and where each stop (or zone badge) is drawn,
+    so a web page can put links on the map picture.
     In a campaign the route starts at the zone's first stop, not at the home point.
     """
     sel = [(zi, z) for zi, z in enumerate(q["zones"], 1) if only is None or zi in only]
@@ -666,6 +708,8 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
             for bx, by in zs:  # far-flung parts of a zone get a small number of their own
                 if math.hypot(bx - x, by - y) > 30:
                     svg.append(f'<text class="blobnum" x="{bx:.1f}" y="{by+3.5:.1f}">{zi}</text>')
+            if pins is not None:
+                pins.setdefault("pins", []).append({"zone": zi, "x": round(x, 1), "y": round(y, 1)})
             svg.append(f'<circle class="badge" cx="{x:.1f}" cy="{y:.1f}" r="12"/>')
             svg.append(f'<text class="badgenum" x="{x:.1f}" y="{y+4.5:.1f}">{zi}</text>')
     else:
@@ -673,6 +717,8 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
             svg.append('<polyline class="route" points="' + " ".join(f"{x:.1f},{y:.1f}" for x, y in route) + '"/>')
         for label, zi, t in stops:
             x, y = pos[id(t)]
+            if pins is not None:
+                pins.setdefault("pins", []).append({"label": label, "x": round(x, 1), "y": round(y, 1), "lat": t["lat"], "lon": t["lon"]})
             svg.append(f'<circle class="stop" cx="{x:.1f}" cy="{y:.1f}" r="11"/>')
             svg.append(f'<text class="stopnum" x="{x:.1f}" y="{y+3.5:.1f}">{esc(label)}</text>')
     zlabels = []
@@ -691,7 +737,9 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
         # the kid must be able to read every street between the stops: zoom out until they fit (twice at most)
         missing = [n for n in missing if not re.search(r"(brug|plein|tuin|plantsoen)$", n)]
         if len(missing) > 1 and shrink > 0.75:
-            return build_map(q, W, MAP_H, only, overview, shrink * 0.85, (legs, route_names))
+            if pins is not None:
+                pins.clear()
+            return build_map(q, W, MAP_H, only, overview, shrink * 0.85, (legs, route_names), pins)
         if missing:
             print(f"NOTE: zone map {', '.join(str(zi) for zi, _ in sel)}: no room to name {', '.join(missing)}")
         under.insert(1, base)
@@ -701,6 +749,8 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     svg.append("</svg>")
     attr = f'<div class="attr">{ATTRIBUTION}</div>' if tiles or streets is not None else ""
     layers = "".join(tiles) + "".join(under) + labels + "".join(svg)
+    if pins is not None:
+        pins.update(w=W, h=H)
     return f'<div class="map" style="width:{W}px;height:{H}px">{layers}{attr}</div>'
 
 
@@ -751,7 +801,7 @@ def rules_card(q):
     )
 
 
-def stop_legend(q, only=None):
+def stop_legend(q, only=None, links=False):
     items = []
     for zi, z in enumerate(q["zones"], 1):
         if only is not None and zi not in only:
@@ -760,8 +810,10 @@ def stop_legend(q, only=None):
             if t.get("lat") is None:
                 continue
             name = "???" if t.get("type") == "trail" else t.get("place") or t.get("title")
-            name = re.split(r"[,(]", name)[0].strip()
-            items.append(f"<li><b>{esc(task_label(zi, ti, z))}</b> {esc(name)}</li>")
+            name = esc(re.split(r"[,(]", name)[0].strip())
+            if links:
+                name = f'<a href="{gmaps(t["lat"], t["lon"])}">{name}</a>'
+            items.append(f"<li><b>{esc(task_label(zi, ti, z))}</b> {name}</li>")
     return f'<ul class="legend-stops">{"".join(items)}</ul>' if items else ""
 
 
@@ -834,22 +886,33 @@ def hunt_card(q):
     )
 
 
-def challenge_li(ch, label):
+def place_html(t, links=False):
+    """📍 line under a task; a trail's place is the riddle's answer, so on screen it is only a map link."""
+    if not t.get("place"):
+        return ""
+    link = gmaps(t["lat"], t["lon"]) if links and t.get("lat") is not None else None
+    if t.get("type") == "trail":
+        return f'<div class="place"><a href="{link}">📍 {LABELS["map_link"]}</a></div>' if link else ""
+    text = esc(t["place"])
+    return f'<div class="place">📍 <a href="{link}">{text}</a></div>' if link else f'<div class="place">📍 {text}</div>'
+
+
+def challenge_li(ch, label, links=False):
     icon, _ = TYPES.get(ch.get("type"), ("⭐", ""))
     duel = ' <span class="duel-tag">⚔️</span>' if ch.get("duel") and ch.get("type") != "duel" else ""
-    place = ""
-    if ch.get("place") and ch.get("type") != "trail":
-        place = f'<div class="place">📍 {esc(ch["place"])}</div>'
+    place = place_html(ch, links)
     return f"""<li class="ch">
       <span class="num">{esc(label)}</span><span class="icon">{icon}</span>
-      <div class="body"><div class="ch-title"><b>{esc(ch.get('title'))}</b>{duel} {coins_html(ch.get('coins', 1))}</div>
+      <div class="body"><div class="ch-title"><b>{esc(ch.get('title'))}</b>{duel} {task_coins_html(ch)}</div>
       <div class="ch-text">{esc(ch.get('text'))}</div>{place}</div>
       <span class="box"></span></li>"""
 
 
 def coin_track(z, nav=0):
-    """Coin dots of a zone, a 🏁 after the coins needed, then 🧭 dots for the navigation bonus."""
-    total = sum(int(t.get("coins", 1)) for t in z.get("challenges", [])) + int((z.get("boss") or {}).get("coins", 0))
+    """Coin dots of a zone (a duel's win coin included), a 🏁 after the coins needed, then 🧭 dots for the navigation bonus."""
+    total = sum(int(t.get("coins", 1)) + is_duel(t) for t in z.get("challenges", []))
+    if z.get("boss"):
+        total += int(z["boss"].get("coins", 0)) + is_duel(z["boss"])
     need = int(z.get("coins_to_claim") or 0)
     dots = []
     for k in range(1, total + 1):
@@ -861,15 +924,15 @@ def coin_track(z, nav=0):
     return f'<div class="track"><span>🪙</span>{"".join(dots)}</div>'
 
 
-def zone_card(z, zi, nav=0):
+def zone_card(z, zi, nav=0, links=False):
     tasks = zone_tasks(z)
     n_ch = len(z.get("challenges", []))
-    chs = "".join(challenge_li(c, f"{zi}.{ti}") for ti, c in enumerate(tasks[:n_ch], 1))
+    chs = "".join(challenge_li(c, f"{zi}.{ti}", links) for ti, c in enumerate(tasks[:n_ch], 1))
     boss_html = ""
     if z.get("boss"):
         b = z["boss"]
-        place = f'<div class="place">📍 {esc(b["place"])}</div>' if b.get("place") else ""
-        boss_html = f"""<div class="boss"><div class="ch-title"><b>👑 {LABELS['boss']}: {esc(b.get('title'))}</b> {coins_html(b.get('coins', 5))}</div>
+        place = place_html(b, links)
+        boss_html = f"""<div class="boss"><div class="ch-title"><b>👑 {LABELS['boss']}: {esc(b.get('title'))}</b> {task_coins_html(b, 5)}</div>
         <div class="ch-text">{esc(b.get('text'))}</div>{place}<span class="box"></span></div>"""
     day = f" · {LABELS['day']} {esc(z['day'])}" if z.get("day") else ""
     return card(
@@ -1297,10 +1360,12 @@ def build_md(q, map_png, zone_pngs=None):
             title = f"{LABELS['boss']}: {t.get('title')}" if is_boss else t.get("title")
             duel = " ⚔️" if t.get("duel") and t.get("type") != "duel" else ""
             place = ""
-            if t.get("place") and t.get("type") != "trail":
+            if t.get("place") and t.get("type") == "trail":  # the place is the riddle's answer: link only
+                place = f" 📍 [{LABELS['map_link']}]({gmaps(t['lat'], t['lon'])})" if t.get("lat") is not None else ""
+            elif t.get("place"):
                 place = f" 📍 [{t['place']}]({gmaps(t['lat'], t['lon'])})" if t.get("lat") is not None else f" 📍 {t['place']}"
             num = "" if is_boss else f"{label} "
-            L.append(f"- [ ] {num}{icon} **{title}**{duel} (🪙×{t.get('coins', 5 if is_boss else 1)}) — {t.get('text')}{place}")
+            L.append(f"- [ ] {num}{icon} **{title}**{duel} ({coins_text(t, 5 if is_boss else 1)}) — {t.get('text')}{place}")
         if z.get("coins_to_claim"):
             L += ["", f"{LABELS['coins_needed']}: **{z['coins_to_claim']}** 🏁"]
         L.append("")
@@ -1349,7 +1414,8 @@ def check_ranks(q):
     """Warn when the top rank needs more than 95 % of the coins the kid can surely earn.
 
     Challenges marked "optional": true (unbooked rides, weather-dependent extras)
-    don't count, so the top rank stays reachable without them and without spending.
+    don't count, so the top rank stays reachable without them and without spending;
+    neither does a duel's win coin.
     """
     ranks = q.get("rules", {}).get("ranks", [])
     if not ranks:
@@ -1379,30 +1445,51 @@ def run_chrome(chrome, args, profile):
     return subprocess.run(base + args, capture_output=True, text=True, timeout=180)
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("quest_json")
-    ap.add_argument("--out-dir")
-    ap.add_argument("--name", default="quest")
-    a = ap.parse_args()
-    src = Path(a.quest_json).resolve()
-    q = json.loads(src.read_text(encoding="utf-8"))
-    if str(q.get("players", {}).get("gender", "")).lower() in ("f", "girl", "ж"):
+def set_language(q):
+    """Built-in labels for the quest's language and gender, then the quest's own overrides."""
+    if q.get("language") == "en":
+        LABELS.update(LABELS_EN)
+        for t, v in TYPE_NAMES_EN.items():
+            TYPES[t] = (TYPES[t][0], v)
+    elif str(q.get("players", {}).get("gender", "")).lower() in ("f", "girl", "ж"):
         LABELS.update(LABELS_F)
     LABELS.update(q.get("labels", {}))
     for t, v in q.get("type_labels", {}).items():
         TYPES[t] = (TYPES.get(t, ("⭐",))[0], v)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("quest_json")
+    ap.add_argument("--out-dir")
+    ap.add_argument("--name", help="output name; default: the file name, e.g. quest or quest.en")
+    a = ap.parse_args()
+    src = Path(a.quest_json).resolve()
+    q = json.loads(src.read_text(encoding="utf-8"))
+    set_language(q)
+    a.name = a.name or src.stem
     out = Path(a.out_dir).resolve() if a.out_dir else src.parent
     out.mkdir(parents=True, exist_ok=True)
 
     md_path, html_path, pdf_path = (out / f"{a.name}.{e}" for e in ("md", "html", "pdf"))
-    png_path = out / f"{a.name}-map.png"
     campaign = bool(q.get("campaign"))
-    map_html = build_map(q, overview=campaign)
-    zone_maps = {i: build_map(q, only={i}) for i in range(1, len(q["zones"]) + 1)} if campaign else {}
+    pins = [{}]
+    map_html = build_map(q, overview=campaign, pins=pins[0])
+    zone_maps = {}
+    for i in range(1, len(q["zones"]) + 1) if campaign else ():
+        pins.append({})
+        zone_maps[i] = build_map(q, only={i}, pins=pins[-1])
     html_path.write_text(build_html(q, map_html, zone_maps), encoding="utf-8")
+    # a translation (quest.en.json) shares the main quest's map pictures when they hold only numbers
+    # and local street names; maps that name the zones get their own files (quest.en-map.png)
+    has_text = any('class="zlabel"' in m for m in [map_html, *zone_maps.values()])
+    map_name = a.name if has_text else re.sub(r"\.[a-z]{2}$", "", a.name)
+    png_path = out / f"{map_name}-map.png"
+    # where the stops are on each map picture, for clickable pins on the website
+    names = [f"{map_name}-map.png"] + [f"{map_name}-map-{i}.png" for i in zone_maps]
+    (out / f"{map_name}-pins.json").write_text(json.dumps({n: p for n, p in zip(names, pins) if p}, indent=1), encoding="utf-8")
 
-    shots = [(map_html, png_path)] + [(m, out / f"{a.name}-map-{i}.png") for i, m in zone_maps.items()]
+    shots = [(map_html, png_path)] + [(m, out / f"{map_name}-map-{i}.png") for i, m in zone_maps.items()]
     chrome = find_chrome()
     with tempfile.TemporaryDirectory() as profile:
         for k, (m_html, m_png) in enumerate(shots):
@@ -1418,7 +1505,7 @@ def main():
         res = run_chrome(chrome, ["--no-pdf-header-footer", f"--print-to-pdf={pdf_path}", html_path.as_uri()], profile)
     if not pdf_path.exists():
         sys.exit(f"PDF render failed:\n{res.stderr[-2000:]}")
-    zone_pngs = {i: f"{a.name}-map-{i}.png" for i in zone_maps if (out / f"{a.name}-map-{i}.png").exists()}
+    zone_pngs = {i: f"{map_name}-map-{i}.png" for i in zone_maps if (out / f"{map_name}-map-{i}.png").exists()}
     md_path.write_text(build_md(q, png_path.name if png_path.exists() else None, zone_pngs), encoding="utf-8")
 
     print(f"Wrote {md_path}\nWrote {html_path}\nWrote {pdf_path}")
