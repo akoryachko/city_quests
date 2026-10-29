@@ -99,6 +99,7 @@ LABELS = {
     "rank_line": "Моё звание",
     "sources": "Источники",
     "map_link": "карта",
+    "riddle": "загадка",
 }
 
 # Wording for a girl (`players.gender`: "f"); the defaults above are masculine or neutral.
@@ -123,7 +124,7 @@ LABELS_EN = {
     "shopping": "Bring / buy", "notes": "Notes", "bookings": "Tickets and bookings", "b_when": "When",
     "b_where": "Where", "b_how": "How", "b_cost": "Price", "ranks": "End-of-day rank",
     "ranks_hint": "The coins left at the end of the day give your rank:", "rank_line": "My rank",
-    "sources": "Sources", "map_link": "map",
+    "sources": "Sources", "map_link": "map", "riddle": "riddle",
 }
 TYPE_NAMES_EN = {
     "spot": "Find and count", "trail": "Trail", "taste": "Taste", "photo": "Photo task", "build": "Build",
@@ -809,8 +810,10 @@ def stop_legend(q, only=None, links=False):
         for ti, t in enumerate(zone_tasks(z), 1):
             if t.get("lat") is None:
                 continue
-            name = "???" if t.get("type") == "trail" else t.get("place") or t.get("title")
-            name = esc(re.split(r"[,(]", name)[0].strip())
+            if t.get("type") == "trail":  # the place is the riddle's answer
+                name = f"🧭 {esc(LABELS['riddle'])}"
+            else:
+                name = esc(re.split(r"[,(]", t.get("place") or t.get("title"))[0].strip())
             if links:
                 name = f'<a href="{gmaps(t["lat"], t["lon"])}">{name}</a>'
             items.append(f"<li><b>{esc(task_label(zi, ti, z))}</b> {name}</li>")
