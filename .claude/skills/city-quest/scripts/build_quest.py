@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a city quest (quest.json) into quest.md, quest.html, quest.pdf and quest-map.png.
+"""Render a city quest (quest.json) into quest.md, quest.html, <city>-quest.pdf and quest-map.png.
 
 Usage:
     python3 build_quest.py path/to/quest.json [--out-dir DIR] [--name quest]
@@ -1475,7 +1475,10 @@ def main():
     out = Path(a.out_dir).resolve() if a.out_dir else src.parent
     out.mkdir(parents=True, exist_ok=True)
 
-    md_path, html_path, pdf_path = (out / f"{a.name}.{e}" for e in ("md", "html", "pdf"))
+    md_path, html_path = (out / f"{a.name}.{e}" for e in ("md", "html"))
+    # the PDF leaves the folder (downloads, the printer queue): its name says which city it is
+    city = re.sub(r"[^a-z0-9]+", "-", str(q.get("city", "")).lower()).strip("-")
+    pdf_path = out / f"{city + '-' if city else ''}{a.name}.pdf"
     campaign = bool(q.get("campaign"))
     pins = [{}]
     map_html = build_map(q, overview=campaign, pins=pins[0])

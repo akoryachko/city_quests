@@ -51,10 +51,10 @@ Each city gets its own folder, e.g. `hoorn/`:
 
 | File | Use |
 |---|---|
-| `quest.pdf` | Print booklet: A4 landscape, two A5 cards per sheet, black-and-white friendly. Cut along the dashed line. |
+| `hoorn-quest.pdf` | Print booklet (named after the city): A4 landscape, two A5 cards per sheet, black-and-white friendly. Cut along the dashed line. |
 | `quest.md` + `quest-map*.png` | The same quest for the phone, with Google Maps links for every stop. |
 | `quest.json` | The source of the quest. Claude edits this; the other files are generated from it. |
-| `quest.en.json` (+ `.md`, `.pdf`) | The same quest in another booklet language from the family profile; maps without zone names are shared, others get `quest.en-map*.png`. |
+| `quest.en.json` (+ `quest.en.md`, `hoorn-quest.en.pdf`) | The same quest in another booklet language from the family profile; maps without zone names are shared, others get `quest.en-map*.png`. |
 | `quest-pins.json` | Where the stops are on each map picture (clickable pins on the website). |
 | `quest.html` | Intermediate render, can be opened in a browser. |
 

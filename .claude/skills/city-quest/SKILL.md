@@ -1,6 +1,6 @@
 ---
 name: city-quest
-description: Plan a city trip with the user and turn it into a printable "Conquer the City" quest booklet for a family with a young child (about 5–10): interview about dates, times, transport and the kinds of experiences they want, research real landmarks, then build kid-sized challenges (find & count, riddles leading to the next landmark, local food, photo/build/collect tasks, rides on local transport, kid-vs-parent duels) with coins, curses, a street map, sticker spots and spoiler-free parent pages. Writes quest.md + quest.pdf (A4 landscape, two A5 cards per sheet) into city_quests/<city>/ and remembers family preferences between trips. Use whenever the user mentions a city quest, a scavenger or treasure hunt for a trip, keeping their kid entertained while sightseeing, a JetLag-style game for a city, planning a day out in a city with the kid, or says "make a quest for <city>", even if they don't say "skill" or "booklet".
+description: Plan a city trip with the user and turn it into a printable "Conquer the City" quest booklet for a family with a young child (about 5–10): interview about dates, times, transport and the kinds of experiences they want, research real landmarks, then build kid-sized challenges (find & count, riddles leading to the next landmark, local food, photo/build/collect tasks, rides on local transport, kid-vs-parent duels) with coins, curses, a street map, sticker spots and spoiler-free parent pages. Writes quest.md + <city>-quest.pdf (A4 landscape, two A5 cards per sheet) into city_quests/<city>/ and remembers family preferences between trips. Use whenever the user mentions a city quest, a scavenger or treasure hunt for a trip, keeping their kid entertained while sightseeing, a JetLag-style game for a city, planning a day out in a city with the kid, or says "make a quest for <city>", even if they don't say "skill" or "booklet".
 ---
 
 # City Quest
@@ -203,7 +203,8 @@ python3 .claude/skills/city-quest/scripts/build_quest.py <folder>/quest.json [--
 ```
 
 This writes `quest.md` (full content with Google Maps links, phone-readable),
-`quest-map.png` (used by the markdown), `quest.html` and `quest.pdf`. Street
+`quest-map.png` (used by the markdown), `quest.html` and `<city>-quest.pdf`
+(e.g. `hoorn-quest.pdf`). Street
 maps are drawn from OpenStreetMap data (Overpass API, cached in
 `~/.cache/city-quest/streets`) with bold black street names on top, so the
 kid can navigate by them. Stops are joined by straight lines, but the build
@@ -229,7 +230,7 @@ same structure, list order, coordinates and coins; only text changes, with
 keep the profile's rules (e.g. no transcription for languages the kid speaks).
 Check with a script that the two files have the same keys, list lengths and
 non-text values, then build each file:
-`build_quest.py <folder>/quest.en.json` writes `quest.en.md/.pdf`. Map
+`build_quest.py <folder>/quest.en.json` writes `quest.en.md` and `<city>-quest.en.pdf`. Map
 pictures that show only numbers and local street names (a campaign's) are
 shared with the main quest (`quest-map*.png`, `quest-pins.json`); a map that
 names the zones gets its own files (`quest.en-map.png`, `quest.en-pins.json`).
@@ -241,7 +242,7 @@ positions from the booklet build, so build the booklets first. The README has
 the commands for trying it locally.
 
 Then look at the result: view `quest-map.png`, and render the zone cards with
-`pdftoppm -r 70 -png -f 2 -l 3 quest.pdf <scratchpad>/page`, to catch an odd
+`pdftoppm -r 70 -png -f 2 -l 3 <city>-quest.pdf <scratchpad>/page`, to catch an odd
 route, overlapping labels or crowded cards.
 
 Tell the user where the files are, the zones with timing, and anything to
