@@ -311,12 +311,13 @@
         {
           "type": "move",
           "title": "⏱ 20 Trees",
-          "text": "By the round tower, a park starts along the canal. ⏱ Touch 20 different trees in 3 minutes! The same tree twice doesn't count. Not in time — try again.",
+          "duel": true,
+          "text": "By the round tower, a park starts along the canal. ⏱ Who's faster to touch 20 different trees? The parent too! The same tree twice doesn't count.",
           "coins": 2,
           "place": "Oosterplantsoen by the Mariatoren",
           "lat": 52.6428,
           "lon": 5.0618,
-          "answer": "The parent times 3 minutes, the kid counts out loud. The park path is car-free — stay away from the canal edge.",
+          "answer": "Everyone counts out loud; the parent times it. The park path is car-free — stay away from the canal edge.",
           "facts": "The round Mariatoren (1508) was part of the town wall; St Mary's convent paid for it, hence the name. Later it stored gunpowder (Kruittoren) and from 1900 ice. Today the Hendrick de Keyser society lets it as holiday rooms. The Oosterplantsoen park follows the Draafsingel canal, the old town moat. For the kid: \"They kept gunpowder in this tower — that's why it has so few windows!\""
         },
         {
