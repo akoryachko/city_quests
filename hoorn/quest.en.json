@@ -310,14 +310,14 @@
         },
         {
           "type": "move",
-          "title": "⏱ 20 Trees",
+          "title": "⏱ Powder for the Tower",
           "duel": true,
-          "text": "By the round tower, a park starts along the canal. ⏱ Who's faster to touch 20 different trees? The parent too! The same tree twice doesn't count.",
+          "text": "The round tower stored gunpowder! Bring \"powder bags\" — 5 different leaves — to the bench facing the tower, one at a time. The parent too! Who's first? The prettiest leaf goes in the collection.",
           "coins": 2,
           "place": "Oosterplantsoen by the Mariatoren",
           "lat": 52.6428,
           "lon": 5.0618,
-          "answer": "Everyone counts out loud; the parent times it. The park path is car-free — stay away from the canal edge.",
+          "answer": "Leaves of different shapes (maple, oak, chestnut…); each player carries one at a time. Run only on the park paths, stay away from the canal edge; the parent keeps an eye on both. No bench — any \"store\" tree by the path.",
           "facts": "The round Mariatoren (1508) was part of the town wall; St Mary's convent paid for it, hence the name. Later it stored gunpowder (Kruittoren) and from 1900 ice. Today the Hendrick de Keyser society lets it as holiday rooms. The Oosterplantsoen park follows the Draafsingel canal, the old town moat. For the kid: \"They kept gunpowder in this tower — that's why it has so few windows!\""
         },
         {
@@ -377,7 +377,7 @@
     "days": [
       {
         "day": 1,
-        "plan": "9:30 Hoorn station → 9:30–10:45 zone 1: Statenpoort, Muntstraat, the canal under Kerkplein, Roode Steen → 10:50–11:20 lunch at Turf (Gedempte Turfhaven 19) → 11:25 steam tram station (engine number) → 11:40 boarding → 12:00–14:00 Pieten Expres to Wognum and back (Piets, poffertjes, Sinterklaas) → 14:00–14:45 Brick City in the station hall → 14:45–16:20 harbour via the eastern edge of town: kibbeling, trees by the Mariatoren, Oosterpoort, Bossuhuizen, Veermanskade, Bontekoe's ship's boys → ~16:50 station → train home. Sunset around 16:45."
+        "plan": "9:30 Hoorn station → 9:30–10:45 zone 1: Statenpoort, Muntstraat, the canal under Kerkplein, Roode Steen → 10:50–11:20 lunch at Turf (Gedempte Turfhaven 19) → 11:25 steam tram station (engine number) → 11:40 boarding → 12:00–14:00 Pieten Expres to Wognum and back (Piets, poffertjes, Sinterklaas) → 14:00–14:45 Brick City in the station hall → 14:45–16:20 harbour via the eastern edge of town: kibbeling, the leaf relay by the Mariatoren, Oosterpoort, Bossuhuizen, Veermanskade, Bontekoe's ship's boys → ~16:50 station → train home. Sunset around 16:45."
       }
     ],
     "bookings": [
