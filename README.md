@@ -35,10 +35,14 @@ What happens next is a conversation:
    which experiences you want this time (museum hunts, historic rides, LEGO,
    boats, playgrounds…), pace and budget, must-sees.
 3. **Research**: sights, opening hours and timetables for your date, food,
-   coordinates.
-4. **Plan check**: zones, stops, timing and anything unconfirmed. Adjust it
-   here; it is the cheapest moment to change direction.
-5. **Build**: the booklet is written and rendered.
+   coordinates. For several zones, a researcher agent per zone works in
+   parallel.
+4. **Plan check**: zones, stops, timing and anything unconfirmed, with real
+   walking distances from the route report. Adjust it here; it is the
+   cheapest moment to change direction.
+5. **Review and build**: the booklet is written, a reviewer agent checks it
+   from the kid's and the parents' side against your profile's lessons, the
+   fixes go in, and it is rendered.
 6. **Remember**: new preferences and lessons go into the profile.
 
 Later changes work the same way, in the same or a new session:
@@ -56,6 +60,7 @@ Each city gets its own folder, e.g. `hoorn/`:
 | `quest.json` | The source of the quest. Claude edits this; the other files are generated from it. |
 | `quest.en.json` (+ `quest.en.md`, `hoorn-quest.en.pdf`) | The same quest in another booklet language from the family profile; maps without zone names are shared, others get `quest.en-map*.png`. |
 | `quest-pins.json` | Where the stops are on each map picture (clickable pins on the website). |
+| `quest-routes.md` | Walking-route report: per walk the distance, kid walking time, what it runs along (main road, quiet street, water, park), landmarks passed or a short detour away, and warnings. |
 | `quest.html` | Intermediate render, can be opened in a browser. |
 
 Booklet order: cover → rules (coins, perks, ranks, curses) → map → one card
@@ -97,6 +102,12 @@ python3 .claude/skills/city-quest/scripts/build_quest.py hoorn/quest.json
 ```
 
 Exit code 2 means some card has too much text; the script names it.
+For the walking-route report:
+
+```bash
+python3 .claude/skills/city-quest/scripts/route_report.py hoorn/quest.json
+```
+
 Requirements: Python 3, Google Chrome or Chromium (for the PDF), and internet
 access for the maps on the first build (OpenStreetMap street data and tiles;
 cached in `~/.cache/city-quest/`). A new area takes a few minutes the first time.
@@ -148,5 +159,14 @@ so Claude Code finds it whenever it runs in this folder (also after a fresh clon
 | `references/example-quest.json` | The Hoorn quest as a structural example |
 | `scripts/build_quest.py` | Renderer: quest.json → md, html, pdf, map |
 | `scripts/build_site.py` | All quests → a static website with kid/parent and language switches |
+| `scripts/route_report.py` | quest.json → walking-route report (`quest-routes.md`) |
+
+Two agents (separate Claude workers with their own brief, in `.claude/agents/`)
+help the skill:
+
+| Agent | Job |
+|---|---|
+| `city-researcher` | One area of a city: candidate stops with checkable details, stories, hours, coordinates and the nicest walking connections. One per zone, in parallel. |
+| `quest-reviewer` | Reviews a draft quest it didn't write, from the kid's and the parents' side, against the profile's lessons, the design rules and the route report; returns prioritised fixes. |
 
 The skill and the quests share one history in this repository.

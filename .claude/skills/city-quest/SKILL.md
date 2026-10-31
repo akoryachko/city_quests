@@ -111,9 +111,16 @@ LEGO passport in the visited city):
   Nominatim, one request per second, with a User-Agent:
   `curl -s -A "city-quest-skill/1.0" "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=<urlencoded place, city>"`.
 
-For a big city it helps to run research subagents in parallel (sights,
-food, practicalities); the interview and plan check stay in this conversation.
-Keep the URLs; they go into `sources`.
+Run the **`city-researcher`** agent (`.claude/agents/city-researcher.md`)
+once per zone or area, in parallel: brief each with the city and area, the
+outing day and time window, the kid's age, the family's likes and dislikes
+(from the profile, without personal details) and what is already planned.
+Each returns 8–12 candidate stops with checkable details, stories, hours,
+coordinates and the nicest walking connections; pick from them, verify
+anything flagged as unconfirmed, and keep the bulky research out of this
+conversation. A one-zone day trip can be researched directly. The interview
+and plan check stay in this conversation. Keep the URLs; they go into
+`sources`.
 
 ### 4. Propose the plan
 
@@ -121,6 +128,20 @@ Before writing any cards, show a compact plan: zones in walking order with
 their stops, the boss of each, rides, food stops, timing per zone, total
 walking distance, and anything unconfirmed. Ask if it fits; adjust. This is
 the cheapest moment to change direction.
+
+Base the walking figures on the route report rather than guesses: write the
+stops with coordinates into a draft `quest.json` (titles are enough) and run
+
+```bash
+python3 .claude/skills/city-quest/scripts/route_report.py <folder>/quest.json
+```
+
+It writes `<folder>/quest-routes.md`: per walk between stops the distance and
+kid walking time, what the way runs along (main road, quiet street, car-free,
+water, park), the landmarks passed and those a short detour away, and ⚠ flags
+(hardly a walk, long, main road, streets walked twice). Reroute or move stops
+for the flags, and use passed landmarks: they make good tasks, stories for
+the parents, or a reason to take a nicer street.
 
 ### 5. Design the game and write quest.json
 
@@ -195,6 +216,14 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
 
 Answers and logistics never appear on the kid's cards; they are printed on
 separate parent pages at the end, so keep spoilers there.
+
+**Review before showing.** When the draft is complete (and after a big
+change), run the **`quest-reviewer`** agent (`.claude/agents/quest-reviewer.md`)
+with the quest's path. It did not write the draft, so it isn't anchored on it:
+it reads the profile and its lessons, the design rules and a fresh route
+report, checks the quest from the kid's and the parents' side and returns
+prioritised fixes. Apply the clear ones, put real trade-offs to the user, then
+build. Logistics distances and times (`where`) come from the route report.
 
 ### 6. Build and check
 
