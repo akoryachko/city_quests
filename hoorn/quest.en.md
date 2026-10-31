@@ -73,7 +73,7 @@ Coins needed: **9** 🏁
 
 _A whole LEGO city is hiding in the old station hall, even Hoorn's streets! And you can build things yourself and race little cars there._
 
-- [ ] 3.1 🎒 **Brick Hunt** (🪙×3) — Pick up the search sheet (speurtocht) at the entrance and finish all of it. The sheet goes in the collection! 📍 [Brick City, Hoorn station hall](https://www.google.com/maps/search/?api=1&query=52.64545,5.05485)
+- [ ] 3.1 🎒 **Brick Hunt** (🪙×3) — Pick up the search sheet (speurtocht) at the entrance and finish all of it. 📍 [Brick City, Hoorn station hall](https://www.google.com/maps/search/?api=1&query=52.64545,5.05485)
 - [ ] 3.2 🔍 **Diorama Train** (🪙×2) — Find the big diorama and start a train. Follow it with your eyes for a whole lap without losing it! Where does it dive into a tunnel?
 - [ ] 👑 **Zone boss: One-Hand Tower** (🪙×6) — Build a gate with a house on top, like the Oosterpoort you'll see soon. A LEGO car must drive through it, and the gate must stand alone for 5 seconds. It falls — start again!
 
@@ -84,7 +84,7 @@ Coins needed: **7** 🏁
 _Ships that sailed to India for pepper were moored here. Captain Bontekoe from Hoorn nearly died on such a voyage, and his ship's boys became the heroes of a book!_
 
 - [ ] 4.1 🍽️ **Kibbeling Fish** (🪙×2) — Try kibbeling — hot bites of fried fish with a sauce. What fish is it? Find the name on the sign by the counter. Rate it ⭐⭐⭐⭐⭐. 📍 [Hoogland Vis, Gedempte Turfhaven 36](https://www.google.com/maps/search/?api=1&query=52.64256,5.05688)
-- [ ] 4.2 🏃 **⏱ Powder for the Tower** ⚔️ (🪙×2+1) — The round tower stored gunpowder! Bring "powder bags" — 5 different leaves — to the bench facing the tower, one at a time. The parent too! Who's first? The prettiest leaf goes in the collection. 📍 [Oosterplantsoen by the Mariatoren](https://www.google.com/maps/search/?api=1&query=52.6428,5.0618)
+- [ ] 4.2 🏃 **⏱ Powder for the Tower** ⚔️ (🪙×2+1) — The round tower stored gunpowder! Bring "powder bags" — 5 different leaves — to the bench facing the tower, one at a time. The parent too! Who's first? 📍 [Oosterplantsoen by the Mariatoren](https://www.google.com/maps/search/?api=1&query=52.6428,5.0618)
 - [ ] 4.3 🔍 **The Last Gate** (🪙×2) — This is Hoorn's last city gate, with a house on top! Count the arches of the bridge in front of it. Is the passage under the gate straight or curved? Why do you think? 📍 [Oosterpoort, Bij Oosterpoort](https://www.google.com/maps/search/?api=1&query=52.64103,5.06869)
 - [ ] 4.4 🔍 **Sea Battle** (🪙×2) — On Slapershaven a sea battle is carved on the houses — like a comic! Find the ship with the biggest flag — that's the admiral. Who won: the big ships or the small ones? What year is on the corner house? 📍 [Bossuhuizen, Slapershaven / Grote Oost 132](https://www.google.com/maps/search/?api=1&query=52.64025,5.06593)
 - [ ] 4.5 📏 **Narrow and Wide** (🪙×3) — Over the iron bridge to Veermanskade. Pace out the narrowest and the widest house. How many narrow houses fit into the wide one? 📍 [Veermanskade, houses](https://www.google.com/maps/search/?api=1&query=52.6376,5.06286)

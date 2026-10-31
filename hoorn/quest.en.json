@@ -249,7 +249,7 @@
         {
           "type": "collect",
           "title": "Brick Hunt",
-          "text": "Pick up the search sheet (speurtocht) at the entrance and finish all of it. The sheet goes in the collection!",
+          "text": "Pick up the search sheet (speurtocht) at the entrance and finish all of it.",
           "coins": 3,
           "place": "Brick City, Hoorn station hall",
           "lat": 52.64545,
@@ -312,7 +312,7 @@
           "type": "move",
           "title": "⏱ Powder for the Tower",
           "duel": true,
-          "text": "The round tower stored gunpowder! Bring \"powder bags\" — 5 different leaves — to the bench facing the tower, one at a time. The parent too! Who's first? The prettiest leaf goes in the collection.",
+          "text": "The round tower stored gunpowder! Bring \"powder bags\" — 5 different leaves — to the bench facing the tower, one at a time. The parent too! Who's first?",
           "coins": 2,
           "place": "Oosterplantsoen by the Mariatoren",
           "lat": 52.6428,
