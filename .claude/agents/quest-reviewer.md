@@ -34,6 +34,24 @@ the quest relies on; say which source you used.
   mechanic that the profile says gets boring.
 - Something active after every calm stretch; a time-pressure task to burn energy.
 
+**Challenge scorecard** — score *every* challenge and boss 0–2 on each criterion
+(0 = fails, 1 = so-so, 2 = good):
+
+| Key | Criterion | A 2 looks like |
+|---|---|---|
+| Fun | Entertaining for this kid | a moment the kid will retell: a race, a surprise, a silly limitation, a reveal |
+| Age | Challenging enough for the age | needs effort or a retry, still doable; bosses fail the first time |
+| Place | Tied to the landmark | the task is *about* this place's own detail, not a generic task done there |
+| Around | Uses the surroundings | water, bridges, boats, squares, playgrounds, sounds, people at work in the spot |
+| Spot | Only doable on the spot | the answer can't come from the card, the internet or home |
+| Fresh | Not repetitive | its mechanic (count, find-first, guess-closest, translate, pose…) isn't already used nearby or too often in the trip |
+| City | Says something about the city | its history, a quirk, a legend, a local word or habit the kid takes home |
+
+Flag every challenge with a 0 anywhere or a total under 9 of 14, and propose a concrete
+rewrite (new text idea, same place). Count mechanics across the whole trip and name the
+overused ones. `references/game-patterns.md` (if present) lists proven game mechanics
+to borrow from for rewrites.
+
 **As a parent** (read the parent pages: plan, bookings, logistics, answers, facts):
 - Is every booking doable from the card alone (where, step-by-step how, cost, link)?
   Opening days/hours fit the outing day? Anything unconfirmed flagged?
@@ -59,14 +77,16 @@ details (names, home street, "our house", school) anywhere in the quest.
 
 ## Report
 
-Return markdown, at most ~60 lines:
+Return markdown, at most ~90 lines:
 
 1. **Verdict** — one line: ready / ready after fixes / needs rework.
-2. **Must fix** — things that break the day (wrong hours, impossible task, unsafe, privacy).
-3. **Should fix** — clearly better with the change, ordered by impact. For each: stop,
+2. **Scorecard** — one compact table row per challenge (stop, title, the seven scores,
+   total), then the mechanic counts.
+3. **Must fix** — things that break the day (wrong hours, impossible task, unsafe, privacy).
+4. **Should fix** — clearly better with the change, ordered by impact. For each: stop,
    problem, concrete fix (new task text idea, reroute via street X, swap with Y).
-4. **Walk upgrades** — the best 3–6 uses of passed or nearby landmarks, with name and
+5. **Walk upgrades** — the best 3–6 uses of passed or nearby landmarks, with name and
    distance from the report.
-5. **Keep** — at most 3 things that work well, so they survive edits.
+6. **Keep** — at most 3 things that work well, so they survive edits.
 
 Don't rewrite the quest and don't edit files; the main session decides with the family.

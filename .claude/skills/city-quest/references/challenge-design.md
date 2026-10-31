@@ -11,7 +11,7 @@ fails.
 
 ## Contents
 1. Challenge types and good examples
-2. Ideas borrowed from JetLag: The Game
+2. Game mechanics, scaled down
 3. Volume and balance
 4. Facts, answers and research
 5. Safety and respect
@@ -115,10 +115,10 @@ kid dislikes drawing (check the profile); kids who like collecting stamps
 and stickers get one wherever a
 place offers a stamp (tourist office, museum desk) or a sticker, use it.
 
-## 2. Borrowed from JetLag: The Game, scaled down
+## 2. Game mechanics, scaled down
 
-JetLag's "Battle for America"/"Tag" games are about claiming territory by
-completing challenges, with coins and curses. Adapted for a young child:
+The game is about claiming territory by completing challenges, with coins
+and curses, like a travel game show. Adapted for a young child:
 
 - **Claiming territory** → each zone is claimed with coins; the kid puts a sticker
   on the zone card and on the zone's area on the map. Seeing the map fill up
@@ -139,6 +139,18 @@ completing challenges, with coins and curses. Adapted for a young child:
   closer to the river or to the station?"
 - Keep the stakes small and the mood co-op: the family plays against the city;
   duels are side quests that add rivalry without blocking progress.
+
+More mechanics (bets, chance, steals, veto tokens, judges,
+the hide-and-seek question families as trails, what does not transfer) are in
+`game-patterns.md`; borrow from there to keep the mechanics varied.
+
+**Quality bar per challenge.** Before the build, check each challenge and
+boss against seven questions (the `quest-reviewer` agent scores them 0–2):
+is it fun for this kid, hard enough for the age, about *this* landmark's own
+detail, using the surroundings (water, bridges, boats, squares, sounds),
+impossible without being there, not a mechanic already used nearby, and
+does it teach something about the city (history, a quirk, a legend, a local
+word)? Rewrite any that fail one.
 
 ## 3. Volume and balance
 

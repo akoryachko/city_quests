@@ -1,7 +1,7 @@
 # City Quests
 
 Printable "Conquer the City" quest booklets for family trips with a young child (about 5–10),
-inspired by JetLag: The Game. The family team conquers the city zone by zone by
+in the style of a travel game show. The family team conquers the city zone by zone by
 completing challenges: find and count historic details, riddles that lead to the
 next landmark, local food, photo/build/collect tasks, rides on local transport and
 kid-vs-parent duels. Coins, perks, curses, ranks, a street map with stickers and
@@ -155,7 +155,8 @@ so Claude Code finds it whenever it runs in this folder (also after a fresh clon
 | Path | Content |
 |---|---|
 | `SKILL.md` | The workflow Claude follows |
-| `references/challenge-design.md` | Challenge types, volume, coin economy, JetLag mechanics, safety, Russian style |
+| `references/challenge-design.md` | Challenge types, volume, coin economy, game mechanics, safety, Russian style |
+| `references/game-patterns.md` | Game mechanics (bets, chance, steals, curses, seeker questions) adapted for a young child |
 | `references/example-quest.json` | The Hoorn quest as a structural example |
 | `scripts/build_quest.py` | Renderer: quest.json → md, html, pdf, map |
 | `scripts/build_site.py` | All quests → a static website with kid/parent and language switches |
@@ -167,6 +168,6 @@ help the skill:
 | Agent | Job |
 |---|---|
 | `city-researcher` | One area of a city: candidate stops with checkable details, stories, hours, coordinates and the nicest walking connections. One per zone, in parallel. |
-| `quest-reviewer` | Reviews a draft quest it didn't write, from the kid's and the parents' side, against the profile's lessons, the design rules and the route report; returns prioritised fixes. |
+| `quest-reviewer` | Reviews a draft quest it didn't write, from the kid's and the parents' side, against the profile's lessons, the design rules and the route report. Scores every challenge 0–2 on fun, age fit, tie to the landmark, use of the surroundings, needs-the-spot, freshness and city story; returns prioritised fixes. |
 
 The skill and the quests share one history in this repository.

@@ -1,6 +1,6 @@
 ---
 name: city-quest
-description: Plan a city trip with the user and turn it into a printable "Conquer the City" quest booklet for a family with a young child (about 5–10): interview about dates, times, transport and the kinds of experiences they want, research real landmarks, then build kid-sized challenges (find & count, riddles leading to the next landmark, local food, photo/build/collect tasks, rides on local transport, kid-vs-parent duels) with coins, curses, a street map, sticker spots and spoiler-free parent pages. Writes quest.md + <city>-quest.pdf (A4 landscape, two A5 cards per sheet) into city_quests/<city>/ and remembers family preferences between trips. Use whenever the user mentions a city quest, a scavenger or treasure hunt for a trip, keeping their kid entertained while sightseeing, a JetLag-style game for a city, planning a day out in a city with the kid, or says "make a quest for <city>", even if they don't say "skill" or "booklet".
+description: Plan a city trip with the user and turn it into a printable "Conquer the City" quest booklet for a family with a young child (about 5–10): interview about dates, times, transport and the kinds of experiences they want, research real landmarks, then build kid-sized challenges (find & count, riddles leading to the next landmark, local food, photo/build/collect tasks, rides on local transport, kid-vs-parent duels) with coins, curses, a street map, sticker spots and spoiler-free parent pages. Writes quest.md + <city>-quest.pdf (A4 landscape, two A5 cards per sheet) into city_quests/<city>/ and remembers family preferences between trips. Use whenever the user mentions a city quest, a scavenger or treasure hunt for a trip, keeping their kid entertained while sightseeing, a game-show-style game for a city, planning a day out in a city with the kid, or says "make a quest for <city>", even if they don't say "skill" or "booklet".
 ---
 
 # City Quest
@@ -146,7 +146,8 @@ the parents, or a reason to take a nicer street.
 ### 5. Design the game and write quest.json
 
 Read `references/challenge-design.md` before writing challenges — it covers
-types, volume, coins, JetLag-derived mechanics, safety and Russian style.
+types, volume, coins, game mechanics, safety and Russian style —
+and `references/game-patterns.md` for more game mechanics to vary them.
 In short: ~2 zones per full day, 3–5 challenges + a boss per zone, mixed
 types, one duel and one trail per zone, one taste per day, and
 `coins_to_claim` ≈ 60–70 % of the zone total. Respect the profile's likes and

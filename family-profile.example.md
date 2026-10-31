@@ -17,7 +17,7 @@ asks a few questions and creates it for you.
 
 ## Likes
 - Collecting stamps, stickers and other small collectables.
-- JetLag: The Game style: challenges, curses, claiming territory, scaled down.
+- Travel game show style: challenges, curses, claiming territory, scaled down.
 - Spotting historic details and the stories behind them; the parents want those stories per spot.
 - Variety above all: mix challenge kinds and keep each in proportion.
 - Measuring and simple maths in the wild, but only with a purpose she can see.
