@@ -263,24 +263,6 @@ def spread(points, min_d, rounds=40, fixed=()):
             break
 
 
-def place_label(text, zstops, obstacles, W, H):
-    """Pick a spot around a zone's stops where its label covers the fewest stops."""
-    half = 4 * len(text)  # rough half-width of a 13px bold label
-    xs, ys = [x for x, _ in zstops], [y for _, y in zstops]
-    cx, cy = sum(xs) / len(xs), sum(ys) / len(ys)
-    candidates = [(cx, min(ys) - 30), (cx, max(ys) + 40), (min(xs) - half - 22, cy + 5),
-                  (max(xs) + half + 22, cy + 5), (cx, cy + 5)]
-    best = None
-    for k, (x, y) in enumerate(candidates):
-        x = min(max(x, half + 6), W - half - 6)
-        y = min(max(y, 16), H - 8)
-        hits = sum(1 for ox, oy in obstacles if abs(ox - x) < half + 12 and -24 < oy - y < 16)
-        score = hits * 10 + k  # prefer earlier candidates when equally clear
-        if best is None or score < best[0]:
-            best = (score, x, y)
-    return best[1], best[2]
-
-
 OVERPASS_URLS = os.environ.get("CITY_QUEST_OVERPASS", "https://overpass-api.de/api/interpreter https://overpass.kumi.systems/api/interpreter").split()
 STREET_CACHE = Path.home() / ".cache" / "city-quest" / "streets"
 # road classes: (casing width px, label priority; lower is labelled first)
@@ -722,18 +704,11 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
                 pins.setdefault("pins", []).append({"label": label, "x": round(x, 1), "y": round(y, 1), "lat": t["lat"], "lon": t["lon"]})
             svg.append(f'<circle class="stop" cx="{x:.1f}" cy="{y:.1f}" r="11"/>')
             svg.append(f'<text class="stopnum" x="{x:.1f}" y="{y+3.5:.1f}">{esc(label)}</text>')
-    zlabels = []
-    if not overview and len(hulls) > 1:
-        obstacles = [tuple(v) for v in pos.values()] + ([hotel_xy] if hotel_xy else [])
-        for zi, z, zstops in hulls:
-            text = f"{zi}. {z['name']}"
-            x, y = place_label(text, zstops, obstacles, W, H)
-            obstacles += [(x + dx, y - 5) for dx in range(-len(text) * 4, len(text) * 4 + 1, 12)]
-            svg.append(f'<text class="zlabel" x="{x:.1f}" y="{y:.1f}">{esc(text)}</text>')
-            zlabels += [(x + dx, y - 5, 10) for dx in range(-len(text) * 4, len(text) * 4 + 1, 10)]
+    # no zone names on the map: the stop numbers (1.2, 2.3) and the legend tell the zones apart,
+    # and the room goes to street names
     labels = ""
-    if streets is not None:  # street names last, around the stops and zone labels
-        keep = [(x, y, 12) for x, y in pos.values()] + ([(*hotel_xy, 15)] if hotel_xy else []) + zlabels
+    if streets is not None:  # street names last, around the stops
+        keep = [(x, y, 12) for x, y in pos.values()] + ([(*hotel_xy, 15)] if hotel_xy else [])
         base, labels, missing = street_layers(streets, p, W, H, keep, "m" + "-".join(str(zi) for zi, _ in sel), route_names)
         # the kid must be able to read every street between the stops: zoom out until they fit (twice at most)
         missing = [n for n in missing if not re.search(r"(brug|plein|tuin|plantsoen)$", n)]
@@ -1164,7 +1139,6 @@ li { margin: .15em 0; }
 .zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.zlabel { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 4px; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
@@ -1487,10 +1461,9 @@ def main():
         pins.append({})
         zone_maps[i] = build_map(q, only={i}, pins=pins[-1])
     html_path.write_text(build_html(q, map_html, zone_maps), encoding="utf-8")
-    # a translation (quest.en.json) shares the main quest's map pictures when they hold only numbers
-    # and local street names; maps that name the zones get their own files (quest.en-map.png)
-    has_text = any('class="zlabel"' in m for m in [map_html, *zone_maps.values()])
-    map_name = a.name if has_text else re.sub(r"\.[a-z]{2}$", "", a.name)
+    # a translation (quest.en.json) shares the main quest's map pictures: they hold only numbers
+    # and local street names
+    map_name = re.sub(r"\.[a-z]{2}$", "", a.name)
     png_path = out / f"{map_name}-map.png"
     # where the stops are on each map picture, for clickable pins on the website
     names = [f"{map_name}-map.png"] + [f"{map_name}-map-{i}.png" for i in zone_maps]

@@ -44,33 +44,39 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - along: quiet street 63%, car-free 37%, park/green 58%
   - passed (0): —
 
-- **3.1 → 4.1** Кирпичная охота → ⏱ 20 деревьев: 793 m, ~16 min ⚠ 47% main road
-  - along: main road 47%, quiet street 30%, car-free 23%, along water 55%, park/green 87%
-  - streets: Spoorsingel, Achter de Vest, Stationsplein, Koepoortsweg
-  - passed (6): Obelisk Baron van Dedem [historic]; Vlinderrots [tourism=artwork]; Noorderstraat [bridge]; Mariatoren [historic]; (unnamed historic) [historic]; Noorderplantsoen [leisure=park]
-  - short detour (6): Borstbeeld Johan Messchaert [tourism=artwork] 37 m; Elias Koster [tourism=artwork] 56 m; Claes Stapel's Hofje [leisure=garden] 71 m; Theodorus Velius [tourism=artwork] 97 m; Pakhuisbrug [bridge] 98 m; Weeshuistuin [leisure=garden] 118 m
+- **3.1 → 4.1** Кирпичная охота → Рыбка-кибелинг: 574 m, ~11 min ⚠ 97% on streets already walked
+  - along: main road 17%, quiet street 23%, car-free 60%, park/green 44%
+  - streets: Veemarkt, Gedempte Turfhaven
+  - passed (3): — (+3 seen before)
+  - short detour (5): Vlinderrots [tourism=artwork] 35 m; Noorderkerk [amenity=place_of_worship] 67 m; Noorderplantsoen [leisure=park] 84 m; Waterdrager [tourism=artwork] 97 m; Theodorus Velius [tourism=artwork] 111 m
 
-- **4.1 → 4.2** ⏱ 20 деревьев → Последние ворота: 574 m, ~11 min 
+- **4.1 → 4.2** Рыбка-кибелинг → ⏱ 20 деревьев: 435 m, ~9 min 
+  - along: quiet street 94%, car-free 6%, along water 88%, park/green 60%
+  - streets: Achter de Vest, Spoorstraat, Munnickenveld
+  - passed (2): Mariatoren [historic]; (unnamed historic) [historic]
+  - short detour (6): Noorderstraat [bridge] 36 m; Claes Stapel's Hofje [leisure=garden] 39 m; Theodorus Velius [tourism=artwork] 81 m; Pakhuisbrug [bridge] 98 m; Naar Blokkertje toe! [tourism=artwork] 113 m; Weeshuistuin [leisure=garden] 118 m
+
+- **4.2 → 4.3** ⏱ 20 деревьев → Последние ворота: 574 m, ~11 min 
   - along: quiet street 7%, car-free 89%, along water 91%, park/green 100%
   - streets: Oosterplantsoen, Vollerswaal, Pakhuisstraat
   - passed (0): —
   - short detour (4): Pakhuisbrug [bridge] 94 m; Mariatoren [historic] 104 m; (unnamed historic) [historic] 104 m; Turfhavenbrug [bridge] 120 m
 
-- **4.2 → 4.3** Последние ворота → Морской бой: 214 m, ~4 min 
+- **4.3 → 4.4** Последние ворота → Морской бой: 214 m, ~4 min 
   - along: quiet street 92%, car-free 8%, along water 48%, park/green 38%
   - streets: Kleine Oost, Grote Oost
   - passed (1): Kleine Oostbrug [bridge]
 
-- **4.3 → 4.4** Морской бой → Узкий и широкий: 433 m, ~9 min 
+- **4.4 → 4.5** Морской бой → Узкий и широкий: 433 m, ~9 min 
   - along: quiet street 100%, along water 100%, park/green 11%
   - streets: Oude Doelenkade, Slapershaven, Veermanskade
   - passed (1): Hoge Brug [bridge]
   - short detour (4): Kleine Oostbrug [bridge] 44 m; Engeltjesbrug [bridge] 81 m; Huis Bonck [tourism=museum] 95 m; Oosterkerk [amenity=place_of_worship] 100 m
 
-- **4.4 → 4.👑** Узкий и широкий → Четвёртый юнга: 60 m, ~1 min ⚠ hardly a walk
+- **4.5 → 4.👑** Узкий и широкий → Четвёртый юнга: 60 m, ~1 min ⚠ hardly a walk
   - along: quiet street 71%, car-free 29%, along water 100%
   - streets: Veermanskade
   - passed (0): —
   - short detour (2): Hoge Brug [bridge] 77 m; Willem IJsbrandsz Bontekoe [tourism=artwork] 77 m
 
-**Total walked: 4.5 km, ~91 min** (plus time at the stops). Flags: 3.1→4.1 47% main road; 4.4→4.👑 hardly a walk.
+**Total walked: 4.8 km, ~95 min** (plus time at the stops). Flags: 3.1→4.1 97% on streets already walked; 4.5→4.👑 hardly a walk.

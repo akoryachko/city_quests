@@ -6,7 +6,7 @@ _Sunday 22 November 2026 · ~9:30–17:00 · ~5 km on foot_
 
 400 years ago ships sailed from Hoorn to the end of the world. A captain from here sailed around the very bottom of America and named the cape after the ship "Hoorn": Cape Horn! And today a steam tram takes you to Sinterklaas himself, and a city made of LEGO is waiting. Conquer all four zones and become the Admiral of Hoorn.
 
-![Conquest map](quest.en-map.png)
+![Conquest map](quest-map.png)
 
 ## 📜 How to play
 
@@ -64,7 +64,7 @@ _Today a steam tram takes us to Sinterklaas himself! The stoker fires up the eng
 - [ ] 2.1 🔍 **Engine Number** (🪙×2) — Find the bell, the whistle and the number on our engine: ______. Has it got a bell? Then it's a real "Bello": bell! 📍 [Tramstation Hoorn, Van Dedemstraat 8](https://www.google.com/maps/search/?api=1&query=52.64563,5.05451)
 - [ ] 2.2 🚋 **Window Bingo** (🪙×2) — Look out of the tram window! Find a stolp — a farm with a pyramid roof — a windmill, a church tower and sheep. Seen one? Shout and point! All four — done.
 - [ ] 2.3 🚋 **Whistle!** ⚔️ (🪙×2+1) — Guess how many times the engine whistles in the first 10 minutes of the ride. The parent guesses too. Count together — whose guess is closer?
-- [ ] 2.4 🍽️ **Tiny Pancakes** (🪙×2) — Hand over the voucher at the buffet yourself and order the poffertjes in Dutch. What did they say? Translate it for us! Rate the little pancakes ⭐⭐⭐⭐⭐.
+- [ ] 2.4 🗣️ **Ordering Poffertjes** (🪙×2) — Hand over the voucher at the buffet yourself and order the poffertjes in Dutch. What did they say? Translate it for us!
 - [ ] 👑 **Zone boss: Song for Sint** (🪙×6) — Sinterklaas loves songs! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!
 
 Coins needed: **9** 🏁
@@ -83,13 +83,14 @@ Coins needed: **7** 🏁
 
 _Ships that sailed to India for pepper were moored here. Captain Bontekoe from Hoorn nearly died on such a voyage, and his ship's boys became the heroes of a book!_
 
-- [ ] 4.1 🏃 **⏱ 20 Trees** ⚔️ (🪙×2+1) — By the round tower, a park starts along the canal. ⏱ Who's faster to touch 20 different trees? The parent too! The same tree twice doesn't count. 📍 [Oosterplantsoen by the Mariatoren](https://www.google.com/maps/search/?api=1&query=52.6428,5.0618)
-- [ ] 4.2 🔍 **The Last Gate** (🪙×2) — This is Hoorn's last city gate, with a house on top! Count the arches of the bridge in front of it. Is the passage under the gate straight or curved? Why do you think? 📍 [Oosterpoort, Bij Oosterpoort](https://www.google.com/maps/search/?api=1&query=52.64103,5.06869)
-- [ ] 4.3 🔍 **Sea Battle** (🪙×2) — On Slapershaven a sea battle is carved on the houses — like a comic! Find the ship with the biggest flag — that's the admiral. Who won: the big ships or the small ones? What year is on the corner house? 📍 [Bossuhuizen, Slapershaven / Grote Oost 132](https://www.google.com/maps/search/?api=1&query=52.64025,5.06593)
-- [ ] 4.4 📏 **Narrow and Wide** (🪙×3) — Over the iron bridge to Veermanskade. Pace out the narrowest and the widest house. How many narrow houses fit into the wide one? 📍 [Veermanskade, houses](https://www.google.com/maps/search/?api=1&query=52.6376,5.06286)
+- [ ] 4.1 🍽️ **Kibbeling Fish** (🪙×2) — Try kibbeling — hot bites of fried fish with a sauce. What fish is it? Find the name on the sign by the counter. Rate it ⭐⭐⭐⭐⭐. 📍 [Hoogland Vis, Gedempte Turfhaven 36](https://www.google.com/maps/search/?api=1&query=52.64256,5.05688)
+- [ ] 4.2 🏃 **⏱ 20 Trees** (🪙×2) — By the round tower, a park starts along the canal. ⏱ Touch 20 different trees in 3 minutes! The same tree twice doesn't count. Not in time — try again. 📍 [Oosterplantsoen by the Mariatoren](https://www.google.com/maps/search/?api=1&query=52.6428,5.0618)
+- [ ] 4.3 🔍 **The Last Gate** (🪙×2) — This is Hoorn's last city gate, with a house on top! Count the arches of the bridge in front of it. Is the passage under the gate straight or curved? Why do you think? 📍 [Oosterpoort, Bij Oosterpoort](https://www.google.com/maps/search/?api=1&query=52.64103,5.06869)
+- [ ] 4.4 🔍 **Sea Battle** (🪙×2) — On Slapershaven a sea battle is carved on the houses — like a comic! Find the ship with the biggest flag — that's the admiral. Who won: the big ships or the small ones? What year is on the corner house? 📍 [Bossuhuizen, Slapershaven / Grote Oost 132](https://www.google.com/maps/search/?api=1&query=52.64025,5.06593)
+- [ ] 4.5 📏 **Narrow and Wide** (🪙×3) — Over the iron bridge to Veermanskade. Pace out the narrowest and the widest house. How many narrow houses fit into the wide one? 📍 [Veermanskade, houses](https://www.google.com/maps/search/?api=1&query=52.6376,5.06286)
 - [ ] 👑 **Zone boss: Fourth Ship's Boy** (🪙×6) — Stand next to the three bronze ship's boys (don't climb!) and freeze in the pose of one of them for 30 seconds. The parent tries to make you laugh without touching. Laughed or moved — start again! Then find Captain Bontekoe himself: is he looking at the sea or the town? 📍 [Scheepsjongens van Bontekoe, Hoofd](https://www.google.com/maps/search/?api=1&query=52.6371,5.06321)
 
-Coins needed: **10** 🏁
+Coins needed: **11** 🏁
 
 ---
 
@@ -99,7 +100,7 @@ Coins needed: **10** 🏁
 
 ### Plan
 
-- **Day 1:** 9:30 Hoorn station → 9:30–10:45 zone 1: Statenpoort, Muntstraat, the canal under Kerkplein, Roode Steen → 10:50–11:20 lunch at Turf (Gedempte Turfhaven 19) → 11:25 steam tram station (engine number) → 11:40 boarding → 12:00–14:00 Pieten Expres to Wognum and back (Piets, poffertjes, Sinterklaas) → 14:00–14:45 Brick City in the station hall → 14:45–16:20 harbour via the eastern edge of town: trees by the Mariatoren, Oosterpoort, Bossuhuizen, Veermanskade, Bontekoe's ship's boys → ~16:50 station → train home. Sunset around 16:45.
+- **Day 1:** 9:30 Hoorn station → 9:30–10:45 zone 1: Statenpoort, Muntstraat, the canal under Kerkplein, Roode Steen → 10:50–11:20 lunch at Turf (Gedempte Turfhaven 19) → 11:25 steam tram station (engine number) → 11:40 boarding → 12:00–14:00 Pieten Expres to Wognum and back (Piets, poffertjes, Sinterklaas) → 14:00–14:45 Brick City in the station hall → 14:45–16:20 harbour via the eastern edge of town: kibbeling, trees by the Mariatoren, Oosterpoort, Bossuhuizen, Veermanskade, Bontekoe's ship's boys → ~16:50 station → train home. Sunset around 16:45.
 
 ### 🎟️ Tickets and bookings
 
@@ -124,7 +125,6 @@ Coins needed: **10** 🏁
 ### 💡
 
 - The kid speaks Dutch, so they are the team's interpreter where there are definitely people: the Piets on the tram, the Brick City volunteers.
-- Lunch is before the tram, at Turf (Sun from 10:00, check); the tram only has poffertjes. Kibbeling at the harbour in the afternoon is a bonus.
 - ⚔️ Duels: the card shows "🪙×2+1": the kid gets 2 coins even when losing; +1 only for winning.
 - 🌀 A curse lasts until the next finished challenge. A failed boss attempt is not a skip: try again.
 - 🧭 Give the kid the map and follow; "warmer–colder" is allowed. Zone 2: navigating from Turf to the tram platform; zone 3: from Brick City to the round Mariatoren tower.
@@ -132,7 +132,7 @@ Coins needed: **10** 🏁
 - The Westfries Museum on Roode Steen is closed for renovation (until 2027, check).
 - There's a statue of Jan Pieterszoon Coen on the square, a controversial figure of colonial history; he's not part of the game.
 - There are no railings by the harbour or at Bontekoe's ship's boys: hold the kid's hand; the challenges are on the house side.
-- Tired after the tram? Take the shortcut: from the station straight down Grote Noord → Roode Steen → Veermanskade (1.3 km), skipping tasks 4.1–4.3.
+- Tired after the tram? Take the shortcut: from the station straight down Grote Noord → Roode Steen → Veermanskade (1.3 km), skipping tasks 4.1–4.4.
 - Getting dark before you arrive? On the Hoofd do the boss at the boys first, then the pacing on Veermanskade under the street lights.
 - On the way from the Weigh House to the station stand the "Four Hands" (Vier handen, Truus Menger, 1990) — a memorial along the route of people executed in WWII. No curses or loud games here; a short explanation is fine.
 
@@ -189,7 +189,7 @@ _The Hoorn–Medemblik steam tram ran from 1887; passenger service stopped in 19
   The Hoorn–Medemblik line opened on 3 November 1887; passenger trains were cancelled in 1941. Since 1968 the Museumstoomtram museum has been saving it: 10 steam engines, 7 of them official railway monuments. The star is NS 7742 "Bello" (Berlin, 1914): the local little engines were called "Bello" because they rang a bell when passing through villages. This one stood as a monument in the village of Bergen; in 1978 it was given to the museum and by 1985 it was restored. Of the many "Bellos" only this one survived: the only remaining light steam engine in the Netherlands. For the kid: "Bello because of 'bell': ding-ding through the village!"
 - **2.2 Window Bingo:** ✔ A stolp (stolpboerderij) is a West Frisian farm: people, cows and hay all under one pyramid roof. It counts when all four are found (the parent confirms).
 - **2.3 Whistle!:** ✔ The parent times 10 minutes from departure (12:00); the closest guess wins.
-- **2.4 Tiny Pancakes:** ✔ Poffertjes and hot chocolate with a biscuit are paid for — the vouchers (QR) go in the kid's hand. Counts: the order + translating the answer.
+- **2.4 Ordering Poffertjes:** ✔ Poffertjes and hot chocolate with a biscuit are paid for — the vouchers (QR) go in the kid's hand. Counts: the order + translating the answer.
 - **👑 Song for Sint:** ✔ Standing only: on the platform in Wognum or in the SinterCircus queue, next to the parent; not in a moving carriage. The condition is singing to us; singing to Sint is a bonus if the programme allows. Gift for children under 12.
   Wognum-Nibbixwoud is a restored station on the old line. On the "Pieten Expres" the Piets meet the train and take the kids into the SinterCircus to see Sinterklaas; every child under 12 gets a present, then the tram takes everyone back to Hoorn. For the kid: "Sint loves songs: sing loudly and he'll hear you!"
 
@@ -219,17 +219,20 @@ _Brick City opened on 30 May 2025 in Hoorn's station hall, which had stood empty
 
 _Hoorn's harbour was the heart of the Golden Age town: VOC ships and the whalers of the Northern Company sailed from here (from 1614 the company sat in the 1532 Hoofdtoren). The way there follows the eastern edge of the old town: past the Mariatoren (1508, part of the town wall, later a gunpowder store), through the park along the Draafsingel canal to the East Gate. Merchant houses line Veermanskade, and on the Hoofd sit the boys from the book about Captain Bontekoe, whose 1646 journal was a Dutch bestseller._
 
-- Station → Noorderstraat → Koepoortsplein (Mariatoren) → Oosterplantsoen park along the Draafsingel canal → Oosterpoort → Slapershaven (Bossuhuizen) → Grote Oost → Oude Doelenkade → Hoogebrug bridge → Veermanskade → the boys on the Hoofd → Grote Noord back to the station (~20 min). ~2.5 km, 14:45–16:20; no street of the morning is walked twice
+- Station → Gedempte Turfhaven (kibbeling) → Koepoortsplein (Mariatoren) → Oosterplantsoen park along the Draafsingel canal → Oosterpoort → Slapershaven (Bossuhuizen) → Grote Oost → Oude Doelenkade → Hoogebrug bridge → Veermanskade → the boys on the Hoofd → Grote Noord back to the station (~20 min). ~2.5 km, 14:45–16:20; no street of the morning is walked twice
 - All outdoors, always open. Sunset ~16:45 — leave Brick City by 14:45
-- Free. Bonus if open: kibbeling (fried fish) by the harbour ~€6–8
+- Kibbeling ~€6–8, the rest is free
+- Kibbeling at Hoogland Vis (Gedempte Turfhaven 36, Sun 12–17) at the start of the walk
 - Free public toilet on the Hoofd by the Hoofdtoren (per OSM — check), cafés on the quay
-- **4.1 ⏱ 20 Trees:** [Oosterplantsoen by the Mariatoren](https://www.google.com/maps/search/?api=1&query=52.6428,5.0618) — ✔ Everyone counts out loud; the parent times it. The park path is car-free — stay away from the canal edge.
+- **4.1 Kibbeling Fish:** [Hoogland Vis, Gedempte Turfhaven 36](https://www.google.com/maps/search/?api=1&query=52.64256,5.05688) — ✔ Usually cod (kabeljauw) or another white fish — see the sign. Hoogland Vis is open on Sundays 12–17 (chain's website; check they have kibbeling). Closed — buy it at the harbour if anything is open, or skip without a curse.
+  Kibbeling is Dutch street food: bites of white fish in batter, deep-fried, with a garlic or remoulade sauce. The name used to mean the off-cuts of salted cod that fishermen and traders sold cheaply; today it's usually cod or saithe fillet. Fish kept harbour-town Hoorn alive for centuries: herring boats and whalers sailed from here. For the kid: "Kibbeling is the Dutch fishermen's popcorn!"
+- **4.2 ⏱ 20 Trees:** [Oosterplantsoen by the Mariatoren](https://www.google.com/maps/search/?api=1&query=52.6428,5.0618) — ✔ The parent times 3 minutes, the kid counts out loud. The park path is car-free — stay away from the canal edge.
   The round Mariatoren (1508) was part of the town wall; St Mary's convent paid for it, hence the name. Later it stored gunpowder (Kruittoren) and from 1900 ice. Today the Hendrick de Keyser society lets it as holiday rooms. The Oosterplantsoen park follows the Draafsingel canal, the old town moat. For the kid: "They kept gunpowder in this tower — that's why it has so few windows!"
-- **4.2 The Last Gate:** [Oosterpoort, Bij Oosterpoort](https://www.google.com/maps/search/?api=1&query=52.64103,5.06869) — ✔ The passage is curved (monument register) — one theory says so that a cannon couldn't fire straight into town. Wikipedia says the bridge has 7 arches (1763) — count them together. Look from the bridge; bikes ride through the passage.
+- **4.3 The Last Gate:** [Oosterpoort, Bij Oosterpoort](https://www.google.com/maps/search/?api=1&query=52.64103,5.06869) — ✔ The passage is curved (monument register) — one theory says so that a cannon couldn't fire straight into town. Wikipedia says the bridge has 7 arches (1763) — count them together. Look from the bridge; bikes ride through the passage.
   The Oosterpoort ("East Gate") was built in 1578 to a design by J.J. Bilhamer; in 1601 a gatekeeper's house was added above the passage. It is Hoorn's only surviving city gate. It was less for defence than for checking visitors and collecting tolls. The passage is curved — one theory says so that a cannon could not fire straight into town. No cars since 1957; the Hendrick de Keyser society has owned it since 2003. For the kid: "A gate with a house on top — the gatekeeper lived right above the road!"
-- **4.3 Sea Battle:** [Bossuhuizen, Slapershaven / Grote Oost 132](https://www.google.com/maps/search/?api=1&query=52.64025,5.06593) — ✔ The small West Frisian ships won (1573) and Admiral Bossu was captured. The corner house (Grote Oost 132) says 1612. Decide together from the carving which ship is the admiral's.
+- **4.4 Sea Battle:** [Bossuhuizen, Slapershaven / Grote Oost 132](https://www.google.com/maps/search/?api=1&query=52.64025,5.06593) — ✔ The small West Frisian ships won (1573) and Admiral Bossu was captured. The corner house (Grote Oost 132) says 1612. Decide together from the carving which ship is the admiral's.
   The Bossuhuizen are named after the "Battle of Bossu": on 11 October 1573, on the Zuiderzee, small West Frisian ships beat the Spanish fleet and captured its admiral, Count Bossu, who was held in Hoorn for three years. The carved frieze above the ground floor tells the battle (monument register). The corner house, Grote Oost 132, is dated 1612 in the stones on its jutting upper floor. For the kid: "Little boats beat the big ships — and brought the admiral himself here as a prisoner!"
-- **4.4 Narrow and Wide:** [Veermanskade, houses](https://www.google.com/maps/search/?api=1&query=52.6376,5.06286) — ✔ Division: steps for the wide one ÷ steps for the narrow one (help out). Walk on the house side, not at the water's edge. Brick City reportedly has a LEGO model of this quay — compare if you saw it.
+- **4.5 Narrow and Wide:** [Veermanskade, houses](https://www.google.com/maps/search/?api=1&query=52.6376,5.06286) — ✔ Division: steps for the wide one ÷ steps for the narrow one (help out). Walk on the house side, not at the water's edge. Brick City reportedly has a LEGO model of this quay — compare if you saw it.
   The iron drawbridge Hoogebrug (1930) links Oude Doelenkade with Veermanskade: a 6 m opening, the lifting part ~7 m long and 4.5 m wide. Hoorn chose iron over the wooden bridge the heritage experts wanted — wood costs more to maintain. Veermanskade is the inner-harbour quay; veerman means ferryman. The houses were merchants': the ground floor was a warehouse and the owners lived at the back and upstairs; warehouse no. 16 has been a listed monument since 1965, and one guidebook says Captain Bontekoe lived at no. 15. For the kid: "Whoever built the widest house was probably the richest merchant!"
 - **👑 Fourth Ship's Boy:** [Scheepsjongens van Bontekoe, Hoofd](https://www.google.com/maps/search/?api=1&query=52.6371,5.06321) — ✔ The parent counts to 30, tries to make the kid laugh without touching, and guesses whom the kid copies. The quay has no railing: the kid stands on the house side, the parent between the kid and the edge. The captain's statue is about 80 m away; check together where he looks.
   The three bronze boys are Hajo, Rolf and Padde from Johan Fabricius's children's book "The Ship's Boys of Bontekoe" (1924). The book is based on the real journal of Captain Willem Bontekoe of Hoorn (1587–1657): his ship "Nieuw Hoorn" blew up on the way to Java, and the survivors starved and were saved on Sumatra; the 1646 journal was reprinted many times. The statue is by Jan van Druten and has stood here since 1968. Three footballers from Hoorn posed for it without knowing why, until Fabricius himself pulled off the cover: "That's us!" For the kid: "The boys the statue was modelled on only recognised themselves at the unveiling!" Next to it is the Hoofdtoren (1532): the Northern Company's whalers sat there from 1614, and it has been a restaurant since 1968. About 80 m away stands a statue of Captain Bontekoe himself — show it after the boss.

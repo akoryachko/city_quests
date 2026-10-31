@@ -196,9 +196,9 @@
           "answer": "The parent times 10 minutes from departure (12:00); the closest guess wins."
         },
         {
-          "type": "taste",
-          "title": "Tiny Pancakes",
-          "text": "Hand over the voucher at the buffet yourself and order the poffertjes in Dutch. What did they say? Translate it for us! Rate the little pancakes ⭐⭐⭐⭐⭐.",
+          "type": "talk",
+          "title": "Ordering Poffertjes",
+          "text": "Hand over the voucher at the buffet yourself and order the poffertjes in Dutch. What did they say? Translate it for us!",
           "coins": 2,
           "answer": "Poffertjes and hot chocolate with a biscuit are paid for — the vouchers (QR) go in the kid's hand. Counts: the order + translating the answer."
         }
@@ -293,20 +293,30 @@
       "name": "Harbour",
       "emoji": "⚓",
       "day": 1,
-      "coins_to_claim": 10,
+      "coins_to_claim": 11,
       "story": "Ships that sailed to India for pepper were moored here. Captain Bontekoe from Hoorn nearly died on such a voyage, and his ship's boys became the heroes of a book!",
       "parent_story": "Hoorn's harbour was the heart of the Golden Age town: VOC ships and the whalers of the Northern Company sailed from here (from 1614 the company sat in the 1532 Hoofdtoren). The way there follows the eastern edge of the old town: past the Mariatoren (1508, part of the town wall, later a gunpowder store), through the park along the Draafsingel canal to the East Gate. Merchant houses line Veermanskade, and on the Hoofd sit the boys from the book about Captain Bontekoe, whose 1646 journal was a Dutch bestseller.",
       "challenges": [
         {
+          "type": "taste",
+          "title": "Kibbeling Fish",
+          "text": "Try kibbeling — hot bites of fried fish with a sauce. What fish is it? Find the name on the sign by the counter. Rate it ⭐⭐⭐⭐⭐.",
+          "coins": 2,
+          "place": "Hoogland Vis, Gedempte Turfhaven 36",
+          "lat": 52.64256,
+          "lon": 5.05688,
+          "answer": "Usually cod (kabeljauw) or another white fish — see the sign. Hoogland Vis is open on Sundays 12–17 (chain's website; check they have kibbeling). Closed — buy it at the harbour if anything is open, or skip without a curse.",
+          "facts": "Kibbeling is Dutch street food: bites of white fish in batter, deep-fried, with a garlic or remoulade sauce. The name used to mean the off-cuts of salted cod that fishermen and traders sold cheaply; today it's usually cod or saithe fillet. Fish kept harbour-town Hoorn alive for centuries: herring boats and whalers sailed from here. For the kid: \"Kibbeling is the Dutch fishermen's popcorn!\""
+        },
+        {
           "type": "move",
           "title": "⏱ 20 Trees",
-          "duel": true,
-          "text": "By the round tower, a park starts along the canal. ⏱ Who's faster to touch 20 different trees? The parent too! The same tree twice doesn't count.",
+          "text": "By the round tower, a park starts along the canal. ⏱ Touch 20 different trees in 3 minutes! The same tree twice doesn't count. Not in time — try again.",
           "coins": 2,
           "place": "Oosterplantsoen by the Mariatoren",
           "lat": 52.6428,
           "lon": 5.0618,
-          "answer": "Everyone counts out loud; the parent times it. The park path is car-free — stay away from the canal edge.",
+          "answer": "The parent times 3 minutes, the kid counts out loud. The park path is car-free — stay away from the canal edge.",
           "facts": "The round Mariatoren (1508) was part of the town wall; St Mary's convent paid for it, hence the name. Later it stored gunpowder (Kruittoren) and from 1900 ice. Today the Hendrick de Keyser society lets it as holiday rooms. The Oosterplantsoen park follows the Draafsingel canal, the old town moat. For the kid: \"They kept gunpowder in this tower — that's why it has so few windows!\""
         },
         {
@@ -354,9 +364,10 @@
         "facts": "The three bronze boys are Hajo, Rolf and Padde from Johan Fabricius's children's book \"The Ship's Boys of Bontekoe\" (1924). The book is based on the real journal of Captain Willem Bontekoe of Hoorn (1587–1657): his ship \"Nieuw Hoorn\" blew up on the way to Java, and the survivors starved and were saved on Sumatra; the 1646 journal was reprinted many times. The statue is by Jan van Druten and has stood here since 1968. Three footballers from Hoorn posed for it without knowing why, until Fabricius himself pulled off the cover: \"That's us!\" For the kid: \"The boys the statue was modelled on only recognised themselves at the unveiling!\" Next to it is the Hoofdtoren (1532): the Northern Company's whalers sat there from 1614, and it has been a restaurant since 1968. About 80 m away stands a statue of Captain Bontekoe himself — show it after the boss."
       },
       "logistics": {
-        "where": "Station → Noorderstraat → Koepoortsplein (Mariatoren) → Oosterplantsoen park along the Draafsingel canal → Oosterpoort → Slapershaven (Bossuhuizen) → Grote Oost → Oude Doelenkade → Hoogebrug bridge → Veermanskade → the boys on the Hoofd → Grote Noord back to the station (~20 min). ~2.5 km, 14:45–16:20; no street of the morning is walked twice",
+        "where": "Station → Gedempte Turfhaven (kibbeling) → Koepoortsplein (Mariatoren) → Oosterplantsoen park along the Draafsingel canal → Oosterpoort → Slapershaven (Bossuhuizen) → Grote Oost → Oude Doelenkade → Hoogebrug bridge → Veermanskade → the boys on the Hoofd → Grote Noord back to the station (~20 min). ~2.5 km, 14:45–16:20; no street of the morning is walked twice",
         "hours": "All outdoors, always open. Sunset ~16:45 — leave Brick City by 14:45",
-        "cost": "Free. Bonus if open: kibbeling (fried fish) by the harbour ~€6–8",
+        "cost": "Kibbeling ~€6–8, the rest is free",
+        "food": "Kibbeling at Hoogland Vis (Gedempte Turfhaven 36, Sun 12–17) at the start of the walk",
         "toilets": "Free public toilet on the Hoofd by the Hoofdtoren (per OSM — check), cafés on the quay"
       }
     }
@@ -365,7 +376,7 @@
     "days": [
       {
         "day": 1,
-        "plan": "9:30 Hoorn station → 9:30–10:45 zone 1: Statenpoort, Muntstraat, the canal under Kerkplein, Roode Steen → 10:50–11:20 lunch at Turf (Gedempte Turfhaven 19) → 11:25 steam tram station (engine number) → 11:40 boarding → 12:00–14:00 Pieten Expres to Wognum and back (Piets, poffertjes, Sinterklaas) → 14:00–14:45 Brick City in the station hall → 14:45–16:20 harbour via the eastern edge of town: trees by the Mariatoren, Oosterpoort, Bossuhuizen, Veermanskade, Bontekoe's ship's boys → ~16:50 station → train home. Sunset around 16:45."
+        "plan": "9:30 Hoorn station → 9:30–10:45 zone 1: Statenpoort, Muntstraat, the canal under Kerkplein, Roode Steen → 10:50–11:20 lunch at Turf (Gedempte Turfhaven 19) → 11:25 steam tram station (engine number) → 11:40 boarding → 12:00–14:00 Pieten Expres to Wognum and back (Piets, poffertjes, Sinterklaas) → 14:00–14:45 Brick City in the station hall → 14:45–16:20 harbour via the eastern edge of town: kibbeling, trees by the Mariatoren, Oosterpoort, Bossuhuizen, Veermanskade, Bontekoe's ship's boys → ~16:50 station → train home. Sunset around 16:45."
       }
     ],
     "bookings": [
@@ -389,7 +400,6 @@
     ],
     "tips": [
       "The kid speaks Dutch, so they are the team's interpreter where there are definitely people: the Piets on the tram, the Brick City volunteers.",
-      "Lunch is before the tram, at Turf (Sun from 10:00, check); the tram only has poffertjes. Kibbeling at the harbour in the afternoon is a bonus.",
       "⚔️ Duels: the card shows \"🪙×2+1\": the kid gets 2 coins even when losing; +1 only for winning.",
       "🌀 A curse lasts until the next finished challenge. A failed boss attempt is not a skip: try again.",
       "🧭 Give the kid the map and follow; \"warmer–colder\" is allowed. Zone 2: navigating from Turf to the tram platform; zone 3: from Brick City to the round Mariatoren tower.",
@@ -397,7 +407,7 @@
       "The Westfries Museum on Roode Steen is closed for renovation (until 2027, check).",
       "There's a statue of Jan Pieterszoon Coen on the square, a controversial figure of colonial history; he's not part of the game.",
       "There are no railings by the harbour or at Bontekoe's ship's boys: hold the kid's hand; the challenges are on the house side.",
-      "Tired after the tram? Take the shortcut: from the station straight down Grote Noord → Roode Steen → Veermanskade (1.3 km), skipping tasks 4.1–4.3.",
+      "Tired after the tram? Take the shortcut: from the station straight down Grote Noord → Roode Steen → Veermanskade (1.3 km), skipping tasks 4.1–4.4.",
       "Getting dark before you arrive? On the Hoofd do the boss at the boys first, then the pacing on Veermanskade under the street lights.",
       "On the way from the Weigh House to the station stand the \"Four Hands\" (Vier handen, Truus Menger, 1990) — a memorial along the route of people executed in WWII. No curses or loud games here; a short explanation is fine."
     ]

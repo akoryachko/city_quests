@@ -261,9 +261,8 @@ keep the profile's rules (e.g. no transcription for languages the kid speaks).
 Check with a script that the two files have the same keys, list lengths and
 non-text values, then build each file:
 `build_quest.py <folder>/quest.en.json` writes `quest.en.md` and `<city>-quest.en.pdf`. Map
-pictures that show only numbers and local street names (a campaign's) are
-shared with the main quest (`quest-map*.png`, `quest-pins.json`); a map that
-names the zones gets its own files (`quest.en-map.png`, `quest.en-pins.json`).
+pictures show only numbers and local street names, so every language shares
+the main quest's (`quest-map*.png`, `quest-pins.json`).
 
 **Website.** `python3 .claude/skills/city-quest/scripts/build_site.py`
 renders every city and language into the git-ignored `site/` folder (`--out

@@ -90,6 +90,10 @@ their back, kid gets a 10-second head start, etc. — say so in the text.
 worth 3 has `coins: 2`; the card prints «🪙×2+1» and the coin line has a dot
 for the win coin, which the rank check does not count as sure. State this in
 the rules.
+Keep **physical kid-vs-parent competitions rare** (races, endurance, balance):
+at most one per trip or campaign outing. Duels work best as spotting, finding
+and guessing; physical tasks work as the kid's own ⏱ challenge, timed by a
+parent.
 Endurance duels need a **clear, safe end condition** that both sides can see:
 "keep making big arm circles — arm down or stopped, you're out", not "spin
 until you fall" (dizziness, falls, and no one knows who lost first).
