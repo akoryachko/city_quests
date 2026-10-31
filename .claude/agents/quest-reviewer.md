@@ -51,7 +51,7 @@ Flag every challenge with a 0 anywhere or a total under 9 of 14, and propose a c
 rewrite (new text idea, same place). Count mechanics across the whole trip and name the
 overused ones. Also skim the family's other quests (`*/quest.json` in the repository) and flag
 a challenge that repeats one the kid has already done or will do there (e.g. the same
-"touch 20 trees" in two cities). `references/game-patterns.md` (if present) lists proven game mechanics
+"touch 20 trees" in two cities); photo tasks of different subjects don't count as repeats). `references/game-patterns.md` (if present) lists proven game mechanics
 to borrow from for rewrites.
 
 **As a parent** (read the parent pages: plan, bookings, logistics, answers, facts):
