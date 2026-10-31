@@ -1388,26 +1388,59 @@ def build_md(q, map_png, zone_pngs=None):
 # ---------------------------------------------------------------- rendering
 
 
-def check_ranks(q):
-    """Warn when the top rank needs more than 95 % of the coins the kid can surely earn.
+def check_economy(q):
+    """Print the coin economy and warn where it leaves the ranges of challenge-design §3.
 
-    Challenges marked "optional": true (unbooked rides, weather-dependent extras)
-    don't count, so the top rank stays reachable without them and without spending;
-    neither does a duel's win coin.
+    T is the coins the kid can surely earn: challenges marked "optional": true (unbooked
+    rides, weather-dependent extras) and a duel's win coin don't count; the navigation
+    bonus does. Checked: each zone's claim threshold (~60–70 % of its coins), perk
+    prices and rank steps against T, and the hard limit that the top rank is reachable
+    at 95 % of T without spending. Returns the number of warnings.
     """
-    ranks = q.get("rules", {}).get("ranks", [])
-    if not ranks:
-        return
-    sure = sum(
-        int(t.get("coins", 1))
-        for z in q["zones"] for t in zone_tasks(z) if not t.get("optional")
-    )
-    nav = int(q["rules"].get("nav_bonus") or 0) * len(q["zones"])
-    sure += nav
-    top = max(int(k.get("min", 0)) for k in ranks)
-    print(f"Coins: {sure} without optional challenges (navigation bonus {nav}); top rank needs {top} ({top / max(sure, 1):.0%})")
-    if top > 0.95 * sure:
-        print(f"WARNING: top rank is out of reach at 95 % completion; lower it to <= {int(0.95 * sure)}")
+    rules, campaign = q.get("rules", {}), bool(q.get("campaign"))
+    zone_sure = [sum(int(t.get("coins", 1)) for t in zone_tasks(z) if not t.get("optional")) for z in q["zones"]]
+    nav = int(rules.get("nav_bonus") or 0) * len(q["zones"])
+    T = sum(zone_sure) + nav
+    Z = T / max(len(q["zones"]), 1)
+    warn = []
+
+    claims = []
+    for zi, (z, n) in enumerate(zip(q["zones"], zone_sure), 1):
+        if not z.get("coins_to_claim") or not n:
+            continue
+        share = int(z["coins_to_claim"]) / n
+        claims.append(f"{zi}: {z['coins_to_claim']}/{n} {share:.0%}")
+        if not 0.55 <= share <= 0.755:
+            warn.append(f"zone {zi} is claimed at {share:.0%} of its {n} coins; aim for 60–70 % "
+                        f"(coins_to_claim {round(0.6 * n)}–{round(0.7 * n)})")
+
+    def compare(kind, have, targets, tol):
+        if len(have) != len(targets):
+            print(f"  {kind}: {have}; suggested for T={T}: {[round(t) for t in targets]} (different count, not compared)")
+            return
+        print(f"  {kind}: {have}; suggested {[round(t) for t in targets]}")
+        for h, t in zip(have, targets):
+            if abs(h - t) > max(tol * t, 2):
+                warn.append(f"{kind[:-1]} {h} is far from the suggested {round(t)} for T={T}")
+
+    perks = sorted(int(k.get("cost", 0)) for k in rules.get("perks", []))
+    ranks = sorted(int(k.get("min", 0)) for k in rules.get("ranks", []) if int(k.get("min", 0)) > 0)
+    # perk ladders: hint, small choice, parent curse, treat, souvenir (+ a campaign's big prize)
+    perk_t = [Z / 3, 2 * Z / 3, Z, 2 * Z, 3.5 * Z, T / 2] if campaign else [5, 10, 15, T / 3, T / 2]
+    rank_t = [T / 7, T / 3.5, T / 2.2, T / 1.5, 0.85 * T] if campaign else [T / 8, T / 3, T / 2, 2 * T / 3]
+    print(f"Coins: {T} sure (navigation bonus {nav}, no optional challenges or duel wins)"
+          + (f"; zone claims {', '.join(claims)}" if claims else ""))
+    if perks:
+        compare("perks", perks, perk_t, 0.35)
+    if ranks:
+        compare("ranks", ranks, rank_t, 0.2)
+        top = ranks[-1]
+        print(f"  top rank needs {top} ({top / max(T, 1):.0%} of the sure coins)")
+        if top > 0.95 * T:
+            warn.append(f"top rank is out of reach at 95 % completion; lower it to <= {int(0.95 * T)}")
+    for w in warn:
+        print(f"WARNING: economy: {w}")
+    return len(warn)
 
 
 def find_chrome():
@@ -1441,9 +1474,12 @@ def main():
     ap.add_argument("quest_json")
     ap.add_argument("--out-dir")
     ap.add_argument("--name", help="output name; default: the file name, e.g. quest or quest.en")
+    ap.add_argument("--economy", action="store_true", help="only check the coin economy (exit 1 on warnings), render nothing")
     a = ap.parse_args()
     src = Path(a.quest_json).resolve()
     q = json.loads(src.read_text(encoding="utf-8"))
+    if a.economy:
+        sys.exit(1 if check_economy(q) else 0)
     set_language(q)
     a.name = a.name or src.stem
     out = Path(a.out_dir).resolve() if a.out_dir else src.parent
@@ -1493,7 +1529,7 @@ def main():
         print(f"Wrote {png_path}")
     if 'data-fitted="1"' not in dom:
         print("WARNING: could not verify card fit (layout script did not run)")
-    check_ranks(q)
+    check_economy(q)
     over = re.findall(r'<section class="card ([a-z]+)"[^>]*data-overflow="1"[^>]*>.*?<h2[^>]*>(.*?)</h2>', dom, re.S)
     if over:
         print("OVERFLOW: these cards are too long even after shrinking; shorten their text:")

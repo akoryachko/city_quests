@@ -101,7 +101,9 @@ After editing a `quest.json` yourself:
 python3 .claude/skills/city-quest/scripts/build_quest.py hoorn/quest.json
 ```
 
-Exit code 2 means some card has too much text; the script names it.
+Exit code 2 means some card has too much text; the script names it. The
+build also prints the coin economy and warns when claim thresholds, perk
+prices or ranks are off; `--economy` runs only that check.
 For the walking-route report:
 
 ```bash

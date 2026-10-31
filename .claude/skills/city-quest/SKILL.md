@@ -247,7 +247,11 @@ connection on the map (wrong coordinates, or a ferry/tram leg that needs
 `"leg"`) — fix every such warning, otherwise the kid cannot navigate it; a campaign's city overview uses OSM tiles. The
 first build of a new area takes a few minutes (busy public servers are
 retried). The map fits the view to the stops, outlines each zone around its
-stops and draws the route. Card text is auto-sized; exit code 2
+stops and draws the route. The build also prints the coin economy
+(sure coins, zone claim shares, perks and ranks next to the suggested values)
+and a `WARNING: economy` line for anything out of range — fix those;
+`build_quest.py <folder>/quest.json --economy` runs only this check, instantly,
+after any change to coins, perks or ranks. Card text is auto-sized; exit code 2
 lists cards that still overflow — shorten those texts (or split a big zone
 into two) and rebuild.
 

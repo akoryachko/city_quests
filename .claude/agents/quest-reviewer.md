@@ -71,7 +71,11 @@ to borrow from for rewrites.
   Use them — this is the cheapest way to make the walk richer.
 - Total distance suits the kid (profile) and the day's time window.
 
-**Rules and economy**: coin totals vs perk prices and ranks, duels (coins for playing,
+**Rules and economy**: run
+`python3 .claude/skills/city-quest/scripts/build_quest.py <city>/quest.json --economy`
+(instant, renders nothing) and use its numbers — sure coins, zone claim shares, perk
+prices and rank steps against the suggested values — instead of adding coins up yourself;
+every `WARNING: economy` line is a must-fix. Also check duels (coins for playing,
 +1 for a win), curses with clear when/which/how long, the navigation bonus.
 
 **Safety and privacy**: roads, water edges, crowds, a red-light area; no identifying

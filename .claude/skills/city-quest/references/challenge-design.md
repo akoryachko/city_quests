@@ -186,8 +186,10 @@ word)? Rewrite any that fail one.
   spending and there are never "useless" leftover coins. Hard limit: the top
   rank must be reachable when ~95 % of the guaranteed coins are earned and
   nothing is spent. Count T without challenges marked `"optional": true`
-  (unbooked rides, weather-dependent extras); the build script checks this
-  and warns. Maritime cities:
+  (unbooked rides, weather-dependent extras). The build prints the whole
+  economy (T, zone claim shares, perks and ranks next to the suggested
+  values) and warns about anything out of range; `--economy` runs only that
+  check. Maritime cities:
   Юнга → Матрос → Боцман → Капитан → Адмирал; adapt the theme to the city.
 - **Campaign economy** (home city, many outings; `"campaign": true`): coins
   carry over between outings and the rank counts **all coins earned**
