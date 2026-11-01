@@ -69,6 +69,10 @@ to borrow from for rewrites.
 - Wasted sights: landmarks *passed* or a *short detour* away that the quest ignores but
   that would make a better task, a story for the parents, or a reason to reroute.
   Use them — this is the cheapest way to make the walk richer.
+- Boss last: in every zone the boss must be the last stop of that zone's route (the zone's
+  last leg in the report ends at the boss). If a challenge comes after it, or the walk doubles
+  back past the boss, that's a must-fix. Propose either a new route that ends at the boss, or
+  moving the boss to the place where the route naturally ends (a new boss task suited to that place).
 - Total distance suits the kid (profile) and the day's time window.
 
 **Rules and economy**: run
@@ -88,7 +92,8 @@ Return markdown, at most ~90 lines:
 1. **Verdict** — one line: ready / ready after fixes / needs rework.
 2. **Scorecard** — one compact table row per challenge (stop, title, the seven scores,
    total), then the mechanic counts.
-3. **Must fix** — things that break the day (wrong hours, impossible task, unsafe, privacy).
+3. **Must fix** — things that break the day (wrong hours, impossible task, unsafe, privacy,
+   a boss that isn't the last stop of its zone).
 4. **Should fix** — clearly better with the change, ordered by impact. For each: stop,
    problem, concrete fix (new task text idea, reroute via street X, swap with Y).
 5. **Walk upgrades** — the best 3–6 uses of passed or nearby landmarks, with name and
