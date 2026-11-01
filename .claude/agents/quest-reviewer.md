@@ -77,14 +77,22 @@ to borrow from for rewrites.
   facades, bridges, viewpoints — from the report's passed/detour POIs and the zone's area) and
   mark which ones a task photographs or interacts with. Name the ones the family would walk
   past unseen or miss entirely, and propose a photo or hands-on task for each, or a reroute.
+  When there are more sights than task slots, propose one photo hunt: "in 30 minutes, photograph
+  these 4 spots" (any order).
 - Ticketed venues: all challenges inside one paid venue (museum, zoo, tower) must come one
   after another on the route, with no challenge outside in between, because leaving means
   paying again to re-enter. If an outside event (a parade, an arrival, a show) has to happen
   in the middle, propose making it the boss and putting it last, or doing it before entering.
   Must-fix when broken.
 - Playgrounds: a ⏱ task that needs equipment (slide, climbing frame) must name a playground
-  that has it; check OSM tags or photos and flag a bare one.
+  that has it; check OSM tags or photos and flag a bare one. Playground tasks are fine as long as they vary.
 - Total distance suits the kid (profile) and the day's time window.
+
+**Not problems** (don't flag): a zone without a duel or without food (food is optional,
+especially where there is a lot to see); a seasonal task whose season is written on the card
+(e.g. oliebollen only in winter). Home-city campaigns are played over many months: don't tie
+tasks to the first outing's month, but mention season-only extras (goat kids in spring). For
+trips to other places, check every task against the actual visiting day(s).
 
 **Rules and economy**: run
 `python3 .claude/skills/city-quest/scripts/build_quest.py <city>/quest.json --economy`
@@ -93,7 +101,8 @@ prices and rank steps against the suggested values — instead of adding coins u
 every `WARNING: economy` line is a must-fix. Also check duels (coins for playing,
 +1 for a win), curses with clear when/which/how long, the navigation bonus.
 
-**Safety and privacy**: roads, water edges, crowds, a red-light area; no identifying
+**Safety and privacy**: roads, crowds, a red-light area (open water edges are fine: don't restrict
+tasks for them); no identifying
 details (names, home street, "our house", school) anywhere in the quest.
 
 ## Report

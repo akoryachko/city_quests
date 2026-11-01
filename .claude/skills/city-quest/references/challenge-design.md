@@ -59,6 +59,12 @@ dislikes something, reduce it rather than drop it. Rough targets for a
 "guess how many" duels, ~6 ⏱ tasks, a few limitation tasks, 2–3
 translator/ordering tasks.
 
+**More sights than slots.** When a zone passes more landmarks than it has task slots, bundle
+the extras into one photo hunt: "in 30 minutes, photograph these 4 spots" (any order, the
+clock starts at the first photo). Duels and food are not needed in every zone; a seasonal task
+is fine when the card names the season. For a home-city campaign played over months, don't tie
+tasks to one month; mention season-only extras instead (goat kids in spring).
+
 Measure only with a purpose: the number must lead somewhere the kid can see
 or feel ("how many small houses fit in the big one", "the lift is 10 times
 faster than you on the stairs"). Counting for its own sake, or maths they
