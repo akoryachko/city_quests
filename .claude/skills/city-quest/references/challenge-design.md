@@ -55,7 +55,7 @@ warehouse stone; how old is it?").
 house") and LEGO builds, then found a whole quest of them boring. Mix
 kinds across the quest and keep each kind in proportion; when the family
 dislikes something, reduce it rather than drop it. Rough targets for a
-12-zone campaign: 1 LEGO build, ~3 other builds, 6–7 measure tasks, ~4
+12-zone campaign: at most 1 LEGO build (none is fine), ~3 other builds, 6–7 measure tasks, ~4
 "guess how many" duels, ~6 ⏱ tasks, a few limitation tasks, 2–3
 translator/ordering tasks.
 
