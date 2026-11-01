@@ -110,8 +110,12 @@ goat"), swap them — the boss task follows the difficulty, and the famous
 landmark can still be a normal stop. An optional brave extra (a swing over the edge) can add bonus coins.
 **Put the boss last** in the zone's route: the zone ends with its finale. If
 other tasks are at the same venue as the boss (inside a museum, a store),
-list them right before it, so the card reads in the order they happen. Use
-`"order"` for a mid-route boss only when the geography leaves no other way. A **paid venue**
+list them right before it, so the card reads in the order they happen. Never
+visit the boss mid-route: change the route, or move the boss to where the route
+ends (a new boss task suited to that place). All tasks inside one **paid venue**
+come one after another, with nothing outside in between: leaving means paying again.
+An outside event that happens during the visit (a parade, an arrival) becomes the
+boss after the venue, or happens before going in. A **paid venue**
 (museum, tower) must hold more than one thing to do: two or three tasks
 inside, or a multi-step boss — Micropia's stamp card plus a live water bear
 under the microscope is the model. No drawing tasks — this

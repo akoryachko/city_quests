@@ -77,6 +77,11 @@ to borrow from for rewrites.
   facades, bridges, viewpoints — from the report's passed/detour POIs and the zone's area) and
   mark which ones a task photographs or interacts with. Name the ones the family would walk
   past unseen or miss entirely, and propose a photo or hands-on task for each, or a reroute.
+- Ticketed venues: all challenges inside one paid venue (museum, zoo, tower) must come one
+  after another on the route, with no challenge outside in between, because leaving means
+  paying again to re-enter. If an outside event (a parade, an arrival, a show) has to happen
+  in the middle, propose making it the boss and putting it last, or doing it before entering.
+  Must-fix when broken.
 - Playgrounds: a ⏱ task that needs equipment (slide, climbing frame) must name a playground
   that has it; check OSM tags or photos and flag a bare one.
 - Total distance suits the kid (profile) and the day's time window.
@@ -99,7 +104,7 @@ Return markdown, at most ~90 lines:
 2. **Scorecard** — one compact table row per challenge (stop, title, the seven scores,
    total), then the mechanic counts.
 3. **Must fix** — things that break the day (wrong hours, impossible task, unsafe, privacy,
-   a boss that isn't the last stop of its zone).
+   a boss that isn't the last stop of its zone, a paid venue left and re-entered).
 4. **Should fix** — clearly better with the change, ordered by impact. For each: stop,
    problem, concrete fix (new task text idea, reroute via street X, swap with Y).
 5. **Walk upgrades** — the best 3–6 uses of passed or nearby landmarks, with name and

@@ -168,9 +168,9 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   unbooked boat ride), `answer` (short, for checking), `facts` (the story of
   the place for the parents, see challenge-design §4), and for anything tied to a spot
   `place` + `lat` + `lon`. Challenges are numbered 1.1, 1.2… on the cards and
-  the map, in list order; list them in walking order. If the boss is visited
-  mid-route, give it `"order": 3.5` (between stops 3 and 4) so the route line
-  follows the walk (prefer the boss last, see challenge-design §1). A stop
+  the map, in list order; list them in walking order, with the boss last (see
+  challenge-design §1: never mid-route, and tasks inside a paid venue in one run).
+  `"order": 3.5` puts a challenge between stops 3 and 4 on the route line if needed. A stop
   reached by ferry, tram or another ride gets `"leg": "ferry"` (or `"tram"`…):
   it is not checked for a walking connection. A `trail`
   challenge's place is hidden from the kid (it is the riddle's answer).
