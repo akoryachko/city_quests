@@ -2,11 +2,13 @@
 """Render every city quest into a static website for reading on a phone during the walk.
 
 Usage:
-    python3 build_site.py [--root DIR] [--out DIR]
+    python3 build_site.py [--root DIR] [--out DIR] [--langs ru,en]
 
 --root is the folder that holds one sub-folder per city with a quest.json
 (default: the current folder). --out is where the site goes (default:
-<root>/site). A city's translations (quest.en.json next to quest.json) become
+<root>/site). --langs picks the languages to publish (default: only the main
+languages, those of the quest.json files; translations are left out). A city's
+translations (quest.en.json next to quest.json) in a picked language become
 the same pages in that language. Page layout, relative links only, so the
 site works from any sub-path, e.g. example.com/quests/:
 
@@ -273,6 +275,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=".")
     ap.add_argument("--out")
+    ap.add_argument("--langs", help="comma-separated languages to publish, e.g. ru,en (default: the main languages only)")
     a = ap.parse_args()
     root = Path(a.root).resolve()
     out = Path(a.out).resolve() if a.out else root / "site"
@@ -292,6 +295,13 @@ def main():
         quests.append((qj.parent.name, lang, q, qj.parent, qj.name == "quest.json"))
     if not quests:
         sys.exit(f"No */quest.json under {root}")
+    picked = set(a.langs.split(",")) if a.langs else {lang for _, lang, _, _, is_main in quests if is_main}
+    for slug, lang, _, folder, is_main in quests:
+        if lang not in picked:
+            print(f"SKIP {folder.name}/{'quest.json' if is_main else f'quest.{lang}.json'}: {lang!r} not in --langs")
+    quests = [x for x in quests if x[1] in picked]
+    if not quests:
+        sys.exit(f"No quests in the languages {sorted(picked)}")
     main_langs = [lang for _, lang, _, _, is_main in quests if is_main]
     primary = max(set(main_langs), key=main_langs.count)
     order = [primary] + sorted({lang for _, lang, *_ in quests} - {primary})

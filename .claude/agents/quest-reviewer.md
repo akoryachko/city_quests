@@ -73,6 +73,12 @@ to borrow from for rewrites.
   last leg in the report ends at the boss). If a challenge comes after it, or the walk doubles
   back past the boss, that's a must-fix. Propose either a new route that ends at the boss, or
   moving the boss to the place where the route naturally ends (a new boss task suited to that place).
+- Sights coverage: list the zone's main tourist sights (famous buildings, statues, museums'
+  facades, bridges, viewpoints — from the report's passed/detour POIs and the zone's area) and
+  mark which ones a task photographs or interacts with. Name the ones the family would walk
+  past unseen or miss entirely, and propose a photo or hands-on task for each, or a reroute.
+- Playgrounds: a ⏱ task that needs equipment (slide, climbing frame) must name a playground
+  that has it; check OSM tags or photos and flag a bare one.
 - Total distance suits the kid (profile) and the day's time window.
 
 **Rules and economy**: run

@@ -138,6 +138,7 @@ button that opens over the page. Places and map pins open Google Maps.
 
    ```bash
    python3 .claude/skills/city-quest/scripts/build_site.py --out path/to/your-website/quests
+   # add --langs ru,en to publish translations too (default: main languages only)
    cd path/to/your-website
    python3 -m http.server 8000                # open http://localhost:8000/quests/
    ```

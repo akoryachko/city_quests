@@ -264,7 +264,7 @@ same structure, list order, coordinates and coins; only text changes, with
 keep the profile's rules (e.g. no transcription for languages the kid speaks).
 Check with a script that the two files have the same keys, list lengths and
 non-text values, then build each file:
-`build_quest.py <folder>/quest.en.json` writes `quest.en.md` and `<city>-quest.en.pdf`. Map
+`build_quest.py <folder>/quest.en.json` writes `quest.en.md` and `<city>-quest.en.pdf`. The website publishes only the main languages unless `build_site.py --langs ru,en` names more. Map
 pictures show only numbers and local street names, so every language shares
 the main quest's (`quest-map*.png`, `quest-pins.json`).
 
