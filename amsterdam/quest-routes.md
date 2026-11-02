@@ -38,11 +38,11 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
 
 ## Zone 2 · Иордан и каналы
 
-- **2.1 → 2.2** Губернатор Нью-Йорка → Склады с углами: 509 m, ~10 min 
-  - along: quiet street 94%, car-free 6%, along water 19%
-  - streets: Haarlemmerstraat, Haarlemmerdijk, Binnen Oranjestraat, Herenmarkt
-  - passed (3): Hooffzaak [tourism=gallery]; Gallery 100 [tourism=gallery]; Anker II [tourism=artwork]
-  - short detour (6): Posthoornkerk [amenity=place_of_worship] 42 m; Gallery238 [tourism=gallery] 59 m; Nail House [tourism=artwork] 69 m; Piramide Speeltuin [leisure=playground] 70 m; Van Zijll Langhout [tourism=gallery] 75 m; Herengracht [bridge] 99 m
+- **2.1 → 2.2** Три флота → Склады с углами: 972 m, ~19 min 
+  - along: quiet street 71%, car-free 29%, along water 19%, park/green 6%
+  - streets: Haarlemmerstraat, Nieuwendijk, Haarlemmerdijk, Binnen Oranjestraat
+  - passed (5): Hooffzaak [tourism=gallery]; Gallery 100 [tourism=gallery]; Amsterdamse Scheepvaartbuurt [tourism=artwork]; Anker II [tourism=artwork]; West Indisch Huis [historic]
+  - short detour (16): Posthoornkerk [amenity=place_of_worship] 42 m; Haringpakkersbrug [bridge] 49 m; Annick van Hardeveld [historic] 51 m; Gallery238 [tourism=gallery] 59 m; Piramide Speeltuin [leisure=playground] 66 m; Prins Hendrikkade [bridge] 69 m; Nail House [tourism=artwork] 69 m; Van Zijll Langhout [tourism=gallery] 75 m; Chess Knight [tourism=artwork] 79 m; Venustempel Sexmuseum [tourism=museum] 85 m; Dead End AI Gallery [tourism=gallery] 87 m; De aardige Amsterdammer [tourism=artwork] 99 m
 
 - **2.2 → 2.3** Склады с углами → ⏱ Церковь-крест: 323 m, ~6 min 
   - along: quiet street 100%, along water 21%
@@ -68,7 +68,7 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - passed (1): Homomonument [historic]
   - short detour (5): Anne Frank Huis [tourism=museum] 39 m; Flagship Amsterdam [tourism=attraction] 64 m; Prinsengracht [bridge] 77 m; Casa Luna [tourism=gallery] 113 m; Nieuwe-Wercksbrug [bridge] 119 m
 
-**Total walked: 1.6 km, ~31 min** (plus time at the stops).
+**Total walked: 2.0 km, ~41 min** (plus time at the stops).
 
 ## Zone 3 · Дам и тайный двор
 
@@ -94,15 +94,15 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - along: main road 11%, quiet street 24%, car-free 65%, park/green 31%
   - streets: Nieuwezijds Voorburgwal, Voetboogstraat, Gedempte Begijnensloot, Spui
   - passed (6): Amsterdam Museum [tourism=museum]; Kabouter [tourism=artwork]; Postzegelmarkt [tourism=attraction]; Postzegelpark [leisure=park] (+2 seen before)
-  - short detour (16): Argus [tourism=artwork] 44 m; De Papegaai [amenity=place_of_worship] 45 m; The Amsterdam Toy Museum [tourism=museum] 49 m; Magna Plaza [tourism=attraction] 72 m; Torture Museum [tourism=museum] 73 m; Plaquette 7 mei 1945 [historic] 84 m; Nieuwzijds Kapel [tourism=attraction] 84 m; Oude Lutherse Kerk [amenity=place_of_worship] 95 m; (unnamed fountain) [amenity=fountain] 97 m; Miklós Tótfalusi Kis [historic] 97 m; Oxfort House Gallery [tourism=gallery] 98 m; The Amsterdam Dungeon [tourism=attraction] 100 m
+  - short detour (17): Koninklijk Paleis [tourism=attraction] 44 m; Argus [tourism=artwork] 44 m; The Amsterdam Toy Museum [tourism=museum] 49 m; Het appeltje van Provo [tourism=artwork] 68 m; Magna Plaza [tourism=attraction] 72 m; Torture Museum [tourism=museum] 73 m; Plaquette 7 mei 1945 [historic] 84 m; Nieuwzijds Kapel [tourism=attraction] 84 m; Oude Lutherse Kerk [amenity=place_of_worship] 95 m; (unnamed fountain) [amenity=fountain] 97 m; Miklós Tótfalusi Kis [historic] 97 m; Oxfort House Gallery [tourism=gallery] 98 m
 
-- **3.5 → 3.👑** Звери дальних стран → Неси мир, как Атлас: 199 m, ~4 min 
-  - along: car-free 96%
-  - streets: Nieuwezijds Voorburgwal
-  - passed (0): —
-  - short detour (7): Nieuwe Kerk [tourism=museum] 47 m; Plaquette 7 mei 1945 [historic] 47 m; Dam [tourism=attraction] 54 m; Magna Plaza [tourism=attraction] 55 m; Damslachtoffers 7 mei 1945 [historic] 70 m; Madame Tussauds Amsterdam [tourism=museum] 74 m; Leeuw [tourism=artwork] 109 m
+- **3.5 → 3.👑** Звери дальних стран → Башня-рекорд: 341 m, ~7 min 
+  - along: main road 21%, car-free 79%
+  - streets: Kalverstraat, Paleisstraat, Nieuwezijds Voorburgwal
+  - passed (2): Plaquette 7 mei 1945 [historic]; Het appeltje van Provo [tourism=artwork]
+  - short detour (18): Madame Tussauds Amsterdam [tourism=museum] 39 m; Koninklijk Paleis [tourism=attraction] 44 m; Dam [tourism=attraction] 61 m; Magna Plaza [tourism=attraction] 72 m; Rokinfontein [tourism=artwork] 75 m; Kabouter [tourism=artwork] 87 m; Leeuw [tourism=artwork] 88 m; Damslachtoffers 7 mei 1945 [historic] 93 m; Postzegelpark [leisure=park] 99 m; Postzegelmarkt [tourism=attraction] 100 m; Nieuwe Kerk [tourism=museum] 104 m; Ripley's Believe It or Not [tourism=museum] 106 m
 
-**Total walked: 1.8 km, ~36 min** (plus time at the stops).
+**Total walked: 2.0 km, ~39 min** (plus time at the stops).
 
 ## Zone 4 · Ньюмаркт и Весовая
 
@@ -245,15 +245,15 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - streets: NDSM-plein
   - passed (0): —
 
-- **8.4 → 8.5** Охота в STRAAT → Голландские блинчики: 211 m, ~4 min 
-  - along: quiet street 100%, along water 19%, park/green 75%
+- **8.4 → 8.5** Охота в STRAAT → Блинный корабль: 310 m, ~6 min 
+  - along: quiet street 100%, along water 45%, park/green 51%
   - streets: ms. van Riemsdijkweg, NDSM-plein
   - passed (0): —
-  - short detour (1): Daniël Goedkoop [historic] 70 m
+  - short detour (1): Daniël Goedkoop [historic] 67 m
 
-- **8.5 → 8.👑** Голландские блинчики → Башня A'DAM: by ferry, not walked
+- **8.5 → 8.👑** Блинный корабль → Башня A'DAM: by ferry, not walked
 
-**Total walked: 0.5 km, ~11 min** (plus time at the stops). Flags: 8.3→8.4 hardly a walk.
+**Total walked: 0.6 km, ~13 min** (plus time at the stops). Flags: 8.3→8.4 hardly a walk.
 
 ## Zone 9 · Вестерпарк
 

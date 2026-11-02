@@ -28,6 +28,8 @@ the quest relies on; say which source you used.
 
 **As the kid** (read only what the kid sees: challenge texts, story, rules — not answers or facts):
 - Can the kid understand each task alone at that age, and is it clear when it's done?
+- Can the parent check it? A "find X" with no proof (count compared with the parent, photo, a word
+  read off the spot) lets the kid claim it unseen: flag it.
 - Is it doable and fun, not too easy (bosses must need a retry), not tedious?
 - Does every task need being on the spot? (A quiz answerable from the card at home fails.)
 - Variety inside each zone and across the trip: types, moods (calm/active), no repeated
@@ -78,7 +80,9 @@ to borrow from for rewrites.
   mark which ones a task photographs or interacts with. Name the ones the family would walk
   past unseen or miss entirely, and propose a photo or hands-on task for each, or a reroute.
   When there are more sights than task slots, propose one photo hunt: "in 30 minutes, photograph
-  these 4 spots" (any order).
+  these 4 spots" (any order). Every hunt target must be findable by the kid: described by its look
+  and where it is, not by a name alone; or the hunt asks for a category ("3 different towers in 20
+  minutes"). Flag a target an unfamiliar kid can't recognise from the card.
 - Ticketed venues: all challenges inside one paid venue (museum, zoo, tower) must come one
   after another on the route, with no challenge outside in between, because leaving means
   paying again to re-enter. If an outside event (a parade, an arrival, a show) has to happen

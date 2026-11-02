@@ -61,9 +61,18 @@ translator/ordering tasks.
 
 **More sights than slots.** When a zone passes more landmarks than it has task slots, bundle
 the extras into one photo hunt: "in 30 minutes, photograph these 4 spots" (any order, the
-clock starts at the first photo). Duels and food are not needed in every zone; a seasonal task
+clock starts at the first photo). The kid must find each target alone, so describe it by its
+look and where it is ("a brick tower with a white wooden top and a clock, by the Oudeschans
+canal"), never by a name alone; prefer targets that are easy to recognise (a wooden house, a
+church with two towers, a leaning tower). Or hunt a category instead of named spots: "photograph
+3 different towers / coloured doors / houses with columns in 20 minutes". Duels and food are not needed in every zone; a seasonal task
 is fine when the card names the season. For a home-city campaign played over months, don't tie
 tasks to one month; mention season-only extras instead (goat kids in spring).
+
+**Make "found it" checkable.** A task that only asks the kid to find something lets him say
+"found" without seeing it. Ask for proof: a count (the parent counts too and they compare), a
+photo, a number or word read off the spot, or pointing it out to the parent. Don't put two tasks
+with the same mechanic side by side in one zone; borrow a mechanic from another zone or city instead.
 
 Measure only with a purpose: the number must lead somewhere the kid can see
 or feel ("how many small houses fit in the big one", "the lift is 10 times
