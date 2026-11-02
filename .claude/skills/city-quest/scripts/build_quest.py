@@ -8,7 +8,8 @@ The PDF is A4 landscape; every sheet holds two A5 portrait cards (cut along the
 dashed line). Card order: cover, rules, map, zone cards, collection, scorecard,
 certificate, then parent pages on their own sheets. With "campaign": true the
 base cards come first and every zone gets its own sheet (zone map + challenges).
-Designed to print well in black and white. Zone maps are drawn from
+Designed to print well in black and white; with "colour": true in quest.json every zone gets
+its colour (the same as its stickers) on its cards and maps, and maps show blue water and green parks. Zone maps are drawn from
 OpenStreetMap data (Overpass API, cached in ~/.cache/city-quest/streets) with
 bold street names on top; the overview map uses OpenStreetMap tiles (cached in
 ~/.cache/city-quest/tiles). Both need internet on the first build.
@@ -675,11 +676,11 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
         if overview:
             # zones joined by rides would make long hulls across the city: draw a blob per stop instead
             blobs = "".join(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7"/>' for x, y in zstops)
-            areas.append(f'<g class="zgroup"><g class="zarea-edge small">{blobs}</g><g class="zarea small">{blobs}</g></g>')
+            areas.append(f'<g class="zgroup"{zc_style(zi, z)}><g class="zarea-edge small">{blobs}</g><g class="zarea small">{blobs}</g></g>')
             continue
         # zone area: the stops' convex hull, padded by a fat round stroke; the kid colours it in
         pts_s = " ".join(f"{x:.1f},{y:.1f}" for x, y in convex_hull(zstops))
-        areas.append(f'<g class="zgroup"><polygon class="zarea-edge" points="{pts_s}"/><polygon class="zarea" points="{pts_s}"/></g>')
+        areas.append(f'<g class="zgroup"{zc_style(zi, z)}><polygon class="zarea-edge" points="{pts_s}"/><polygon class="zarea" points="{pts_s}"/></g>')
     svg += areas
     svg.append("</svg>")
     under, svg = svg, [f'<svg viewBox="0 0 {W} {H}" width="{W}" height="{H}">']
@@ -697,16 +698,17 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
                     svg.append(f'<text class="blobnum" x="{bx:.1f}" y="{by+3.5:.1f}">{zi}</text>')
             if pins is not None:
                 pins.setdefault("pins", []).append({"zone": zi, "x": round(x, 1), "y": round(y, 1)})
-            svg.append(f'<circle class="badge" cx="{x:.1f}" cy="{y:.1f}" r="12"/>')
+            svg.append(f'<circle class="badge" cx="{x:.1f}" cy="{y:.1f}" r="12"{zc_style(zi, z)}/>')
             svg.append(f'<text class="badgenum" x="{x:.1f}" y="{y+4.5:.1f}">{zi}</text>')
     else:
         if len(route) > 1:
-            svg.append('<polyline class="route" points="' + " ".join(f"{x:.1f},{y:.1f}" for x, y in route) + '"/>')
+            one = zc_style(*sel[0]) if len(sel) == 1 else ""  # a zone map's route in the zone's colour
+            svg.append(f'<polyline class="route"{one} points="' + " ".join(f"{x:.1f},{y:.1f}" for x, y in route) + '"/>')
         for label, zi, t in stops:
             x, y = pos[id(t)]
             if pins is not None:
                 pins.setdefault("pins", []).append({"label": label, "x": round(x, 1), "y": round(y, 1), "lat": t["lat"], "lon": t["lon"]})
-            svg.append(f'<circle class="stop" cx="{x:.1f}" cy="{y:.1f}" r="11"/>')
+            svg.append(f'<circle class="stop" cx="{x:.1f}" cy="{y:.1f}" r="11"{zc_style(zi, q["zones"][zi - 1])}/>')
             svg.append(f'<text class="stopnum" x="{x:.1f}" y="{y+3.5:.1f}">{esc(label)}</text>')
         for x, y in cams:  # a camera: body, viewfinder bump, lens
             svg.append(f'<g class="cam" transform="translate({x:.1f},{y:.1f})"><rect x="-8" y="-5" width="16" height="11" rx="2"/>'
@@ -740,8 +742,33 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
 # ---------------------------------------------------------------- cards
 
 
+# zone colours for colour printing ("colour": true in quest.json); each is dark enough for white
+# digits (contrast >= 4.5) and is also the zone's sticker colour (build_stickers.py)
+ZONE_COLOURS = ["#1f6fb2", "#c23a4c", "#9a6c00", "#23854a", "#7b4fb8", "#b84f0c",
+                "#1e7f7f", "#b5397f", "#4f7019", "#3d4fb5", "#a0522d", "#546e7a"]
+COLOUR = False
+
+
+def zone_colour(zi, z=None):
+    """The zone's colour: its own "color", else the palette's in colour mode, else dark grey."""
+    if z and z.get("color"):
+        return z["color"]
+    return ZONE_COLOURS[(zi - 1) % len(ZONE_COLOURS)] if COLOUR else "#333"
+
+
+def tint(color, k=0.88):
+    """A light background version of a #rrggbb colour."""
+    c = [int(color[i:i + 2], 16) for i in (1, 3, 5)] if re.fullmatch(r"#[0-9a-fA-F]{6}", color) else [51, 51, 51]
+    return "#" + "".join(f"{round(v + (255 - v) * k):02x}" for v in c)
+
+
+def zc_style(zi, z=None):
+    """Inline style giving map shapes their zone colour (colour mode only; else the CSS defaults)."""
+    return f' style="--zc:{zone_colour(zi, z)}"' if COLOUR else ""
+
+
 def card(inner, cls="", color=None):
-    style = f' style="--c:{esc(color)}"' if color else ""
+    style = f' style="--c:{esc(color)};--t:{tint(color)}"' if color else ""
     return f'<section class="card {cls}"{style}><div class="fit">{inner}</div></section>'
 
 
@@ -843,7 +870,7 @@ def zone_map_card(q, z, zi, map_html):
     return card(
         f"""<h2>🗺️ {LABELS['zone']} {zi}: {esc(z['name'])}</h2>{how}{map_html}{stop_legend(q, {zi})}""",
         "mapcard",
-        z.get("color", "#333"),
+        zone_colour(zi, z),
     )
 
 
@@ -933,7 +960,7 @@ def zone_card(z, zi, nav=0, links=False):
         <footer class="zone-foot">{coin_track(z, nav)}<span class="need">{LABELS['coins_needed']}: <b>{esc(z.get('coins_to_claim', ''))}</b> 🏁</span></footer>
         """,
         "zone",
-        z.get("color", "#333"),
+        zone_colour(zi, z),
     )
 
 
@@ -1132,7 +1159,7 @@ li { margin: .15em 0; }
 .map img { position: absolute; }
 .map svg { position: absolute; left: 0; top: 0; }
 .attr { position: absolute; right: 2px; bottom: 1px; font-size: 7px; color: #555; background: rgba(255,255,255,.8); padding: 0 2px; }
-.route { fill: none; stroke: #222; stroke-width: 2.5; stroke-dasharray: 7 6; }
+.route { fill: none; stroke: var(--zc, #222); stroke-width: 2.5; stroke-dasharray: 7 6; }
 .map img { filter: grayscale(1) contrast(.75) brightness(1.12); }
 .land { fill: #f7f7f7; }
 .green { fill: #e6e6e6; fill-rule: evenodd; }
@@ -1143,16 +1170,16 @@ li { margin: .15em 0; }
 .foot { fill: none; stroke: #999; stroke-width: .9; stroke-dasharray: 2 2; }
 .rail { fill: none; stroke: #666; stroke-width: 1.2; stroke-dasharray: 6 3; }
 .sname { font-size: 11px; font-weight: bold; fill: #000; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
-.zarea-edge { fill: #111; stroke: #111; stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
+.zarea-edge { fill: var(--zc, #111); stroke: var(--zc, #111); stroke-width: 52; stroke-linejoin: round; stroke-linecap: round; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
-.stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
+.stop { fill: var(--zc, #111); stroke: #fff; stroke-width: 1.5; }
 .cam rect { fill: #fff; stroke: #111; stroke-width: 1.5; }
 .cam circle { fill: #111; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
 .zarea.small { stroke-width: 20; }
-.badge { fill: #111; stroke: #fff; stroke-width: 2; }
+.badge { fill: var(--zc, #111); stroke: #fff; stroke-width: 2; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
@@ -1248,6 +1275,31 @@ FIT_JS = r"""
   document.body.setAttribute('data-fitted', '1');
 })();
 """
+
+
+# colour printing: zone colours on the zone cards and maps, light blue water and green parks;
+# text stays black on white so it reads as well as in black and white
+COLOUR_CSS = """
+.zone-head, .ch, .boss, .sticker { border-color: var(--c); }
+.zone-head { border-bottom-width: .8mm; }
+.ch .num { background: var(--c); }
+.boss { background: var(--t); }
+.kicker { color: var(--c); font-weight: bold; }
+.land { fill: #f8f8f5; }
+.green { fill: #dcefd3; }
+.water { fill: #c9e2f5; }
+.bldg { fill: #ebe9e4; stroke: #d9d6cf; }
+.zgroup { opacity: .5; }
+.map img { filter: saturate(.55) contrast(.85) brightness(1.08); }
+"""
+
+
+def set_colour(q):
+    """Colour printing when the quest says "colour": true."""
+    global COLOUR, CSS
+    if q.get("colour") and not COLOUR:
+        COLOUR = True
+        CSS += COLOUR_CSS
 
 
 def page(title, body, lang="ru", script=True):
@@ -1490,6 +1542,7 @@ def main():
     if a.economy:
         sys.exit(1 if check_economy(q) else 0)
     set_language(q)
+    set_colour(q)
     a.name = a.name or src.stem
     out = Path(a.out_dir).resolve() if a.out_dir else src.parent
     out.mkdir(parents=True, exist_ok=True)

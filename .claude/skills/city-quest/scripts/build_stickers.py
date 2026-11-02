@@ -7,7 +7,7 @@ Usage:
 Print in colour on A4 sticker paper at 100 % scale and cut along the thin grey circles.
 Every zone gets a block: `--big` stickers of 18 mm (they cover the "sticker" circle on the
 zone card; a spare goes in the collection) and `--small` stickers of 10 mm (for the zone on
-the city map). Each zone has its own colour; the big sticker shows "CLAIMED" on top, the zone
+the city map). Each zone has its own colour, the same as in the colour booklet; the big sticker shows "CLAIMED" on top, the zone
 number below and the zone emoji in the middle. Several quests share the sheet to save paper.
 Default output: <folder>/<city>-stickers.pdf for one quest, ./stickers.pdf for several.
 """
@@ -16,19 +16,16 @@ import json
 import tempfile
 from pathlib import Path
 
-from build_quest import LABELS, esc, find_chrome, run_chrome, set_language
+from build_quest import LABELS, ZONE_COLOURS, esc, find_chrome, run_chrome, set_language, tint
 
 BIG, SMALL, GAP = 18, 10, 3  # mm
-# (ring, tint) per zone: saturated enough to tell 12 zones apart, dark enough for white digits
-COLOURS = [("#1f6fb2", "#dcebf7"), ("#d1495b", "#f9dfe2"), ("#e0a100", "#fbf0cc"), ("#2e9e5b", "#dbf1e3"),
-           ("#7b4fb8", "#ebe2f6"), ("#e3702b", "#fbe5d6"), ("#138a8a", "#d5eeee"), ("#b5397f", "#f5dcea"),
-           ("#5b7f1e", "#e7efd6"), ("#3d4fb5", "#dfe2f6"), ("#a0522d", "#f2e2d8"), ("#2f8fcf", "#daedf8")]
+
 
 
 def big_sticker(zi, z, uid):
     """An 18 mm sticker: coloured ring, the claimed word along the top, zone number along the bottom."""
     r = BIG / 2
-    ring, tint = COLOURS[(zi - 1) % len(COLOURS)]
+    ring = ZONE_COLOURS[(zi - 1) % len(ZONE_COLOURS)]
     top, bottom = f"t{uid}", f"b{uid}"
     return f"""<svg class="st" viewBox="0 0 {BIG} {BIG}" style="width:{BIG}mm;height:{BIG}mm">
   <defs>
@@ -37,7 +34,7 @@ def big_sticker(zi, z, uid):
   </defs>
   <circle class="cut" cx="{r}" cy="{r}" r="{r-.05}"/>
   <circle cx="{r}" cy="{r}" r="{r-.4}" fill="{ring}"/>
-  <circle cx="{r}" cy="{r}" r="{r-3.5}" fill="{tint}" stroke="#fff" stroke-width=".35"/>
+  <circle cx="{r}" cy="{r}" r="{r-3.5}" fill="{tint(ring)}" stroke="#fff" stroke-width=".35"/>
   <text class="arc"><textPath href="#{top}" startOffset="50%">{esc(LABELS['claimed'])}</textPath></text>
   <text class="arc"><textPath href="#{bottom}" startOffset="50%">★ {esc(LABELS['zone'].upper())} {zi} ★</textPath></text>
   <text class="emoji" x="{r}" y="{r+1.9}">{esc(z.get('emoji', '🏳️'))}</text>
@@ -47,7 +44,7 @@ def big_sticker(zi, z, uid):
 def small_sticker(zi):
     """A 10 mm sticker for the city map: a disc in the zone's colour with its number."""
     r = SMALL / 2
-    ring, _ = COLOURS[(zi - 1) % len(COLOURS)]
+    ring = ZONE_COLOURS[(zi - 1) % len(ZONE_COLOURS)]
     return f"""<svg class="st" viewBox="0 0 {SMALL} {SMALL}" style="width:{SMALL}mm;height:{SMALL}mm">
   <circle class="cut" cx="{r}" cy="{r}" r="{r-.05}"/>
   <circle cx="{r}" cy="{r}" r="{r-.4}" fill="{ring}" stroke="#fff" stroke-width=".3"/>

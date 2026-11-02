@@ -2,6 +2,7 @@
  "city": "Amsterdam",
  "city_local_name": "Амстердама",
  "language": "ru",
+ "colour": true,
  "campaign": true,
  "title": "Захват Амстердама",
  "dates": "Кампания с ноября 2026 · 12 зон · по 1–2 зоны за вылазку",

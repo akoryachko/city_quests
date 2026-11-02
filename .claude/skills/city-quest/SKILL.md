@@ -156,6 +156,9 @@ dislikes (e.g. no drawing tasks if the kid dislikes drawing).
 Write `<output folder>/quest.json` following `references/example-quest.json`
 (the Hoorn quest; copy its structure, not its facts). Fields worth knowing:
 
+- `colour`: `true` when the family prints in colour: every zone gets its own colour (the same
+  as its stickers) on its cards and maps, maps show blue water and green parks; text stays black
+  on white. Leave it out for black-and-white printing.
 - `hotel`: the start point (`name`, `emoji` e.g. 🚉 for a station, `lat`, `lon`).
 - `zones[]`: `name`, `emoji`, `day`, `coins_to_claim`, `story` (1–2 sentences
   of legend/fun fact for the kid), `parent_story` (background for the
