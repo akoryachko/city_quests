@@ -61,9 +61,9 @@ translator/ordering tasks.
 
 **More sights than slots.** When a zone passes more landmarks than it has task slots, bundle
 the extras into one photo hunt: "in 30 minutes, photograph these 4 spots" (any order, the
-clock starts at the first photo). The kid must find each target alone, so describe it by its
-look and where it is ("a brick tower with a white wooden top and a clock, by the Oudeschans
-canal"), never by a name alone; prefer targets that are easy to recognise (a wooden house, a
+clock starts at the first photo). The kid must find each target alone: put every target on the
+zone map as a camera icon (`spots`), then the card can just name them; targets off the map need
+their look and place on the card ("a brick tower with a white top, by the Oudeschans canal"). Prefer targets that are easy to recognise (a wooden house, a
 church with two towers, a leaning tower). Or hunt a category instead of named spots: "photograph
 3 different towers / coloured doors / houses with columns in 20 minutes". Duels and food are not needed in every zone; a seasonal task
 is fine when the card names the season. For a home-city campaign played over months, don't tie

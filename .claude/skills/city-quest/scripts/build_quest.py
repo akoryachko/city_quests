@@ -580,6 +580,7 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     so the walk fills the card; a start point outside the view is pinned to the edge.
     `only` limits the map to some zone numbers (a campaign's per-zone map).
     `overview` draws just the zone areas with numbered badges (a campaign's city map).
+    A task's `spots` (photo-hunt targets) are drawn as unlabelled camera icons on zone maps.
     `pins`, a dict, receives the map size and where each stop (or zone badge) is drawn,
     so a web page can put links on the map picture.
     In a campaign the route starts at the zone's first stop, not at the home point.
@@ -592,6 +593,8 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     campaign = bool(q.get("campaign"))
     with_stops = {zi for _, zi, _ in stops}
     pts = [(z["lat"], z["lon"]) for zi, z in zones if zi not in with_stops] + [(t["lat"], t["lon"]) for _, _, t in stops]
+    spots = [] if overview else [(sp["lat"], sp["lon"]) for _, _, t in stops for sp in t.get("spots", [])]
+    pts += spots
     if hotel.get("lat") is not None and (len(pts) < 2 or overview):
         pts.append((hotel["lat"], hotel["lon"]))
     if len(pts) < 2:
@@ -653,8 +656,9 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
 
     # stop positions, pushed apart where real places are too close to tell apart
     pos = {id(t): list(p(t["lat"], t["lon"])) for _, _, t in stops}
+    cams = [list(p(la, lo)) for la, lo in spots]
     if not overview:
-        spread(list(pos.values()), 25, fixed=[hotel_xy] if hotel_xy else [])
+        spread(list(pos.values()) + cams, 25, fixed=[hotel_xy] if hotel_xy else [])
 
     svg = [f'<svg viewBox="0 0 {W} {H}" width="{W}" height="{H}">']
     route = [hotel_xy] if hotel_xy and not campaign else []
@@ -704,11 +708,14 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
                 pins.setdefault("pins", []).append({"label": label, "x": round(x, 1), "y": round(y, 1), "lat": t["lat"], "lon": t["lon"]})
             svg.append(f'<circle class="stop" cx="{x:.1f}" cy="{y:.1f}" r="11"/>')
             svg.append(f'<text class="stopnum" x="{x:.1f}" y="{y+3.5:.1f}">{esc(label)}</text>')
+        for x, y in cams:  # a camera: body, viewfinder bump, lens
+            svg.append(f'<g class="cam" transform="translate({x:.1f},{y:.1f})"><rect x="-8" y="-5" width="16" height="11" rx="2"/>'
+                       '<rect x="-3" y="-8" width="6" height="3"/><circle cx="0" cy="0.5" r="3.2"/></g>')
     # no zone names on the map: the stop numbers (1.2, 2.3) and the legend tell the zones apart,
     # and the room goes to street names
     labels = ""
     if streets is not None:  # street names last, around the stops
-        keep = [(x, y, 12) for x, y in pos.values()] + ([(*hotel_xy, 15)] if hotel_xy else [])
+        keep = [(x, y, 12) for x, y in list(pos.values()) + cams] + ([(*hotel_xy, 15)] if hotel_xy else [])
         base, labels, missing = street_layers(streets, p, W, H, keep, "m" + "-".join(str(zi) for zi, _ in sel), route_names)
         # the kid must be able to read every street between the stops: zoom out until they fit (twice at most)
         missing = [n for n in missing if not re.search(r"(brug|plein|tuin|plantsoen)$", n)]
@@ -1140,6 +1147,8 @@ li { margin: .15em 0; }
 .zgroup { opacity: .6; }
 .zarea { fill: #fff; stroke: #fff; stroke-width: 47; stroke-linejoin: round; stroke-linecap: round; }
 .stop { fill: #111; stroke: #fff; stroke-width: 1.5; }
+.cam rect { fill: #fff; stroke: #111; stroke-width: 1.5; }
+.cam circle { fill: #111; }
 .stopnum { font-size: 9px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .zarea-edge.small { stroke-width: 24; }
 .zarea.small { stroke-width: 20; }

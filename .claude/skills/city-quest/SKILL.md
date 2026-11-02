@@ -174,6 +174,9 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   reached by ferry, tram or another ride gets `"leg": "ferry"` (or `"tram"`…):
   it is not checked for a walking connection. A `trail`
   challenge's place is hidden from the kid (it is the riddle's answer).
+  A photo hunt lists its targets in `spots` (`[{"lat", "lon"}]`): each is drawn on the zone
+  map as a camera icon without a name, so the kid sees which way to go; the card can then
+  name the places.
 - `rules`: `steps`, `perks` (`cost`, `text`), `curse_intro`, `curses`, and
   optional `nav_bonus` (coins per zone when the kid navigates all its stops alone;
   printed as 🧭 dots on the zone's coin line and added to the rank check).
