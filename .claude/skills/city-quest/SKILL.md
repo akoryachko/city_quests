@@ -271,10 +271,11 @@ non-text values, then build each file:
 pictures show only numbers and local street names, so every language shares
 the main quest's (`quest-map*.png`, `quest-pins.json`).
 
-**Stickers.** `python3 .claude/skills/city-quest/scripts/build_stickers.py <folder>/quest.json`
-writes `<city>-stickers.pdf`: one A4 sheet of round zone-capture stickers for sticker paper,
-per zone 3 × 18 mm (they cover the sticker circle on the zone card) and 2 × 10 mm (for the
-city map); `--big`/`--small` change the counts.
+**Stickers.** `python3 .claude/skills/city-quest/scripts/build_stickers.py <folder>/quest.json [other/quest.json …]`
+writes a colour A4 sheet of round zone-capture stickers for sticker paper (`<city>-stickers.pdf`,
+or `stickers.pdf` for several quests on one sheet): per zone 3 × 18 mm (they cover the sticker
+circle on the zone card) and 2 × 10 mm (for the city map), one colour per zone; `--big`/`--small`
+change the counts.
 
 **Website.** `python3 .claude/skills/city-quest/scripts/build_site.py`
 renders every city and language into the git-ignored `site/` folder (`--out

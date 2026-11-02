@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Render round zone-capture stickers for a quest onto one A4 sheet: <city>-stickers.pdf.
+"""Render round zone-capture stickers for one or more quests onto A4: a PDF for sticker paper.
 
 Usage:
-    python3 build_stickers.py path/to/quest.json [--big 3] [--small 2]
+    python3 build_stickers.py path/to/quest.json [more/quest.json …] [--big 3] [--small 2] [--out FILE]
 
-Print on A4 sticker paper and cut along the thin circles. Every zone gets a row:
-`--big` stickers of 18 mm (they cover the "sticker" circle on the zone card; a spare goes
-in the collection) and `--small` stickers of 10 mm (for the zone on the city map).
-Black and white: ring, "CLAIMED" on top, the zone number below, the zone emoji in grey.
+Print in colour on A4 sticker paper at 100 % scale and cut along the thin grey circles.
+Every zone gets a block: `--big` stickers of 18 mm (they cover the "sticker" circle on the
+zone card; a spare goes in the collection) and `--small` stickers of 10 mm (for the zone on
+the city map). Each zone has its own colour; the big sticker shows "CLAIMED" on top, the zone
+number below and the zone emoji in the middle. Several quests share the sheet to save paper.
+Default output: <folder>/<city>-stickers.pdf for one quest, ./stickers.pdf for several.
 """
 import argparse
 import json
@@ -16,12 +18,17 @@ from pathlib import Path
 
 from build_quest import LABELS, esc, find_chrome, run_chrome, set_language
 
-BIG, SMALL, GAP = 18, 10, 4  # mm
+BIG, SMALL, GAP = 18, 10, 3  # mm
+# (ring, tint) per zone: saturated enough to tell 12 zones apart, dark enough for white digits
+COLOURS = [("#1f6fb2", "#dcebf7"), ("#d1495b", "#f9dfe2"), ("#e0a100", "#fbf0cc"), ("#2e9e5b", "#dbf1e3"),
+           ("#7b4fb8", "#ebe2f6"), ("#e3702b", "#fbe5d6"), ("#138a8a", "#d5eeee"), ("#b5397f", "#f5dcea"),
+           ("#5b7f1e", "#e7efd6"), ("#3d4fb5", "#dfe2f6"), ("#a0522d", "#f2e2d8"), ("#2f8fcf", "#daedf8")]
 
 
 def big_sticker(zi, z, uid):
-    """An 18 mm sticker: double ring, the claimed word along the top, zone number along the bottom."""
+    """An 18 mm sticker: coloured ring, the claimed word along the top, zone number along the bottom."""
     r = BIG / 2
+    ring, tint = COLOURS[(zi - 1) % len(COLOURS)]
     top, bottom = f"t{uid}", f"b{uid}"
     return f"""<svg class="st" viewBox="0 0 {BIG} {BIG}" style="width:{BIG}mm;height:{BIG}mm">
   <defs>
@@ -29,8 +36,8 @@ def big_sticker(zi, z, uid):
     <path id="{bottom}" d="M {r-7.3},{r} A 7.3 7.3 0 0 0 {r+7.3},{r}"/>
   </defs>
   <circle class="cut" cx="{r}" cy="{r}" r="{r-.05}"/>
-  <circle class="ring" cx="{r}" cy="{r}" r="{r-.7}"/>
-  <circle class="ring2" cx="{r}" cy="{r}" r="{r-3.7}"/>
+  <circle cx="{r}" cy="{r}" r="{r-.4}" fill="{ring}"/>
+  <circle cx="{r}" cy="{r}" r="{r-3.5}" fill="{tint}" stroke="#fff" stroke-width=".35"/>
   <text class="arc"><textPath href="#{top}" startOffset="50%">{esc(LABELS['claimed'])}</textPath></text>
   <text class="arc"><textPath href="#{bottom}" startOffset="50%">★ {esc(LABELS['zone'].upper())} {zi} ★</textPath></text>
   <text class="emoji" x="{r}" y="{r+1.9}">{esc(z.get('emoji', '🏳️'))}</text>
@@ -38,53 +45,57 @@ def big_sticker(zi, z, uid):
 
 
 def small_sticker(zi):
-    """A 10 mm sticker for the city map: a black disc with the zone number, like the map's badges."""
+    """A 10 mm sticker for the city map: a disc in the zone's colour with its number."""
     r = SMALL / 2
+    ring, _ = COLOURS[(zi - 1) % len(COLOURS)]
     return f"""<svg class="st" viewBox="0 0 {SMALL} {SMALL}" style="width:{SMALL}mm;height:{SMALL}mm">
   <circle class="cut" cx="{r}" cy="{r}" r="{r-.05}"/>
-  <circle class="disc" cx="{r}" cy="{r}" r="{r-.6}"/>
+  <circle cx="{r}" cy="{r}" r="{r-.4}" fill="{ring}" stroke="#fff" stroke-width=".3"/>
   <text class="num" x="{r}" y="{r+1.9}">{zi}</text>
 </svg>"""
 
 
 CSS = f"""
-@page {{ size: A4 portrait; margin: 10mm; }}
+@page {{ size: A4 portrait; margin: 9mm; }}
 * {{ box-sizing: border-box; }}
-body {{ margin: 0; font-family: "Noto Sans", "DejaVu Sans", Arial, sans-serif; }}
-.row {{ display: flex; align-items: center; gap: {GAP}mm; height: {BIG + GAP}mm; }}
-.name {{ width: 52mm; font-size: 8pt; color: #555; }}
-.name b {{ color: #000; }}
-.cut {{ fill: #fff; stroke: #999; stroke-width: .12; }}
-.ring {{ fill: none; stroke: #000; stroke-width: .8; }}
-.ring2 {{ fill: none; stroke: #000; stroke-width: .25; }}
-.arc {{ font-size: 2.1px; font-weight: bold; letter-spacing: .15px; text-anchor: middle; fill: #000; }}
-.emoji {{ font-size: 5.6px; text-anchor: middle; filter: grayscale(1) brightness(.8) contrast(1.6); }}
-.disc {{ fill: #000; }}
+body {{ margin: 0; font-family: "Noto Sans", "DejaVu Sans", Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
+h2 {{ font-size: 9pt; margin: 1mm 0 1mm; }}
+.grid {{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; row-gap: 1.5mm; }}
+.zone {{ break-inside: avoid; }}
+.name {{ font-size: 6.5pt; color: #444; white-space: nowrap; overflow: hidden; }}
+.row {{ display: flex; align-items: center; gap: {GAP}mm; }}
+.cut {{ fill: #fff; stroke: #aaa; stroke-width: .12; }}
+.arc {{ font-size: 2.1px; font-weight: bold; letter-spacing: .15px; text-anchor: middle; fill: #fff; }}
+.emoji {{ font-size: 5.6px; text-anchor: middle; }}
 .num {{ font-size: 5.4px; font-weight: bold; text-anchor: middle; fill: #fff; }}
-.hint {{ font-size: 7pt; color: #777; margin-top: 2mm; }}
+.hint {{ font-size: 7pt; color: #777; margin-top: 3mm; }}
 """
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("quest")
+    ap.add_argument("quests", nargs="+")
     ap.add_argument("--big", type=int, default=3, help="18 mm stickers per zone")
     ap.add_argument("--small", type=int, default=2, help="10 mm stickers per zone")
+    ap.add_argument("--out", help="PDF to write")
     a = ap.parse_args()
-    path = Path(a.quest)
-    q = json.loads(path.read_text())
-    set_language(q)
-    rows = []
-    for zi, z in enumerate(q["zones"], 1):
-        stickers = [big_sticker(zi, z, f"{zi}_{k}") for k in range(a.big)] + [small_sticker(zi) for _ in range(a.small)]
-        rows.append(f'<div class="row"><div class="name"><b>{zi}</b> · {esc(z["name"])}</div>{"".join(stickers)}</div>')
-    if len(q["zones"]) * (BIG + GAP) > 277:
-        print("WARNING: too many zones for one A4 sheet; the rest spills onto a second page")
-    hint = "Печатать на A4 бумаге-наклейке в 100 % масштабе, вырезать по тонким кругам." if q.get("language", "ru") == "ru" \
-        else "Print on A4 sticker paper at 100 % scale; cut along the thin circles."
-    doc = f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(rows)}<div class="hint">{hint}</div></body></html>'
-    city = path.parent.name
-    pdf = path.parent / f"{city}-stickers.pdf"
+    sections, lang = [], "ru"
+    for qp in a.quests:
+        path = Path(qp)
+        q = json.loads(path.read_text())
+        set_language(q)
+        lang = q.get("language", "ru")
+        blocks = []
+        for zi, z in enumerate(q["zones"], 1):
+            st = [big_sticker(zi, z, f"{path.parent.name}{zi}_{k}") for k in range(a.big)] + [small_sticker(zi) for _ in range(a.small)]
+            blocks.append(f'<div class="zone"><div class="name"><b>{zi}</b> · {esc(z["name"])}</div><div class="row">{"".join(st)}</div></div>')
+        sections.append(f'<h2>{esc(q.get("title", q.get("city", "")))}</h2><div class="grid">{"".join(blocks)}</div>')
+    hint = "Печатать в цвете на A4 бумаге-наклейке в 100 % масштабе, вырезать по тонким серым кругам." if lang == "ru" \
+        else "Print in colour on A4 sticker paper at 100 % scale; cut along the thin grey circles."
+    doc = f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(sections)}<div class="hint">{hint}</div></body></html>'
+    first = Path(a.quests[0])
+    pdf = Path(a.out) if a.out else (first.parent / f"{first.parent.name}-stickers.pdf" if len(a.quests) == 1 else Path("stickers.pdf"))
+    pdf.unlink(missing_ok=True)
     chrome = find_chrome()
     with tempfile.TemporaryDirectory() as tmp:
         html_path = Path(tmp) / "stickers.html"
