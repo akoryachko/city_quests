@@ -5,7 +5,7 @@ Usage:
     python3 build_quest.py path/to/quest.json [--out-dir DIR] [--name quest]
 
 The PDF is A4 landscape; every sheet holds two A5 portrait cards (cut along the
-dashed line). Card order: cover, rules, map, zone cards, collection, scorecard,
+dashed line). Kid cards sit 15 mm off the cut, room for ring-binder holes. Card order: cover, rules, map, zone cards, collection, scorecard,
 certificate, then parent pages on their own sheets. With "campaign": true the
 base cards come first and every zone gets its own sheet (zone map + challenges).
 Designed to print well in black and white; with "colour": true in quest.json every zone gets
@@ -77,6 +77,7 @@ LABELS = {
     "certificate_text": "Настоящим подтверждается, что этот отважный путешественник",
     "certificate_text2": "захвачено зон:",
     "medal": "медаль",
+    "conqueror": "ПОКОРИТЕЛЬ",
     "date": "Дата",
     "signature": "Подпись",
     "team": "Команда",
@@ -107,6 +108,7 @@ LABELS = {
 LABELS_F = {
     "certificate_title": "Покорительница города",
     "certificate_text": "Настоящим подтверждается, что эта отважная путешественница",
+    "conqueror": "ПОКОРИТЕЛЬНИЦА",
 }
 
 # Built-in labels for an English quest (`"language": "en"`); the quest's own `labels` still win.
@@ -119,7 +121,7 @@ LABELS_EN = {
     "claimed_col": "Claimed", "duels": "Duels", "kid": "Me", "parents": "Parents", "total": "Total coins",
     "spent": "Coins spent", "certificate": "Certificate", "certificate_title": "Conqueror of",
     "certificate_text": "This certifies that this brave traveller", "certificate_text2": "zones claimed:",
-    "medal": "medal", "date": "Date", "signature": "Signature", "team": "Team", "parent_pages": "For parents",
+    "medal": "medal", "conqueror": "CONQUEROR OF", "date": "Date", "signature": "Signature", "team": "Team", "parent_pages": "For parents",
     "answers": "Answers and hints", "parent_zone": "for parents", "measures": "My measures (measure at home with a tape):",
     "plan": "Plan", "curses": "City curses", "perks": "What coins buy", "hotel": "Start",
     "shopping": "Bring / buy", "notes": "Notes", "bookings": "Tickets and bookings", "b_when": "When",
@@ -1132,6 +1134,9 @@ a { color: inherit; }
 .sheet:last-child { page-break-after: auto; }
 .sheet::after { content: "✂"; position: absolute; left: 148.5mm; top: 0; bottom: 0; border-left: 0.4mm dashed #999; color: #999; font-size: 10pt; padding-left: 1mm; }
 .card { width: 148.5mm; height: 210mm; padding: 7mm; overflow: hidden; }
+/* kid sheets are cut in the middle and filed in a ring binder: a hole margin at the cut edge */
+.binder > .card:first-child { padding: 7mm 15mm 7mm 4mm; }
+.binder > .card:last-child { padding: 7mm 4mm 7mm 15mm; }
 .fit { height: 100%; overflow: hidden; border: 1mm solid var(--c, #333); border-radius: 6mm; padding: 5mm 5.5mm; font-size: 11pt; line-height: 1.3; display: flex; flex-direction: column; }
 h1 { font-size: 2.1em; margin: .2em 0; line-height: 1.1; }
 h2 { font-size: 1.45em; margin: 0 0 .35em; line-height: 1.15; }
@@ -1327,10 +1332,11 @@ def build_html(q, map_html, zone_maps=None):
     # parent pages start on their own sheet so they can be kept apart from the kid's cards
     if len(cards) % 2:
         cards.append(notes_card())
+    kid = len(cards)
     cards += [parent_plan_card(q)] + bookings_cards(q, int(q.get("bookings_per_card", 4))) + parent_answer_cards(q, per_card)
     if len(cards) % 2:
         cards.append(notes_card())
-    sheets = "".join(f'<div class="sheet">{cards[k]}{cards[k+1]}</div>' for k in range(0, len(cards), 2))
+    sheets = "".join(f'<div class="sheet{" binder" if k < kid else ""}">{cards[k]}{cards[k+1]}</div>' for k in range(0, len(cards), 2))
     return page(q.get("title", q["city"]), sheets, q.get("language", "ru"))
 
 

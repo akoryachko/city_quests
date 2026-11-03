@@ -60,12 +60,15 @@ dislikes something, reduce it rather than drop it. Rough targets for a
 translator/ordering tasks.
 
 **More sights than slots.** When a zone passes more landmarks than it has task slots, bundle
-the extras into one photo hunt: "in 30 minutes, photograph these 4 spots" (any order, the
-clock starts at the first photo). The kid must find each target alone: put every target on the
+the extras into one zone-wide photo hunt: "while you walk the zone, photograph these 4 spots,
+any order, before the boss". No clock: targets can be 10 minutes apart, and a timer spoils
+enjoying the walk (it also leaves the zone's ⏱ slot for another task). Make it the zone's first
+challenge, its stop at or near the first target, so the kid has the list from the start; it
+can then take in targets further apart. The kid must find each target alone: put every target on the
 zone map as a camera icon (`spots`), then the card can just name them; targets off the map need
 their look and place on the card ("a brick tower with a white top, by the Oudeschans canal"). Prefer targets that are easy to recognise (a wooden house, a
 church with two towers, a leaning tower). Or hunt a category instead of named spots: "photograph
-3 different towers / coloured doors / houses with columns in 20 minutes". Duels and food are not needed in every zone; a seasonal task
+3 different towers / coloured doors / houses with columns in this zone". Duels and food are not needed in every zone; a seasonal task
 is fine when the card names the season. For a home-city campaign played over months, don't tie
 tasks to one month; mention season-only extras instead (goat kids in spring).
 

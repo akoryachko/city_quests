@@ -79,10 +79,11 @@ to borrow from for rewrites.
   facades, bridges, viewpoints — from the report's passed/detour POIs and the zone's area) and
   mark which ones a task photographs or interacts with. Name the ones the family would walk
   past unseen or miss entirely, and propose a photo or hands-on task for each, or a reroute.
-  When there are more sights than task slots, propose one photo hunt: "in 30 minutes, photograph
-  these 4 spots" (any order). Every hunt target must be findable by the kid: on the zone map as a
-  camera icon (`spots`), or described on the card by its look and where it is; or the hunt asks for a category ("3 different towers in 20
-  minutes"). Flag a target an unfamiliar kid can't recognise from the card.
+  When there are more sights than task slots, propose one zone-wide photo hunt as the zone's
+  first challenge: "while you walk the zone, photograph these 4 spots before the boss" (any order,
+  no time limit; flag a hunt with a clock). Every hunt target must be findable by the kid: on the zone map as a
+  camera icon (`spots`), or described on the card by its look and where it is; or the hunt asks for a category ("3 different towers in this
+  zone"). Flag a target an unfamiliar kid can't recognise from the card.
 - Ticketed venues: all challenges inside one paid venue (museum, zoo, tower) must come one
   after another on the route, with no challenge outside in between, because leaving means
   paying again to re-enter. If an outside event (a parade, an arrival, a show) has to happen

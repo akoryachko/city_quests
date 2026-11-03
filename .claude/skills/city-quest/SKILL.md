@@ -277,8 +277,8 @@ the main quest's (`quest-map*.png`, `quest-pins.json`).
 **Stickers.** `python3 .claude/skills/city-quest/scripts/build_stickers.py <folder>/quest.json [other/quest.json …]`
 writes a colour A4 sheet of round zone-capture stickers for sticker paper (`<city>-stickers.pdf`,
 or `stickers.pdf` for several quests on one sheet): per zone 3 × 18 mm (they cover the sticker
-circle on the zone card) and 2 × 10 mm (for the city map), one colour per zone; `--big`/`--small`
-change the counts.
+circle on the zone card) and 2 × 10 mm (for the city map), one colour per zone, plus one 32 mm
+gold city medal for the certificate's medal circle; `--big`/`--small`/`--medal` change the counts.
 
 **Website.** `python3 .claude/skills/city-quest/scripts/build_site.py`
 renders every city and language into the git-ignored `site/` folder (`--out
@@ -291,8 +291,9 @@ Then look at the result: view `quest-map.png`, and render the zone cards with
 route, overlapping labels or crowded cards.
 
 Tell the user where the files are, the zones with timing, and anything to
-verify on the spot. Mention that sheets are cut along the dashed line, parent
-pages are the last sheets, and ~2 cm stickers are needed for claiming zones.
+verify on the spot. Mention that sheets are cut along the dashed line (kid cards keep a
+15 mm margin at the cut for ring-binder holes), parent pages are the last sheets, and
+stickers come from `build_stickers.py`.
 
 ### 7. Remember
 
