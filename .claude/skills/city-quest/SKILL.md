@@ -177,9 +177,13 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   reached by ferry, tram or another ride gets `"leg": "ferry"` (or `"tram"`…):
   it is not checked for a walking connection. A `trail`
   challenge's place is hidden from the kid (it is the riddle's answer).
-  A photo hunt lists its targets in `spots` (`[{"lat", "lon"}]`): each is drawn on the zone
+  A photo hunt lists its targets in `spots` (`[{"lat", "lon", "name"}]`): each is drawn on the zone
   map as a camera icon without a name, so the kid sees which way to go; the card can then
-  name the places.
+  name the places. `name` is the target's words exactly as in the task text: on the website
+  they become a Google Maps link to the spot.
+  `"via": [{"lat", "lon"}…]` on a task makes the walk to it pass these points in order
+  (a quieter street, a loop instead of walking the same street twice, past hunt targets);
+  the route report and the map routing follow it.
 - `rules`: `steps`, `perks` (`cost`, `text`), `curse_intro`, `curses`, and
   optional `nav_bonus` (coins per zone when the kid navigates all its stops alone;
   printed as 🧭 dots on the zone's coin line and added to the rank check).

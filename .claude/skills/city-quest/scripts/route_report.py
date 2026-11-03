@@ -24,8 +24,8 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from build_quest import (OVERPASS_URLS, fetch_streets, metres, task_label, walk_graph, walk_route,  # noqa: E402
-                         walking_order, zone_tasks)
+from build_quest import (OVERPASS_URLS, fetch_streets, metres, task_label, walk_graph,  # noqa: E402
+                         walk_to, walking_order, zone_tasks)
 
 POI_CACHE = Path.home() / ".cache" / "city-quest" / "poi"
 KID_KMH = 3.0           # a 7-year-old's walking pace with stops to look around
@@ -223,7 +223,7 @@ def main():
             if tb.get("leg"):
                 out += [f"- {title}: by {tb['leg']}, not walked", ""]
                 continue
-            r = walk_route(g, (ta["lat"], ta["lon"]), (tb["lat"], tb["lon"]))
+            r = walk_to(g, (ta["lat"], ta["lon"]), tb)
             if r is None:
                 out += [f"- {title}: ⚠ no walking connection found", ""]
                 warn.append(f"{la}→{lb} unconnected")

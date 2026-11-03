@@ -106,15 +106,17 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
 
 ## Zone 4 · Ньюмаркт и Весовая
 
-- **4.1 → 4.2** Фотоохота по зоне → Шоколад вслепую: 0 m, ~0 min · same spot
-  - along: —
-  - passed (0): —
+- **4.1 → 4.2** Фотоохота по зоне → Шоколад вслепую: 748 m, ~15 min 
+  - along: quiet street 51%, car-free 49%, along water 60%
+  - streets: Zeedijk, Warmoesstraat, Nieuwebrugsteeg, Oudebrugsteeg, Sint Olofssteeg
+  - passed (3): Rederij Plas [tourism=attraction]; Sint Olofskapel [tourism=attraction]; Plaquette Chet Baker [historic]
+  - short detour (24): Majoor Bosshardt [tourism=artwork] 37 m; Huddesteen [historic] 38 m; Nieuwe Brug [bridge] 40 m; Prins Hendrikkade [bridge] 40 m; Het Majoor Bosshardthuis [tourism=museum] 46 m; Armbrug [bridge] 57 m; Chinatown [tourism=attraction] 57 m; Stromma Open Boat Tours [tourism=attraction] 69 m; Erotisch Museum [tourism=museum] 71 m; Bredero [tourism=artwork] 71 m; Beurs van Berlage [tourism=attraction] 73 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 73 m
 
-- **4.2 → 4.3** Шоколад вслепую → Башня путешественника: 504 m, ~10 min 
-  - along: car-free 95%, along water 81%
-  - streets: Prins Hendrikkade
-  - passed (8): Venustempel Sexmuseum [tourism=museum]; Stromma Open Boat Tours [tourism=attraction]; Stromma NL [tourism=attraction]; Rederij Plas [tourism=attraction]; Huddesteen [historic]; Plaquette Chet Baker [historic]; Nieuwe Brug [bridge]; Prins Hendrikkade [bridge]
-  - short detour (7): Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 39 m; Sint Olofskapel [tourism=attraction] 58 m; Stromma [tourism=attraction] 58 m; Beurs van Berlage [tourism=attraction] 73 m; Sint Nicolaasbrug [bridge] 94 m; Rederij Kooij [tourism=attraction] 108 m; (unnamed historic) [historic] 112 m
+- **4.2 → 4.3** Шоколад вслепую → Башня путешественника: 562 m, ~11 min ⚠ 44% main road
+  - along: main road 44%, car-free 51%, along water 90%
+  - streets: Prins Hendrikkade, Damrak
+  - passed (5): Venustempel Sexmuseum [tourism=museum]; Huddesteen [historic]; Nieuwe Brug [bridge]; Prins Hendrikkade [bridge] (+1 seen before)
+  - short detour (10): Rederij Plas [tourism=attraction] 44 m; Stromma Open Boat Tours [tourism=attraction] 50 m; Stromma NL [tourism=attraction] 50 m; Stromma [tourism=attraction] 52 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 52 m; Beurs van Berlage [tourism=attraction] 69 m; Sint Olofskapel [tourism=attraction] 71 m; Sint Nicolaasbrug [bridge] 87 m; Rederij Kooij [tourism=attraction] 103 m; (unnamed historic) [historic] 104 m
 
 - **4.3 → 4.4** Башня путешественника → Морские чудища: 300 m, ~6 min 
   - along: quiet street 8%, car-free 92%, along water 81%
@@ -122,19 +124,19 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - passed (0): —
   - short detour (2): Prins Hendrik [tourism=artwork] 37 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 69 m
 
-- **4.4 → 4.5** Морские чудища → Дом шириной с дверь: 638 m, ~13 min 
-  - along: quiet street 52%, car-free 48%, along water 50%
-  - streets: Nieuwmarkt, Kloveniersburgwal, Buiten Bantammerstraat, Lastageweg, Waalseilandbrug, Brandewijnsteeg, Koningsstraat
-  - passed (2): Bredero [tourism=artwork]; Chinatown [tourism=attraction]
-  - short detour (9): Wijnkopersgildehuis [tourism=attraction] 60 m; Recht Boomssloot [bridge] 73 m; Fo Guang Shan He Hua Tempel [tourism=attraction] 79 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; Prins Hendrik [tourism=artwork] 102 m; Kompakt meets Oz [tourism=gallery] 106 m; Red Light Secrets [tourism=museum] 109 m; Off the Wall [tourism=gallery] 115 m
+- **4.4 → 4.5** Морские чудища → Дом шириной с дверь: 1434 m, ~29 min 
+  - along: quiet street 80%, car-free 20%, along water 79%
+  - streets: Oudeschans, Binnenkant, Kloveniersburgwal, Raamgracht, Zuiderkerkhof, Buiten Bantammerstraat, Montelbaansbrug, Snoekjessteeg, Oost-Indische Huisbrug, Moddermolenstraat
+  - passed (6): Zuiderkerkstoren [tourism=attraction]; Oost-Indisch Huis [tourism=attraction]; (unnamed fountain) [amenity=fountain]; Oudeschans [bridge]; Montelbaanstoren [tourism=attraction]; Zuiderkerk [tourism=attraction]
+  - short detour (12): Levensboom [tourism=artwork] 48 m; Walenpoortje [tourism=attraction] 58 m; Speeltuin De Waag [leisure=playground] 63 m; Waalse kerk [amenity=place_of_worship] 67 m; Wijnkopersgildehuis [tourism=attraction] 69 m; Grenspaal [historic] 73 m; Rembrandthuis [tourism=museum] 75 m; Spinhuispoort [tourism=attraction] 99 m; Prins Hendrik [tourism=artwork] 102 m; (unnamed playground) [leisure=playground] 104 m; Kikkerbilsluis [man_made=bridge] 104 m; school nr. 2 [historic] 111 m
 
-- **4.5 → 4.👑** Дом шириной с дверь → ⏱ Мастера гильдий: 154 m, ~3 min ⚠ 99% on streets already walked
+- **4.5 → 4.👑** Дом шириной с дверь → ⏱ Мастера гильдий: 154 m, ~3 min 
   - along: quiet street 99%, along water 62%
   - streets: Kloveniersburgwal, Nieuwmarkt
   - passed (0): —
-  - short detour (8): Wijnkopersgildehuis [tourism=attraction] 60 m; Chinatown [tourism=attraction] 73 m; Bredero [tourism=artwork] 74 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; Fo Guang Shan He Hua Tempel [tourism=attraction] 110 m; Off the Wall [tourism=gallery] 115 m; Kompakt meets Oz [tourism=gallery] 115 m
+  - short detour (7): Wijnkopersgildehuis [tourism=attraction] 60 m; Chinatown [tourism=attraction] 73 m; Bredero [tourism=artwork] 74 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; Off the Wall [tourism=gallery] 115 m; Kompakt meets Oz [tourism=gallery] 115 m
 
-**Total walked: 1.6 km, ~32 min** (plus time at the stops). Flags: 4.5→4.👑 99% on streets already walked.
+**Total walked: 3.2 km, ~64 min** (plus time at the stops). Flags: 4.2→4.3 44% main road.
 
 ## Zone 5 · Корабли и NEMO
 

@@ -381,6 +381,21 @@ def walk_route(g, a, b, snap=150):
     return path[::-1], names, dist[nb]
 
 
+def walk_to(g, a, t):
+    """The walk from point `a` to task `t`, through its optional "via" points ([{"lat", "lon"}…], in order)."""
+    pts = [a] + [(v["lat"], v["lon"]) for v in t.get("via", [])] + [(t["lat"], t["lon"])]
+    path, names, total = [], {}, 0.0
+    for x, y in zip(pts, pts[1:]):
+        r = walk_route(g, x, y)
+        if r is None:
+            return None
+        path += r[0][1:] if path else r[0]
+        for n, m in r[1].items():
+            names[n] = names.get(n, 0) + m
+        total += r[2]
+    return path, names, total
+
+
 def join_chains(lines):
     """Join polylines (lists of points) that share end points into longer ones."""
     chains = [list(l) for l in lines if len(l) > 1]
@@ -559,7 +574,7 @@ def route_legs(sel, stops):
             if b.get("leg"):
                 legs[id(b)] = None
                 continue
-            r = walk_route(g, (a["lat"], a["lon"]), (b["lat"], b["lon"]))
+            r = walk_to(g, (a["lat"], a["lon"]), b)
             if r is None:
                 print(f"WARNING: zone {zi}: no walking connection from «{a.get('title')}» to «{b.get('title')}» on the map; "
                       'check the coordinates, or mark the leg "leg": "ferry"/"tram"')
@@ -911,6 +926,17 @@ def place_html(t, links=False):
     return f'<div class="place">📍 <a href="{link}">{text}</a></div>' if link else f'<div class="place">📍 {text}</div>'
 
 
+def task_text_html(ch, links=False):
+    """A task's text; on screen, each photo-hunt `spots` entry with a `name` links its words in the text to the spot on a map."""
+    text = esc(ch.get("text"))
+    if links:
+        for sp in ch.get("spots", []):
+            name = esc(sp.get("name", ""))
+            if name and name in text:
+                text = text.replace(name, f'<a href="{gmaps(sp["lat"], sp["lon"])}">{name}</a>', 1)
+    return text
+
+
 def challenge_li(ch, label, links=False):
     icon, _ = TYPES.get(ch.get("type"), ("⭐", ""))
     duel = ' <span class="duel-tag">⚔️</span>' if ch.get("duel") and ch.get("type") != "duel" else ""
@@ -918,7 +944,7 @@ def challenge_li(ch, label, links=False):
     return f"""<li class="ch">
       <span class="num">{esc(label)}</span><span class="icon">{icon}</span>
       <div class="body"><div class="ch-title"><b>{esc(ch.get('title'))}</b>{duel} {task_coins_html(ch)}</div>
-      <div class="ch-text">{esc(ch.get('text'))}</div>{place}</div>
+      <div class="ch-text">{task_text_html(ch, links)}</div>{place}</div>
       <span class="box"></span></li>"""
 
 
