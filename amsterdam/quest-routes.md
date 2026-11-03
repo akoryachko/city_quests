@@ -38,7 +38,7 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
 
 ## Zone 2 · Иордан и каналы
 
-- **2.1 → 2.2** Три флота → Склады с углами: 972 m, ~19 min 
+- **2.1 → 2.2** Фотоохота: три флота → Склады с углами: 972 m, ~19 min 
   - along: quiet street 71%, car-free 29%, along water 19%, park/green 6%
   - streets: Haarlemmerstraat, Nieuwendijk, Haarlemmerdijk, Binnen Oranjestraat
   - passed (5): Hooffzaak [tourism=gallery]; Gallery 100 [tourism=gallery]; Amsterdamse Scheepvaartbuurt [tourism=artwork]; Anker II [tourism=artwork]; West Indisch Huis [historic]
@@ -72,7 +72,7 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
 
 ## Zone 3 · Дам и тайный двор
 
-- **3.1 → 3.2** Фотоохота за 30 минут → Бронзовый хулиган: 417 m, ~8 min 
+- **3.1 → 3.2** Фотоохота по зоне → Бронзовый хулиган: 417 m, ~8 min 
   - along: car-free 95%, along water 9%
   - streets: Kalverstraat, Spui
   - passed (1): Oude Lutherse Kerk [amenity=place_of_worship]
@@ -106,23 +106,21 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
 
 ## Zone 4 · Ньюмаркт и Весовая
 
-- **4.1 → 4.2** Морские чудища → Башня путешественника: 300 m, ~6 min 
+- **4.1 → 4.2** Фотоохота по зоне → Морские чудища: 0 m, ~0 min · same spot
+  - along: —
+  - passed (0): —
+
+- **4.2 → 4.3** Морские чудища → Башня путешественника: 300 m, ~6 min 
   - along: quiet street 8%, car-free 92%, along water 81%
   - streets: Prins Hendrikkade
   - passed (0): —
   - short detour (2): Prins Hendrik [tourism=artwork] 37 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 69 m
 
-- **4.2 → 4.3** Башня путешественника → Фотоохота за 30 минут: 192 m, ~4 min 
-  - along: quiet street 13%, car-free 87%, along water 33%
-  - streets: Prins Hendrikkade
-  - passed (1): Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship]
-  - short detour (7): Plaquette Chet Baker [historic] 44 m; Sint Olofskapel [tourism=attraction] 44 m; Huddesteen [historic] 96 m; Majoor Bosshardt [tourism=artwork] 107 m; Prins Hendrikkade [bridge] 111 m; Het Majoor Bosshardthuis [tourism=museum] 112 m; Nieuwe Brug [bridge] 114 m
-
-- **4.3 → 4.4** Фотоохота за 30 минут → Китайский дворец: 355 m, ~7 min 
-  - along: car-free 99%, along water 70%
-  - streets: Zeedijk
-  - passed (2): Sint Olofskapel [tourism=attraction]; Plaquette Chet Baker [historic]
-  - short detour (16): Majoor Bosshardt [tourism=artwork] 50 m; Chinatown [tourism=attraction] 57 m; Armbrug [bridge] 61 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 70 m; Erotisch Museum [tourism=museum] 71 m; Bredero [tourism=artwork] 71 m; Het Majoor Bosshardthuis [tourism=museum] 72 m; Huddesteen [historic] 85 m; Red Light Secrets [tourism=museum] 86 m; Liesdelsluis [bridge] 86 m; The Tabernacle [amenity=place_of_worship] 92 m; Kompakt meets Oz [tourism=gallery] 96 m
+- **4.3 → 4.4** Башня путешественника → Китайский дворец: 372 m, ~7 min 
+  - along: quiet street 77%, car-free 23%, along water 69%
+  - streets: Geldersekade, Zeedijk, Stormsteeg
+  - passed (0): —
+  - short detour (12): Chinatown [tourism=attraction] 57 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 66 m; Erotisch Museum [tourism=museum] 71 m; Bredero [tourism=artwork] 71 m; Red Light Secrets [tourism=museum] 86 m; Liesdelsluis [bridge] 86 m; The Tabernacle [amenity=place_of_worship] 92 m; Kompakt meets Oz [tourism=gallery] 96 m; Armbrug [bridge] 100 m; Majoor Bosshardt [tourism=artwork] 107 m; Ons' Lieve Heer op Solder [amenity=place_of_worship] 115 m; Ons' Lieve Heer op Solder [tourism=museum] 118 m
 
 - **4.4 → 4.5** Китайский дворец → Дом шириной с дверь: 263 m, ~5 min 
   - along: quiet street 73%, car-free 27%, along water 53%
@@ -136,7 +134,7 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - passed (0): —
   - short detour (7): Wijnkopersgildehuis [tourism=attraction] 60 m; Chinatown [tourism=attraction] 73 m; Bredero [tourism=artwork] 74 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; Off the Wall [tourism=gallery] 115 m; Kompakt meets Oz [tourism=gallery] 115 m
 
-**Total walked: 1.3 km, ~25 min** (plus time at the stops). Flags: 4.5→4.👑 99% on streets already walked.
+**Total walked: 1.1 km, ~22 min** (plus time at the stops). Flags: 4.5→4.👑 99% on streets already walked.
 
 ## Zone 5 · Корабли и NEMO
 
@@ -289,34 +287,40 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
 
 ## Zone 10 · Рейксмузеум и Де Пейп
 
-- **10.1 → 10.2** Эскалатор-великан → Храм в парке: 461 m, ~9 min 
-  - along: quiet street 70%, car-free 30%, along water 7%, park/green 51%
-  - streets: Sarphatipark, Govert Flinckstraat
-  - passed (1): Sarphatipark [leisure=park]
-  - short detour (5): (unnamed fountain) [amenity=fountain] 89 m; Paleisbeeld [tourism=artwork] 104 m; (unnamed artwork) [tourism=artwork] 109 m; (unnamed playground) [leisure=playground] 110 m; Kijkpunt muPe [tourism=gallery] 113 m
+- **10.1 → 10.2** Эскалатор-великан → Фотоохота по зоне: 369 m, ~7 min 
+  - along: quiet street 87%, car-free 13%
+  - streets: Govert Flinckstraat, Albert Cuypstraat
+  - passed (0): —
+  - short detour (2): (unnamed artwork) [tourism=artwork] 64 m; Kijkpunt muPe [tourism=gallery] 100 m
 
-- **10.2 → 10.3** Храм в парке → ⏱ Горка и туннель: 1220 m, ~24 min 
+- **10.2 → 10.3** Фотоохота по зоне → Храм в парке: 500 m, ~10 min 
+  - along: quiet street 62%, car-free 38%, along water 7%, park/green 48%
+  - streets: Sarphatipark, Albert Cuypstraat
+  - passed (1): Sarphatipark [leisure=park]
+  - short detour (5): (unnamed artwork) [tourism=artwork] 64 m; (unnamed fountain) [amenity=fountain] 89 m; Kijkpunt muPe [tourism=gallery] 100 m; Paleisbeeld [tourism=artwork] 104 m; (unnamed playground) [leisure=playground] 110 m
+
+- **10.3 → 10.4** Храм в парке → ⏱ Горка и туннель: 1220 m, ~24 min 
   - along: quiet street 63%, car-free 37%, along water 32%, park/green 50%
   - streets: Daniël Stalpertstraat, Eerste Van der Helststraat, Sarphatipark, Ruysdaelkade, Gerard Douplein
   - passed (3): (unnamed artwork) [tourism=artwork]; Shambhala [amenity=place_of_worship] (+1 seen before)
   - short detour (9): Mercurius en Psyche [tourism=artwork] 69 m; Frans Halstuinen [leisure=garden] 87 m; (unnamed fountain) [amenity=fountain] 89 m; Paleisbeeld [tourism=artwork] 104 m; Carel Willinkplantsoen [leisure=park] 109 m; (unnamed playground) [leisure=playground] 110 m; Kijkpunt muPe [tourism=gallery] 113 m; Galerie van Campen [tourism=gallery] 116 m; Carel Willink [tourism=artwork] 119 m
 
-- **10.3 → 10.4** ⏱ Горка и туннель → Лира на пальце: 271 m, ~5 min 
+- **10.4 → 10.5** ⏱ Горка и туннель → Лира на пальце: 271 m, ~5 min 
   - along: car-free 100%, along water 64%, park/green 46%
   - passed (2): Mercurius en Psyche [tourism=artwork]; Portrait [tourism=artwork]
   - short detour (6): Moco Museum [tourism=museum] 39 m; Tempter [tourism=artwork] 45 m; Reflecting Forward [tourism=artwork] 54 m; House of Bols [tourism=museum] 91 m; Van Gogh Museum [tourism=museum] 112 m; Herepoort [historic] 114 m
 
-- **10.4 → 10.5** Лира на пальце → Ночной дозор: 307 m, ~6 min 
+- **10.5 → 10.6** Лира на пальце → Ночной дозор: 307 m, ~6 min 
   - along: car-free 100%, along water 51%, park/green 43%
   - passed (2): — (+2 seen before)
   - short detour (16): Moco Museum [tourism=museum] 39 m; Tempter [tourism=artwork] 45 m; Bench [tourism=artwork] 50 m; Kyoko San [tourism=artwork] 53 m; Reflecting Forward [tourism=artwork] 54 m; Personage 1 [tourism=artwork] 60 m; Mercurius [tourism=artwork] 63 m; (unnamed historic) [historic] 64 m; Canal Tours Amsterdam [tourism=attraction] 67 m; Museumbrug [bridge] 83 m; House of Bols [tourism=museum] 91 m; Herepoort [historic] 96 m
 
-- **10.5 → 10.👑** Ночной дозор → Кукольный дом: 127 m, ~3 min ⚠ hardly a walk
+- **10.6 → 10.👑** Ночной дозор → Кукольный дом: 127 m, ~3 min ⚠ hardly a walk
   - along: car-free 100%, along water 57%, park/green 50%
   - passed (0): —
   - short detour (12): Bench [tourism=artwork] 50 m; Mercurius en Psyche [tourism=artwork] 52 m; Kyoko San [tourism=artwork] 53 m; Personage 1 [tourism=artwork] 60 m; Mercurius [tourism=artwork] 63 m; (unnamed historic) [historic] 64 m; Canal Tours Amsterdam [tourism=attraction] 67 m; Museumbrug [bridge] 83 m; Herepoort [historic] 98 m; Stadhouderskade [bridge] 101 m; Carel Willink [tourism=artwork] 112 m; P.C. Hooft [tourism=artwork] 120 m
 
-**Total walked: 2.4 km, ~48 min** (plus time at the stops). Flags: 10.5→10.👑 hardly a walk.
+**Total walked: 2.8 km, ~56 min** (plus time at the stops). Flags: 10.6→10.👑 hardly a walk.
 
 ## Zone 11 · Мельницы Запада
 
