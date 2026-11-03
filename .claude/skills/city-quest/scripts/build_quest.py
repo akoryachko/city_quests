@@ -1053,11 +1053,11 @@ def bookings_cards(q, per_card=4):
     ]
 
 
-def parent_zone_block(z, zi, part=None):
+def parent_zone_block(z, zi, part=None, head=True):
     """Logistics, answers and the stories behind every spot of a zone (`parent_story`, task `facts`).
 
     `part` limits the block to some task numbers (a long zone split over two cards); the zone
-    story and logistics go with the first part.
+    story, logistics and bookings go with the first part (`head`).
     """
     lines = []
     for ti, t in enumerate(zone_tasks(z), 1):
@@ -1076,7 +1076,7 @@ def parent_zone_block(z, zi, part=None):
     log_html = " · ".join(esc(v) for v in [log.get(k) for k in ("where", "hours", "cost", "food", "toilets")] if v)
     story = f'<p class="pstory">{esc(z["parent_story"])}</p>' if z.get("parent_story") else ""
     books = "".join(booking_html(b) for b in z.get("bookings", []))
-    if part is not None and 1 not in part:
+    if not head:
         story = log_html = books = ""
     log_p = f'<p class="log">{log_html}</p>' if log_html else ""
     return f"""<div class="pz"><h3>{esc(z.get('emoji',''))} {zi}. {esc(z['name'])}</h3>
@@ -1094,7 +1094,8 @@ def zone_parts(z):
     used += sum(len(str(v)) + 30 for b in z.get("bookings", []) for v in b.values())
     parts, cur = [], []
     for ti, t in enumerate(zone_tasks(z), 1):
-        if cur and used + size(t) > PARENT_CARD_CHARS:
+        # a zone whose story, logistics and bookings fill most of a card starts its tasks on the next
+        if (cur or used) and used + size(t) > PARENT_CARD_CHARS:
             parts.append(cur)
             cur, used = [], 0
         cur.append(ti)
@@ -1110,7 +1111,7 @@ def parent_answer_cards(q, per_card):
             parts = zone_parts(z)
             for k, part in enumerate(parts):
                 more = f" ({k + 1}/{len(parts)})" if len(parts) > 1 else ""
-                cards.append(card(f"<h2>🔑 {LABELS['zone']} {i} — {LABELS['parent_zone']}{more}</h2>" + parent_zone_block(z, i, set(part)), "parent", "#333"))
+                cards.append(card(f"<h2>🔑 {LABELS['zone']} {i} — {LABELS['parent_zone']}{more}</h2>" + parent_zone_block(z, i, set(part), k == 0), "parent", "#333"))
         return cards
     return [
         card(f"<h2>🔑 {LABELS['answers']}</h2>" + "".join(parent_zone_block(z, i) for i, z in zones[k : k + per_card]), "parent", "#333")

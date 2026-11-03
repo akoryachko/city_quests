@@ -82,7 +82,8 @@ to borrow from for rewrites.
   When there are more sights than task slots, the zone needs a zone-wide photo hunt as its
   first challenge: "while you walk the zone, photograph these spots before the boss" (any order,
   no time limit; flag a hunt with a clock). Flag a zone with unused sights and no hunt, and a hunt
-  that leaves out a nice sight on the way (it isn't capped at 4). Every hunt target must be findable by the kid: on the zone map as a
+  that leaves out a nice sight on the way (it isn't capped at 4). Every target needs a parent
+  entry: where it is, what it is and a fun fact. Every hunt target must be findable by the kid: on the zone map as a
   camera icon (`spots`), or described on the card by its look and where it is; or the hunt asks for a category ("3 different towers in this
   zone"). Flag a target an unfamiliar kid can't recognise from the card.
 - Ticketed venues: all challenges inside one paid venue (museum, zoo, tower) must come one

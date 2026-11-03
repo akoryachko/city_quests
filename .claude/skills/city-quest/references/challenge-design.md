@@ -65,7 +65,8 @@ the zone, photograph these spots, any order, before the boss". List every sight 
 not a fixed 4 (5–8 is fine in a rich zone); more targets earn more coins. No clock: targets can be 10 minutes apart, and a timer spoils
 enjoying the walk (it also leaves the zone's ⏱ slot for another task). Make it the zone's first
 challenge, its stop at or near the first target, so the kid has the list from the start; it
-can then take in targets further apart. The kid must find each target alone: put every target on the
+can then take in targets further apart. On the parent page, number the targets in route order: in
+`answer` where each one is, in `facts` what it is plus a fun fact for the kid. The kid must find each target alone: put every target on the
 zone map as a camera icon (`spots`), then the card can just name them; targets off the map need
 their look and place on the card ("a brick tower with a white top, by the Oudeschans canal"). Prefer targets that are easy to recognise (a wooden house, a
 church with two towers, a leaning tower). Or hunt a category instead of named spots: "photograph

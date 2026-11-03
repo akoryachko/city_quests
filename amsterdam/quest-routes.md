@@ -106,35 +106,35 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
 
 ## Zone 4 · Ньюмаркт и Весовая
 
-- **4.1 → 4.2** Фотоохота по зоне → Морские чудища: 0 m, ~0 min · same spot
+- **4.1 → 4.2** Фотоохота по зоне → Шоколад вслепую: 0 m, ~0 min · same spot
   - along: —
   - passed (0): —
 
-- **4.2 → 4.3** Морские чудища → Башня путешественника: 300 m, ~6 min 
+- **4.2 → 4.3** Шоколад вслепую → Башня путешественника: 504 m, ~10 min 
+  - along: car-free 95%, along water 81%
+  - streets: Prins Hendrikkade
+  - passed (8): Venustempel Sexmuseum [tourism=museum]; Stromma Open Boat Tours [tourism=attraction]; Stromma NL [tourism=attraction]; Rederij Plas [tourism=attraction]; Huddesteen [historic]; Plaquette Chet Baker [historic]; Nieuwe Brug [bridge]; Prins Hendrikkade [bridge]
+  - short detour (7): Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 39 m; Sint Olofskapel [tourism=attraction] 58 m; Stromma [tourism=attraction] 58 m; Beurs van Berlage [tourism=attraction] 73 m; Sint Nicolaasbrug [bridge] 94 m; Rederij Kooij [tourism=attraction] 108 m; (unnamed historic) [historic] 112 m
+
+- **4.3 → 4.4** Башня путешественника → Морские чудища: 300 m, ~6 min 
   - along: quiet street 8%, car-free 92%, along water 81%
   - streets: Prins Hendrikkade
   - passed (0): —
   - short detour (2): Prins Hendrik [tourism=artwork] 37 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 69 m
 
-- **4.3 → 4.4** Башня путешественника → Китайский дворец: 372 m, ~7 min 
-  - along: quiet street 77%, car-free 23%, along water 69%
-  - streets: Geldersekade, Zeedijk, Stormsteeg
-  - passed (0): —
-  - short detour (12): Chinatown [tourism=attraction] 57 m; Co-kathedrale Basiliek van Sint Nicolaas [amenity=place_of_worship] 66 m; Erotisch Museum [tourism=museum] 71 m; Bredero [tourism=artwork] 71 m; Red Light Secrets [tourism=museum] 86 m; Liesdelsluis [bridge] 86 m; The Tabernacle [amenity=place_of_worship] 92 m; Kompakt meets Oz [tourism=gallery] 96 m; Armbrug [bridge] 100 m; Majoor Bosshardt [tourism=artwork] 107 m; Ons' Lieve Heer op Solder [amenity=place_of_worship] 115 m; Ons' Lieve Heer op Solder [tourism=museum] 118 m
-
-- **4.4 → 4.5** Китайский дворец → Дом шириной с дверь: 263 m, ~5 min 
-  - along: quiet street 73%, car-free 27%, along water 53%
-  - streets: Nieuwmarkt, Kloveniersburgwal, Zeedijk
-  - passed (1): Chinatown [tourism=attraction]
-  - short detour (9): Bredero [tourism=artwork] 37 m; Wijnkopersgildehuis [tourism=attraction] 60 m; Erotisch Museum [tourism=museum] 79 m; Red Light Secrets [tourism=museum] 85 m; Kompakt meets Oz [tourism=gallery] 93 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; The Tabernacle [amenity=place_of_worship] 102 m; Off the Wall [tourism=gallery] 115 m
+- **4.4 → 4.5** Морские чудища → Дом шириной с дверь: 638 m, ~13 min 
+  - along: quiet street 52%, car-free 48%, along water 50%
+  - streets: Nieuwmarkt, Kloveniersburgwal, Buiten Bantammerstraat, Lastageweg, Waalseilandbrug, Brandewijnsteeg, Koningsstraat
+  - passed (2): Bredero [tourism=artwork]; Chinatown [tourism=attraction]
+  - short detour (9): Wijnkopersgildehuis [tourism=attraction] 60 m; Recht Boomssloot [bridge] 73 m; Fo Guang Shan He Hua Tempel [tourism=attraction] 79 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; Prins Hendrik [tourism=artwork] 102 m; Kompakt meets Oz [tourism=gallery] 106 m; Red Light Secrets [tourism=museum] 109 m; Off the Wall [tourism=gallery] 115 m
 
 - **4.5 → 4.👑** Дом шириной с дверь → ⏱ Мастера гильдий: 154 m, ~3 min ⚠ 99% on streets already walked
   - along: quiet street 99%, along water 62%
   - streets: Kloveniersburgwal, Nieuwmarkt
   - passed (0): —
-  - short detour (7): Wijnkopersgildehuis [tourism=attraction] 60 m; Chinatown [tourism=attraction] 73 m; Bredero [tourism=artwork] 74 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; Off the Wall [tourism=gallery] 115 m; Kompakt meets Oz [tourism=gallery] 115 m
+  - short detour (8): Wijnkopersgildehuis [tourism=attraction] 60 m; Chinatown [tourism=attraction] 73 m; Bredero [tourism=artwork] 74 m; Oost-Indisch Huis [tourism=attraction] 93 m; Walenpoortje [tourism=attraction] 96 m; Fo Guang Shan He Hua Tempel [tourism=attraction] 110 m; Off the Wall [tourism=gallery] 115 m; Kompakt meets Oz [tourism=gallery] 115 m
 
-**Total walked: 1.1 km, ~22 min** (plus time at the stops). Flags: 4.5→4.👑 99% on streets already walked.
+**Total walked: 1.6 km, ~32 min** (plus time at the stops). Flags: 4.5→4.👑 99% on streets already walked.
 
 ## Zone 5 · Корабли и NEMO
 
