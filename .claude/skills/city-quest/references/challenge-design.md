@@ -59,9 +59,10 @@ dislikes something, reduce it rather than drop it. Rough targets for a
 "guess how many" duels, ~6 ⏱ tasks, a few limitation tasks, 2–3
 translator/ordering tasks.
 
-**More sights than slots.** When a zone passes more landmarks than it has task slots, bundle
-the extras into one zone-wide photo hunt: "while you walk the zone, photograph these 4 spots,
-any order, before the boss". No clock: targets can be 10 minutes apart, and a timer spoils
+**More sights than slots.** Give a photo hunt to every zone whose route passes more interesting
+landmarks than its challenges can use: bundle the extras into one zone-wide hunt, "while you walk
+the zone, photograph these spots, any order, before the boss". List every sight worth seeing,
+not a fixed 4 (5–8 is fine in a rich zone); more targets earn more coins. No clock: targets can be 10 minutes apart, and a timer spoils
 enjoying the walk (it also leaves the zone's ⏱ slot for another task). Make it the zone's first
 challenge, its stop at or near the first target, so the kid has the list from the start; it
 can then take in targets further apart. The kid must find each target alone: put every target on the
