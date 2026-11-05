@@ -5,7 +5,7 @@ Usage:
     python3 build_quest.py path/to/quest.json [--out-dir DIR] [--name quest]
 
 The PDF is A4 landscape; every sheet holds two A5 portrait cards (cut along the
-dashed line). Kid cards sit 15 mm off the cut, room for ring-binder holes. Card order: cover, rules, map, zone cards, collection, scorecard,
+dashed line). Kid cards sit 15 mm off the cut, with two drawn punch spots there for the ring binder. Card order: cover, rules, map, zone cards, collection, scorecard,
 certificate, then parent pages on their own sheets. With "campaign": true the
 base cards come first and every zone gets its own sheet (zone map + challenges).
 Designed to print well in black and white; with "colour": true in quest.json every zone gets
@@ -1164,6 +1164,12 @@ a { color: inherit; }
 /* kid sheets are cut in the middle and filed in a ring binder: a hole margin at the cut edge */
 .binder > .card:first-child { padding: 7mm 15mm 7mm 4mm; }
 .binder > .card:last-child { padding: 7mm 4mm 7mm 15mm; }
+/* punch spots for the binder rings (ISO 838: two 6 mm holes, centres 12 mm from the cut, 80 mm apart) */
+.binder > .card { position: relative; }
+.binder > .card::before, .binder > .card::after { content: ""; position: absolute; width: 6mm; height: 6mm; border: .3mm dashed #999; border-radius: 50%; top: 62mm; }
+.binder > .card::after { top: 142mm; }
+.binder > .card:first-child::before, .binder > .card:first-child::after { right: 9mm; }
+.binder > .card:last-child::before, .binder > .card:last-child::after { left: 9mm; }
 .fit { height: 100%; overflow: hidden; border: 1mm solid var(--c, #333); border-radius: 6mm; padding: 5mm 5.5mm; font-size: 11pt; line-height: 1.3; display: flex; flex-direction: column; }
 h1 { font-size: 2.1em; margin: .2em 0; line-height: 1.1; }
 h2 { font-size: 1.45em; margin: 0 0 .35em; line-height: 1.15; }

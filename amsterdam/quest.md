@@ -392,7 +392,7 @@ _Площадь Дам выросла у плотины (dam) на Амстел�
 
 _Zeedijk — бывшая морская дамба, старейшая часть города у порта: отсюда моряки уходили в море и сюда возвращались. Весовая и Schreierstoren — куски средневековой городской стены. Сейчас на Zeedijk китайский квартал._
 
-- Круг: He Hua Temple (Zeedijk) → по Zeedijk, Nieuwebrugsteeg и краю Warmoesstraat к Tony's Chocolonely (Oudebrugsteeg) → по Damrak и Prins Hendrikkade к Schreierstoren → Scheepvaarthuis → по Oudeschans мимо Montelbaanstoren, Zuiderkerk и ворот VOC → Kloveniersburgwal 26 → Waag. ~3,4 км, 2,5 ч. Южнее Oudebrugsteeg на Warmoesstraat и западнее Zeedijk не сворачивайте: там квартал красных фонарей
+- Круг: He Hua Temple (Zeedijk) → по Zeedijk, Nieuwebrugsteeg и краю Warmoesstraat к Tony's Chocolonely (Oudebrugsteeg) → по Damrak и Prins Hendrikkade к Schreierstoren → Scheepvaarthuis → по Oudeschans мимо Montelbaanstoren, Zuiderkerk и ворот VOC → Kloveniersburgwal 26 → Waag. ~3,2 км, 2,5 ч. Южнее Oudebrugsteeg на Warmoesstraat и западнее Zeedijk не сворачивайте: там квартал красных фонарей
 - Tony's Chocolonely Super Store — каждый день с 10:00, закрытие 17:00–21:00 по дням (проверить на tonyschocolonely.com). Остальное снаружи
 - 5 плиток Tony's ≈ €20–25; остальное бесплатно
 - Шоколад из Tony's; китайские пекарни и кафе на Zeedijk (по желанию)

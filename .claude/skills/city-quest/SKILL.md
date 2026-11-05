@@ -265,6 +265,14 @@ after any change to coins, perks or ranks. Card text is auto-sized; exit code 2
 lists cards that still overflow — shorten those texts (or split a big zone
 into two) and rebuild.
 
+**Ring binder.** The family files the kid's cards in a ring binder, so every kid sheet
+with challenges (zone cards, and the map cards that share their sheet) must show where to
+punch: each card keeps a 15 mm margin at the cut edge, and two punch spots are drawn in that
+margin (ISO 838: 6 mm circles, centres 12 mm from the cut, 80 mm apart, centred on the card's
+height), so the holes land in the same place on every card and never through text, a map or
+a sticker circle. Parent pages have no punch spots. `build_quest.py` draws them; check them
+on the rendered zone cards, and keep any new card type inside the margin.
+
 **Translations.** When the profile lists more than one booklet language,
 translate the finished `quest.json` into `quest.<lang>.json` for each other
 language, after the main text is final (and again after every change): the
@@ -296,7 +304,7 @@ route, overlapping labels or crowded cards.
 
 Tell the user where the files are, the zones with timing, and anything to
 verify on the spot. Mention that sheets are cut along the dashed line (kid cards keep a
-15 mm margin at the cut for ring-binder holes), parent pages are the last sheets, and
+15 mm margin at the cut with drawn punch spots for the ring binder), parent pages are the last sheets, and
 stickers come from `build_stickers.py`.
 
 ### 7. Remember
