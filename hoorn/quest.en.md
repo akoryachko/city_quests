@@ -66,7 +66,7 @@ _Today a steam tram takes us to Sinterklaas himself! The stoker fires up the eng
 - [ ] 2.2 🚋 **Window Bingo** (🪙×2) — Look out of the tram window! Find a stolp — a farm with a pyramid roof — a windmill, a church tower and sheep. Seen one? Shout and point! Any three of the four — done.
 - [ ] 2.3 🚋 **Whistle!** ⚔️ (🪙×2+1) — Guess how many times the engine whistles in the first 10 minutes of the ride. The parent guesses too. Count together — whose guess is closer?
 - [ ] 2.4 🗣️ **Ask a Piet** (🪙×2) — Ask a Piet in Dutch what Sinterklaas's horse is called and what it likes to eat. What did he say? Translate it for us!
-- [ ] 👑 **Zone boss: Song for Sint** (🪙×6) — Sinterklaas loves songs! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!
+- [ ] 👑 **Zone boss: Song for Sint** (🪙×6) — Kids sing songs to Sinterklaas! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!
 
 Coins needed: **9** 🏁
 
@@ -124,7 +124,7 @@ Coins needed: **11** 🏁
 
 ### 💡
 
-- The kid speaks Dutch, so they are the team's interpreter where there are definitely people: the Piets on the tram, the Brick City volunteers.
+- The kid speaks Dutch, so he is the team's interpreter where there are definitely people: the Piets on the tram, the Brick City volunteers.
 - ⚔️ Duels: the card shows "🪙×2+1": the kid gets 2 coins even when losing; +1 only for winning.
 - 🌀 A curse lasts until the next finished challenge. A failed boss attempt is not a skip: try again.
 - 🧭 Give the kid the map and follow; "warmer–colder" is allowed. Zone 2: navigating from Turf to the tram platform; zone 3: from Brick City to the Hoogland Vis fish shop.

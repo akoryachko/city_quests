@@ -2,6 +2,7 @@
   "city": "Hoorn",
   "city_local_name": "Hoorn",
   "language": "en",
+  "colour": true,
   "title": "Conquer Hoorn",
   "dates": "Sunday 22 November 2026 · ~9:30–17:00 · ~5 km on foot",
   "players": {
@@ -216,7 +217,7 @@
       ],
       "boss": {
         "title": "Song for Sint",
-        "text": "Sinterklaas loves songs! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!",
+        "text": "Kids sing songs to Sinterklaas! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!",
         "coins": 6,
         "answer": "Standing only: on the platform in Wognum or in the SinterCircus queue, next to the parent; not in a moving carriage. The condition is singing to us; singing to Sint is a bonus if the programme allows. Gift for children under 12.",
         "facts": "Wognum-Nibbixwoud is a restored station on the old line. On the \"Pieten Expres\" the Piets meet the train and take the kids into the SinterCircus to see Sinterklaas; every child under 12 gets a present, then the tram takes everyone back to Hoorn. For the kid: \"Sint loves songs: sing loudly and he'll hear you!\""
@@ -411,7 +412,7 @@
       "Warm clothes: November, wind by the water"
     ],
     "tips": [
-      "The kid speaks Dutch, so they are the team's interpreter where there are definitely people: the Piets on the tram, the Brick City volunteers.",
+      "The kid speaks Dutch, so he is the team's interpreter where there are definitely people: the Piets on the tram, the Brick City volunteers.",
       "⚔️ Duels: the card shows \"🪙×2+1\": the kid gets 2 coins even when losing; +1 only for winning.",
       "🌀 A curse lasts until the next finished challenge. A failed boss attempt is not a skip: try again.",
       "🧭 Give the kid the map and follow; \"warmer–colder\" is allowed. Zone 2: navigating from Turf to the tram platform; zone 3: from Brick City to the Hoogland Vis fish shop.",
