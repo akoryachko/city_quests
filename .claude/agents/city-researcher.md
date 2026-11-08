@@ -25,6 +25,9 @@ Keep personal details from the profile out of your report.
      the source; mark anything you could not confirm;
    - **the story** for the parents: who built it, why, the name, then vs now, legend vs truth;
    - opening days/hours on the outing day, price adult/child, booking needs, if it's a venue.
+   - for a venue (museum, hall, zoo, a ride): the coordinates of its **entrance** or boarding
+     point (not the building's middle), and a link to its own floor plan / site map / line map
+     if it publishes one (every zone needs a map; a one-place zone uses the plan).
 2. **The walk**: the most pleasant way to link the stops — canal sides, quiet lanes, parks,
    pedestrian streets, over which bridges — and streets to avoid (busy roads, building sites,
    a red-light area). Aim for walks of a few hundred metres between stops, with something to

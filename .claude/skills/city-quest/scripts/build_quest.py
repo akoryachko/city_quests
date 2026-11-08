@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a city quest (quest.json) into quest.md, quest.html, <city>-quest.pdf and quest-map.png.
+"""Render a city quest (quest.json) into quest.md, quest.html, <city>-quest.pdf, <city>-quest-book.pdf and quest-map.png.
 
 Usage:
     python3 build_quest.py path/to/quest.json [--out-dir DIR] [--name quest]
@@ -7,7 +7,11 @@ Usage:
 The PDF is A4 landscape; every sheet holds two A5 portrait cards (cut along the
 dashed line). Kid cards sit 15 mm off the cut, with two drawn punch spots there for the ring binder. Card order: cover, rules, map, zone cards, collection, scorecard,
 certificate, then parent pages on their own sheets. With "campaign": true the
-base cards come first and every zone gets its own sheet (zone map + challenges).
+base cards come first; in every quest each zone gets its own sheet (zone map + challenges; a day
+trip after its city map). A zone in one place gets a few streets around it with the entrance
+flagged, or its `map_image` (the place's own plan) instead.
+<city>-quest-book.pdf holds the kid's cards only, imposed as a double-sided book for the
+ring binder (flip on the short edge; see build_book_html).
 Designed to print well in black and white; with "colour": true in quest.json every zone gets
 its colour (the same as its stickers) on its cards and maps, and maps show blue water and green parks. Zone maps are drawn from
 OpenStreetMap data (Overpass API, cached in ~/.cache/city-quest/streets) with
@@ -548,14 +552,70 @@ def street_layers(elements, p, W, H, obstacles, uid, route_names=()):
     return "".join(base), labels, missing
 
 
+RAIL_LEGS = ("tram", "train", "rail", "steam tram", "metro")
+FAR_RIDE = 1500  # metres: a ride to a stop this far from the rest leaves the street map (another town)
+
+
+def far_rides(stops):
+    """Stops reached by a ride (`leg`) that lie more than FAR_RIDE from every stop not reached by one."""
+    walk = [t for _, _, t in stops if not t.get("leg")]
+    return {id(t) for _, _, t in stops if t.get("leg") and walk
+            and min(metres((t["lat"], t["lon"]), (w["lat"], w["lon"])) for w in walk) > FAR_RIDE}
+
+
+def fetch_rails(s, w, n, e):
+    """OpenStreetMap railway and tram tracks in a bounding box (cached)."""
+    path = STREET_CACHE / ("rail_" + "_".join(f"{v:.3f}" for v in (s, w, n, e)) + ".json")
+    if not path.exists():
+        bb = f"{s:.5f},{w:.5f},{n:.5f},{e:.5f}"
+        query = f'[out:json][timeout:90];way["railway"~"^(rail|tram|light_rail|narrow_gauge|preserved)$"]({bb});out geom;'
+        data = urllib.parse.urlencode({"data": query}).encode()
+        for attempt in range(4):
+            req = urllib.request.Request(OVERPASS_URLS[attempt % len(OVERPASS_URLS)], data=data,
+                                         headers={"User-Agent": "city-quest-skill/1.0 (family trip booklet)"})
+            try:
+                raw = urllib.request.urlopen(req, timeout=120).read()
+                json.loads(raw)
+                break
+            except Exception:
+                if attempt == 3:
+                    raise
+                time.sleep(5 * (attempt + 1))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(raw)
+    return json.loads(path.read_text())["elements"]
+
+
+def ride_path(a, b):
+    """The track a tram or train takes from point a to point b, [(lat, lon)…], or None."""
+    m = max(0.02, 0.5 * max(abs(a[0] - b[0]), abs(a[1] - b[1])))  # tracks curve away from the straight line
+    try:
+        els = fetch_rails(min(a[0], b[0]) - m, min(a[1], b[1]) - m, max(a[0], b[0]) + m, max(a[1], b[1]) + m)
+    except Exception as e:
+        print(f"WARNING: no railway data ({e}); the ride is drawn as a straight line")
+        return None
+    g = {}
+    for el in els:
+        geom = [(round(n["lat"], 7), round(n["lon"], 7)) for n in el.get("geometry", []) if n]
+        for x, y in zip(geom, geom[1:]):
+            d = metres(x, y)
+            g.setdefault(x, []).append((y, d, ""))
+            g.setdefault(y, []).append((x, d, ""))
+    r = walk_route(g, a, b, snap=300)
+    return r[0] if r else None
+
+
 def route_legs(sel, stops):
     """Walking paths between consecutive stops of each zone: ({id(task): [(lat, lon)…] or None}, street names).
 
-    A task with "leg" (e.g. "ferry", "tram") is reached by transport: its leg stays a straight line.
+    A task with "leg" (e.g. "ferry", "tram") is reached by transport: a ferry's leg stays a straight
+    line; a tram or train ride follows the tracks (key ("ride", id(task))).
     A walk that finds no street connection in the area is reported, so a map never asks the kid
     to navigate where the streets are not drawn.
     """
-    lats, lons = [t["lat"] for _, _, t in stops], [t["lon"] for _, _, t in stops]
+    far = far_rides(stops)
+    near = [s for s in stops if id(s[2]) not in far]  # a ride to another town: no walking streets there
+    lats, lons = [t["lat"] for _, _, t in near], [t["lon"] for _, _, t in near]
     if len(stops) < 2:
         return {}, set()
     m_lat = max(0.25 * (max(lats) - min(lats)), 0.003)
@@ -573,6 +633,8 @@ def route_legs(sel, stops):
         for a, b in zip(ztasks, ztasks[1:]):
             if b.get("leg"):
                 legs[id(b)] = None
+                if b["leg"] in RAIL_LEGS:
+                    legs[("ride", id(b))] = ride_path((a["lat"], a["lon"]), (b["lat"], b["lon"]))
                 continue
             r = walk_to(g, (a["lat"], a["lon"]), b)
             if r is None:
@@ -607,12 +669,23 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     zones, stops = map_points(sel)
     if overview:  # optional extras can lie far outside a zone (e.g. a ride's departure point)
         stops = [s for s in stops if not s[2].get("optional")]
+    if only is None:  # a ride to another town is on its zone map only
+        far = far_rides(stops)
+        stops = [s for s in stops if id(s[2]) not in far]
     hotel = q.get("hotel") or {}
     campaign = bool(q.get("campaign"))
     with_stops = {zi for _, zi, _ in stops}
     pts = [(z["lat"], z["lon"]) for zi, z in zones if zi not in with_stops] + [(t["lat"], t["lon"]) for _, _, t in stops]
     spots = [] if overview else [(sp["lat"], sp["lon"]) for _, _, t in stops for sp in t.get("spots", [])]
     pts += spots
+    # a zone in one place (a museum, a tram station): its stops all at the entrance; the map
+    # shows a couple of streets around it, with the entrance marked
+    site = None
+    if only is not None and not overview and stops and max(
+            metres((a["lat"], a["lon"]), (b["lat"], b["lon"])) for _, _, a in stops for _, _, b in stops) < 80:
+        site = stops[0][2]
+        for dla, dlo in ((-0.0011, -0.0018), (0.0011, 0.0018)):
+            pts.append((site["lat"] + dla, site["lon"] + dlo))
     if hotel.get("lat") is not None and (len(pts) < 2 or overview):
         pts.append((hotel["lat"], hotel["lon"]))
     if len(pts) < 2:
@@ -622,7 +695,8 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     if not overview:
         legs, route_names = _legs or route_legs(sel, stops)
         pts += [pt for path in legs.values() if path for pt in path]
-    pad = 50 if not overview else 30
+    span = metres((min(la for la, _ in pts), min(lo for _, lo in pts)), (max(la for la, _ in pts), max(lo for _, lo in pts)))
+    pad = 30 if overview else 50 if span < 2500 else 90  # a wide map: room for the town names at its edge
     n_legend = len(sel) if overview else len(stops)
     H = min(H, 630 - 18 * math.ceil(n_legend / 2))  # leave room for the two-column legend
     xy = [merc(la, lo, 18) for la, lo in pts]
@@ -645,7 +719,7 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     # zone maps are drawn from OpenStreetMap data so the street names can sit on top of everything,
     # big and black, for the kid to navigate by; the city overview uses map tiles
     streets = None
-    if not overview:
+    if not overview and span < 2500:  # a map of several km (a ride out of town) uses tiles: towns, tracks, roads
         def unp(x, y):
             n = 256 * 2 ** zoom
             X, Y = (x + x0) / scale / n, (y + y0) / scale / n
@@ -668,7 +742,8 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
         tiles = []
 
     hotel_xy = None
-    if hotel.get("lat") is not None:
+    # a day trip's zone maps show the start point only where the walk starts (zone 1)
+    if hotel.get("lat") is not None and (campaign or only is None or 1 in only):
         hx, hy = p(hotel["lat"], hotel["lon"])
         hotel_xy = (min(max(hx, 16), W - 16), min(max(hy, 20), H - 16))
 
@@ -679,8 +754,9 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
         spread(list(pos.values()) + cams, 25, fixed=[hotel_xy] if hotel_xy else [])
 
     svg = [f'<svg viewBox="0 0 {W} {H}" width="{W}" height="{H}">']
-    route = [hotel_xy] if hotel_xy and not campaign else []
-    areas, hulls = [], []
+    # a day trip's route starts at the start point; on a zone map only the first zone's does
+    route = [hotel_xy] if hotel_xy and not campaign and (only is None or 1 in only) else []
+    areas, hulls, rides, boarding = [], [], [], []
     small = " small" if overview else ""
     for zi, z in sel:
         zstops = [tuple(pos[id(t)]) for t in walking_order(z) if id(t) in pos]
@@ -688,9 +764,22 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
             zstops = [p(z["lat"], z["lon"])]
         if not zstops:
             continue
-        route += zstops
+        line = zstops
+        if not overview:  # a tram or train ride follows its tracks; its boarding stop gets the door flag
+            line, prev = [], None
+            for t in walking_order(z):
+                if id(t) not in pos:
+                    continue
+                track = legs.get(("ride", id(t)))
+                if track and line:
+                    line += [p(*pt) for pt in track[1:-1]]
+                    rides.append(track)
+                    boarding.append(prev)
+                line.append(tuple(pos[id(t)]))
+                prev = t
+        route += line
         hulls.append((zi, z, zstops))
-        if overview:
+        if overview or rides:
             # zones joined by rides would make long hulls across the city: draw a blob per stop instead
             blobs = "".join(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7"/>' for x, y in zstops)
             areas.append(f'<g class="zgroup"{zc_style(zi, z)}><g class="zarea-edge small">{blobs}</g><g class="zarea small">{blobs}</g></g>')
@@ -727,6 +816,13 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
                 pins.setdefault("pins", []).append({"label": label, "x": round(x, 1), "y": round(y, 1), "lat": t["lat"], "lon": t["lon"]})
             svg.append(f'<circle class="stop" cx="{x:.1f}" cy="{y:.1f}" r="11"{zc_style(zi, q["zones"][zi - 1])}/>')
             svg.append(f'<text class="stopnum" x="{x:.1f}" y="{y+3.5:.1f}">{esc(label)}</text>')
+        for track in rides:  # what the ride is, halfway along it
+            x, y = p(*track[len(track) // 2])
+            svg.append(f'<circle class="hotel-bg" cx="{x:.1f}" cy="{y:.1f}" r="14"/><text class="hotel" x="{x:.1f}" y="{y + 7:.1f}">🚋</text>')
+        for door in ([site] if site is not None else []) + boarding:  # a door flag on the entrance or boarding point
+            x, y = pos[id(door)]  # (no words: the map picture is shared by all languages)
+            svg.append(f'<g class="door"><path d="M{x:.1f},{y - 11:.1f} l-6,-8 h-9 v-24 h30 v24 h-9 z"/>'
+                       f'<text x="{x:.1f}" y="{y - 24:.1f}">🚪</text></g>')
         for x, y in cams:  # a camera: body, viewfinder bump, lens
             svg.append(f'<g class="cam" transform="translate({x:.1f},{y:.1f})"><rect x="-8" y="-5" width="16" height="11" rx="2"/>'
                        '<rect x="-3" y="-8" width="6" height="3"/><circle cx="0" cy="0.5" r="3.2"/></g>')
@@ -735,6 +831,9 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     labels = ""
     if streets is not None:  # street names last, around the stops
         keep = [(x, y, 12) for x, y in list(pos.values()) + cams] + ([(*hotel_xy, 15)] if hotel_xy else [])
+        for door in ([site] if site is not None else []) + boarding:
+            x, y = pos[id(door)]
+            keep += [(x, y - 31, 16)]
         base, labels, missing = street_layers(streets, p, W, H, keep, "m" + "-".join(str(zi) for zi, _ in sel), route_names)
         # the kid must be able to read every street between the stops: zoom out until they fit (twice at most)
         missing = [n for n in missing if not re.search(r"(brug|plein|tuin|plantsoen)$", n)]
@@ -830,11 +929,13 @@ def rules_card(q):
 
 def stop_legend(q, only=None, links=False):
     items = []
+    # the city map leaves out a ride to another town (it is on its zone map)
+    far = far_rides(map_points(list(enumerate(q["zones"], 1)))[1]) if only is None else set()
     for zi, z in enumerate(q["zones"], 1):
         if only is not None and zi not in only:
             continue
         for ti, t in enumerate(zone_tasks(z), 1):
-            if t.get("lat") is None:
+            if t.get("lat") is None or id(t) in far:
                 continue
             if t.get("type") == "trail":  # the place is the riddle's answer
                 name = f"🧭 {esc(LABELS['riddle'])}"
@@ -881,9 +982,17 @@ def map_card(q, map_html):
     )
 
 
+def plan_html(z, src=None):
+    """A zone's `map_image` (a plan of the museum or building, next to quest.json) with its source."""
+    credit = f'<p class="plan-src">{esc(z["map_source"])}</p>' if z.get("map_source") else ""
+    return f'<img class="plan" src="{esc(src or z["map_image"])}" alt="">{credit}'
+
+
 def zone_map_card(q, z, zi, map_html):
     """Campaign: the zone's own close-up map, printed next to its challenge card."""
     how = f'<p class="getthere">{esc(z["getting_there"])}</p>' if z.get("getting_there") else ""
+    if z.get("map_image"):  # the place's own plan (a museum's floor plan), found by the skill
+        map_html = plan_html(z)
     return card(
         f"""<h2>🗺️ {LABELS['zone']} {zi}: {esc(z['name'])}</h2>{how}{map_html}{stop_legend(q, {zi})}""",
         "mapcard",
@@ -1170,6 +1279,10 @@ a { color: inherit; }
 .binder > .card::after { top: 142mm; }
 .binder > .card:first-child::before, .binder > .card:first-child::after { right: 9mm; }
 .binder > .card:last-child::before, .binder > .card:last-child::after { left: 9mm; }
+/* page numbers of the book version, in the hole margin */
+.pno { position: absolute; bottom: 4mm; width: 15mm; text-align: center; font-size: 8pt; color: #999; }
+.binder > .card:first-child .pno { right: 0; }
+.binder > .card:last-child .pno { left: 0; }
 .fit { height: 100%; overflow: hidden; border: 1mm solid var(--c, #333); border-radius: 6mm; padding: 5mm 5.5mm; font-size: 11pt; line-height: 1.3; display: flex; flex-direction: column; }
 h1 { font-size: 2.1em; margin: .2em 0; line-height: 1.1; }
 h2 { font-size: 1.45em; margin: 0 0 .35em; line-height: 1.15; }
@@ -1221,6 +1334,10 @@ li { margin: .15em 0; }
 .blobnum { font-size: 10px; font-weight: bold; text-anchor: middle; fill: #111; }
 .badgenum { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #fff; }
 .getthere { font-size: .85em; margin: 0 0 2mm; }
+.door path { fill: #fff; stroke: #111; stroke-width: 1.5; stroke-linejoin: round; }
+.door text { font-size: 17px; text-anchor: middle; }
+img.plan { display: block; max-width: 100%; max-height: 120mm; margin: 0 auto; border: .3mm solid #999; border-radius: 3mm; }
+.plan-src { font-size: .7em; color: #777; text-align: center; margin: 1mm 0 0; }
 ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
 ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
 .hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
@@ -1346,22 +1463,52 @@ def page(title, body, lang="ru", script=True):
 <title>{esc(title)}</title><style>{CSS}</style></head><body>{body}{js}</body></html>"""
 
 
+def has_zone_maps(q):
+    """Every zone gets its close-up map (a campaign always; a day trip unless "zone_maps": false)."""
+    return bool(q.get("campaign") or q.get("zone_maps", True))
+
+
+def kid_parts(q, map_html, zone_maps=None):
+    """The kid's cards: front matter, the cards of each zone, back matter."""
+    nav = int(q.get("rules", {}).get("nav_bonus") or 0)
+    front = [cover_card(q), rules_card(q), map_card(q, map_html)]
+    back = [collection_card(q), scorecard_card(q), certificate_card(q)]
+    if q.get("campaign"):
+        front += [hunt_card(q)] if q.get("hunt") else []
+    if has_zone_maps(q):
+        zones = [[zone_map_card(q, z, i, (zone_maps or {}).get(i, "")), zone_card(z, i, nav)] for i, z in enumerate(q["zones"], 1)]
+    else:
+        zones = [[zone_card(z, i, nav)] for i, z in enumerate(q["zones"], 1)]
+    return front, zones, back
+
+
+def sheets_html(cards, binder):
+    return "".join(f'<div class="sheet{" binder" if k < binder else ""}">{cards[k]}{cards[k+1]}</div>' for k in range(0, len(cards), 2))
+
+
 def build_html(q, map_html, zone_maps=None):
     # zones with stories for the parents get a card each
     stories = any(z.get("parent_story") or any(t.get("facts") for t in zone_tasks(z)) for z in q["zones"])
     per_card = int(q.get("parent_zones_per_card", 1 if stories else 2))
-    nav = int(q.get("rules", {}).get("nav_bonus") or 0)
-    cards = [cover_card(q), rules_card(q), map_card(q, map_html)]
+    front, zones, back = kid_parts(q, map_html, zone_maps)
     if q.get("campaign"):
         # base sheets first, then one sheet per zone: its map on the left, its challenges on the right
-        cards += ([hunt_card(q)] if q.get("hunt") else []) + [collection_card(q), scorecard_card(q), certificate_card(q)]
+        cards = front + back
         if len(cards) % 2:
             cards.append(notes_card())
-        for i, z in enumerate(q["zones"], 1):
-            cards += [zone_map_card(q, z, i, (zone_maps or {}).get(i, "")), zone_card(z, i, nav)]
+        cards += sum(zones, [])
+    elif has_zone_maps(q):
+        # each zone on a sheet of its own: its map on the left, its challenges on the right
+        cards = list(front)
+        for z in zones:
+            if len(cards) % 2:
+                cards.append(notes_card())
+            cards += z
+        if len(cards) % 2:
+            cards.append(notes_card())
+        cards += back
     else:
-        cards += [zone_card(z, i, nav) for i, z in enumerate(q["zones"], 1)]
-        cards += [collection_card(q), scorecard_card(q), certificate_card(q)]
+        cards = front + sum(zones, []) + back
     # parent pages start on their own sheet so they can be kept apart from the kid's cards
     if len(cards) % 2:
         cards.append(notes_card())
@@ -1369,8 +1516,39 @@ def build_html(q, map_html, zone_maps=None):
     cards += [parent_plan_card(q)] + bookings_cards(q, int(q.get("bookings_per_card", 4))) + parent_answer_cards(q, per_card)
     if len(cards) % 2:
         cards.append(notes_card())
-    sheets = "".join(f'<div class="sheet{" binder" if k < kid else ""}">{cards[k]}{cards[k+1]}</div>' for k in range(0, len(cards), 2))
-    return page(q.get("title", q["city"]), sheets, q.get("language", "ru"))
+    return page(q.get("title", q["city"]), sheets_html(cards, kid), q.get("language", "ru"))
+
+
+def build_book_html(q, map_html, zone_maps=None):
+    """The kid's cards as a double-sided book for the ring binder (no parent pages).
+
+    Pages in reading order: cover, rules, map (hunt), the zones, collection, scorecard,
+    certificate. A zone with a map card starts on a left-hand page, so the open binder shows
+    its map on the left and its challenges on the right, and the next zone's map is on the
+    back of those challenges. Printed double-sided, flip on the short edge; the stack is cut
+    once: the right halves are pages 1.. in order, the left halves, turned over as a stack
+    (like turning a page), follow them. Every page keeps its punch spots at the cut.
+    """
+    front, zones, back = kid_parts(q, map_html, zone_maps)
+    pages = list(front)
+    for z in zones:
+        if len(z) > 1 and len(pages) % 2 == 0:  # the zone map must land on a left-hand (even) page
+            pages.append(notes_card())
+        pages += z
+    pages += back
+    while len(pages) % 4:
+        pages.append(notes_card())
+    pages = [c[:c.rindex("</section>")] + f'<span class="pno">{n}</span></section>' for n, c in enumerate(pages, 1)]
+    leaves = [(pages[k], pages[k + 1]) for k in range(0, len(pages), 2)]  # (front, back) of each leaf
+    n = len(leaves) // 2
+    sides = []
+    for j in range(n):
+        right, left = leaves[j], leaves[len(leaves) - 1 - j]
+        # front of the sheet: left leaf shows its back (cut on its right), right leaf its front
+        sides += [left[1], right[0]]
+        # back of the sheet (flipped on the short edge): behind the right half is the right leaf's back
+        sides += [right[1], left[0]]
+    return page(q.get("title", q["city"]), sheets_html(sides, len(sides)), q.get("language", "ru"))
 
 
 def booking_md(items):
@@ -1590,14 +1768,19 @@ def main():
     # the PDF leaves the folder (downloads, the printer queue): its name says which city it is
     city = re.sub(r"[^a-z0-9]+", "-", str(q.get("city", "")).lower()).strip("-")
     pdf_path = out / f"{city + '-' if city else ''}{a.name}.pdf"
+    # the double-sided book for the ring binder: amsterdam-quest-book.pdf, amsterdam-quest-book.en.pdf
+    base, lang = re.match(r"(.*?)((?:\.[a-z]{2})?)$", a.name).groups()
+    book_html_path = out / f"{base}-book{lang}.html"
+    book_path = out / f"{city + '-' if city else ''}{base}-book{lang}.pdf"
     campaign = bool(q.get("campaign"))
     pins = [{}]
     map_html = build_map(q, overview=campaign, pins=pins[0])
     zone_maps = {}
-    for i in range(1, len(q["zones"]) + 1) if campaign else ():
+    for i in range(1, len(q["zones"]) + 1) if has_zone_maps(q) else ():
         pins.append({})
         zone_maps[i] = build_map(q, only={i}, pins=pins[-1])
     html_path.write_text(build_html(q, map_html, zone_maps), encoding="utf-8")
+    book_html_path.write_text(build_book_html(q, map_html, zone_maps), encoding="utf-8")
     # a translation (quest.en.json) shares the main quest's map pictures: they hold only numbers
     # and local street names
     map_name = re.sub(r"\.[a-z]{2}$", "", a.name)
@@ -1620,12 +1803,15 @@ def main():
                                 f"--screenshot={m_png}", map_page.as_uri()], profile)
         dom = run_chrome(chrome, ["--dump-dom", html_path.as_uri()], profile).stdout
         res = run_chrome(chrome, ["--no-pdf-header-footer", f"--print-to-pdf={pdf_path}", html_path.as_uri()], profile)
+        run_chrome(chrome, ["--no-pdf-header-footer", f"--print-to-pdf={book_path}", book_html_path.as_uri()], profile)
     if not pdf_path.exists():
         sys.exit(f"PDF render failed:\n{res.stderr[-2000:]}")
     zone_pngs = {i: f"{map_name}-map-{i}.png" for i in zone_maps if (out / f"{map_name}-map-{i}.png").exists()}
     md_path.write_text(build_md(q, png_path.name if png_path.exists() else None, zone_pngs), encoding="utf-8")
 
     print(f"Wrote {md_path}\nWrote {html_path}\nWrote {pdf_path}")
+    if book_path.exists():
+        print(f"Wrote {book_path} (double-sided, flip on the short edge; no parent pages)")
     if png_path.exists():
         print(f"Wrote {png_path}")
     if 'data-fitted="1"' not in dom:

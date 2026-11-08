@@ -46,15 +46,15 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - passed (5): — (+5 seen before)
   - short detour (5): Vlinderrots [tourism=artwork] 35 m; Noorderkerk [amenity=place_of_worship] 39 m; Lutherse kerk [amenity=place_of_worship] 79 m; Noorderplantsoen [leisure=park] 85 m; Waterdrager [tourism=artwork] 92 m
 
-- **2.1 → 3.1** Номер паровоза → Кирпичная охота: 54 m, ~1 min · same spot
-  - along: quiet street 63%, car-free 37%, park/green 58%
-  - passed (0): —
+- **2.1 → 2.👑** Номер паровоза → Песня для Синта: by tram, not walked
 
-- **3.1 → 4.1** Кирпичная охота → Рыбка-кибелинг: 574 m, ~11 min ⚠ 97% on streets already walked
-  - along: main road 17%, quiet street 23%, car-free 60%, park/green 44%
-  - streets: Veemarkt, Gedempte Turfhaven
-  - passed (3): — (+3 seen before)
-  - short detour (5): Vlinderrots [tourism=artwork] 35 m; Noorderkerk [amenity=place_of_worship] 67 m; Noorderplantsoen [leisure=park] 84 m; Waterdrager [tourism=artwork] 97 m; Theodorus Velius [tourism=artwork] 111 m
+- **2.👑 → 3.1** Песня для Синта → Кирпичная охота: by tram back, not walked
+
+- **3.1 → 4.1** Кирпичная охота → Рыбка-кибелинг: 386 m, ~8 min 
+  - along: quiet street 52%, car-free 48%, along water 25%, park/green 86%
+  - streets: Spoorstraat, Noorderstraat
+  - passed (4): Obelisk Baron van Dedem [historic]; Vlinderrots [tourism=artwork]; Noorderplantsoen [leisure=park] (+1 seen before)
+  - short detour (5): Claes Stapel's Hofje [leisure=garden] 49 m; Elias Koster [tourism=artwork] 56 m; Noorderstraat [bridge] 102 m; Theodorus Velius [tourism=artwork] 109 m; Naar Blokkertje toe! [tourism=artwork] 113 m
 
 - **4.1 → 4.2** Рыбка-кибелинг → ⏱ Порох для башни: 435 m, ~9 min 
   - along: quiet street 94%, car-free 6%, along water 88%, park/green 60%
@@ -85,4 +85,4 @@ Kid pace 3 km/h. *Passed* = within 35 m of the way; *detour* = 35–120 m off it
   - passed (0): —
   - short detour (2): Willem IJsbrandsz Bontekoe [tourism=artwork] 77 m; Engeltjesbrug [bridge] 85 m
 
-**Total walked: 5.0 km, ~99 min** (plus time at the stops). Flags: 1.4→1.5 hardly a walk; 1.5→1.👑 hardly a walk; 3.1→4.1 97% on streets already walked; 4.5→4.👑 hardly a walk.
+**Total walked: 4.7 km, ~94 min** (plus time at the stops). Flags: 1.4→1.5 hardly a walk; 1.5→1.👑 hardly a walk; 4.5→4.👑 hardly a walk.

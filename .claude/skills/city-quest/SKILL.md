@@ -175,7 +175,12 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   challenge-design §1: never mid-route, and tasks inside a paid venue in one run).
   `"order": 3.5` puts a challenge between stops 3 and 4 on the route line if needed. A stop
   reached by ferry, tram or another ride gets `"leg": "ferry"` (or `"tram"`…):
-  it is not checked for a walking connection. A `trail`
+  it is not checked for a walking connection. A `tram`, `train`, `rail`, `metro` or
+  `steam tram` leg is drawn along the real tracks (OpenStreetMap) with a 🚋 on the line and a 🚪
+  flag on the boarding stop. A ride to another town (more than 1.5 km from the walking stops)
+  leaves the city map and its legend and shows on its zone map, which then uses map tiles
+  (towns, roads, tracks). Give a stop at the far end coordinates even when the task happens
+  on board or on the platform, so the zone map shows where the ride goes. A `trail`
   challenge's place is hidden from the kid (it is the riddle's answer).
   A photo hunt lists its targets in `spots` (`[{"lat", "lon", "name"}]`): each is drawn on the zone
   map as a camera icon without a name, so the kid sees which way to go; the card can then
@@ -215,6 +220,24 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   `parent.days[]` for suggested outings (zone pairs, best weekday, season
   dates) with `labels.day` = «Вылазка». Example: `amsterdam/quest.json` in
   the output folder.
+- **A map for every zone (required).** Every zone gets its own sheet: its
+  close-up map on the left, its challenges on the right (a day trip keeps its
+  city map with the whole route up front; zone 1's route starts at the start
+  point). The kid must be able to find every stop of a zone from its map:
+  - Stops spread over streets: the street map with the walking route (default).
+  - The whole zone in one building or site (a museum, a LEGO hall, a zoo, a
+    tram or boat ride): look for the place's own plan or map (floor plan,
+    site map, line map) on its website or in a search for "<place> plattegrond / floor
+    plan / map". If you find a usable one, save it next to quest.json and set
+    the zone's `map_image` (file name) and `map_source` (whose plan it is);
+    it prints instead of the street map. Check it is legible at A5 and that
+    publishing it on the family website is fine (prefer the venue's freely
+    offered visitor plan; credit it).
+  - No plan found: give the zone's first stop the coordinates of the
+    **entrance** (or boarding point). When all stops of a zone are within
+    ~80 m, the build shows a couple of streets around it and flags the
+    entrance with a 🚪 door flag.
+  `"zone_maps": false` leaves the per-zone sheets out (only on request).
 - `players`: `kid_name`, `team_name` (empty → blanks to fill by hand).
 - `measures`: the kid's body measures used by `measure` challenges, e.g.
   `["Шаг", "Рост", "Руки в стороны", "Ладонь"]` → blanks on the hunt card
@@ -244,7 +267,7 @@ python3 .claude/skills/city-quest/scripts/build_quest.py <folder>/quest.json [--
 
 This writes `quest.md` (full content with Google Maps links, phone-readable),
 `quest-map.png` (used by the markdown), `quest.html` and `<city>-quest.pdf`
-(e.g. `hoorn-quest.pdf`). Street
+(e.g. `hoorn-quest.pdf`), plus the double-sided binder book `<city>-quest-book.pdf` (see below). Street
 maps are drawn from OpenStreetMap data (Overpass API, cached in
 `~/.cache/city-quest/streets`) with bold black street names on top, so the
 kid can navigate by them. Stops are joined by straight lines, but the build
@@ -273,6 +296,18 @@ height), so the holes land in the same place on every card and never through tex
 a sticker circle. Parent pages have no punch spots. `build_quest.py` draws them; check them
 on the rendered zone cards, and keep any new card type inside the margin.
 
+**Book for the binder.** The build also writes `<city>-quest-book.pdf` (`<city>-quest-book.en.pdf`
+for a translation): the kid's cards only, no parent pages, imposed for double-sided printing so
+that, filed in the binder, the pages read in order and every zone opens as one spread. Page
+order: cover, rules, map (hunt), the zones, collection, scorecard, certificate; a zone with a
+map card starts on a left-hand page (its map left, its challenges right, the next zone's map on
+the back of those challenges), with a notes page as filler where needed and at the end (pages
+come in fours). Every page has its punch spots at the cut and a small page number in the hole
+margin. Print it double-sided, **flip on the short edge**, cut the stack once along the dashed
+line; the right halves are the first pages in order, the left halves follow, the stack turned
+over like a page. Keep this order when adding card types: front matter before the zones, back
+matter after.
+
 **Translations.** When the profile lists more than one booklet language,
 translate the finished `quest.json` into `quest.<lang>.json` for each other
 language, after the main text is final (and again after every change): the
@@ -282,7 +317,7 @@ same structure, list order, coordinates and coins; only text changes, with
 keep the profile's rules (e.g. no transcription for languages the kid speaks).
 Check with a script that the two files have the same keys, list lengths and
 non-text values, then build each file:
-`build_quest.py <folder>/quest.en.json` writes `quest.en.md` and `<city>-quest.en.pdf`. The website publishes only the main languages unless `build_site.py --langs ru,en` names more. Map
+`build_quest.py <folder>/quest.en.json` writes `quest.en.md`, `<city>-quest.en.pdf` and `<city>-quest-book.en.pdf`. The website publishes only the main languages unless `build_site.py --langs ru,en` names more. Map
 pictures show only numbers and local street names, so every language shares
 the main quest's (`quest-map*.png`, `quest-pins.json`).
 
@@ -290,7 +325,14 @@ the main quest's (`quest-map*.png`, `quest-pins.json`).
 writes a colour A4 sheet of round zone-capture stickers for sticker paper (`<city>-stickers.pdf`,
 or `stickers.pdf` for several quests on one sheet): per zone 3 × 18 mm (they cover the sticker
 circle on the zone card) and 2 × 10 mm (for the city map), one colour per zone, plus one 32 mm
-gold city medal for the certificate's medal circle; `--big`/`--small`/`--medal` change the counts.
+gold city medal for the certificate's medal circle, and a front + back pair of 30 mm stickers
+for a real gold sports medal (its empty 30 mm discs): the city's top rank («АДМИРАЛ АМСТЕРДАМА»)
+around an engraved emblem on the front, «ПОКОРИТЕЛЬ АМСТЕРДАМА», a compass rose and the zone count
+on the back, printed as polished gold with engraved text and a 0.6 mm gold bleed past the white
+dotted cut line, so they look like part of the medal. `--big`/`--small`/`--medal`/`--rank-medal`
+change the counts; `--big 0 --small 0 --medal 0` prints only the medal stickers, for every quest
+named, on one sheet (e.g. when a city is finished). Set `"medal_emblem"` (anchor, crown, star) in
+quest.json when the ranks are not nautical.
 
 **Website.** `python3 .claude/skills/city-quest/scripts/build_site.py`
 renders every city and language into the git-ignored `site/` folder (`--out
@@ -304,7 +346,9 @@ route, overlapping labels or crowded cards.
 
 Tell the user where the files are, the zones with timing, and anything to
 verify on the spot. Mention that sheets are cut along the dashed line (kid cards keep a
-15 mm margin at the cut with drawn punch spots for the ring binder), parent pages are the last sheets, and
+15 mm margin at the cut with drawn punch spots for the ring binder), parent pages are the last sheets,
+that `<city>-quest-book.pdf` is the kid's part as a double-sided book (flip on the short edge; right
+halves first, then the left halves turned over), and
 stickers come from `build_stickers.py`.
 
 ### 7. Remember

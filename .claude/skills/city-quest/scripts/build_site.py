@@ -254,9 +254,13 @@ def build_city(site, q, lang, slug, maps, pins, prefix="quest"):
         zpath = f"{base}/zone-{i}"
         how = f'<p class="getthere">{esc(z["getting_there"])}</p>' if z.get("getting_there") else ""
         zmap = f"{prefix}-map-{i}.png"
-        if q.get("campaign"):
-            inner = (map_html(mapsrc(zmap), pins.get(zmap, {}), z["name"]) + bq.stop_legend(q, {i}, links=True)
-                     if zmap in maps else f'<p class="muted">{W["no_map"]}</p>')
+        if bq.has_zone_maps(q):
+            plan = Path(z.get("map_image") or "").name
+            if plan and plan in maps:
+                inner = bq.plan_html(z, mapsrc(plan)) + bq.stop_legend(q, {i}, links=True)
+            else:
+                inner = (map_html(mapsrc(zmap), pins.get(zmap, {}), z["name"]) + bq.stop_legend(q, {i}, links=True)
+                         if zmap in maps else f'<p class="muted">{W["no_map"]}</p>')
             zone_map = bq.card(f"<h2>🗺️ {LABELS['map']}</h2>{how}{inner}", "mapcard", z.get("color", "#333"))
         else:
             zone_map = bq.card(how, "mapcard", z.get("color", "#333")) if how else ""
@@ -319,7 +323,8 @@ def main():
         if slug in published:
             continue
         published[slug] = set()
-        for png in folder.glob("quest*-map*.png"):
+        plans = {folder / z["map_image"] for _, _, q, f, _ in quests if f == folder for z in q["zones"] if z.get("map_image")}
+        for png in list(folder.glob("quest*-map*.png")) + sorted(x for x in plans if x.exists()):
             (out / "maps" / slug).mkdir(parents=True, exist_ok=True)
             shutil.copy2(png, out / "maps" / slug / png.name)
             published[slug].add(png.name)

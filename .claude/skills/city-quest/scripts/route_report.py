@@ -24,7 +24,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from build_quest import (OVERPASS_URLS, fetch_streets, metres, task_label, walk_graph,  # noqa: E402
+from build_quest import (OVERPASS_URLS, far_rides, fetch_streets, metres, task_label, walk_graph,  # noqa: E402
                          walk_to, walking_order, zone_tasks)
 
 POI_CACHE = Path.home() / ".cache" / "city-quest" / "poi"
@@ -200,7 +200,8 @@ def main():
            f"⚠ marks: walks of {SAME}–{SHORT} m or over {LONG} m, main roads over 30 %, more than half on streets "
            "already walked. Rides (`leg`) are not walked.", ""]
     for heading, stops in walks:
-        lats, lons = [t["lat"] for _, t in stops], [t["lon"] for _, t in stops]
+        far = far_rides([(None, None, t) for _, t in stops])  # a ride to another town and back
+        lats, lons = [t["lat"] for _, t in stops if id(t) not in far], [t["lon"] for _, t in stops if id(t) not in far]
         if len(stops) < 2:
             continue
         m_lat, m_lon = max(0.25 * (max(lats) - min(lats)), 0.003), max(0.25 * (max(lons) - min(lons)), 0.005)
@@ -222,6 +223,9 @@ def main():
             title = f"**{la} → {lb}** {ta.get('title', '')} → {tb.get('title', '')}"
             if tb.get("leg"):
                 out += [f"- {title}: by {tb['leg']}, not walked", ""]
+                continue
+            if id(ta) in far:  # back from another town the same way
+                out += [f"- {title}: by {ta['leg']} back, not walked", ""]
                 continue
             r = walk_to(g, (ta["lat"], ta["lon"]), tb)
             if r is None:

@@ -47,6 +47,8 @@ The coins left at the end of the day give your rank:
 
 ## 🦄 Zone 1: Old Town · Day 1
 
+![Zone 1](quest-map-1.png)
+
 _Hoorn's coat of arms has a red horn, and a red unicorn holds the shield. Legend says a bull from a nearby town rammed Hoorn's gate and lost its horn here!_
 
 - [ ] 1.1 🧭 **Gate Prince** (🪙×2) — Look for the gate with a prince standing on its roof. Hint: the street is the "newest" one in the old town. How many town coats of arms are on the front? 📍 [map](https://www.google.com/maps/search/?api=1&query=52.64142,5.05988)
@@ -60,27 +62,33 @@ Coins needed: **10** 🏁
 
 ## 🚂 Zone 2: Steam Tram · Day 1
 
+![Zone 2](quest-map-2.png)
+
 _Today a steam tram takes us to Sinterklaas himself! The stoker fires up the engine, and the steam warms the carriages. And the Piets ride with us!_
 
 - [ ] 2.1 🔍 **Engine Number** (🪙×2) — Find the bell, the whistle and the number on our engine: ______. Every steam tram engine had a bell — that's why they were called "Bello"! 📍 [Tramstation Hoorn, Van Dedemstraat 8](https://www.google.com/maps/search/?api=1&query=52.64563,5.05451)
 - [ ] 2.2 🚋 **Window Bingo** (🪙×2) — Look out of the tram window! Find a stolp — a farm with a pyramid roof — a windmill, a church tower and sheep. Seen one? Shout and point! Any three of the four — done.
 - [ ] 2.3 🚋 **Whistle!** ⚔️ (🪙×2+1) — Guess how many times the engine whistles in the first 10 minutes of the ride. The parent guesses too. Count together — whose guess is closer?
 - [ ] 2.4 🗣️ **Ask a Piet** (🪙×2) — Ask a Piet in Dutch what Sinterklaas's horse is called and what it likes to eat. What did he say? Translate it for us!
-- [ ] 👑 **Zone boss: Song for Sint** (🪙×6) — Kids sing songs to Sinterklaas! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!
+- [ ] 👑 **Zone boss: Song for Sint** (🪙×6) — Kids sing songs to Sinterklaas! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint! 📍 [Wognum-Nibbixwoud station](https://www.google.com/maps/search/?api=1&query=52.68254,5.03323)
 
 Coins needed: **9** 🏁
 
 ## 🏙️ Zone 3: Brick City · Day 1
 
+![Zone 3](quest-map-3.png)
+
 _A whole LEGO city is hiding in the old station hall, even Hoorn's streets! And you can build things yourself and race little cars there._
 
-- [ ] 3.1 🎒 **Brick Hunt** (🪙×3) — Pick up the search sheet (speurtocht) at the entrance and finish all of it. 📍 [Brick City, Hoorn station hall](https://www.google.com/maps/search/?api=1&query=52.64545,5.05485)
+- [ ] 3.1 🎒 **Brick Hunt** (🪙×3) — Pick up the search sheet (speurtocht) at the entrance and finish all of it. 📍 [Brick City, Hoorn station hall](https://www.google.com/maps/search/?api=1&query=52.64485,5.05455)
 - [ ] 3.2 🔍 **Diorama Train** ⚔️ (🪙×2+1) — Start a train on the big diorama. While it does a lap, who's first to spot a LEGO steam engine or a Hoorn house on the diorama? The parent looks too! None found — another lap.
 - [ ] 👑 **Zone boss: Gate with a House** (🪙×6) — Build a gate with a house on top. A LEGO car must drive through it, and the gate must stand alone for 5 seconds. It falls — start again!
 
 Coins needed: **7** 🏁
 
 ## ⚓ Zone 4: Harbour · Day 1
+
+![Zone 4](quest-map-4.png)
 
 _Ships that sailed to India for pepper were moored here. Captain Bontekoe from Hoorn nearly died on such a voyage, and his ship's boys became the heroes of a book!_
 
@@ -192,7 +200,7 @@ _The Hoorn–Medemblik steam tram ran from 1887; passenger service stopped in 19
 - **2.2 Window Bingo:** ✔ A stolp (stolpboerderij) is a West Frisian farm: people, cows and hay all under one pyramid roof. A windmill may not come up on the way, so three of four is enough (the parent confirms).
 - **2.3 Whistle!:** ✔ The parent times 10 minutes from departure (12:00); the closest guess wins.
 - **2.4 Ask a Piet:** ✔ The horse is Ozosnel (since 2019; before that Amerigo); children put a carrot in their shoe for it. Any honest translation counts. The poffertjes vouchers go to the buffet.
-- **👑 Song for Sint:** ✔ Standing only: on the platform in Wognum or in the SinterCircus queue, next to the parent; not in a moving carriage. The condition is singing to us; singing to Sint is a bonus if the programme allows. Gift for children under 12.
+- **👑 Song for Sint:** [Wognum-Nibbixwoud station](https://www.google.com/maps/search/?api=1&query=52.68254,5.03323) — ✔ Standing only: on the platform in Wognum or in the SinterCircus queue, next to the parent; not in a moving carriage. The condition is singing to us; singing to Sint is a bonus if the programme allows. Gift for children under 12.
   Wognum-Nibbixwoud is a restored station on the old line. On the "Pieten Expres" the Piets meet the train and take the kids into the SinterCircus to see Sinterklaas; every child under 12 gets a present, then the tram takes everyone back to Hoorn. For the kid: "Sint loves songs: sing loudly and he'll hear you!"
 
 #### 🏙️ 3. Brick City
@@ -212,7 +220,7 @@ _Brick City opened on 30 May 2025 in Hoorn's station hall, which had stood empty
 - Price: €5 per person (RODI, 2025); the Museumkaart is not valid
 - https://www.brick-city.nl
 
-- **3.1 Brick Hunt:** [Brick City, Hoorn station hall](https://www.google.com/maps/search/?api=1&query=52.64545,5.05485) — ✔ The sheet is with the volunteers at the entrance. Counts when the search is done.
+- **3.1 Brick Hunt:** [Brick City, Hoorn station hall](https://www.google.com/maps/search/?api=1&query=52.64485,5.05455) — ✔ The sheet is with the volunteers at the entrance. Counts when the search is done.
   Brick City opened on 30 May 2025 in the monumental station hall, which had stood empty for years; the first thing shown was a 1.8 m LEGO model of Hoorn station itself, built by fans Peter Tol and Peter de Vries. There are also LEGO copies of Hoorn's houses, a diorama with trains you can start, and almost every train LEGO ever made. For the kid: "A city of bricks right inside the station — and real trains run behind the wall!"
 - **3.2 Diorama Train:** ✔ According to RODI, visitors can start the diorama trains themselves; no button — ask a volunteer. Point to what you find; a tie — another lap.
 - **👑 Gate with a House:** ✔ Bricks are in the big boxes of the building area; borrow a car from the race track. It usually takes 2–3 tries.

@@ -94,6 +94,15 @@ to borrow from for rewrites.
 - Playgrounds: a ⏱ task that needs equipment (slide, climbing frame) must name a playground
   that has it; check OSM tags or photos and flag a bare one. Playground tasks are fine as long as they vary.
 - Total distance suits the kid (profile) and the day's time window.
+- A map for every zone (must-fix when missing): every zone has its own map sheet, and every
+  stop can be found from it. A zone inside one building or site (museum, hall, zoo, a ride)
+  needs the place's own plan as `map_image` (with `map_source`), or, when none exists, its
+  stop coordinates on the entrance or boarding point, so the build marks it with a 🚪 door flag among the
+  surrounding streets. Flag a zone whose coordinates point at the middle of a building or
+  the wrong side of a station, a `map_image` that is unreadable at A5, and a zone whose map
+  would show no stop at all (no coordinates). A zone that rides to another place (a tram to
+  the next village) needs coordinates and a `leg` on the stop at the far end, so its map shows
+  the ride along the tracks; flag a task set elsewhere that has no coordinates.
 
 **Not problems** (don't flag): a zone without a duel or without food (food is optional,
 especially where there is a lot to see); a seasonal task whose season is written on the card

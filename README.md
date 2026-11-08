@@ -56,6 +56,7 @@ Each city gets its own folder, e.g. `hoorn/`:
 | File | Use |
 |---|---|
 | `hoorn-quest.pdf` | Print booklet (named after the city): A4 landscape, two A5 cards per sheet, black-and-white friendly. Cut along the dashed line. |
+| `hoorn-quest-book.pdf` | The kid's pages only (no parent pages) as a double-sided book for the ring binder: print double-sided, flip on the short edge, cut the stack along the dashed line, file the right halves in order, then the left halves turned over like a page. Every zone opens as a spread: map left, challenges right. |
 | `quest.md` + `quest-map*.png` | The same quest for the phone, with Google Maps links for every stop. |
 | `quest.json` | The source of the quest. Claude edits this; the other files are generated from it. |
 | `quest.en.json` (+ `quest.en.md`, `hoorn-quest.en.pdf`) | The same quest in another booklet language from the family profile; it shares the main quest's maps. |
@@ -163,6 +164,13 @@ so Claude Code finds it whenever it runs in this folder (also after a fresh clon
 | `references/example-quest.json` | The Hoorn quest as a structural example |
 | `scripts/build_quest.py` | Renderer: quest.json → md, html, pdf, map |
 | `scripts/build_site.py` | All quests → a static website with kid/parent and language switches |
+
+A second project skill, `.claude/skills/binder-cover/`, designs a personalised cover for the
+ring binder in an explorer style (front: the child's name and a contour-map portrait of the
+child's face made from a photo, compass, flight path, travel stamps; back: a motto and a map of Europe with
+an empty, named circle per city worth a quest, the home country in a magnifier, to colour in as cities
+are conquered; both A5 halves on one A4 landscape sheet). The child's photo, name and the
+renders live only in the git-ignored `covers/` folder.
 | `scripts/route_report.py` | quest.json → walking-route report (`quest-routes.md`) |
 
 Two agents (separate Claude workers with their own brief, in `.claude/agents/`)

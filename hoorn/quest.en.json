@@ -219,6 +219,10 @@
         "title": "Song for Sint",
         "text": "Kids sing songs to Sinterklaas! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!",
         "coins": 6,
+        "place": "Wognum-Nibbixwoud station",
+        "lat": 52.68254,
+        "lon": 5.03323,
+        "leg": "tram",
         "answer": "Standing only: on the platform in Wognum or in the SinterCircus queue, next to the parent; not in a moving carriage. The condition is singing to us; singing to Sint is a bonus if the programme allows. Gift for children under 12.",
         "facts": "Wognum-Nibbixwoud is a restored station on the old line. On the \"Pieten Expres\" the Piets meet the train and take the kids into the SinterCircus to see Sinterklaas; every child under 12 gets a present, then the tram takes everyone back to Hoorn. For the kid: \"Sint loves songs: sing loudly and he'll hear you!\""
       },
@@ -264,8 +268,8 @@
           "text": "Pick up the search sheet (speurtocht) at the entrance and finish all of it.",
           "coins": 3,
           "place": "Brick City, Hoorn station hall",
-          "lat": 52.64545,
-          "lon": 5.05485,
+          "lat": 52.64485,
+          "lon": 5.05455,
           "answer": "The sheet is with the volunteers at the entrance. Counts when the search is done.",
           "facts": "Brick City opened on 30 May 2025 in the monumental station hall, which had stood empty for years; the first thing shown was a 1.8 m LEGO model of Hoorn station itself, built by fans Peter Tol and Peter de Vries. There are also LEGO copies of Hoorn's houses, a diorama with trains you can start, and almost every train LEGO ever made. For the kid: \"A city of bricks right inside the station — and real trains run behind the wall!\""
         },

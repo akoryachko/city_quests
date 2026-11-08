@@ -6,3 +6,9 @@ site/
 # private: the family profile and working notes about the family
 family-profile.md
 HANDOVER.md
+
+# private: personalised binder covers (photos and names of the kids)
+covers/
+
+# Python bytecode
+__pycache__/
