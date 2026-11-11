@@ -191,7 +191,7 @@ def rank_medal(q, uid, side):
 
 
 CSS = f"""
-@page {{ size: A4 portrait; margin: 9mm; }}
+@page {{ size: A4 portrait; margin: 7mm 9mm; }}
 * {{ box-sizing: border-box; }}
 body {{ margin: 0; font-family: "Noto Sans", "DejaVu Sans", Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
 h2 {{ font-size: 9pt; margin: 1mm 0 1mm; }}
@@ -208,7 +208,7 @@ h2 {{ font-size: 9pt; margin: 1mm 0 1mm; }}
 .num {{ font-size: 5.4px; font-weight: bold; text-anchor: middle; fill: #fff; }}
 .eng {{ font-family: "DejaVu Serif", "Noto Serif", serif; font-weight: bold; letter-spacing: .25px; text-anchor: middle; fill: {ENGRAVE}; }}
 .eng.shine {{ fill: {SHINE}; }}
-.hint {{ font-size: 7pt; color: #777; margin-top: 3mm; }}
+.hint {{ font-size: 7pt; color: #777; margin-top: 1.5mm; }}
 """
 
 
