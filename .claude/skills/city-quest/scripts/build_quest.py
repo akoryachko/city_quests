@@ -5,7 +5,7 @@ Usage:
     python3 build_quest.py path/to/quest.json [--out-dir DIR] [--name quest]
 
 The PDF is A4 landscape; every sheet holds two A5 portrait cards (cut along the
-dashed line). Kid cards sit 15 mm off the cut, with two drawn punch spots there for the ring binder. Card order: cover, rules, map, zone cards, collection, scorecard,
+dashed line). Kid cards sit 14 mm off the cut, with two drawn punch spots there for the ring binder. Card order: cover, rules, map, zone cards, collection, scorecard,
 certificate, then parent pages on their own sheets. With "campaign": true the
 base cards come first; in every quest each zone gets its own sheet (zone map + challenges; a day
 trip after its city map). A zone in one place gets a few streets around it with the entrance
@@ -1013,7 +1013,7 @@ def hunt_card(q):
     h = q.get("hunt") or {}
     rows = "".join(
         f'<li><span class="hunt-text">{esc(it.get("text"))} {coins_html(it.get("coins"))}</span>'
-        f'<span class="hunt-boxes">{"<span class=dot></span>" * int(it.get("boxes", 1))}</span></li>'
+        f'<span class="hunt-boxes">{"<span class=star></span>" * int(it.get("boxes", 1))}</span></li>'
         for it in h.get("items", [])
     )
     return card(
@@ -1271,16 +1271,16 @@ a { color: inherit; }
 .sheet::after { content: "✂"; position: absolute; left: 148.5mm; top: 0; bottom: 0; border-left: 0.4mm dashed #999; color: #999; font-size: 10pt; padding-left: 1mm; }
 .card { width: 148.5mm; height: 210mm; padding: 7mm; overflow: hidden; }
 /* kid sheets are cut in the middle and filed in a ring binder: a hole margin at the cut edge */
-.binder > .card:first-child { padding: 7mm 15mm 7mm 4mm; }
-.binder > .card:last-child { padding: 7mm 4mm 7mm 15mm; }
-/* punch spots for the binder rings (ISO 838: two 6 mm holes, centres 12 mm from the cut, 80 mm apart) */
+.binder > .card:first-child { padding: 7mm 14mm 7mm 5mm; }
+.binder > .card:last-child { padding: 7mm 5mm 7mm 14mm; }
+/* punch spots for the binder rings (two 6 mm holes 80 mm apart as ISO 838, centres 9 mm from the cut to keep the frame clear of a narrow printer margin) */
 .binder > .card { position: relative; }
 .binder > .card::before, .binder > .card::after { content: ""; position: absolute; width: 6mm; height: 6mm; border: .3mm dashed #999; border-radius: 50%; top: 62mm; }
 .binder > .card::after { top: 142mm; }
-.binder > .card:first-child::before, .binder > .card:first-child::after { right: 9mm; }
-.binder > .card:last-child::before, .binder > .card:last-child::after { left: 9mm; }
+.binder > .card:first-child::before, .binder > .card:first-child::after { right: 6mm; }
+.binder > .card:last-child::before, .binder > .card:last-child::after { left: 6mm; }
 /* page numbers of the book version, in the hole margin */
-.pno { position: absolute; bottom: 4mm; width: 15mm; text-align: center; font-size: 8pt; color: #999; }
+.pno { position: absolute; bottom: 4mm; width: 14mm; text-align: center; font-size: 8pt; color: #999; }
 .binder > .card:first-child .pno { right: 0; }
 .binder > .card:last-child .pno { left: 0; }
 .fit { height: 100%; overflow: hidden; border: 1mm solid var(--c, #333); border-radius: 6mm; padding: 5mm 5.5mm; font-size: 11pt; line-height: 1.3; display: flex; flex-direction: column; }
@@ -1292,7 +1292,8 @@ li { margin: .15em 0; }
 .small, .hint, .log { font-size: .85em; color: #444; }
 .blank { display: inline-block; min-width: 30mm; border-bottom: .3mm solid #333; height: 1em; }
 .blank.short { min-width: 12mm; }
-.box { display: inline-block; flex: none; width: 6mm; height: 6mm; border: .5mm solid #222; border-radius: 1.2mm; background: #fff; }
+/* checkboxes are 8 mm star outlines: tick them with a pen or cover them with 8 mm star stickers (coins stay round) */
+.box, .star { display: inline-block; flex: none; width: 8.4mm; height: 8mm; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 23'%3E%3Cpath d='M12 1.2l3.1 6.9 7.5.8-5.6 5.1 1.6 7.4L12 17.6l-6.6 3.8 1.6-7.4-5.6-5.1 7.5-.8z' fill='white' stroke='%23222' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
 .coins { font-size: .85em; white-space: nowrap; border: .3mm solid #888; border-radius: 3mm; padding: 0 1.5mm; }
 /* cover */
 .cover .fit { text-align: center; justify-content: center; }
@@ -1340,7 +1341,7 @@ img.plan { display: block; max-width: 100%; max-height: 120mm; margin: 0 auto; b
 .plan-src { font-size: .7em; color: #777; text-align: center; margin: 1mm 0 0; }
 ul.hunt { list-style: none; padding: 0; margin: 1mm 0 0; }
 ul.hunt li { display: flex; justify-content: space-between; align-items: center; gap: 2mm; padding: 1.2mm 0; border-bottom: .3mm dotted #bbb; }
-.hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1mm; flex: none; max-width: 45%; }
+.hunt-boxes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1.5mm; flex: none; max-width: 45%; }
 .hotel { font-size: 18px; text-anchor: middle; }
 .hotel-bg { fill: #fff; stroke: #111; stroke-width: 2; }
 .hint { text-align: center; margin: 2mm 0 0; }
@@ -1363,7 +1364,7 @@ ul.hunt li { display: flex; justify-content: space-between; align-items: center;
 .ch-text { font-size: .92em; }
 .place { font-size: .78em; color: #444; }
 .boss { position: relative; margin-top: 2.5mm; padding: 2mm 10mm 2mm 3mm; border: .6mm solid #111; border-radius: 3mm; background: #f2f2f2; }
-.boss .box { position: absolute; right: 2.5mm; top: 2.5mm; }
+.boss .box { position: absolute; right: 1.5mm; top: 1.5mm; }
 .zone-foot { margin-top: auto; padding-top: 2mm; font-size: .85em; display: flex; justify-content: space-between; align-items: center; gap: 2mm; }
 .track { display: flex; flex-wrap: nowrap; align-items: center; gap: .8mm; flex: 1; min-width: 0; }
 .track .dot { flex: 0 1 5mm; width: auto; height: auto; min-width: 2.8mm; aspect-ratio: 1; }
@@ -1396,7 +1397,8 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }
 .ranks { list-style: none; padding: 0; margin: .2em 0; }
-.box.sm { width: 4mm; height: 4mm; vertical-align: middle; }
+.box.sm { vertical-align: middle; }
+.ch .box { margin: -1mm 0; }  /* the star may reach into the row padding, so short rows stay short */
 .booking { border-left: 1mm solid #333; padding-left: 2.5mm; margin-bottom: 3mm; }
 .booking h3 { margin: 0 0 1mm; }
 .booking table { font-size: .95em; }
@@ -1530,7 +1532,11 @@ def build_book_html(q, map_html, zone_maps=None):
     (like turning a page), follow them. Every page keeps its punch spots at the cut.
     """
     front, zones, back = kid_parts(q, map_html, zone_maps)
-    pages = list(front)
+    pages = []
+    for c in front:
+        if 'class="card huntcard' in c and len(pages) % 2:  # the kid writes on the hunt: a right-hand (odd) page
+            pages.append(notes_card())
+        pages.append(c)
     for z in zones:
         if len(z) > 1 and len(pages) % 2 == 0:  # the zone map must land on a left-hand (even) page
             pages.append(notes_card())

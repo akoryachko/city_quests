@@ -71,7 +71,7 @@ answers, logistics and **the story behind every spot** to tell on the way).
 The parent pages start on their own sheet so the kid's cards stay spoiler-free.
 
 To play you need: a sheet of ~2 cm stickers (claiming zones on the cards and the
-map), a pen, glue or tape for the collection card, a stopwatch on the phone, and
+map), a pen or 8 mm star stickers for the star checkboxes (challenges, boss, hunt, ranks), glue or tape for the collection card, a stopwatch on the phone, and
 the kid's step, height and hand (plus their time for one floor of stairs) measured at
 home for the measuring challenges.
 
@@ -169,7 +169,8 @@ A second project skill, `.claude/skills/binder-cover/`, designs a personalised c
 ring binder in an explorer style (front: the child's name and a contour-map portrait of the
 child's face made from a photo, compass, flight path, travel stamps; back: a motto and a map of Europe with
 an empty, named circle per city worth a quest, the home country in a magnifier, to colour in as cities
-are conquered; both A5 halves on one A4 landscape sheet). The child's photo, name and the
+are conquered; both A5 halves on one A4 landscape sheet, or each face at the binder's size on
+its own A4 page). The child's photo, name and the
 renders live only in the git-ignored `covers/` folder.
 | `scripts/route_report.py` | quest.json → walking-route report (`quest-routes.md`) |
 

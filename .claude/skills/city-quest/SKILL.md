@@ -215,7 +215,8 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   parents print just the next outing's sheets, and the scorecard gets a date
   column. Per zone add `getting_there` (one kid-readable line, e.g. "⛴️ Паром
   F7 от Pontsteiger"). Add a city-wide `hunt` (`emoji`, `title`, `hint`,
-  `items[]` with `text`, `boxes`, `coins`). Rank counts coins **earned**:
+  `items[]` with `text`, `boxes`, `coins`; each box prints as an 8 mm star like every checkbox, so the
+  kid can tick it or cover it with an 8 mm star sticker; round circles are only coins). Rank counts coins **earned**:
   override `labels.ranks_hint` and `labels.total` accordingly. Use
   `parent.days[]` for suggested outings (zone pairs, best weekday, season
   dates) with `labels.day` = «Вылазка». Example: `amsterdam/quest.json` in
@@ -290,8 +291,8 @@ into two) and rebuild.
 
 **Ring binder.** The family files the kid's cards in a ring binder, so every kid sheet
 with challenges (zone cards, and the map cards that share their sheet) must show where to
-punch: each card keeps a 15 mm margin at the cut edge, and two punch spots are drawn in that
-margin (ISO 838: 6 mm circles, centres 12 mm from the cut, 80 mm apart, centred on the card's
+punch: each card keeps a 14 mm margin at the cut edge, and two punch spots are drawn in that
+margin (6 mm circles 80 mm apart as ISO 838, centres 9 mm from the cut, centred on the card's
 height), so the holes land in the same place on every card and never through text, a map or
 a sticker circle. Parent pages have no punch spots. `build_quest.py` draws them; check them
 on the rendered zone cards, and keep any new card type inside the margin.
@@ -324,15 +325,19 @@ the main quest's (`quest-map*.png`, `quest-pins.json`).
 **Stickers.** `python3 .claude/skills/city-quest/scripts/build_stickers.py <folder>/quest.json [other/quest.json …]`
 writes a colour A4 sheet of round zone-capture stickers for sticker paper (`<city>-stickers.pdf`,
 or `stickers.pdf` for several quests on one sheet): per zone 3 × 18 mm (they cover the sticker
-circle on the zone card) and 2 × 10 mm (for the city map), one colour per zone, plus one 32 mm
+circle on the zone card) and 2 × 10 mm (for the city map), one colour per zone printed 0.6 mm past a white dotted cut line, plus one 32 mm
 gold city medal for the certificate's medal circle, and a front + back pair of 30 mm stickers
 for a real gold sports medal (its empty 30 mm discs): the city's top rank («АДМИРАЛ АМСТЕРДАМА»)
-around an engraved emblem on the front, «ПОКОРИТЕЛЬ АМСТЕРДАМА», a compass rose and the zone count
+around an engraved picture of the city on the front, «ПОКОРИТЕЛЬ АМСТЕРДАМА», a compass rose and the zone count
 on the back, printed as polished gold with engraved text and a 0.6 mm gold bleed past the white
 dotted cut line, so they look like part of the medal. `--big`/`--small`/`--medal`/`--rank-medal`
 change the counts; `--big 0 --small 0 --medal 0` prints only the medal stickers, for every quest
-named, on one sheet (e.g. when a city is finished). Set `"medal_emblem"` (anchor, crown, star) in
-quest.json when the ranks are not nautical.
+named, on one sheet (e.g. when a city is finished). Every quest draws its city for the medal front:
+`"medal_art"` in quest.json (and its translations), a small SVG line drawing of the city's best-known
+sight in a ±7.5 unit box around 0,0 (≈ mm), e.g. Hoorn's Hoofdtoren with a ship over waves, Amsterdam's
+canal-house gables with the three crosses; outlines `fill="none"`, small solid shapes `stroke="none"`.
+Render it zoomed (`pdftoppm -r 400`) and check it reads as that city and stays inside the inner ring.
+Without it the front falls back to `"medal_emblem"` (anchor, crown, star).
 
 **Website.** `python3 .claude/skills/city-quest/scripts/build_site.py`
 renders every city and language into the git-ignored `site/` folder (`--out
@@ -346,7 +351,7 @@ route, overlapping labels or crowded cards.
 
 Tell the user where the files are, the zones with timing, and anything to
 verify on the spot. Mention that sheets are cut along the dashed line (kid cards keep a
-15 mm margin at the cut with drawn punch spots for the ring binder), parent pages are the last sheets,
+14 mm margin at the cut with drawn punch spots for the ring binder), parent pages are the last sheets,
 that `<city>-quest-book.pdf` is the kid's part as a double-sided book (flip on the short edge; right
 halves first, then the left halves turned over), and
 stickers come from `build_stickers.py`.

@@ -22,6 +22,7 @@
     "subtitle": "Ships, windmills, ferries, secret courtyards and Sinterklaas",
     "story": "Amsterdam stands on thousands of wooden poles, and its coat of arms has three crosses: XXX. This is our city, but do you know its secrets? Where does a giant carry the whole world on his shoulders? Where is the bridge of three herrings? Where is the house as wide as a door? Conquer the zones in any order, collect coins and become the Admiral of Amsterdam!"
   },
+  "medal_art": "<path fill=\"none\" d=\"M-6.4,4V-.8L-5.6,-1.6V-3.2H-3.2V-1.6L-2.4,-.8V4M-5.6,-3.2L-4.4,-4L-3.2,-3.2M-2.4,4V-1.8H-1.8V-3H-1.2V-4.2H-.6V-5.2H.6V-4.2H1.2V-3H1.8V-1.8H2.4V4M2.4,4V-.6Q3,-.8 3.2,-1.8Q3.3,-3.4 4.4,-3.6Q5.5,-3.4 5.6,-1.8Q5.8,-.8 6.4,-.6V4M-7,4H7\"/><path stroke=\"none\" d=\"M-5.3,-0.2h.6v.9h-.6ZM-5.3,1.8h.6v.9h-.6ZM-4.1,-0.2h.6v.9h-.6ZM-4.1,1.8h.6v.9h-.6ZM-0.9,-0.2h.6v.9h-.6ZM-0.9,1.8h.6v.9h-.6ZM0.3,-0.2h.6v.9h-.6ZM0.3,1.8h.6v.9h-.6ZM3.5,-0.2h.6v.9h-.6ZM3.5,1.8h.6v.9h-.6ZM4.7,-0.2h.6v.9h-.6ZM4.7,1.8h.6v.9h-.6Z\"/><path fill=\"none\" stroke-width=\".45\" d=\"M-2.15,-7.35l.9,.9m0,-.9l-.9,.9M-.45,-7.35l.9,.9m0,-.9l-.9,.9M1.25,-7.35l.9,.9m0,-.9l-.9,.9\"/><path fill=\"none\" d=\"M-6.6,5.4q.7,-.6 1.4,0t1.4,0t1.4,0t1.4,0t1.4,0t1.4,0t1.4,0t1.4,0t1.4,0M-4.5,6.8q.7,-.6 1.4,0t1.4,0t1.4,0t1.4,0t1.4,0t1.4,0\"/>",
   "labels": {
     "day": "Outing",
     "ranks": "Rank",

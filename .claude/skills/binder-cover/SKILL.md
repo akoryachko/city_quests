@@ -1,6 +1,6 @@
 ---
 name: binder-cover
-description: Design a personalised front and back cover for a child's quest ring binder (the folder that holds the city-quest booklets), in a travel-explorer style, from the child's name and photo. Interviews the parent about the child (name, photos, favourite things), turns the photo into a contour-map portrait of the child's face (like a topographic map, in sepia and gold tones), and renders the cover — front with the name, the portrait, compass, flight path and travel stamps; back with a motto and a map of Europe (or another region) with a named empty circle for every city worth a quest, plus a magnifier on the home country — both A5 halves on one A4 landscape sheet. Keeps the child's photo and name private (git-ignored covers/ folder, never committed). Use whenever the user asks for a binder cover, folder cover, quest-book cover or a personalised cover with a kid's photo, even if they don't say "skill".
+description: Design a personalised front and back cover for a child's quest ring binder (the folder that holds the city-quest booklets), in a travel-explorer style, from the child's name and photo. Interviews the parent about the child (name, photos, favourite things), turns the photo into a contour-map portrait of the child's face (like a topographic map, in sepia and gold tones), and renders the cover — front with the name, the portrait, compass, flight path and travel stamps; back with a motto and a map of Europe (or another region) with a named empty circle for every city worth a quest, plus a magnifier on the home country — both A5 halves on one A4 landscape sheet, or each face at the binder's own size (e.g. 19 × 22 cm) on its own A4 page with crop marks. Keeps the child's photo and name private (git-ignored covers/ folder, never committed). Use whenever the user asks for a binder cover, folder cover, quest-book cover or a personalised cover with a kid's photo, even if they don't say "skill".
 ---
 
 # Personalised binder cover
@@ -40,9 +40,16 @@ Ask (the AskUserQuestion tool works well):
    motto): `ru` or `en`.
 2. **Photo**: a path or file:// link (decode `%20`). Best: full figure, plain background,
    good light, face clearly visible.
-3. **Binder**: two A5 inserts for clear pockets (default: front and back on one A4
-   landscape sheet, cut in the middle), a wrap-around with spine (ask the spine width), or
-   glued on (add bleed).
+3. **Binder**: the size of the cover pockets (measure the binder). Two A5 inserts (default:
+   front and back on one A4 landscape sheet, cut in the middle), or any other size up to
+   ~200 × 280 mm with `"size": [width, height]` in mm (e.g. `[190, 220]`): each face gets its
+   own A4 portrait page (front first), centred, with 2 mm bleed and crop marks. The layout is
+   designed on A5 and adapts: positions stretch with the height, sizes and fonts grow with the
+   smaller ratio, and the back map fills the wider frame with more of the region.
+   When the back pocket differs from the front, give it its own `"back_size": [190, 228]`.
+   For a binder with a spine pocket add `"spine": 30` (width in mm; height as the faces, or
+   `[30, 217]` for its own height): a
+   third page with the front's title reading upwards, a compass and a plane at the ends.
 4. **Front figure**: a finished drawing of the child the parent already has (e.g. a pencil or
    watercolour portrait on white paper — the best result; set `"figure_kind": "drawing"`: it is
    multiplied onto the parchment so the white paper disappears, and its edges fade out), or one
@@ -118,8 +125,8 @@ Write `covers/<slug>/cover.json` (fields documented at the top of
 python3 .claude/skills/binder-cover/scripts/build_cover.py covers/<slug>/cover.json
 ```
 
-Writes `cover.pdf` (A4 landscape: back left, front right, dashed cut line), `cover.png` and
-`cover.html`. Country shapes (Natural Earth via world-atlas) are cached in
+Writes `cover.pdf` (A4 landscape: back left, front right, dashed cut line; with `size`: page 1
+the front, page 2 the back), `cover.png` and `cover.html`. Country shapes (Natural Earth via world-atlas) are cached in
 `~/.cache/city-quest/world`; fonts come from Google Fonts, so the build needs internet.
 
 Check the render (`pdftoppm -r 80 -png -singlefile cover.pdf <scratchpad>/cv`, and a closer
@@ -132,8 +139,10 @@ interesting city where names still collide or read ambiguously. Show the user an
 
 ## 4. Hand-off
 
-Tell the user where the PDF is and how to print: A4 landscape, colour, **actual size / 100 %**
-(not "fit to page"), single-sided, ideally on thicker paper (160–200 g/m²); cut along the dashed
-line; the left half is the back, the right half the front. The circles (2.8 mm on the main map,
+Tell the user where the PDF is and how to print: colour, **actual size / 100 %** (not "fit to
+page"), single-sided, ideally on thicker paper (160–200 g/m²). A5 halves: A4 landscape, cut along
+the dashed line; the left half is the back, the right half the front. With `size`: two A4
+portrait pages (front, back, and the spine if asked), each cut at its crop marks (the parchment
+runs 2 mm past them). The circles (2.8 mm on the main map,
 2.2 mm in the magnifier) are for colouring in with a felt-tip after each conquered city. When a quest is made for a
 city not on the map, rebuild the cover so its circle appears.

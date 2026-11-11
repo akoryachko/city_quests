@@ -4,16 +4,19 @@
 Usage:
     python3 build_stickers.py path/to/quest.json [more/quest.json …] [--big 3] [--small 2] [--medal 1] [--out FILE]
 
-Print in colour on A4 sticker paper at 100 % scale and cut along the thin grey circles.
+Print in colour on A4 sticker paper at 100 % scale and cut along the circles.
 Every zone gets a block: `--big` stickers of 18 mm (they cover the "sticker" circle on the
 zone card; a spare goes in the collection) and `--small` stickers of 10 mm (for the zone on
-the city map). Each zone has its own colour, the same as in the colour booklet; the big sticker shows "CLAIMED" on top, the zone
+the city map), coloured to the edge with 0.6 mm bleed past the white dotted cut line. Each zone has its own colour, the same as in the colour booklet; the big sticker shows "CLAIMED" on top, the zone
 number below and the zone emoji in the middle. Every quest also gets `--medal` 32 mm city stickers
 for the medal circle on the certificate: a gold medal, "CONQUEROR OF <city>" around it, a dot
 for every zone in its colour and the cover emoji under a crown. And `--rank-medal` pairs of 30 mm stickers
 for a real gold sports medal (the empty 30 mm disc on its front and back): polished gold to the edge with
-the text engraved, front = the top rank of the city ("АДМИРАЛ / АМСТЕРДАМА") around an emblem (anchor for
-sea ranks, else a crown; "medal_emblem" in quest.json overrides: anchor, crown, star), back = "CONQUEROR /
+the text engraved, front = the top rank of the city ("АДМИРАЛ / АМСТЕРДАМА") around a picture of the city:
+"medal_art" in quest.json, an SVG fragment drawn as engraving (outlines need fill="none", small solid shapes
+stroke="none"), centred on 0,0 and within about ±7.5 units (1 unit ≈ 1 mm), e.g. the city's best-known
+landmark over water; without it an emblem (anchor for sea ranks, else a crown; "medal_emblem": anchor, crown,
+star), back = "CONQUEROR /
 OF <city>", a compass rose and the zone count. Several quests share the sheet to save paper; to print only
 the medals for several cities: --big 0 --small 0 --medal 0.
 Default output: <folder>/<city>-stickers.pdf for one quest, ./stickers.pdf for several.
@@ -44,17 +47,18 @@ def big_sticker(zi, z, uid):
     r = BIG / 2
     ring = ZONE_COLOURS[(zi - 1) % len(ZONE_COLOURS)]
     top, bottom = f"t{uid}", f"b{uid}"
-    return f"""<svg class="st" viewBox="0 0 {BIG} {BIG}" style="width:{BIG}mm;height:{BIG}mm">
+    B, W = BLEED, BIG + 2 * BLEED
+    return f"""<svg class="st" viewBox="{-B} {-B} {W} {W}" style="width:{W}mm;height:{W}mm">
   <defs>
     <path id="{top}" d="M {r-5.9},{r} A 5.9 5.9 0 0 1 {r+5.9},{r}"/>
     <path id="{bottom}" d="M {r-7.3},{r} A 7.3 7.3 0 0 0 {r+7.3},{r}"/>
   </defs>
-  <circle class="cut" cx="{r}" cy="{r}" r="{r-.05}"/>
-  <circle cx="{r}" cy="{r}" r="{r-.4}" fill="{ring}"/>
+  <circle cx="{r}" cy="{r}" r="{r+B}" fill="{ring}"/>
   <circle cx="{r}" cy="{r}" r="{r-3.5}" fill="{tint(ring)}" stroke="#fff" stroke-width=".35"/>
   <text class="arc"><textPath href="#{top}" startOffset="50%">{esc(LABELS['claimed'])}</textPath></text>
   <text class="arc"><textPath href="#{bottom}" startOffset="50%">★ {esc(LABELS['zone'].upper())} {zi} ★</textPath></text>
   <text class="emoji" x="{r}" y="{r+1.9}">{esc(z.get('emoji', '🏳️'))}</text>
+  <circle class="cutline" cx="{r}" cy="{r}" r="{r}"/>
 </svg>"""
 
 
@@ -62,10 +66,11 @@ def small_sticker(zi):
     """A 10 mm sticker for the city map: a disc in the zone's colour with its number."""
     r = SMALL / 2
     ring = ZONE_COLOURS[(zi - 1) % len(ZONE_COLOURS)]
-    return f"""<svg class="st" viewBox="0 0 {SMALL} {SMALL}" style="width:{SMALL}mm;height:{SMALL}mm">
-  <circle class="cut" cx="{r}" cy="{r}" r="{r-.05}"/>
-  <circle cx="{r}" cy="{r}" r="{r-.4}" fill="{ring}" stroke="#fff" stroke-width=".3"/>
+    B, W = BLEED, SMALL + 2 * BLEED
+    return f"""<svg class="st" viewBox="{-B} {-B} {W} {W}" style="width:{W}mm;height:{W}mm">
+  <circle cx="{r}" cy="{r}" r="{r+B}" fill="{ring}"/>
   <text class="num" x="{r}" y="{r+1.9}">{zi}</text>
+  <circle class="cutline" cx="{r}" cy="{r}" r="{r}"/>
 </svg>"""
 
 
@@ -148,7 +153,7 @@ def rank_medal(q, uid, side):
         top_txt = rank.upper()
         bottom_txt = city_gen.upper() if lang == "ru" else f"OF {q['city'].upper()}"
         kind = q.get("medal_emblem") or ("anchor" if any(w in rank.lower() for w in ("адмирал", "капитан", "admiral", "captain")) else "crown")
-        centre = engraved(emblem(kind), uid, c, c + 0.3, 0.95)
+        centre = engraved(q.get("medal_art") or emblem(kind), uid, c, c + 0.3, 0.95)
         stars = engraved('<path d="M0,-1L.3,-.3L1,-.3L.45,.15L.65,.9L0,.45L-.65,.9L-.45,.15L-1,-.3L-.3,-.3Z"/>', uid, c - 11.6, c + 0.2) + \
             engraved('<path d="M0,-1L.3,-.3L1,-.3L.45,.15L.65,.9L0,.45L-.65,.9L-.45,.15L-1,-.3L-.3,-.3Z"/>', uid, c + 11.6, c + 0.2)
     else:
@@ -195,6 +200,7 @@ h2 {{ font-size: 9pt; margin: 1mm 0 1mm; }}
 .name {{ font-size: 6.5pt; color: #444; white-space: nowrap; overflow: hidden; }}
 .row {{ display: flex; align-items: center; gap: {GAP}mm; }}
 .cut {{ fill: #fff; stroke: #aaa; stroke-width: .12; }}
+.cutline {{ fill: none; stroke: #fff; stroke-opacity: .9; stroke-width: .08; stroke-dasharray: .6 .6; }}
 .arc {{ font-size: 2.1px; font-weight: bold; letter-spacing: .15px; text-anchor: middle; fill: #fff; }}
 .emoji {{ font-size: 5.6px; text-anchor: middle; }}
 .marc {{ font-size: 2.6px; font-weight: bold; letter-spacing: .2px; text-anchor: middle; fill: #4a3200; }}
@@ -233,10 +239,10 @@ def main():
             label = "🏅 медаль: лицевая сторона и оборот" if lang == "ru" else "🏅 medal: front and back"
             blocks.append(f'<div class="zone"><div class="name">{label} · {esc(top_rank(q))}</div><div class="row">{pairs}</div></div>')
         sections.append(f'<h2>{esc(q.get("title", q.get("city", "")))}</h2><div class="grid">{"".join(blocks)}</div>')
-    hint = ("Печатать в цвете на A4 бумаге-наклейке в 100 % масштабе, вырезать по тонким серым кругам; "
-            "золотые наклейки для медали — по белому пунктиру (30 мм), золото чуть выходит за линию.") if lang == "ru" \
-        else ("Print in colour on A4 sticker paper at 100 % scale; cut along the thin grey circles; "
-              "the gold medal stickers along the white dotted line (30 mm): the gold runs a little past it.")
+    hint = ("Печатать в цвете на A4 бумаге-наклейке в 100 % масштабе, цветные и золотые наклейки — по белому пунктиру "
+            "(цвет чуть выходит за линию), медаль для грамоты — по тонкому серому кругу.") if lang == "ru" \
+        else ("Print in colour on A4 sticker paper at 100 % scale; cut the coloured and gold stickers along the white dotted line "
+              "(the colour runs a little past it), the certificate medal along the thin grey circle.")
     doc = f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(sections)}<div class="hint">{hint}</div></body></html>'
     first = Path(a.quests[0])
     pdf = Path(a.out) if a.out else (first.parent / f"{first.parent.name}-stickers.pdf" if len(a.quests) == 1 else Path("stickers.pdf"))

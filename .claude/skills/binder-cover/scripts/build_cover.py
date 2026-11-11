@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Build a personalised binder cover in the explorer style: front and back (A5 portrait each)
-on one A4 landscape sheet.
+"""Build a personalised binder cover in the explorer style: front and back, either as two A5
+halves of one A4 landscape sheet (default) or, with "size", each face on its own A4 page.
 
 Usage:
     python3 build_cover.py covers/<slug>/cover.json
@@ -13,6 +13,10 @@ cover.json (private, lives in the git-ignored covers/ folder):
       "figure": "kid-contour.svg",           # contour_portrait.py (default), line_portrait.py svg, kid-sketch.png or kid-sticker.png,
       "figure_kind": "",                     #   or any finished drawing on white paper with "figure_kind": "drawing"
       "motto": "Ищи, считай, находи —\\nгород твой!",
+      "size": [190, 220],                    # optional: width, height of each face in mm (the binder's pocket);
+                                             #   each face then gets its own A4 portrait page, with crop marks
+      "back_size": [190, 228],               # optional, with "size": the back's own size when its pocket differs
+      "spine": 30,                           # optional, with "size": spine width in mm, or [width, height]; a 3rd page with the title
       "icons": ["✈️", "🧭", "🚂", "⛵", "🏰", "🗼", "📷", "🎒"],   # 3rd-6th: stamps, last: luggage tag
       "map": {
         "main": "europe",                    # a region of references/cities.json
@@ -25,7 +29,8 @@ cover.json (private, lives in the git-ignored covers/ folder):
     }
 
 Writes next to cover.json: cover.html, cover.pdf (A4 landscape: back left, front right, dashed
-cut line in the middle) and cover.png (preview). The back shows the region with an empty circle
+cut line in the middle; with "size": page 1 the front, page 2 the back, each centred on A4 portrait
+with crop marks and 2 mm bleed) and cover.png (preview). The back shows the region with an empty circle
 per city: the child colours it in or puts a sticker on it after conquering the city.
 Country shapes come from world-atlas (Natural Earth, public domain), cached in
 ~/.cache/city-quest/world.
@@ -37,6 +42,7 @@ import io
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -246,9 +252,9 @@ def compass(size, c1=RUST, c2="#c9772f"):
             f'<circle cx="50" cy="50" r="4" fill="{c2}" stroke="{c1}"/><text x="50" y="9" font-size="9" text-anchor="middle" fill="{c1}" font-weight="700">N</text></svg>')
 
 
-def back_map(cfg):
-    """Back cover picture, in 0.1 mm units: 1360 x 1640 (136 x 164 mm)."""
-    W, H, MH = 1360, 1640, 1290          # MH: height of the main map frame
+def back_map(cfg, W=1360, H=1640):
+    """Back cover picture, in 0.1 mm units (A5: 1360 x 1640, i.e. 136 x 164 mm)."""
+    MH = H - 350                         # MH: height of the main map frame; the magnifier hangs below it
     main, inset, in_main, in_inset = city_lists(cfg)
     F = fit(main["bbox"], (0, 0, W, MH))
     land = path_d(countries(), F, keep=lambda lo, la: -30 < lo < 50 and 30 < la < 72)
@@ -337,45 +343,89 @@ def data_uri(path, max_h=1800):
 
 # ---------------------------------------------------------------- page
 
-CSS = f"""
-@page {{ size: A4 landscape; margin: 0; }}
+A5 = (148.5, 210)
+BLEED = 2.0
+
+
+def make_css(SW, SH, separate):
+    """Styles for faces of SW x SH mm. Designed on A5: on another size vertical positions stretch with
+    the height (ky), sizes and fonts with the smaller ratio (k); left/right anchors stay put."""
+    k = min(SW / A5[0], SH / A5[1])
+    ky = SH / A5[1]
+    v = lambda x: f"{x * ky:.1f}mm"   # a vertical position
+    z = lambda x: f"{x * k:.1f}mm"    # a size
+    pt = lambda x: f"{x * k:.1f}pt"   # a font size
+    if separate:
+        L, T = (210 - SW) / 2, (297 - SH) / 2
+        page = f"""@page {{ size: A4 portrait; margin: 0; }}
+.sheet {{ width: 210mm; height: 297mm; position: relative; overflow: hidden; break-after: page; }}
+.sheet:last-child {{ break-after: auto; }}
+.sheet .side {{ position: absolute; left: {L:.2f}mm; top: {T:.2f}mm; }}
+.bleed {{ position: absolute; left: {L - BLEED:.2f}mm; top: {T - BLEED:.2f}mm; width: {SW + 2 * BLEED:.2f}mm; height: {SH + 2 * BLEED:.2f}mm; background: #e2c793; }}
+.crop {{ position: absolute; background: #000; }}"""
+    else:
+        page = """@page { size: A4 landscape; margin: 0; }
+.sheet { width: 297mm; height: 210mm; display: flex; position: relative; overflow: hidden; }
+.sheet::after { content: ""; position: absolute; left: 148.5mm; top: 0; bottom: 0; border-left: .3mm dashed rgba(0,0,0,.35); }"""
+    return f"""{page}
 * {{ box-sizing: border-box; }}
 html, body {{ margin: 0; padding: 0; }}
 body {{ -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #fff; }}
 img {{ display: block; }}
-.sheet {{ width: 297mm; height: 210mm; display: flex; position: relative; overflow: hidden; }}
-.sheet::after {{ content: ""; position: absolute; left: 148.5mm; top: 0; bottom: 0; border-left: .3mm dashed rgba(0,0,0,.35); }}
-.side {{ width: 148.5mm; height: 210mm; position: relative; overflow: hidden; color: {INK}; font-family: Neucha, sans-serif;
+.side {{ width: {SW}mm; height: {SH}mm; position: relative; overflow: hidden; color: {INK}; font-family: Neucha, sans-serif;
   background: radial-gradient(ellipse at 50% 40%, {PAPER} 0%, #f1dfb8 70%, #e2c793 100%); }}
-.bgmap {{ position: absolute; inset: 20mm -20mm 30mm -20mm; opacity: .16; }}
-.name {{ position: absolute; top: 12mm; left: 0; right: 0; text-align: center; font: 700 52pt "Amatic SC"; letter-spacing: 3mm; color: {RUST};
+.bgmap {{ position: absolute; opacity: .16; }}  /* placed in build(): the land touches both side edges */
+.name {{ position: absolute; top: {v(12)}; left: 0; right: 0; text-align: center; font: 700 {pt(52)} "Amatic SC"; letter-spacing: 3mm; color: {RUST};
   text-shadow: .6mm .6mm 0 #f7e7c4, 1.2mm 1.2mm 0 rgba(74,47,23,.25); }}
-.compass {{ position: absolute; top: 40mm; right: 8mm; transform: rotate(-12deg); }}
-.subtitle {{ position: absolute; top: 33mm; left: 0; right: 0; text-align: center; font: 700 21pt "Amatic SC"; letter-spacing: .8mm; color: {INK}; }}
+.compass {{ position: absolute; top: {v(40)}; right: 8mm; transform: rotate(-12deg); }}
+.subtitle {{ position: absolute; top: {v(33)}; left: 0; right: 0; text-align: center; font: 700 {pt(21)} "Amatic SC"; letter-spacing: .8mm; color: {INK}; }}
 /* with a subtitle: the subtitle is the title at the top, the name sits under the portrait */
 .sub2 {{ font-size: .6em; letter-spacing: .6mm; margin-top: -1.5mm; }}
-.titled .subtitle {{ top: 8mm; font-size: 38pt; line-height: 1; letter-spacing: 1.2mm; color: {RUST}; text-shadow: .5mm .5mm 0 #f7e7c4, 1mm 1mm 0 rgba(74,47,23,.2); }}
-.titled .name {{ top: auto; bottom: 7mm; font-size: 46pt; }}
-.titled .drawing {{ bottom: 31mm; width: 80mm; }}
+.titled .subtitle {{ top: {v(7)}; font-size: {pt(48)}; line-height: 1; letter-spacing: 1.2mm; color: {RUST}; text-shadow: .5mm .5mm 0 #f7e7c4, 1mm 1mm 0 rgba(74,47,23,.2); }}
+.titled .name {{ top: auto; bottom: {v(7)}; font-size: {pt(46)}; }}
+.titled .drawing {{ bottom: {v(31)}; width: {z(80)}; }}
 .sub2::before, .sub2::after {{ content: "~"; margin: 0 2.5mm; color: #c9772f; }}
-.route {{ position: absolute; top: 36mm; left: 0; width: 100%; height: 60mm; }}
-.kid {{ position: absolute; bottom: 6mm; left: 50%; transform: translateX(-50%) rotate(-2deg); height: 132mm; filter: drop-shadow(.8mm 1.2mm 1.2mm rgba(60,30,0,.3)); }}
-.head {{ position: absolute; bottom: 9mm; left: 50%; transform: translateX(-50%); width: 98mm; }}
+.route {{ position: absolute; top: {v(36)}; left: 0; width: 100%; height: {SW * 60 / 150:.1f}mm; }}
+.kid {{ position: absolute; bottom: {v(6)}; left: 50%; transform: translateX(-50%) rotate(-2deg); height: {z(132)}; filter: drop-shadow(.8mm 1.2mm 1.2mm rgba(60,30,0,.3)); }}
+.head {{ position: absolute; bottom: {v(9)}; left: 50%; transform: translateX(-50%); width: {z(98)}; }}
 /* a drawing on white paper: multiplied onto the parchment (white becomes parchment), edges fading out */
-.drawing {{ position: absolute; bottom: 4mm; left: 50%; transform: translateX(-50%); width: 88mm; mix-blend-mode: multiply;
- }}
+.drawing {{ position: absolute; bottom: {v(4)}; left: 50%; transform: translateX(-50%); width: {z(88)}; mix-blend-mode: multiply; }}
 .stamp, .compass {{ z-index: 2; }}
-.portrait {{ position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 112mm; }}
-.stamp {{ position: absolute; width: 22mm; height: 22mm; border: .8mm dashed #a4482a; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-size: 22pt; background: rgba(255,250,235,.55); }}
-.s1 {{ top: 96mm; left: 6mm; transform: rotate(-14deg); }} .s2 {{ top: 84mm; right: 6mm; transform: rotate(10deg); }}
-.s3 {{ bottom: 44mm; left: 4mm; transform: rotate(8deg); }} .s4 {{ bottom: 64mm; right: 4mm; transform: rotate(-8deg); }}
-.tag {{ position: absolute; bottom: 10mm; left: 9mm; width: 20mm; height: 30mm; background: #c9772f; border-radius: 3mm; transform: rotate(-16deg);
-  box-shadow: .6mm .8mm 0 rgba(60,30,0,.3); display: flex; align-items: center; justify-content: center; font-size: 20pt; }}
-.tag::before {{ content: ""; position: absolute; top: 3mm; width: 4mm; height: 4mm; border-radius: 50%; background: #f1dfb8; }}
-.motto {{ position: absolute; top: 9mm; left: 8mm; right: 8mm; text-align: center; font: 700 28pt/1.02 "Amatic SC"; color: {RUST}; }}
-.mapbox {{ position: absolute; top: 38mm; left: 6.25mm; width: 136mm; height: 164mm; }}
+.portrait {{ position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: {z(112)}; }}
+.stamp {{ position: absolute; width: {z(22)}; height: {z(22)}; border: .8mm dashed #a4482a; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: {pt(22)}; background: rgba(255,250,235,.55); }}
+.s1 {{ top: {v(96)}; left: 6mm; transform: rotate(-14deg); }} .s2 {{ top: {v(84)}; right: 6mm; transform: rotate(10deg); }}
+.s3 {{ bottom: {v(44)}; left: 4mm; transform: rotate(8deg); }} .s4 {{ bottom: {v(64)}; right: 4mm; transform: rotate(-8deg); }}
+.motto {{ position: absolute; top: {v(9)}; left: 8mm; right: 8mm; text-align: center; font: 700 {pt(28)}/1.02 "Amatic SC"; color: {RUST}; }}
+.spine {{ display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: {v(8)} 0; }}
+.spine .title {{ flex: 1; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; transform: rotate(180deg);
+  white-space: nowrap; font: 700 {pt(56)} "Amatic SC"; letter-spacing: 1.2mm; color: {RUST}; text-shadow: .4mm .4mm 0 #f7e7c4, .8mm .8mm 0 rgba(74,47,23,.2); }}
+.spine .t2 {{ font-size: .62em; margin-top: 1.5mm; }}
+.spine .t2::before, .spine .t2::after {{ content: "~"; margin: 0 2.5mm; color: #c9772f; }}
+.spine .icon {{ font-size: {pt(20)}; }}
+.mapbox {{ position: absolute; top: {v(38)}; left: 6.25mm; right: 6.25mm; bottom: {v(8)}; }}
 """
+
+
+def back_css(BW, BH):
+    """The back's motto and map for a back of its own size (back_size)."""
+    k, ky = min(BW / A5[0], BH / A5[1]), BH / A5[1]
+    return (f".back .motto {{ top: {9 * ky:.1f}mm; font-size: {28 * k:.1f}pt; }}\n"
+            f".back .mapbox {{ top: {38 * ky:.1f}mm; bottom: {8 * ky:.1f}mm; }}\n")
+
+
+def placed(W, H, cls, inner):
+    """An A4 portrait sheet with a W x H mm face centred on it, its bleed and crop marks."""
+    L, T = (210 - W) / 2, (297 - H) / 2
+    box = f"left:{L:.2f}mm;top:{T:.2f}mm;width:{W}mm;height:{H}mm"
+    bleed = f"left:{L - BLEED:.2f}mm;top:{T - BLEED:.2f}mm;width:{W + 2 * BLEED:.2f}mm;height:{H + 2 * BLEED:.2f}mm"
+    return f'<div class="sheet"><div class="bleed" style="{bleed}"></div><div class="side {cls}" style="{box}">{inner}</div>{crop_marks(W, H)}</div>'
+
+
+def mapbox_size(SW, SH):
+    """The back map's size in 0.1 mm units (matches .mapbox)."""
+    ky = SH / A5[1]
+    return round((SW - 12.5) * 10), round((SH - 46 * ky) * 10)
 
 
 def subtitle_html(text):
@@ -387,7 +437,24 @@ def subtitle_html(text):
     return f'<div class="subtitle">{esc(first)}{more}</div>'
 
 
+def crop_marks(SW, SH):
+    """Thin corner marks just outside the face (they stay clear of the bleed)."""
+    L, T, R, B = (210 - SW) / 2, (297 - SH) / 2, (210 + SW) / 2, (297 + SH) / 2
+    gap, n, w = BLEED + 1, 6, 0.15
+    out = []
+    for x in (L, R):
+        for y in (T, B):
+            dy = -gap - n if y == T else gap
+            dx = -gap - n if x == L else gap
+            out.append(f'<div class="crop" style="left:{x - w / 2:.2f}mm;top:{y + dy:.2f}mm;width:{w}mm;height:{n}mm"></div>')
+            out.append(f'<div class="crop" style="left:{x + dx:.2f}mm;top:{y - w / 2:.2f}mm;width:{n}mm;height:{w}mm"></div>')
+    return "".join(out)
+
+
 def build(cfg, folder, chrome):
+    separate = bool(cfg.get("size"))
+    SW, SH = (float(x) for x in cfg["size"]) if separate else A5
+    k = min(SW / A5[0], SH / A5[1])
     icons = cfg.get("icons", ["✈️", "🧭", "🚂", "⛵", "🏰", "🗼", "📷", "🎒"])
     figure = folder / cfg.get("figure", "kid-contour.svg")
     if figure.suffix == ".svg" and figure.exists():  # line portrait: head and shoulders, standing on the bottom edge
@@ -398,22 +465,48 @@ def build(cfg, folder, chrome):
     else:
         kid = f'<img class="kid" src="{data_uri(figure)}">' if figure.exists() else ""
     world = path_d(countries("110m"), lambda lo, la: (100 + equal_earth(lo, la)[0] * 37, 60 + equal_earth(lo, la)[1] * 37))
-    front = f'''<svg class="bgmap" viewBox="0 0 200 110"><path d="{world}" fill="{RUST}"/></svg>
+    # the faint world map: scaled so the land runs from edge to edge, centred where the A5 design had it
+    # (measured on the continents and big islands; specks of islands may run off the edge)
+    big = []
+    for ring in world.split("M")[1:]:
+        pts = [tuple(map(float, q)) for q in re.findall(r"(-?[\d.]+),(-?[\d.]+)", ring)]
+        if pts and max(x for x, _ in pts) - min(x for x, _ in pts) > 4:
+            big += pts
+    x0, x1 = min(x for x, _ in big), max(x for x, _ in big)
+    y0, y1 = min(y for _, y in big), max(y for _, y in big)
+    mk = SW / (x1 - x0)                                             # mm per map unit
+    mid = 0.415 * SH                                                # the land's vertical centre: clear of a big title
+    bg = f"left:{-x0 * mk:.2f}mm;top:{mid - (y0 + y1) / 2 * mk:.2f}mm;width:{200 * mk:.2f}mm;height:{110 * mk:.2f}mm"
+    front = f'''<svg class="bgmap" style="{bg}" viewBox="0 0 200 110"><path d="{world}" fill="{RUST}"/></svg>
 <svg class="route" viewBox="0 0 150 60"><path d="M8,52 C40,8 90,0 140,22" fill="none" stroke="{RUST}" stroke-width=".9" stroke-dasharray="2.4,2"/><text x="67.3" y="12.3" font-size="11" text-anchor="middle" dominant-baseline="central" transform="rotate(33 67.3 12.3)">✈️</text></svg>
-<div class="name">{esc(cfg["name"].upper())}</div>{subtitle_html(cfg.get("subtitle", ""))}<div class="compass">{compass("30mm")}</div>
+<div class="name">{esc(cfg["name"].upper())}</div>{subtitle_html(cfg.get("subtitle", ""))}<div class="compass">{compass(f"{30 * k:.1f}mm")}</div>
 {"".join(f'<div class="stamp s{i+1}">{esc(c)}</div>' for i, c in enumerate(icons[2:6]))}
 {kid}'''
     motto = "<br>".join(esc(l) for l in cfg.get("motto", "").split("\n"))
-    back = f'<div class="motto">{motto}</div><div class="mapbox">{back_map(cfg)}</div>'
+    BW, BH = (float(x) for x in cfg.get("back_size") or (SW, SH))
+    back = f'<div class="motto">{motto}</div><div class="mapbox">{back_map(cfg, *mapbox_size(BW, BH))}</div>'
+    front_div = f'<div class="side front{" titled" if cfg.get("subtitle") else ""}">{front}</div>'
+    back_div = f'<div class="side back">{back}</div>'
+    if separate:  # page 1 the front, page 2 the back, each centred on A4 with bleed and crop marks
+        sheets = f'<div class="sheet"><div class="bleed"></div>{front_div}{crop_marks(SW, SH)}</div>' + placed(BW, BH, "back", back)
+        if cfg.get("spine"):  # page 3: the spine strip, the front's title reading upwards
+            sp = cfg["spine"]  # a width, or [width, height] when the spine pocket is shorter or taller than the faces
+            spw, sph = (float(sp[0]), float(sp[1])) if isinstance(sp, list) else (float(sp), SH)
+            first, *rest = (cfg.get("subtitle") or cfg["name"]).split("\n")
+            t2 = f'<span class="t2">{esc(" ".join(rest))}</span>' if rest else ""
+            sheets += placed(spw, sph, "spine", f'<div class="icon">{esc(icons[1])}</div><div class="title">{esc(first)}{t2}</div><div class="icon">{esc(icons[0])}</div>')
+    else:
+        sheets = f'<div class="sheet">{back_div}{front_div}</div>'
     doc = f"""<!doctype html><html lang="{esc(cfg.get('lang', 'ru'))}"><head><meta charset="utf-8"><title>{esc(cfg['name'])}</title>
-<link rel="stylesheet" href="{FONTS}"><style>{CSS}</style></head><body>
-<div class="sheet"><div class="side back">{back}</div><div class="side front{' titled' if cfg.get('subtitle') else ''}">{front}</div></div></body></html>"""
+<link rel="stylesheet" href="{FONTS}"><style>{make_css(SW, SH, separate)}{back_css(BW, BH) if separate else ""}</style></head><body>
+{sheets}</body></html>"""
     h, pdf, png = (folder / f"cover.{e}" for e in ("html", "pdf", "png"))
     h.write_text(doc, encoding="utf-8")
     with tempfile.TemporaryDirectory() as prof:
         base = [chrome, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars", f"--user-data-dir={prof}", "--virtual-time-budget=15000"]
         subprocess.run(base + ["--no-pdf-header-footer", f"--print-to-pdf={pdf}", h.as_uri()], capture_output=True, timeout=180)
-        subprocess.run(base + ["--window-size=1123,794", f"--screenshot={png}", h.as_uri()], capture_output=True, timeout=180)
+        size = f"794,{1123 * (2 + bool(cfg.get('spine')))}" if separate else "1123,794"  # the A4 pages one under the other
+        subprocess.run(base + [f"--window-size={size}", f"--screenshot={png}", h.as_uri()], capture_output=True, timeout=180)
     if not pdf.exists():
         sys.exit("PDF render failed")
     print(f"Wrote {pdf} and {png.name}")
