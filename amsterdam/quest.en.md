@@ -56,9 +56,11 @@ Look on every outing, in any zone. Fill a row and get the coins!
 - ☐ ☐ ☐ ☐ ☐ A bridge number (written on the bridge) (🪙×2)
 - ☐ ☐ ☐ ☐ ☐ ☐ ☐ ☐ A picture stone on a house wall (they were used instead of house numbers!) (🪙×3)
 - ☐ ☐ ☐ ☐ ☐ Windmills (any 5): De Gooyer · De Bloem · De Otter · De 1200 Roe · Molen van Sloten · Riekermolen (🪙×4)
+- ☐ ☐ ☐ ☐ ☐ A beam with a hook right under the roof: furniture goes up on it and in through the window! (🪙×2)
+- ☐ ☐ ☐ A house over 350 years old: a year from 1600 to 1699 on its front or on a stone (🪙×3)
 - ☐ ☐ ☐ ☐ ☐ Transport: tram · metro · ferry · bus · train (🪙×3)
 
-📏 My measures (measure at home): Step, cm ____ · Height, cm ____ · Palm, cm ____ · One floor of stairs, sec ____
+📏 My measures (measure at home): Step, cm ____ · Height, cm ____ · Arm span, cm ____ · One floor of stairs, sec ____
 
 ## 🏝️ Zone 1: Western Islands
 

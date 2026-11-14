@@ -141,6 +141,16 @@
         "coins": 4
       },
       {
+        "text": "A beam with a hook right under the roof: furniture goes up on it and in through the window!",
+        "boxes": 5,
+        "coins": 2
+      },
+      {
+        "text": "A house over 350 years old: a year from 1600 to 1699 on its front or on a stone",
+        "boxes": 3,
+        "coins": 3
+      },
+      {
         "text": "Transport: tram · metro · ferry · bus · train",
         "boxes": 5,
         "coins": 3
@@ -1668,7 +1678,7 @@
   "measures": [
     "Step, cm",
     "Height, cm",
-    "Palm, cm",
+    "Arm span, cm",
     "One floor of stairs, sec"
   ]
 }

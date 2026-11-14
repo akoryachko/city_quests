@@ -274,7 +274,12 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
 - `players`: `kid_name`, `team_name` (empty → blanks to fill by hand).
 - `measures`: the kid's body measures used by `measure` challenges, e.g.
   `["Шаг", "Рост", "Руки в стороны", "Ладонь"]` → blanks on the hunt card
-  (or the rules card), with `labels.measures` as the heading.
+  (or the rules card), with `labels.measures` as the heading. **Keep the list and the
+  challenges in step:** after writing or changing challenges, check every measure is used
+  by at least one challenge or boss (in its text or answer: pace with steps, compare with
+  height, a palm count, the stairs time) and every body measure a challenge needs is in
+  the list. Remove a measure nothing uses (a blank the kid fills in for nothing), and add
+  one a challenge relies on; same in the translations.
 - Optional `labels` / `type_labels` override UI text (built-in labels are
   Russian, masculine; `players.gender: "f"` switches the built-in
   labels to feminine). Write kid-facing text in the profile's gender, and

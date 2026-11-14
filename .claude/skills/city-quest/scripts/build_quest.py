@@ -1008,6 +1008,12 @@ def measures_html(q):
     return f'<div class="measures"><b>📏 {LABELS["measures"]}</b> {cells}</div>'
 
 
+def hunt_track(h):
+    """Coin dots for the city-wide hunt, like a zone's coin line: one dot per coin its rows can earn (no 🏁: nothing to claim)."""
+    total = sum(int(it.get("coins", 0)) for it in h.get("items", []))
+    return f'<div class="track"><span>🪙</span>{"<span class=dot></span>" * total}</div>' if total else ""
+
+
 def hunt_card(q):
     """Campaign: a city-wide hunt (bingo) the kid ticks off on every outing."""
     h = q.get("hunt") or {}
@@ -1018,7 +1024,8 @@ def hunt_card(q):
     )
     return card(
         f"""<h2>{esc(h.get('emoji', '🎯'))} {esc(h.get('title', ''))}</h2><p class="small">{esc(h.get('hint', ''))}</p>
-        <ul class="hunt">{rows}</ul>{measures_html(q)}""",
+        <ul class="hunt">{rows}</ul>{measures_html(q)}
+        <footer class="zone-foot hunt-foot">{hunt_track(h)}</footer>""",
         "huntcard",
         "#333",
     )
@@ -1404,6 +1411,8 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 .facts { margin-top: .2em; color: #222; }
 .pstory { margin: 0 0 .3em; font-style: italic; }
 .huntcard .measures { margin-top: auto; }
+.huntcard .hunt-foot { margin-top: auto; }
+.huntcard .measures + .hunt-foot { margin-top: 2mm; }
 .measures { margin-top: 3mm; padding: 2mm; border: .3mm solid #bbb; border-radius: 3mm; font-size: .85em; display: flex; flex-wrap: wrap; gap: 1mm 4mm; }
 .ms { white-space: nowrap; }
 .pz a { text-decoration: none; border-bottom: .2mm dotted #333; }

@@ -35,6 +35,9 @@ the quest relies on; say which source you used.
 - Variety inside each zone and across the trip: types, moods (calm/active), no repeated
   mechanic that the profile says gets boring.
 - Something active after every calm stretch; a time-pressure task to burn energy.
+- Measures: every entry in `measures` (the blanks the kid fills in at home) is used by some
+  challenge or boss, and every body measure a challenge needs (step, height, palm, a
+  timed floor of stairs) is in `measures`. Flag unused ones to remove and missing ones to add.
 
 **Challenge scorecard** — score *every* challenge and boss 0–2 on each criterion
 (0 = fails, 1 = so-so, 2 = good):
