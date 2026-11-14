@@ -85,14 +85,14 @@ def medal_sticker(q, uid):
         for k in range(n))
     emoji = q.get("cover", {}).get("emoji", "🏰")
     size = 8 if len(emoji) <= 2 else 3.6
-    return f"""<svg class="st" viewBox="0 0 {MEDAL} {MEDAL}" style="width:{MEDAL}mm;height:{MEDAL}mm">
+    B, W = BLEED, MEDAL + 2 * BLEED
+    return f"""<svg class="st" viewBox="{-B} {-B} {W} {W}" style="width:{W}mm;height:{W}mm">
   <defs>
     <path id="{top}" d="M {r-12},{r} A 12 12 0 0 1 {r+12},{r}"/>
     <path id="{bottom}" d="M {r-14.1},{r} A 14.1 14.1 0 0 0 {r+14.1},{r}"/>
     <radialGradient id="g{uid}" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f6d66b"/><stop offset="1" stop-color="#b7860f"/></radialGradient>
   </defs>
-  <circle class="cut" cx="{r}" cy="{r}" r="{r-.05}"/>
-  <circle cx="{r}" cy="{r}" r="{r-.4}" fill="url(#g{uid})"/>
+  <circle cx="{r}" cy="{r}" r="{r+B}" fill="url(#g{uid})"/>
   <circle cx="{r}" cy="{r}" r="{r-1.1}" fill="none" stroke="#fff6d8" stroke-width=".25" stroke-dasharray=".5 .5"/>
   <circle cx="{r}" cy="{r}" r="11.3" fill="#fff8e1" stroke="#8a6300" stroke-width=".4"/>
   <text class="marc"><textPath href="#{top}" startOffset="50%">{esc(LABELS['conqueror'])}</textPath></text>
@@ -198,7 +198,7 @@ h2 {{ font-size: 9pt; margin: 1mm 0 1mm; }}
 .zone {{ break-inside: avoid; }}
 .name {{ font-size: 6.5pt; color: #444; white-space: nowrap; overflow: hidden; }}
 .row {{ display: flex; align-items: center; gap: {GAP}mm; }}
-.cut {{ fill: #fff; stroke: #aaa; stroke-width: .12; }}
+.st {{ flex: none; display: block; overflow: visible; }}
 .arc {{ font-size: 2.1px; font-weight: bold; letter-spacing: .15px; text-anchor: middle; fill: #fff; }}
 .emoji {{ font-size: 5.6px; text-anchor: middle; }}
 .marc {{ font-size: 2.6px; font-weight: bold; letter-spacing: .2px; text-anchor: middle; fill: #4a3200; }}
@@ -237,11 +237,10 @@ def main():
             label = "🏅 медаль: лицевая сторона и оборот" if lang == "ru" else "🏅 medal: front and back"
             blocks.append(f'<div class="zone"><div class="name">{label} · {esc(top_rank(q))}</div><div class="row">{pairs}</div></div>')
         sections.append(f'<h2>{esc(q.get("title", q.get("city", "")))}</h2><div class="grid">{"".join(blocks)}</div>')
-    hint = ("Печатать в цвете на A4 бумаге-наклейке в 100 % масштабе. Цветные наклейки зон — по краю цвета "
-            "(чуть больше — не страшно: лучше закроют круг), золотые медали — по белому пунктиру, медаль для грамоты — по тонкому серому кругу.") if lang == "ru" \
-        else ("Print in colour on A4 sticker paper at 100 % scale. Cut the coloured zone stickers along the colour's edge "
-              "(a bit oversize is fine: they cover the circle better), the gold medals along the white dotted line, "
-              "the certificate medal along the thin grey circle.")
+    hint = ("Печатать в цвете на A4 бумаге-наклейке в 100 % масштабе. Наклейки зон и медаль для грамоты — по краю цвета "
+            "(чуть больше — не страшно: лучше закроют круг), золотые медали на ленте — по белому пунктиру.") if lang == "ru" \
+        else ("Print in colour on A4 sticker paper at 100 % scale. Cut the zone stickers and the certificate medal along the colour's edge "
+              "(a bit oversize is fine: they cover the circle better), the gold sports-medal stickers along the white dotted line.")
     doc = f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(sections)}<div class="hint">{hint}</div></body></html>'
     first = Path(a.quests[0])
     pdf = Path(a.out) if a.out else (first.parent / f"{first.parent.name}-stickers.pdf" if len(a.quests) == 1 else Path("stickers.pdf"))

@@ -372,7 +372,7 @@ writes a colour A4 sheet of round zone-capture stickers for sticker paper (`<cit
 or `stickers.pdf` for several quests on one sheet): per zone 2 × 18 mm (they cover the sticker
 circle on the zone card), one colour per zone with no cut line (cut along the colour's edge; a little oversize covers
 the card's circle better), plus two 32 mm
-gold city medals for the certificate's medal circle, and two front + back pairs of 30 mm stickers
+gold city medals for the certificate's medal circle (no cut line either, gold 0.6 mm past the edge), and two front + back pairs of 30 mm stickers
 for a real gold sports medal (its empty 30 mm discs): the city's top rank («АДМИРАЛ АМСТЕРДАМА»)
 around an engraved picture of the city on the front, «ПОКОРИТЕЛЬ АМСТЕРДАМА», a compass rose and the zone count
 on the back, printed as polished gold with engraved text and a 0.6 mm gold bleed past the white
