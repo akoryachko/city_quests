@@ -93,7 +93,6 @@ def medal_sticker(q, uid):
     <radialGradient id="g{uid}" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f6d66b"/><stop offset="1" stop-color="#b7860f"/></radialGradient>
   </defs>
   <circle cx="{r}" cy="{r}" r="{r+B}" fill="url(#g{uid})"/>
-  <circle cx="{r}" cy="{r}" r="{r-1.1}" fill="none" stroke="#fff6d8" stroke-width=".25" stroke-dasharray=".5 .5"/>
   <circle cx="{r}" cy="{r}" r="11.3" fill="#fff8e1" stroke="#8a6300" stroke-width=".4"/>
   <text class="marc"><textPath href="#{top}" startOffset="50%">{esc(LABELS['conqueror'])}</textPath></text>
   <text class="marc"><textPath href="#{bottom}" startOffset="50%">★ {esc(city.upper())} ★</textPath></text>
