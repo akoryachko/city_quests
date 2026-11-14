@@ -344,9 +344,10 @@ come in fours). Every page has a small page number in the hole margin. So that n
 on a page once it is cut and punched, the book draws no dashed line or circles: the cut is two
 light-grey dots on the middle line (at ¼ and ¾ of the height), and each hole is only its left and
 right edge as two light-grey dots 5.5 mm apart (0.5 mm inside the 6 mm hole, so the punch takes
-them). Print it double-sided, **flip on the short edge**, cut the stack once through the two
-dots; the right halves are the first pages in order, the left halves follow, the stack turned
-over like a page. Keep this order when adding card types: front matter before the zones, back
+them). Print it double-sided, **flip on the short edge**. Each sheet holds four pages in a row
+(sheet k: pages 4k−3 to 4k): cut it through the two dots, the right half comes first, the left
+half turned over goes behind it. So the family cuts one sheet at a time with scissors, and can
+print or reprint just the sheets it needs (pages 13–16 are sheet 4). Keep this order when adding card types: front matter before the zones, back
 matter after.
 
 **Translations.** When the profile lists more than one booklet language,
@@ -392,8 +393,8 @@ route, overlapping labels or crowded cards.
 Tell the user where the files are, the zones with timing, and anything to
 verify on the spot. Mention that sheets are cut along the dashed line (kid cards keep a
 14 mm margin at the cut with drawn punch spots for the ring binder), parent pages are the last sheets,
-that `<city>-quest-book.pdf` is the kid's part as a double-sided book (flip on the short edge; right
-halves first, then the left halves turned over; the back of each sheet is drawn 1 mm to the right so
+that `<city>-quest-book.pdf` is the kid's part as a double-sided book (flip on the short edge; cut each
+sheet on its own: right half first, the left half turned over behind it; the back of each sheet is drawn 1 mm to the right so
 it meets its front on the family printer, whose duplex is off by that much), and
 stickers come from `build_stickers.py`.
 

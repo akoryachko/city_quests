@@ -1550,9 +1550,10 @@ def build_book_html(q, map_html, zone_maps=None):
     Pages in reading order: cover, rules, map (hunt), the zones, collection, scorecard,
     certificate. A zone with a map card starts on a left-hand page, so the open binder shows
     its map on the left and its challenges on the right, and the next zone's map is on the
-    back of those challenges. Printed double-sided, flip on the short edge; the stack is cut
-    once: the right halves are pages 1.. in order, the left halves, turned over as a stack
-    (like turning a page), follow them. Every page keeps its punch spots at the cut.
+    back of those challenges. Printed double-sided, flip on the short edge. Each sheet holds
+    four pages in a row (sheet k: pages 4k-3 to 4k), so it can be cut on its own and a part of
+    the book printed or reprinted alone: the right half is pages 4k-3 and 4k-2, the left half,
+    turned over, pages 4k-1 and 4k behind it. Every page keeps its punch spots at the cut.
     """
     front, zones, back = kid_parts(q, map_html, zone_maps)
     pages = []
@@ -1569,10 +1570,9 @@ def build_book_html(q, map_html, zone_maps=None):
         pages.append(notes_card())
     pages = [c[:c.rindex("</section>")] + f'<span class="pno">{n}</span></section>' for n, c in enumerate(pages, 1)]
     leaves = [(pages[k], pages[k + 1]) for k in range(0, len(pages), 2)]  # (front, back) of each leaf
-    n = len(leaves) // 2
     sides = []
-    for j in range(n):
-        right, left = leaves[j], leaves[len(leaves) - 1 - j]
+    for j in range(0, len(leaves), 2):
+        right, left = leaves[j], leaves[j + 1]
         # front of the sheet: left leaf shows its back (cut on its right), right leaf its front
         sides += [left[1], right[0]]
         # back of the sheet (flipped on the short edge): behind the right half is the right leaf's back

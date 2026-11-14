@@ -56,7 +56,7 @@ Each city gets its own folder, e.g. `hoorn/`:
 | File | Use |
 |---|---|
 | `hoorn-quest.pdf` | Print booklet (named after the city): A4 landscape, two A5 cards per sheet, black-and-white friendly. Cut along the dashed line. |
-| `hoorn-quest-book.pdf` | The kid's pages only (no parent pages) as a double-sided book for the ring binder: print double-sided, flip on the short edge, cut the stack along the dashed line, file the right halves in order, then the left halves turned over like a page. Every zone opens as a spread: map left, challenges right. |
+| `hoorn-quest-book.pdf` | The kid's pages only (no parent pages) as a double-sided book for the ring binder: print double-sided, flip on the short edge, cut each sheet in half on its own (it holds four pages in a row), file the right half, then the left half turned over behind it. Sheet k holds pages 4k−3 to 4k, so you can print or reprint just some sheets. Every zone opens as a spread: map left, challenges right. |
 | `quest.md` + `quest-map*.png` | The same quest for the phone, with Google Maps links for every stop. |
 | `quest.json` | The source of the quest. Claude edits this; the other files are generated from it. |
 | `quest.en.json` (+ `quest.en.md`, `hoorn-quest.en.pdf`) | The same quest in another booklet language from the family profile; it shares the main quest's maps. |
