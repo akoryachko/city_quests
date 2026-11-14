@@ -335,9 +335,12 @@ that, filed in the binder, the pages read in order and every zone opens as one s
 order: cover, rules, map (hunt), the zones, collection, scorecard, certificate; a zone with a
 map card starts on a left-hand page (its map left, its challenges right, the next zone's map on
 the back of those challenges), with a notes page as filler where needed and at the end (pages
-come in fours). Every page has its punch spots at the cut and a small page number in the hole
-margin. Print it double-sided, **flip on the short edge**, cut the stack once along the dashed
-line; the right halves are the first pages in order, the left halves follow, the stack turned
+come in fours). Every page has a small page number in the hole margin. So that nothing is left
+on a page once it is cut and punched, the book draws no dashed line or circles: the cut is two
+light-grey dots on the middle line (at ¼ and ¾ of the height), and each hole is only its left and
+right edge as two light-grey dots 5.5 mm apart (0.5 mm inside the 6 mm hole, so the punch takes
+them). Print it double-sided, **flip on the short edge**, cut the stack once through the two
+dots; the right halves are the first pages in order, the left halves follow, the stack turned
 over like a page. Keep this order when adding card types: front matter before the zones, back
 matter after.
 
@@ -356,14 +359,14 @@ the main quest's (`quest-map*.png`, `quest-pins.json`).
 
 **Stickers.** `python3 .claude/skills/city-quest/scripts/build_stickers.py <folder>/quest.json [other/quest.json …]`
 writes a colour A4 sheet of round zone-capture stickers for sticker paper (`<city>-stickers.pdf`,
-or `stickers.pdf` for several quests on one sheet): per zone 3 × 18 mm (they cover the sticker
-circle on the zone card) and 2 × 10 mm (for the city map), one colour per zone printed 0.6 mm past a white dotted cut line, plus one 32 mm
-gold city medal for the certificate's medal circle, and a front + back pair of 30 mm stickers
+or `stickers.pdf` for several quests on one sheet): per zone 2 × 18 mm (they cover the sticker
+circle on the zone card), one colour per zone printed 0.6 mm past a white dotted cut line, plus two 32 mm
+gold city medals for the certificate's medal circle, and two front + back pairs of 30 mm stickers
 for a real gold sports medal (its empty 30 mm discs): the city's top rank («АДМИРАЛ АМСТЕРДАМА»)
 around an engraved picture of the city on the front, «ПОКОРИТЕЛЬ АМСТЕРДАМА», a compass rose and the zone count
 on the back, printed as polished gold with engraved text and a 0.6 mm gold bleed past the white
-dotted cut line, so they look like part of the medal. `--big`/`--small`/`--medal`/`--rank-medal`
-change the counts; `--big 0 --small 0 --medal 0` prints only the medal stickers, for every quest
+dotted cut line, so they look like part of the medal. `--big`/`--medal`/`--rank-medal` change the counts (`--small 2` adds 10 mm
+number stickers); `--big 0 --medal 0` prints only the medal stickers, for every quest
 named, on one sheet (e.g. when a city is finished). Every quest draws its city for the medal front:
 `"medal_art"` in quest.json (and its translations), a small SVG line drawing of the city's best-known
 sight in a ±7.5 unit box around 0,0 (≈ mm), e.g. Hoorn's Hoofdtoren with a ship over waves, Amsterdam's
@@ -385,7 +388,8 @@ Tell the user where the files are, the zones with timing, and anything to
 verify on the spot. Mention that sheets are cut along the dashed line (kid cards keep a
 14 mm margin at the cut with drawn punch spots for the ring binder), parent pages are the last sheets,
 that `<city>-quest-book.pdf` is the kid's part as a double-sided book (flip on the short edge; right
-halves first, then the left halves turned over), and
+halves first, then the left halves turned over; the back of each sheet is drawn 1 mm to the right so
+it meets its front on the family printer, whose duplex is off by that much), and
 stickers come from `build_stickers.py`.
 
 ### 7. Remember

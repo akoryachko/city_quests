@@ -2,12 +2,12 @@
 """Render round zone-capture stickers for one or more quests onto A4: a PDF for sticker paper.
 
 Usage:
-    python3 build_stickers.py path/to/quest.json [more/quest.json …] [--big 3] [--small 2] [--medal 1] [--out FILE]
+    python3 build_stickers.py path/to/quest.json [more/quest.json …] [--big 2] [--small 0] [--medal 2] [--rank-medal 2] [--out FILE]
 
 Print in colour on A4 sticker paper at 100 % scale and cut along the circles.
 Every zone gets a block: `--big` stickers of 18 mm (they cover the "sticker" circle on the
-zone card; a spare goes in the collection) and `--small` stickers of 10 mm (for the zone on
-the city map), coloured to the edge with 0.6 mm bleed past the white dotted cut line. Each zone has its own colour, the same as in the colour booklet; the big sticker shows "CLAIMED" on top, the zone
+zone card; a spare goes in the collection) and, if asked, `--small` 10 mm number stickers (for the
+zone on the city map), coloured to the edge with 0.6 mm bleed past the white dotted cut line. Each zone has its own colour, the same as in the colour booklet; the big sticker shows "CLAIMED" on top, the zone
 number below and the zone emoji in the middle. Every quest also gets `--medal` 32 mm city stickers
 for the medal circle on the certificate: a gold medal, "CONQUEROR OF <city>" around it, a dot
 for every zone in its colour and the cover emoji under a crown. And `--rank-medal` pairs of 30 mm stickers
@@ -18,7 +18,7 @@ stroke="none"), centred on 0,0 and within about ±7.5 units (1 unit ≈ 1 mm), e
 landmark over water; without it an emblem (anchor for sea ranks, else a crown; "medal_emblem": anchor, crown,
 star), back = "CONQUEROR /
 OF <city>", a compass rose and the zone count. Several quests share the sheet to save paper; to print only
-the medals for several cities: --big 0 --small 0 --medal 0.
+the medals for several cities: --big 0 --medal 0.
 Default output: <folder>/<city>-stickers.pdf for one quest, ./stickers.pdf for several.
 """
 import argparse
@@ -215,10 +215,10 @@ h2 {{ font-size: 9pt; margin: 1mm 0 1mm; }}
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("quests", nargs="+")
-    ap.add_argument("--big", type=int, default=3, help="18 mm stickers per zone")
-    ap.add_argument("--small", type=int, default=2, help="10 mm stickers per zone")
-    ap.add_argument("--medal", type=int, default=1, help="32 mm city stickers per quest")
-    ap.add_argument("--rank-medal", type=int, default=1, help="pairs (front + back) of 30 mm stickers for a gold sports medal, per quest")
+    ap.add_argument("--big", type=int, default=2, help="18 mm stickers per zone")
+    ap.add_argument("--small", type=int, default=0, help="10 mm number stickers per zone (none by default)")
+    ap.add_argument("--medal", type=int, default=2, help="32 mm city stickers per quest")
+    ap.add_argument("--rank-medal", type=int, default=2, help="pairs (front + back) of 30 mm stickers for a gold sports medal, per quest")
     ap.add_argument("--out", help="PDF to write")
     a = ap.parse_args()
     sections, lang = [], "ru"

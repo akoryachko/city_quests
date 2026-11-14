@@ -1268,6 +1268,7 @@ body { font-family: "Noto Sans", "DejaVu Sans", sans-serif; color: #111; -webkit
 a { color: inherit; }
 .sheet { width: 297mm; height: 210mm; display: flex; position: relative; page-break-after: always; overflow: hidden; }
 .sheet:last-child { page-break-after: auto; }
+.sheet.shift > .card, .sheet.shift::after { transform: translateX(1mm); }  /* book: the back of each sheet nudged 1 mm right to meet its front in duplex */
 .sheet::after { content: "✂"; position: absolute; left: 148.5mm; top: 0; bottom: 0; border-left: 0.4mm dashed #999; color: #999; font-size: 10pt; padding-left: 1mm; }
 .card { width: 148.5mm; height: 210mm; padding: 7mm; overflow: hidden; }
 /* kid sheets are cut in the middle and filed in a ring binder: a hole margin at the cut edge */
@@ -1279,6 +1280,16 @@ a { color: inherit; }
 .binder > .card::after { top: 142mm; }
 .binder > .card:first-child::before, .binder > .card:first-child::after { right: 6mm; }
 .binder > .card:last-child::before, .binder > .card:last-child::after { left: 6mm; }
+/* book: on the back of each sheet (PDF pages 2, 4, 6…) the right card's frame ends 1 mm earlier on the right */
+.binder.shift > .card:last-child { padding-right: 6mm; }
+/* book: no dashed cut line or punch circles that would stay on a page after cutting; only small light dots that the cut
+   and the punch remove: two on the cut line at 1/4 and 3/4 of the height, and the left and right edge of each hole,
+   5.5 mm apart (0.5 mm inside a 6 mm hole) */
+.sheet.book::after { content: ""; border: 0; padding: 0; top: 52.05mm; bottom: auto; width: .9mm; height: .9mm; margin-left: -.45mm; border-radius: 50%; background: #ccc; box-shadow: 0 105mm 0 #ccc; }
+.book.binder > .card::before, .book.binder > .card::after { border: 0; width: .6mm; height: .6mm; background: #ccc; box-shadow: 5.5mm 0 0 #ccc; top: 64.7mm; }
+.book.binder > .card::after { top: 144.7mm; }
+.book.binder > .card:first-child::before, .book.binder > .card:first-child::after { right: 11.45mm; }
+.book.binder > .card:last-child::before, .book.binder > .card:last-child::after { left: 5.95mm; }
 /* page numbers of the book version, in the hole margin */
 .pno { position: absolute; bottom: 4mm; width: 14mm; text-align: center; font-size: 8pt; color: #999; }
 .binder > .card:first-child .pno { right: 0; }
@@ -1484,8 +1495,11 @@ def kid_parts(q, map_html, zone_maps=None):
     return front, zones, back
 
 
-def sheets_html(cards, binder):
-    return "".join(f'<div class="sheet{" binder" if k < binder else ""}">{cards[k]}{cards[k+1]}</div>' for k in range(0, len(cards), 2))
+def sheets_html(cards, binder, shift_back=False):
+    """Two cards per sheet; shift_back: the back of every double-sided sheet (PDF pages 2, 4, 6…) is drawn
+    1 mm to the right (.sheet.shift in CSS), so it lines up with its front on a printer whose duplex is off by that much."""
+    return "".join(f'<div class="sheet{" binder" if k < binder else ""}{" book" if shift_back else ""}{" shift" if shift_back and k % 4 == 2 else ""}">{cards[k]}{cards[k+1]}</div>'
+                   for k in range(0, len(cards), 2))
 
 
 def build_html(q, map_html, zone_maps=None):
@@ -1554,7 +1568,7 @@ def build_book_html(q, map_html, zone_maps=None):
         sides += [left[1], right[0]]
         # back of the sheet (flipped on the short edge): behind the right half is the right leaf's back
         sides += [right[1], left[0]]
-    return page(q.get("title", q["city"]), sheets_html(sides, len(sides)), q.get("language", "ru"))
+    return page(q.get("title", q["city"]), sheets_html(sides, len(sides), shift_back=True), q.get("language", "ru"))
 
 
 def booking_md(items):
