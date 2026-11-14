@@ -819,7 +819,10 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
         for track in rides:  # what the ride is, halfway along it
             x, y = p(*track[len(track) // 2])
             svg.append(f'<circle class="hotel-bg" cx="{x:.1f}" cy="{y:.1f}" r="14"/><text class="hotel" x="{x:.1f}" y="{y + 7:.1f}">🚋</text>')
-        for door in ([site] if site is not None else []) + boarding:  # a door flag on the entrance or boarding point
+        # a door flag on the entrance or boarding point, only on street-level maps: on a map of
+        # several km (a ride out of town) it can't show which door and only covers the place
+        doors = ([site] if site is not None else []) + boarding if span < 2500 else []
+        for door in doors:
             x, y = pos[id(door)]  # (no words: the map picture is shared by all languages)
             svg.append(f'<g class="door"><path d="M{x:.1f},{y - 11:.1f} l-6,-8 h-9 v-24 h30 v24 h-9 z"/>'
                        f'<text x="{x:.1f}" y="{y - 24:.1f}">🚪</text></g>')
@@ -831,7 +834,7 @@ def build_map(q, W=MAP_W, H=MAP_H, only=None, overview=False, shrink=1.0, _legs=
     labels = ""
     if streets is not None:  # street names last, around the stops
         keep = [(x, y, 12) for x, y in list(pos.values()) + cams] + ([(*hotel_xy, 15)] if hotel_xy else [])
-        for door in ([site] if site is not None else []) + boarding:
+        for door in doors:
             x, y = pos[id(door)]
             keep += [(x, y - 31, 16)]
         base, labels, missing = street_layers(streets, p, W, H, keep, "m" + "-".join(str(zi) for zi, _ in sel), route_names)

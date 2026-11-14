@@ -211,7 +211,7 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   `steam tram` leg is drawn along the real tracks (OpenStreetMap) with a 🚋 on the line and a 🚪
   flag on the boarding stop. A ride to another town (more than 1.5 km from the walking stops)
   leaves the city map and its legend and shows on its zone map, which then uses map tiles
-  (towns, roads, tracks). Give a stop at the far end coordinates even when the task happens
+  (towns, roads, tracks) and has no 🚪 flags (at that scale they can't show which door). Give a stop at the far end coordinates even when the task happens
   on board or on the platform, so the zone map shows where the ride goes. A `trail`
   challenge's place is hidden from the kid (it is the riddle's answer).
   A photo hunt lists its targets in `spots` (`[{"lat", "lon", "name"}]`): each is drawn on the zone
