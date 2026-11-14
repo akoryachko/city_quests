@@ -1,0 +1,299 @@
+{
+  "runs": [
+    {
+      "date": "2026-11-14",
+      "focus": "broad; types scarce in our quests (collect, build, trail, measure) and places beyond canals and facades (stairs, squares, churches, markets, stations, museum rooms)",
+      "terms": [
+        "maths trail outdoor primary activities steps estimation",
+        "Stadtrallye Kinder Aufgaben Ideen Kirche Marktplatz",
+        "church trail for children activity sheet pdf",
+        "speurtocht kinderen stad opdrachten verzamelen",
+        "задания для детского квеста на улице города идеи",
+        "sound walk activity for children city listening map",
+        "jeu de piste enfants ville idées d'épreuves place marché",
+        "museum family trail gallery activity ideas find pose listen kids",
+        "caccia al tesoro bambini città prove idee piazza chiesa",
+        "Schnitzeljagd Stadt Ideen Aufgaben Kinder Treppe Brunnen Bahnhof",
+        "scout wide games urban town games list kim's game tracking signs",
+        "market scavenger hunt kids ideas stalls weigh price",
+        "brass rubbing coin rubbing kids city trail manhole cover rubbing",
+        "things to do with kids at a train station activity spotting game",
+        "shadow sundial activity kids outdoor tell time with body shadow",
+        "church explorer kids trail gargoyles font bells how many",
+        "measure height of building using shadow kids activity",
+        "orienteering games for children map memory star orienteering town",
+        "кинетический городской квест дети задания лестница площадь вокзал рынок",
+        "Museumsrallye Ideen Aufgaben Kinder Museum",
+        "then and now old photograph walk kids find where photo was taken",
+        "forest school activities meet a tree blindfold games",
+        "alphabet hunt letters shapes in architecture kids city walk",
+        "gymkana niños ciudad pruebas ideas calle plaza",
+        "games to play on stairs with kids",
+        "Glico game Japanese stairs rock paper scissors rules",
+        "square photo challenge kids symmetry find centre of square game"
+      ],
+      "new_patterns": [
+        "secret-word-letters",
+        "flood-mark-height",
+        "weathervane-wind",
+        "rubbing-collect",
+        "market-price-grid",
+        "market-weigh-guess",
+        "listening-stop",
+        "sound-snapshot-guess",
+        "mason-mark-hunt",
+        "boundary-straddle",
+        "zone-motif-tally",
+        "odd-angle-photo-trail",
+        "then-and-now",
+        "blind-touch-find",
+        "shadow-height",
+        "janken-stairs",
+        "letter-hunt-name",
+        "star-memory-run",
+        "shape-hunt",
+        "travelling-mascot-story",
+        "painting-pose-guess",
+        "departure-board-race",
+        "echo-timer",
+        "centre-of-square",
+        "found-materials-replica"
+      ],
+      "updated_patterns": [
+        "close-up-match",
+        "look-and-remember"
+      ],
+      "note": "Also seeded 44 own patterns from amsterdam/ and hoorn/ quests (origin own)."
+    }
+  ],
+  "terms": {
+    "maths trail outdoor primary activities steps estimation": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "Stadtrallye Kinder Aufgaben Ideen Kirche Marktplatz": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "church trail for children activity sheet pdf": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    },
+    "speurtocht kinderen stad opdrachten verzamelen": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "задания для детского квеста на улице города идеи": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "sound walk activity for children city listening map": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "jeu de piste enfants ville idées d'épreuves place marché": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    },
+    "museum family trail gallery activity ideas find pose listen kids": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "caccia al tesoro bambini città prove idee piazza chiesa": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    },
+    "Schnitzeljagd Stadt Ideen Aufgaben Kinder Treppe Brunnen Bahnhof": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    },
+    "scout wide games urban town games list kim's game tracking signs": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "market scavenger hunt kids ideas stalls weigh price": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "brass rubbing coin rubbing kids city trail manhole cover rubbing": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "things to do with kids at a train station activity spotting game": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "shadow sundial activity kids outdoor tell time with body shadow": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    },
+    "church explorer kids trail gargoyles font bells how many": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "measure height of building using shadow kids activity": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "orienteering games for children map memory star orienteering town": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "кинетический городской квест дети задания лестница площадь вокзал рынок": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "Museumsrallye Ideen Aufgaben Kinder Museum": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "then and now old photograph walk kids find where photo was taken": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "forest school activities meet a tree blindfold games": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "alphabet hunt letters shapes in architecture kids city walk": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "gymkana niños ciudad pruebas ideas calle plaza": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    },
+    "games to play on stairs with kids": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    },
+    "Glico game Japanese stairs rock paper scissors rules": {
+      "last_run": "2026-11-14",
+      "new_found": true
+    },
+    "square photo challenge kids symmetry find centre of square game": {
+      "last_run": "2026-11-14",
+      "new_found": false
+    }
+  },
+  "sites": {
+    "feldkirch-leben.at": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Tourist-board kids' rally PDF with solution word; other Austrian/German tourist boards publish similar (Füssen, Radolfzell, Memmingen)."
+    },
+    "nhct-norwich.org": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Children's church trails (angels/dragons, gargoyles activity books); mason marks, boundary plaques, whole-trail tallies."
+    },
+    "livewellsouthwest.co.uk": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Listening-walk card with variations (record and replay, checklist)."
+    },
+    "go-kids.nl": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "20 speurtocht ideas: route-marking methods, alphabet route, secret code, photo bingo; party-oriented."
+    },
+    "mel.fm": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Russian education blog: quick outdoor quests (odd-angle photo clues)."
+    },
+    "nottsoutdoors.nottinghamshire.gov.uk": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Outdoor centre activity pages: maths orienteering, tree girth blind game."
+    },
+    "edutopia.org": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Outdoor math mechanics list (geometry hunt, measurement hunt)."
+    },
+    "nps.gov": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Lesson plans: Meet a Tree, outdoor triangle proportions (shadow height)."
+    },
+    "scouts.org.uk": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "403 for automated fetch; Kim's game, tracking signs, 21 urban activities known only from search snippets."
+    },
+    "countrysideclassroom.org.uk": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "Maths outdoors PDF returned 404."
+    },
+    "nrich.maths.org": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "Maths trail page 404."
+    },
+    "liverpool.ac.uk": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "Mindfulness children's trail PDF 404 after redirect."
+    },
+    "childrenstrails.theartssociety.org": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "DNS failure; The Arts Society church trail question sheets would be valuable, try another URL form."
+    },
+    "kidsproof.nl": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "Only lists commercial speurtochten, no mechanics."
+    },
+    "dortmund.de": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": true,
+      "note": "Kultur am Haken: 41 early-years cultural activity cards (travelling-figure photo story); mostly kita-level."
+    },
+    "yumping.com": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "Commercial gymkhana offers, no mechanics."
+    },
+    "famigros.migros.ch": {
+      "first_seen": "2026-11-14",
+      "last_visited": "2026-11-14",
+      "useful": false,
+      "note": "Party-hunt ideas; city stations only named, not described."
+    }
+  },
+  "term_ideas": [
+    "The Arts Society children's church trail questions pdf (St Mark's, St Luke's sheets)",
+    "Füssen Kinder-Stadträtsel Prinz Luggi pdf; Radolfzell Lösungen Stadtrallye",
+    "nhct-norwich Activity book 3 Gargoyles and Beasts pdf",
+    "kerk speurtocht kinderen kerkpad",
+    "Denkmalrallye Kinder (Uni Düsseldorf pdf)",
+    "Bielefeld MuseumsRallye pdf",
+    "visite famille musée livret jeu enfants pdf",
+    "Navigation Games map memory lesson plans",
+    "letterboxing trail stamps kids town",
+    "playground games traditional street games Europe (hinkelen, Gummitwist, classes)",
+    "building blocks challenge museum shop / cardboard build kids museum",
+    "station kids trail Grand Central scavenger hunt questions",
+    "sundial on church wall kids read the time",
+    "Japanese/Korean street games for kids (ddakji, menko) as duels"
+  ]
+}

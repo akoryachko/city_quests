@@ -5,7 +5,9 @@ site/
 
 # private: the family profile and working notes about the family
 family-profile.md
+profiles/
 HANDOVER.md
+*/feedback.json
 
 # private: personalised binder covers (photos and names of the kids)
 covers/

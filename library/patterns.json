@@ -1,0 +1,3056 @@
+{
+  "version": 1,
+  "patterns": [
+    {
+      "id": "spot-detail-race",
+      "name": "Who finds it first",
+      "mechanic": "The card describes one specific detail at the place (a carved coin, a letter, an odd object in a display); kid and parents race to find it and point at it first. Handicap version: the kid must find N details before a parent finds fewer.",
+      "example": "Amsterdam: first to find the gable stone with a golden coin on a quay; Hoorn: first to find the letter H among the VOC letters; Amsterdam: six carved heads before a parent finds three.",
+      "types": [
+        "spot",
+        "duel"
+      ],
+      "tags": [
+        "memory"
+      ],
+      "places": [
+        "facade",
+        "museum-room",
+        "street"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "point"
+      ],
+      "needs": [],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "Handicap: kid finds 6 before the parent finds 3",
+        "Parent searches with one hand over one eye",
+        "A model railway lap as the time limit"
+      ],
+      "fit_notes": "Give the kid a fair chance (head start, handicap).",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "read-and-translate",
+      "name": "Read it and translate it",
+      "mechanic": "Find words written on a building, gate or monument, read them aloud and work out what they mean (cognates with a language the kid knows, or a parent's help).",
+      "example": "Amsterdam: read the warehouse names Vijfhoek, Vierhoek, Driehoek and translate; the Latin words on the zoo gate; three Dutch words on a park temple.",
+      "types": [
+        "spot",
+        "talk"
+      ],
+      "tags": [
+        "language"
+      ],
+      "places": [
+        "facade",
+        "gate",
+        "statue",
+        "park"
+      ],
+      "age": [
+        7,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "word"
+      ],
+      "needs": [],
+      "mode": [
+        "solo",
+        "co-op"
+      ],
+      "variations": [
+        "Which word looks like an English one?",
+        "Find a word with a number in it and translate the number"
+      ],
+      "fit_notes": "Needs a reader; younger kids can find the letters and a parent reads.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "house-sign-detail",
+      "name": "Read the house sign",
+      "mechanic": "Find a carved or painted sign (gable stone, inn sign, relief) and answer one question about it: the year on it, what a figure is holding, which animal it shows.",
+      "example": "Amsterdam: the year on a tower stone with a woman pointing at a ship; the bird on a brewery sign and what it holds. Hoorn: the biggest ship in a sea-battle frieze and the year on the corner house.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "history"
+      ],
+      "places": [
+        "facade",
+        "tower",
+        "gate"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 4,
+      "proof": [
+        "word",
+        "point"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Find the sign from a close-up photo first",
+        "How old is it? (subtract with a parent)"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "find-the-number",
+      "name": "Find the number",
+      "mechanic": "Find the identifying number or maker's plate on a machine or object (a crane, a locomotive, a tram carriage) and read it off.",
+      "example": "Amsterdam: the number on an old harbour crane; the maker's city on the plate inside a historic tram. Hoorn: the steam engine's number, written into a blank on the card.",
+      "types": [
+        "spot"
+      ],
+      "tags": [],
+      "places": [
+        "harbour",
+        "train",
+        "tram",
+        "bridge",
+        "any"
+      ],
+      "age": [
+        5,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 3,
+      "proof": [
+        "word"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Fill the number into a blank on the card as a souvenir"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "count-the-feature",
+      "name": "Count it",
+      "mechanic": "Count one feature of a landmark (animals in a pediment, columns, arches, floors, weights). The parent counts separately; if the numbers differ, count again together pointing with a finger.",
+      "example": "Amsterdam: animals in the palace's back pediment; columns in a city gate; balls on a weighted bridge; floors of a round house in the water. Hoorn: arches of the bridge in front of a gate.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "maths"
+      ],
+      "places": [
+        "facade",
+        "gate",
+        "bridge",
+        "museum-room",
+        "any"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 4,
+      "proof": [
+        "count"
+      ],
+      "needs": [],
+      "mode": [
+        "solo",
+        "duel"
+      ],
+      "variations": [
+        "Duel: who counts it first",
+        "Count standing on one foot",
+        "Count only one side, guess the total"
+      ],
+      "fit_notes": "Counting alone is weak; pair it with a question that leads somewhere.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "find-the-mechanism",
+      "name": "How does it work?",
+      "mechanic": "At a machine or moving structure (windmill, drawbridge, lock), find the part that makes it work (the winch, the hinges, the counterweights) and point to it.",
+      "example": "Amsterdam: what the miller turns a whole sawmill into the wind with; where the hinges and counterweight balls of a lift bridge are.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "history"
+      ],
+      "places": [
+        "windmill",
+        "bridge",
+        "harbour",
+        "museum"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "point"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Stand where the machine faces you and take a photo",
+        "Show the movement with your arms"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "find-the-hidden-trace",
+      "name": "What lies beneath",
+      "mechanic": "Something historic is hidden (a buried canal, an old wall, a former river): find where it shows through (a window in the floor, a grate, a line of different paving).",
+      "example": "Hoorn: find where an old canal under a church square can be seen, and whether there is water in it.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "history"
+      ],
+      "places": [
+        "square",
+        "street"
+      ],
+      "age": [
+        6,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "point"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Walk the line of the old wall in the paving"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "riddle-to-next-stop",
+      "name": "Riddle to the next stop",
+      "mechanic": "A riddle or hint describes the next landmark without naming it (its look, the street's name); the kid leads the family there and proves arrival with a count or a number read on the spot.",
+      "example": "Hoorn: find the gate with a prince on its roof in the 'newest' street, then count the coats of arms. Amsterdam: through a gate into a hidden courtyard, find the number of the oldest wooden house.",
+      "types": [
+        "trail"
+      ],
+      "tags": [
+        "navigation"
+      ],
+      "places": [
+        "street",
+        "gate",
+        "any"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "word",
+        "count"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Hint by street-name meaning",
+        "Follow a symbol on street signs"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "which-way-signs",
+      "name": "Which way?",
+      "mechanic": "Timed: the kid runs round a square reading the street signs and stands at the street or alley that leads to a named place.",
+      "example": "Hoorn: in 2 minutes, find the alley from the main square to the harbour.",
+      "types": [
+        "move",
+        "trail"
+      ],
+      "tags": [
+        "navigation",
+        "language"
+      ],
+      "places": [
+        "square",
+        "street"
+      ],
+      "age": [
+        6,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 3,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Use the street-name meaning as the hint"
+      ],
+      "fit_notes": "Only on a square without traffic.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "zone-photo-hunt",
+      "name": "Zone photo hunt",
+      "mechanic": "A list of the zone's sights (or a category: boats of three companies, three towers) to photograph while walking, any order, before the boss. Each target is on the zone map; one coin per target.",
+      "example": "Amsterdam: 5–6 camera-marked sights per zone (towers, a palace, a statue, a market), plus boats of three different companies.",
+      "types": [
+        "photo"
+      ],
+      "tags": [
+        "navigation"
+      ],
+      "places": [
+        "any"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 60,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Hunt a category instead of named spots",
+        "Sights + a category together"
+      ],
+      "fit_notes": "Make it the zone's first challenge; no timer.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "ride-window-bingo",
+      "name": "Window bingo",
+      "mechanic": "During a ride, a list of things to see from the window (a farm type, a windmill, a tower, a named building); point and shout or photograph; any N of M wins.",
+      "example": "Hoorn: from a steam tram, 3 of 4 (pyramid-roofed farm, windmill, church tower, sheep). Amsterdam: from a ferry, photograph 4 of 6 harbour sights.",
+      "types": [
+        "ride",
+        "photo"
+      ],
+      "tags": [],
+      "places": [
+        "tram",
+        "train",
+        "boat",
+        "bus"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 15,
+      "proof": [
+        "point",
+        "photo"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Photo version for moving sights",
+        "Duel: who shouts first"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "ride-count-stops",
+      "name": "Count the stops",
+      "mechanic": "The kid checks in and counts the stops to the destination, and photographs a vehicle of the same line going the other way.",
+      "example": "Amsterdam: tram from the central station, count stops, photo of the oncoming tram.",
+      "types": [
+        "ride"
+      ],
+      "tags": [],
+      "places": [
+        "tram",
+        "bus",
+        "train"
+      ],
+      "age": [
+        4,
+        9
+      ],
+      "difficulty": 1,
+      "minutes": 15,
+      "proof": [
+        "count",
+        "photo"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Guess the number of stops first"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "guess-then-count",
+      "name": "Guess, then count",
+      "mechanic": "Everyone guesses a number (bridges on an island, whistles in 10 minutes, how many houses tall a shaft is); then count or look it up on the spot; closest guess wins.",
+      "example": "Amsterdam: how many bridges on an island, then walk and count; how many canal houses stacked would reach the street from a deep metro station. Hoorn: whistles of a steam engine in the first 10 minutes.",
+      "types": [
+        "duel",
+        "spot"
+      ],
+      "tags": [
+        "estimation"
+      ],
+      "places": [
+        "any",
+        "train",
+        "station",
+        "street"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 10,
+      "proof": [
+        "count"
+      ],
+      "needs": [],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "Guess in body units",
+        "Check with a sign or the parent page"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "pace-and-compare",
+      "name": "Pace it and compare",
+      "mechanic": "Pace or arm-span a small thing (a narrow house, one house in a row, a bridge deck), then use it to work out something bigger you can see (the whole row, the big house opposite, the raised bridge's height); check by walking or with a known number.",
+      "example": "Amsterdam: pace one captain's house, predict the row of 13, walk to check; how many door-wide houses fit in the merchant house opposite (guess duel). Hoorn: pace a drawbridge's lifting deck, how many of you stacked reach its tip when raised.",
+      "types": [
+        "measure"
+      ],
+      "tags": [
+        "maths",
+        "estimation"
+      ],
+      "places": [
+        "facade",
+        "bridge",
+        "street"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "count"
+      ],
+      "needs": [],
+      "mode": [
+        "solo",
+        "duel"
+      ],
+      "variations": [
+        "Guess duel before measuring",
+        "Use arm spans instead of steps"
+      ],
+      "fit_notes": "The kid's step and arm span come from the family's measures field.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "body-unit-caterpillar",
+      "name": "Caterpillar measure",
+      "mechanic": "Make an old or big unit of length tangible: a parent marks one unit out, the kid lies down repeatedly like a caterpillar along it; how many kids long is it?",
+      "example": "Amsterdam: a windmill named after its distance in an old unit (a 'roe', ~3.7 m); the kid measures one roe lying down.",
+      "types": [
+        "measure",
+        "move"
+      ],
+      "tags": [
+        "history",
+        "maths"
+      ],
+      "places": [
+        "park",
+        "windmill",
+        "any"
+      ],
+      "age": [
+        5,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "count"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Use a fathom (arm span) or a foot"
+      ],
+      "fit_notes": "Needs grass or clean ground.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "perspective-trick-photo",
+      "name": "Perspective trick",
+      "mechanic": "Walk away from a big landmark until it lines up with the kid's body (on the palm, on a fingertip, as a crown on the head, behind a fingernail); a parent takes the photo. Slipped off? Move and shoot again.",
+      "example": "Amsterdam: a tower's crown on the kid's head; a crane hotel on the palm; a golden lyre on a fingertip; a ship-shaped house 'sailing' towards the camera. Hoorn: a red unicorn hidden behind a little fingernail.",
+      "types": [
+        "photo"
+      ],
+      "tags": [
+        "estimation"
+      ],
+      "places": [
+        "tower",
+        "viewpoint",
+        "statue",
+        "facade",
+        "square"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Frame a building so it moves toward you",
+        "Add: count the hour's bell strikes and jump that many times"
+      ],
+      "fit_notes": "Good boss when retakes are expected.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "wildlife-photo",
+      "name": "Animals in one frame",
+      "mechanic": "Photograph live animals: two different species in one frame, or a zoo animal seen from outside the fence.",
+      "example": "Amsterdam: two different water birds in one photo on an island quay; a giraffe or zebra seen across the canal from the zoo's savannah.",
+      "types": [
+        "photo"
+      ],
+      "tags": [
+        "nature"
+      ],
+      "places": [
+        "canal",
+        "park",
+        "zoo",
+        "harbour"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Three species",
+        "A bird in flight"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "pick-your-favourite-photo",
+      "name": "The scariest one",
+      "mechanic": "A building or room is full of carvings; the kid looks at all of them and photographs the one that fits a prompt (scariest, funniest, strangest), explaining why.",
+      "example": "Amsterdam: the scariest stone sea monster on a shipping house.",
+      "types": [
+        "photo"
+      ],
+      "tags": [],
+      "places": [
+        "facade",
+        "museum-room",
+        "church"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Parents guess which one the kid picked"
+      ],
+      "fit_notes": "Open-ended; the proof is the photo.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "statue-twin-pose",
+      "name": "Statue twin",
+      "mechanic": "Stand next to a statue and copy its pose and expression so the photo looks like twins.",
+      "example": "Amsterdam: twin pose with a bronze street-urchin statue on a square.",
+      "types": [
+        "photo"
+      ],
+      "tags": [
+        "role-play"
+      ],
+      "places": [
+        "statue"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 4,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Parents rate the likeness 1–10",
+        "Copy a statue the parents choose"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "statue-freeze-dont-laugh",
+      "name": "Freeze like a statue",
+      "mechanic": "Freeze in a statue's pose for 30 seconds while a parent tries to make the kid laugh without touching. Laugh or move: start again.",
+      "example": "Hoorn: next to three bronze ship's boys, become the fourth.",
+      "types": [
+        "move",
+        "duel"
+      ],
+      "tags": [
+        "limitation",
+        "role-play"
+      ],
+      "places": [
+        "statue"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 3,
+      "minutes": 5,
+      "proof": [
+        "time"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Swap: the parent freezes"
+      ],
+      "fit_notes": "Boss level.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "playground-circuit",
+      "name": "Playground circuit",
+      "mechanic": "Timed: touch N different play items, visit 5 chosen ones, or repeat one (a slide) N times within a minute or three; a parent times and counts.",
+      "example": "Amsterdam: touch 15 things in 1 minute; climb/sit/swing on 5 chosen things in 2 minutes; the slide 10 times in 3 minutes.",
+      "types": [
+        "move"
+      ],
+      "tags": [],
+      "places": [
+        "playground"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 3,
+      "proof": [
+        "count",
+        "time"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Beat your record",
+        "Only red things"
+      ],
+      "fit_notes": "Use where a zone needs a breather.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "timed-lap",
+      "name": "Lap the landmark",
+      "mechanic": "Run all the way round a free-standing building in a time limit, counting something on the way, or rest and beat the first time.",
+      "example": "Amsterdam: run round a cross-shaped church in 2 minutes counting the little houses in its corners; run round a round gas holder and beat your record.",
+      "types": [
+        "move"
+      ],
+      "tags": [],
+      "places": [
+        "church",
+        "tower",
+        "square",
+        "park"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "time"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [],
+      "fit_notes": "Only where the path round is traffic-free.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "race-the-reference",
+      "name": "Race the boat",
+      "mechanic": "Time the kid over a known distance and compare with something that moves there (a rowing boat, a tram); race it if one passes.",
+      "example": "Amsterdam: run 100 m along a rowing course; a rowing eight does it in under 20 s.",
+      "types": [
+        "move",
+        "measure"
+      ],
+      "tags": [],
+      "places": [
+        "river",
+        "canal",
+        "park"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "time"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "stairs-vs-lift",
+      "name": "Stairs on the clock",
+      "mechanic": "Time the kid on the stairs (or the lift) of a tall building, compare with the kid's own one-floor time or the lift, then try to beat it.",
+      "example": "Amsterdam: climb to a museum roof, how many floors, then run up again a floor faster.",
+      "types": [
+        "move",
+        "measure"
+      ],
+      "tags": [
+        "maths"
+      ],
+      "places": [
+        "tower",
+        "stairs",
+        "viewpoint",
+        "museum"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "time"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Lift is N times faster than you"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "viewpoint-point-out",
+      "name": "Find it from above",
+      "mechanic": "From a high point or on a city model, find and point to 3–4 places already visited, in a time limit. Too slow: a parent names new ones, sometimes with one eye covered.",
+      "example": "Amsterdam: from a tower top, point to the station, a museum, a tower crown and a crane hotel in 3 minutes; on a huge city model, find 4 places already conquered in 2 minutes.",
+      "types": [
+        "spot",
+        "move"
+      ],
+      "tags": [
+        "navigation",
+        "memory"
+      ],
+      "places": [
+        "viewpoint",
+        "tower",
+        "museum-room"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 3,
+      "minutes": 5,
+      "proof": [
+        "point"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "With one eye covered",
+        "Time the lift first"
+      ],
+      "fit_notes": "Boss when places are far apart.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "kid-interpreter",
+      "name": "Team interpreter",
+      "mechanic": "The kid orders or asks a staff member a question in the local language and translates what was said for the family.",
+      "example": "Amsterdam: order apple pie and ask how many they bake a day; ask a miller how the sails stand at a party, then show it with the arms. Hoorn: ask a costumed helper what the saint's horse is called.",
+      "types": [
+        "talk"
+      ],
+      "tags": [
+        "language"
+      ],
+      "places": [
+        "cafe",
+        "shop",
+        "museum",
+        "windmill"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "parent-sees",
+        "word"
+      ],
+      "needs": [
+        "staff"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Add a pose: show the answer with your body and hold it"
+      ],
+      "fit_notes": "Only where staff are reliably present.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "venue-kids-trail",
+      "name": "The venue's own trail",
+      "mechanic": "Pick up the venue's own kids' trail, stamp card or search sheet at the desk and finish it; add one extra live find inside.",
+      "example": "Hoorn: the search sheet at a LEGO-brick attraction. Amsterdam: a microbe museum's stamp card (12 stamps) plus a live water bear; a street-art hall's kids' treasure hunt asked for at the desk.",
+      "types": [
+        "collect",
+        "spot"
+      ],
+      "tags": [
+        "indoor",
+        "rain-ok"
+      ],
+      "places": [
+        "museum",
+        "museum-room"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 30,
+      "proof": [
+        "object"
+      ],
+      "needs": [
+        "opening-hours",
+        "ticket",
+        "staff"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Time limit for a boss"
+      ],
+      "fit_notes": "Check the venue really has one.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "museum-exhibit-answer",
+      "name": "Exhibit with an answer",
+      "mechanic": "Use or find a named exhibit and bring back one concrete answer (name 5 kinds of something shown, the reading on an interactive device).",
+      "example": "Amsterdam: walk into a whale model and name 5 kinds of sea rubbish in the last room; use a kiss-o-meter and a microbe mirror.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "indoor",
+        "rain-ok"
+      ],
+      "places": [
+        "museum",
+        "museum-room"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 8,
+      "proof": [
+        "word",
+        "point"
+      ],
+      "needs": [
+        "opening-hours",
+        "ticket"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [],
+      "fit_notes": "Put the room name in the answer.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "painting-detail-hunt",
+      "name": "Inside the painting",
+      "mechanic": "In front of a famous painting, find small details in it (a figure, an animal) and point at them.",
+      "example": "Amsterdam: in a famous group portrait, find the girl with a chicken on her belt and the barking dog.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "indoor",
+        "rain-ok"
+      ],
+      "places": [
+        "museum-room"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "point"
+      ],
+      "needs": [
+        "opening-hours",
+        "ticket"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Parents ask why it has its name"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "look-and-remember",
+      "name": "Look and remember",
+      "mechanic": "Look at a detailed object (a doll's house, a shop window, a model) for one minute, turn away, answer 5 questions from a parent; 4 right wins, otherwise look again with new questions.",
+      "example": "Amsterdam: a historic doll's house in a big museum.",
+      "types": [
+        "spot",
+        "quiz"
+      ],
+      "tags": [
+        "memory",
+        "indoor"
+      ],
+      "places": [
+        "museum-room",
+        "facade",
+        "any"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 3,
+      "minutes": 5,
+      "proof": [
+        "word"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Kid asks the parents",
+        "Kim's game: parent covers part of a shop window with a hand; what's missing?"
+      ],
+      "fit_notes": "Boss-level.",
+      "sources": [
+        {
+          "url": "https://scouts.org.uk/activities/play-kims-game",
+          "title": "Scouts UK: Kim's game",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "close-up-match",
+      "name": "Where is this?",
+      "mechanic": "A parent secretly photographs 3 close-up details of a building; the kid has a time limit to find where each is and answer one question about it.",
+      "example": "Amsterdam: carved details over the guild doors of a weigh house; say which guild worked behind each.",
+      "types": [
+        "move",
+        "spot"
+      ],
+      "tags": [
+        "memory"
+      ],
+      "places": [
+        "facade",
+        "gate",
+        "museum-room"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 3,
+      "minutes": 5,
+      "proof": [
+        "point"
+      ],
+      "needs": [
+        "camera",
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "New photos if too slow",
+        "In a gallery: describe or photograph a small detail of a painting, kids find the painting"
+      ],
+      "fit_notes": "",
+      "sources": [
+        {
+          "url": "https://whereverfamily.com/museum-games-to-play-with-kids/",
+          "title": "Wherever Family: museum games to play with kids",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "sequence-memory-run",
+      "name": "Captain's orders",
+      "mechanic": "A parent names N places or objects once; the kid visits them in exactly that order within a time limit; a mistake gives a new order.",
+      "example": "Amsterdam: on a replica ship, the wheel, bell, hammock, cannon and captain's cabin in 3 minutes.",
+      "types": [
+        "move"
+      ],
+      "tags": [
+        "memory",
+        "sequence"
+      ],
+      "places": [
+        "boat",
+        "playground",
+        "museum",
+        "any"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 4,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "7 places for a boss"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "compass-guess",
+      "name": "Where is north?",
+      "mechanic": "Everyone stands where they think north is (at a wind rose, a sundial, a compass in the paving); check with a phone compass; closest wins.",
+      "example": "Amsterdam: under a glass roof drawn like a wind rose in a maritime museum's courtyard.",
+      "types": [
+        "duel",
+        "spot"
+      ],
+      "tags": [
+        "navigation"
+      ],
+      "places": [
+        "square",
+        "museum",
+        "any"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 3,
+      "proof": [
+        "point"
+      ],
+      "needs": [],
+      "mode": [
+        "duel"
+      ],
+      "variations": [],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "event-spot-list",
+      "name": "Spot it at the event",
+      "mechanic": "At a parade or arrival, find 3 items before a moment (the boat's name, a figure on the mast, the horse), then shout a local greeting.",
+      "example": "Amsterdam: Sinterklaas's steamboat arrival; find its name, a Piet on the mast and the white horse before it ties up.",
+      "types": [
+        "spot",
+        "talk"
+      ],
+      "tags": [
+        "language"
+      ],
+      "places": [
+        "harbour",
+        "square",
+        "street"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 2,
+      "minutes": 15,
+      "proof": [
+        "point",
+        "word"
+      ],
+      "needs": [
+        "crowd"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [],
+      "fit_notes": "Date-bound; give a fallback task.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "animal-charades",
+      "name": "Animal charades",
+      "mechanic": "The kid acts out N animals seen there without sounds; parents must guess at least a threshold.",
+      "example": "Amsterdam: 5 animals at a city farm, parents guess at least 3.",
+      "types": [
+        "move"
+      ],
+      "tags": [
+        "role-play"
+      ],
+      "places": [
+        "farm",
+        "zoo",
+        "park"
+      ],
+      "age": [
+        4,
+        9
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [],
+      "fit_notes": "Co-op with a threshold, not a duel.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "funny-gait-timed",
+      "name": "Walk like a…",
+      "mechanic": "Cover a set distance in a funny gait tied to the place (ostrich knees high, human wheelbarrow) within a time limit; normal walking or a fall means start again.",
+      "example": "Amsterdam: ostrich steps to a tree near a windmill brewery with an ostrich sign; a human wheelbarrow at a forest built with wheelbarrows.",
+      "types": [
+        "move"
+      ],
+      "tags": [
+        "limitation",
+        "role-play"
+      ],
+      "places": [
+        "park",
+        "square",
+        "any"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 2,
+      "minutes": 3,
+      "proof": [
+        "time",
+        "parent-sees"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Crab walk",
+        "Penguin waddle"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "limitation-crossing",
+      "name": "Cross it the hard way",
+      "mechanic": "Cross a bridge, stairs or a building front under a limitation with a fail condition: eyes closed without touching the railings, walking backwards holding the rail, heel to toe balancing objects on open palms. Fail: start again.",
+      "example": "Amsterdam: cross a numbered bridge eyes closed; back over a snake bridge walking backwards. Hoorn: 'living scales' along a weigh house with a glove on each palm.",
+      "types": [
+        "move"
+      ],
+      "tags": [
+        "limitation"
+      ],
+      "places": [
+        "bridge",
+        "stairs",
+        "street",
+        "square"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 3,
+      "minutes": 5,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Count the steps on the way",
+        "One hand behind your back"
+      ],
+      "fit_notes": "Boss pattern. Parent walks behind; only when no bikes come.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "perform-on-one-foot",
+      "name": "Sing on one foot",
+      "mechanic": "Perform a local song or rhyme in full standing on one foot; foot down or a mistake means start again.",
+      "example": "Hoorn: sing a Sinterklaas song at a steam-tram stop.",
+      "types": [
+        "move",
+        "talk"
+      ],
+      "tags": [
+        "limitation",
+        "language"
+      ],
+      "places": [
+        "any",
+        "station",
+        "square"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 3,
+      "minutes": 3,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "arm-endurance-duel",
+      "name": "Windmill arms",
+      "mechanic": "Mimic a moving thing with the body in its rhythm (sails turning); drop an arm or lose the beat and you're out; last one going wins.",
+      "example": "Amsterdam: arms as windmill sails in time with the real sails.",
+      "types": [
+        "duel",
+        "move"
+      ],
+      "tags": [],
+      "places": [
+        "windmill",
+        "any"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 3,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "No wind: to a parent's count"
+      ],
+      "fit_notes": "Clear, safe end condition.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "timed-shuttle",
+      "name": "Shuttle run",
+      "mechanic": "Run between two points N times in a time limit, or carry N found items one at a time to a spot; duel version: parent does the same.",
+      "example": "Amsterdam: under a container arch and back 5 times in a minute. Hoorn: carry 5 different leaves ('powder bags') one at a time to a bench by a powder tower.",
+      "types": [
+        "move"
+      ],
+      "tags": [
+        "nature"
+      ],
+      "places": [
+        "park",
+        "square",
+        "harbour"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 3,
+      "proof": [
+        "count",
+        "time"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "solo",
+        "duel"
+      ],
+      "variations": [],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "blind-taste-guess",
+      "name": "Blind tasting",
+      "mechanic": "Eyes closed, a parent gives pieces of 2–5 local foods in any order; name each. Duel: swap and compare scores. Or taste first, then find the names in the stall window.",
+      "example": "Amsterdam: two fries sauces (duel); 5 chocolate flavours, 4 right; two kinds of winter doughnut, then find their names at the stall.",
+      "types": [
+        "taste",
+        "duel"
+      ],
+      "tags": [
+        "senses"
+      ],
+      "places": [
+        "shop",
+        "cafe",
+        "market"
+      ],
+      "age": [
+        4,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 8,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [
+        "cash"
+      ],
+      "mode": [
+        "solo",
+        "duel"
+      ],
+      "variations": [
+        "Find the names on the price list afterwards"
+      ],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "local-food-name-rate",
+      "name": "Taste, name and rate",
+      "mechanic": "Try a local food, find its local name (or an ingredient word) on a sign at the stand, and rate it 1–10; optionally count or decorate.",
+      "example": "Hoorn: fried fish bites, find the fish's name by the counter. Amsterdam: goat's milk at a farm café and the word for goat on a sign; pancake boat, count pancakes and decorate one with the city flag.",
+      "types": [
+        "taste"
+      ],
+      "tags": [
+        "language"
+      ],
+      "places": [
+        "market",
+        "cafe",
+        "farm",
+        "boat"
+      ],
+      "age": [
+        4,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 15,
+      "proof": [
+        "word",
+        "parent-sees"
+      ],
+      "needs": [
+        "cash"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [],
+      "fit_notes": "",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "brick-build-challenge",
+      "name": "Brick build with a test",
+      "mechanic": "At a brick store's demo table or a brick attraction, build to a spec with a stress test (taller than your elbow and survives being blown on; a gate a toy car drives through and stands 5 s).",
+      "example": "Amsterdam: tower from 4 kinds of pieces at a LEGO store. Hoorn: a gate with a house on top at a brick museum.",
+      "types": [
+        "build"
+      ],
+      "tags": [
+        "indoor",
+        "rain-ok"
+      ],
+      "places": [
+        "shop",
+        "museum"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 3,
+      "minutes": 15,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [
+        "opening-hours",
+        "staff"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Copy a landmark seen that day"
+      ],
+      "fit_notes": "At most one per campaign.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "found-materials-build",
+      "name": "Build from what fell",
+      "mechanic": "Build from fallen sticks, bark and leaves to a test: a den that stands alone 10 s, a boat that floats 10 s with a passenger.",
+      "example": "Amsterdam: a round den shaped like a gas holder on a wild island; a stick boat with an acorn passenger at a forest's play islands.",
+      "types": [
+        "build"
+      ],
+      "tags": [
+        "nature"
+      ],
+      "places": [
+        "park",
+        "garden",
+        "beach",
+        "river"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 3,
+      "minutes": 15,
+      "proof": [
+        "parent-sees",
+        "time"
+      ],
+      "needs": [
+        "found-materials"
+      ],
+      "mode": [
+        "solo",
+        "co-op"
+      ],
+      "variations": [
+        "Timed collection first"
+      ],
+      "fit_notes": "Only fallen material.",
+      "sources": [],
+      "origin": "own",
+      "status": "used",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "secret-word-letters",
+      "name": "Secret word",
+      "mechanic": "Each challenge's answer has one marked letter (a circled box on the card); the kid collects the letters through the zone or day, and at the end they spell a secret word that unlocks the finale or the medal.",
+      "example": "An Austrian town's kids' rally has answer boxes at every station, a few circled; the circled letters give the solution word handed in at the tourist office. A Dutch party-hunt idea uses a secret-code key sheet in the same way.",
+      "types": [
+        "collect",
+        "spot"
+      ],
+      "tags": [
+        "language",
+        "memory"
+      ],
+      "places": [
+        "any"
+      ],
+      "age": [
+        6,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "word"
+      ],
+      "needs": [
+        "writing"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "The word is the name of the zone's boss landmark",
+        "Letters come in jumbled order: unscramble",
+        "Younger kids: collect stickers with letters instead of writing"
+      ],
+      "fit_notes": "Writes letters only into ready boxes; works as the zone's thread across challenges. Type 'collect' with no physical object: the letters are the collection.",
+      "sources": [
+        {
+          "url": "https://feldkirch-leben.at/fileadmin/user_upload/5-Service/Downloads/Kinder-Stadtrallye/Kinder-Stadtrallye-Aufgaben-mit-Loesungen.pdf",
+          "title": "Kinder-Stadtrallye Feldkirch (tourist board)",
+          "lang": "de",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://go-kids.nl/eindhoven/blog/20-leukste-speurtocht-ideeen",
+          "title": "Go-Kids: 20 leukste speurtocht ideeën",
+          "lang": "nl",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "flood-mark-height",
+      "name": "How high was the water?",
+      "mechanic": "Find a high-water mark (a plaque or line with a year) on a gate, wall or church; read the year, stand under it and work out how many of you, stacked up, the water reached; or where it would reach on a parent.",
+      "example": "An Austrian rally asks for the year on the water-level mark by the old town gate; we turn it into a body measurement on the spot.",
+      "types": [
+        "measure",
+        "spot"
+      ],
+      "tags": [
+        "history",
+        "maths"
+      ],
+      "places": [
+        "gate",
+        "church",
+        "bridge",
+        "river",
+        "harbour",
+        "wall"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "word",
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Mark the kid's height with a hand and compare",
+        "Several marks: which flood was the worst?"
+      ],
+      "fit_notes": "Changed from 'read the year' to a body comparison so the number leads somewhere (challenge-design §1).",
+      "sources": [
+        {
+          "url": "https://feldkirch-leben.at/fileadmin/user_upload/5-Service/Downloads/Kinder-Stadtrallye/Kinder-Stadtrallye-Aufgaben-mit-Loesungen.pdf",
+          "title": "Kinder-Stadtrallye Feldkirch (tourist board)",
+          "lang": "de",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "weathervane-wind",
+      "name": "Weathervane",
+      "mechanic": "Find the figure on the very top of a tower (a rooster, a ship, a knight, an animal) and name it; then say which way the wind is blowing from where it points, and check with flags, smoke or a wet finger.",
+      "example": "A kids' city rally asks which animal sits on top of a cathedral's bell tower and the name of the little knight in another church tower.",
+      "types": [
+        "spot",
+        "duel"
+      ],
+      "tags": [
+        "nature"
+      ],
+      "places": [
+        "tower",
+        "church",
+        "windmill",
+        "viewpoint"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 4,
+      "proof": [
+        "word",
+        "point"
+      ],
+      "needs": [],
+      "mode": [
+        "solo",
+        "duel"
+      ],
+      "variations": [
+        "Duel: who names the figure first",
+        "Point to where the wind comes from with eyes closed, then check"
+      ],
+      "fit_notes": "Needs binoculars or a zoomed phone photo on tall towers.",
+      "sources": [
+        {
+          "url": "https://feldkirch-leben.at/fileadmin/user_upload/5-Service/Downloads/Kinder-Stadtrallye/Kinder-Stadtrallye-Aufgaben-mit-Loesungen.pdf",
+          "title": "Kinder-Stadtrallye Feldkirch (tourist board)",
+          "lang": "de",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "rubbing-collect",
+      "name": "Rubbing for the collection",
+      "mechanic": "Put paper on a relief (a manhole cover with the city's arms, a brass plaque, a waymark, a tree bark) and rub a crayon over it until the pattern shows; the rubbing goes into the collection.",
+      "example": "A town park has a brass-rubbing trail of plaques on waymark posts; a craft blog collects city manhole-cover designs as rubbings, photographing the cover first and brushing off grit.",
+      "types": [
+        "collect"
+      ],
+      "tags": [
+        "rain-ok"
+      ],
+      "places": [
+        "street",
+        "church",
+        "park",
+        "bridge",
+        "wall"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "object"
+      ],
+      "needs": [
+        "paper",
+        "crayon"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Find 3 different manhole covers in the zone",
+        "Rubbing of a coin bought at a museum shop"
+      ],
+      "fit_notes": "Needs a wax crayon (not in the needs list) and a thin paper card; only on relief you may touch.",
+      "sources": [
+        {
+          "url": "https://tunbridgewells.gov.uk/community-and-leisure/parks-and-play-areas/grosvenor-and-hilbert-park/brass-rubbing-trail",
+          "title": "Tunbridge Wells: brass rubbing trail",
+          "lang": "en",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://bobbimastrangelo.com/?p=489",
+          "title": "Manhole cover rubbings (artist blog)",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "market-price-grid",
+      "name": "Price bingo",
+      "mechanic": "The card has a small grid of prices (50 c, 1, 2, 3, 5); at a market or shop the kid finds one item per price and names it in the local language from the label.",
+      "example": "A money-skills blog gives kids a printed board of price points to fill while walking through a store.",
+      "types": [
+        "spot",
+        "collect"
+      ],
+      "tags": [
+        "maths",
+        "language"
+      ],
+      "places": [
+        "market",
+        "shop"
+      ],
+      "age": [
+        6,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 10,
+      "proof": [
+        "word",
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Buy the cheapest local fruit with exact coins",
+        "Find the most expensive thing per kilo"
+      ],
+      "fit_notes": "",
+      "sources": [
+        {
+          "url": "https://www.moneyprodigy.com/?p=1209",
+          "title": "Money Prodigy: grocery store scavenger hunt",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "market-weigh-guess",
+      "name": "Guess the weight",
+      "mechanic": "Everyone holds the same fruit, cheese or bag of sweets and guesses its weight; it goes on the stall's scale; closest guess wins (and the family buys it).",
+      "example": "A children's health charity's grocery hunt has kids pick produce, weigh it and estimate its price from the weight.",
+      "types": [
+        "duel",
+        "measure"
+      ],
+      "tags": [
+        "estimation",
+        "maths"
+      ],
+      "places": [
+        "market",
+        "shop",
+        "farm"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "count",
+        "parent-sees"
+      ],
+      "needs": [
+        "cash",
+        "staff"
+      ],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "Guess the price instead",
+        "Kid picks the piece closest to 500 g"
+      ],
+      "fit_notes": "Only at stalls with a visible scale; ask the vendor.",
+      "sources": [
+        {
+          "url": "https://www.actionforhealthykids.org/wp-content/uploads/2019/10/TS_Grocery-Scavenger-Hunt_v2-reduced.pdf",
+          "title": "Action for Healthy Kids: grocery scavenger hunt",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "listening-stop",
+      "name": "One minute of silence",
+      "mechanic": "Stand still with eyes closed for one minute and listen; then name all the different sounds heard (bells, gulls, a tram, a language). Reach a target number, or tick off a short checklist of sounds the place should have.",
+      "example": "Speech-therapy and nature-education guides take children on listening walks, stopping to name sounds and give them words (brmm, whoosh), with a checklist of cars, bells, voices.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "senses",
+        "rain-ok"
+      ],
+      "places": [
+        "square",
+        "church",
+        "station",
+        "market",
+        "park",
+        "harbour"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 3,
+      "proof": [
+        "count",
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Duel: kid vs parent, who hears more",
+        "Sound checklist made for the place: a carillon, a tram bell, a market call"
+      ],
+      "fit_notes": "Proof: kid says each sound, a parent counts. Best where the place has a signature sound.",
+      "sources": [
+        {
+          "url": "https://www.livewellsouthwest.co.uk/wp-content/uploads/2019/06/allisteningwalk.pdf",
+          "title": "Communication Cookbook: Listening walk",
+          "lang": "en",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://tinkergarten.com/activities/listening-walk",
+          "title": "Tinkergarten: listening walk",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "sound-snapshot-guess",
+      "name": "Which place was that?",
+      "mechanic": "At several stops the kid secretly records 10 seconds of sound with the phone (no picture); later, at lunch or the boss, the parents listen and must guess which stop each one is; kid wins for each wrong guess.",
+      "example": "A listening-walk guide suggests recording the sounds at each stopping point and replaying them later for the children to name.",
+      "types": [
+        "duel"
+      ],
+      "tags": [
+        "senses",
+        "memory"
+      ],
+      "places": [
+        "any"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "Swap: parents record, kid guesses",
+        "Record inside a church, a station and a market"
+      ],
+      "fit_notes": "Changed to a duel with parents guessing so it has a clear winner.",
+      "sources": [
+        {
+          "url": "https://www.livewellsouthwest.co.uk/wp-content/uploads/2019/06/allisteningwalk.pdf",
+          "title": "Communication Cookbook: Listening walk",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "mason-mark-hunt",
+      "name": "Mason's marks",
+      "mechanic": "Search the stone blocks of an old church, tower or wall for stonemasons' marks (small carved signs: arrows, crosses, letters); find N different ones, or find the one shown on the card.",
+      "example": "A historic-churches children's trail asks kids to look for the mason's mark on the wall near a church porch and the skull and crossbones on stones by a door.",
+      "types": [
+        "spot"
+      ],
+      "tags": [
+        "history"
+      ],
+      "places": [
+        "church",
+        "tower",
+        "wall",
+        "gate",
+        "castle"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "count",
+        "photo"
+      ],
+      "needs": [],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Make up your own mark: which one would you carve?",
+        "Where is the lowest / highest mark?"
+      ],
+      "fit_notes": "Check on site or in photos that marks are visible at kid height.",
+      "sources": [
+        {
+          "url": "https://www.nhct-norwich.org/wp-content/uploads/2018/06/NHCT-childrens-trail-leaflet-Angels-and-Dragons-1.pdf",
+          "title": "Norwich Historic Churches Trust: Angels and Dragons children's trail",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "boundary-straddle",
+      "name": "One foot in each",
+      "mechanic": "Find a boundary marker (parish plaque, old city-limit stone, district line in the paving, border on a bridge) and stand with one foot on each side for a photo; say what the two sides are.",
+      "example": "A children's church trail asks kids to spot the parish boundary plaques and say what they tell you.",
+      "types": [
+        "spot",
+        "photo"
+      ],
+      "tags": [
+        "history",
+        "navigation"
+      ],
+      "places": [
+        "street",
+        "square",
+        "bridge",
+        "river"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 4,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Find both plaques of the same boundary",
+        "Jump from one side to the other 10 times"
+      ],
+      "fit_notes": "Made into a body pose so it needs being there.",
+      "sources": [
+        {
+          "url": "https://www.nhct-norwich.org/wp-content/uploads/2018/06/NHCT-childrens-trail-leaflet-Angels-and-Dragons-1.pdf",
+          "title": "Norwich Historic Churches Trust: Angels and Dragons children's trail",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "zone-motif-tally",
+      "name": "Count them all day",
+      "mechanic": "A motif is chosen for the zone (lions, angels, dragons, the city arms, bikes with a child seat); everyone guesses how many they will see; the kid keeps a running tally on the card while walking, and the closest guess wins at the boss.",
+      "example": "A city church trail asks: how many angels and dragons can you spot on this whole trail? with tally boxes on the leaflet.",
+      "types": [
+        "spot",
+        "collect"
+      ],
+      "tags": [
+        "estimation"
+      ],
+      "places": [
+        "any"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 60,
+      "proof": [
+        "count"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op",
+        "duel"
+      ],
+      "variations": [
+        "Two motifs, kid counts one, parents the other",
+        "Only motifs higher than a door"
+      ],
+      "fit_notes": "Like the zone photo hunt: runs alongside the other challenges, no clock.",
+      "sources": [
+        {
+          "url": "https://www.nhct-norwich.org/wp-content/uploads/2018/06/NHCT-childrens-trail-leaflet-Angels-and-Dragons-1.pdf",
+          "title": "Norwich Historic Churches Trust: Angels and Dragons children's trail",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "odd-angle-photo-trail",
+      "name": "Where is this photo from?",
+      "mechanic": "The next stop is given only as a photo of a familiar object from an unusual angle or very close up (a lamp from below, a bench's ironwork, a door handle); the kid leads the family there and retakes the same photo.",
+      "example": "A Russian education blog's quick outdoor quest: every clue is a photo of an everyday object shot from an unfamiliar angle, leading to the next point.",
+      "types": [
+        "trail"
+      ],
+      "tags": [
+        "navigation"
+      ],
+      "places": [
+        "any",
+        "square",
+        "street",
+        "park"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "photo",
+        "point"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Two photos: the near one and a far one, choose",
+        "Kid takes the next photo for the parents"
+      ],
+      "fit_notes": "Different from close-up-match: here the photo moves the family through the zone.",
+      "sources": [
+        {
+          "url": "https://mel.fm/blog/serge-parkhomenko/79645-4-idei-dlya-kvesta-na-ulitse-kotory-mozhno-prigotovit-za-polchasa",
+          "title": "Mel.fm: 4 ideas for a street quest prepared in half an hour",
+          "lang": "ru",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "then-and-now",
+      "name": "Then and now",
+      "mechanic": "The card shows an old photograph or painting of a spot in the zone; the kid finds the exact place it was taken from, retakes the same view, and finds 3 things that changed and 1 that stayed.",
+      "example": "Heritage teaching guides have pupils compare old photographs with the street itself and match historic photos with today's view; a St Petersburg self-guided kids' quest uses retro photos as clues.",
+      "types": [
+        "trail",
+        "photo"
+      ],
+      "tags": [
+        "history",
+        "navigation"
+      ],
+      "places": [
+        "street",
+        "square",
+        "station",
+        "bridge",
+        "harbour",
+        "canal"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "photo",
+        "count"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Old painting from a museum seen that morning",
+        "Stand where the painter stood"
+      ],
+      "fit_notes": "Check rights for printing the old image; public-domain archive photos are best.",
+      "sources": [
+        {
+          "url": "https://derbyshire.gov.uk/site-elements/documents/pdf/leisure/record-office/source-guide-using-old-photographs.pdf",
+          "title": "Derbyshire Record Office: using old photographs",
+          "lang": "en",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://www.oswegoheritage.org/resources/Documents/OHC%20Lesson%20Plan_%20Then%20Now.pdf",
+          "title": "Oswego Heritage Council: Then & Now lesson",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "blind-touch-find",
+      "name": "Meet it blind",
+      "mechanic": "A parent leads the blindfolded (eyes-closed) kid to one tree, column, lamp post or statue base among many; the kid explores it by touch and smell, is led back on a winding route, opens their eyes and must find the same one.",
+      "example": "Forest-school 'Meet a Tree': the guide leads the blindfolded partner to a tree, back to the start, and the partner finds the tree by what they felt; an outdoor centre adds guessing the tree's girth.",
+      "types": [
+        "move",
+        "spot"
+      ],
+      "tags": [
+        "senses",
+        "limitation",
+        "nature"
+      ],
+      "places": [
+        "park",
+        "square",
+        "church",
+        "museum-room",
+        "garden"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 8,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Swap: the kid leads a parent",
+        "Columns in a church colonnade or a row of plane trees on a square",
+        "Guess the trunk's girth in hugs"
+      ],
+      "fit_notes": "Kid walks slowly, hands forward, a parent holds them; only in a car-free spot.",
+      "sources": [
+        {
+          "url": "https://www.nps.gov/glac/learn/education/4-6-unit-six-activity-8-meet-a-tree.htm",
+          "title": "NPS Glacier: Meet a Tree",
+          "lang": "en",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://nottsoutdoors.nottinghamshire.gov.uk/schools-and-groups/activities/mega-messy-maths",
+          "title": "Notts Outdoors: Mega Messy Maths (tree girth)",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "shadow-height",
+      "name": "How tall? Ask the shadow",
+      "mechanic": "On a sunny day, pace the kid's own shadow and the shadow of a tower, statue or lamp post; the shadow is as many times longer as the thing is taller than the kid, so work out its height and compare with the real number.",
+      "example": "Park-service and school number-day activities measure a person's height and shadow, then a building's shadow, and solve the proportion; younger kids use a 1 m stick.",
+      "types": [
+        "measure"
+      ],
+      "tags": [
+        "maths",
+        "estimation"
+      ],
+      "places": [
+        "tower",
+        "statue",
+        "church",
+        "square",
+        "windmill"
+      ],
+      "age": [
+        8,
+        14
+      ],
+      "difficulty": 3,
+      "minutes": 10,
+      "proof": [
+        "count",
+        "parent-sees"
+      ],
+      "needs": [
+        "daylight",
+        "rain-free"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Younger kids: how many 'of my shadow' fit in the tower's shadow",
+        "Do it at two times of day"
+      ],
+      "fit_notes": "Needs sun and a shadow that falls on open ground; give the real height in the answer.",
+      "sources": [
+        {
+          "url": "https://www.nps.gov/teachers/classrooms/outdoor-triangle-proportions.htm",
+          "title": "NPS: outdoor triangle proportions",
+          "lang": "en",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://www.nspcc.org.uk/globalassets/documents/fundraising/number-day/resources-2026/5-7/2055114_number-day-2026_johnny-b_5-7_bf_aw.pdf",
+          "title": "NSPCC Number Day: measure height (5–7)",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "janken-stairs",
+      "name": "Rock-paper-scissors stairs",
+      "mechanic": "Kid and a parent start at the bottom of a staircase and play rock-paper-scissors; the winner climbs 3 steps for rock and 6 for scissors or paper, spelling a word one syllable per step; first to the top wins.",
+      "example": "A Japanese street game promoted by a confectioner: players advance across squares or steps by the number of syllables of the winning hand's word.",
+      "types": [
+        "duel",
+        "move"
+      ],
+      "tags": [
+        "language",
+        "maths"
+      ],
+      "places": [
+        "stairs",
+        "tower",
+        "bridge"
+      ],
+      "age": [
+        4,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "Use a local word: 3 syllables for rock, 6 for the others",
+        "Going down: the loser goes back 1 step"
+      ],
+      "fit_notes": "Only on quiet, wide steps; luck-based, so fair for small kids.",
+      "sources": [
+        {
+          "url": "https://www.glico.com/assets/files/%E3%83%86%E3%82%A3%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%82%BA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB__1.pdf",
+          "title": "Glico teacher file: the Glico game",
+          "lang": "ja",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "letter-hunt-name",
+      "name": "Letters of my name",
+      "mechanic": "Find and photograph each letter of the kid's name in the zone, each from a different sign, house number or shape in a building (an A in a roof, an O in a window); later the photos spell the name.",
+      "example": "A design magazine's 'big letter hunt' and a library's 'how to be a building' activity have children spot letters hidden in architecture and photograph every letter they find.",
+      "types": [
+        "photo",
+        "collect"
+      ],
+      "tags": [
+        "language"
+      ],
+      "places": [
+        "street",
+        "facade",
+        "square",
+        "station"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 20,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Only letters in buildings, not signs",
+        "Spell the city's name instead"
+      ],
+      "fit_notes": "Runs through the zone like a photo hunt; the letter photos are a collection.",
+      "sources": [
+        {
+          "url": "https://eyeondesign.aiga.org/discover-the-typography-of-your-city-with-the-big-letter-hunt/",
+          "title": "AIGA Eye on Design: the big letter hunt",
+          "lang": "en",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://www.chipublib.org/blogs/post/how-to-be-a-building/",
+          "title": "Chicago Public Library: How to be a building",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "star-memory-run",
+      "name": "Map in your head",
+      "mechanic": "A parent stays at the middle of a square or park with a map; the kid looks at one marked spot on it, leaves the map behind, goes there and brings back a word or number from that spot; then the next spot, from the centre each time.",
+      "example": "Orienteering lesson plans for children: 'star' courses from a central point, and a memory variant where the map stays at the start and children must remember where the control is.",
+      "types": [
+        "trail",
+        "move"
+      ],
+      "tags": [
+        "navigation",
+        "memory"
+      ],
+      "places": [
+        "square",
+        "park",
+        "market"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 10,
+      "proof": [
+        "word"
+      ],
+      "needs": [
+        "paper"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Kid memorises two spots in a row",
+        "Parent times the whole star"
+      ],
+      "fit_notes": "Only within sight of the parent, in a car-free square or park.",
+      "sources": [
+        {
+          "url": "https://navigation-games-2.gitbook.io/orienteering-education-around-the-world/canada",
+          "title": "Navigation Games: orienteering education (Canada)",
+          "lang": "en",
+          "seen": "2026-11-14"
+        },
+        {
+          "url": "https://www.brighton-hove.gov.uk/sites/default/files/migrated/article/inline/Orienteering%20in%20St%20Ann%27s%20Well%20Gardens%20-%20activities%20and%20exercises%20for%20schools.pdf",
+          "title": "Brighton & Hove: orienteering exercises for schools",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "shape-hunt",
+      "name": "Shape hunt",
+      "mechanic": "In one building or square, find and photograph a list of shapes: a circle, a triangle, a star, a spiral, an octagon (count the sides of a font or a tower); proof is the photo plus the side count.",
+      "example": "Outdoor-maths teachers run geometry hunts with checklists of shapes to photograph; church trails ask how many sides the font has.",
+      "types": [
+        "photo",
+        "spot"
+      ],
+      "tags": [
+        "maths"
+      ],
+      "places": [
+        "church",
+        "square",
+        "facade",
+        "station",
+        "museum-room"
+      ],
+      "age": [
+        4,
+        10
+      ],
+      "difficulty": 1,
+      "minutes": 10,
+      "proof": [
+        "photo",
+        "count"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Find the shape with the most sides",
+        "A shape that is in the city's coat of arms"
+      ],
+      "fit_notes": "",
+      "sources": [
+        {
+          "url": "https://edutopia.org/article/outdoor-math-activities-elementary-school",
+          "title": "Edutopia: outdoor math activities",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "travelling-mascot-story",
+      "name": "Mascot's day out",
+      "mechanic": "A small toy travels with the kid; at each landmark the kid places it in a scene that fits the place (on a bridge rail, by a statue's foot, in a market crate) and photographs it; at the end of the day the photos are put in order as the mascot's story.",
+      "example": "A German early-years card set has children take invented figures outside, find exciting places for them, photograph each station and sort the photos into a picture-book story.",
+      "types": [
+        "photo",
+        "collect"
+      ],
+      "tags": [
+        "role-play"
+      ],
+      "places": [
+        "any"
+      ],
+      "age": [
+        4,
+        9
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "photo"
+      ],
+      "needs": [
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "The mascot must 'meet' 3 animals (statues count)",
+        "Parents choose the best scene of the day"
+      ],
+      "fit_notes": "Toy must stay safe from canals.",
+      "sources": [
+        {
+          "url": "https://www.dortmund.de/dortmund/projekte/rathaus/verwaltung/jugendamt/familienportal/downloads/1_angebote-fuer-junge-familien-plappermaul/dkj30_kultur-am-haken_rz_screen.pdf",
+          "title": "DKJS: Kultur am Haken (Wildwuchsgeschichten)",
+          "lang": "de",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "painting-pose-guess",
+      "name": "Which painting am I?",
+      "mechanic": "In a gallery room, the kid secretly picks a painting or sculpture and strikes the pose of one figure in it; the parents must find which artwork it is within a set time; then swap.",
+      "example": "Family art-gallery games: pose like a subject in a work of art and have the others guess which work you are.",
+      "types": [
+        "move",
+        "duel"
+      ],
+      "tags": [
+        "role-play",
+        "indoor",
+        "rain-ok"
+      ],
+      "places": [
+        "museum-room",
+        "statue"
+      ],
+      "age": [
+        5,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "parent-sees"
+      ],
+      "needs": [
+        "opening-hours",
+        "ticket"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "Parents get 3 guesses",
+        "Only works with animals in them"
+      ],
+      "fit_notes": "Quiet poses only; no touching artworks.",
+      "sources": [
+        {
+          "url": "https://www.ldsliving.com/art-gallery-games-for-families/s/72154",
+          "title": "LDS Living: art gallery games for families",
+          "lang": "en",
+          "seen": "2026-11-14"
+        }
+      ],
+      "origin": "found",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "departure-board-race",
+      "name": "Departure board race",
+      "mechanic": "At a big station's departure board, a parent names a far city; the kid and the other parent race to find the train's time and platform, then walk to that platform and find the sign or the train.",
+      "example": "Invented from station I-spy books (points for spotting the departure board) and timetable lessons.",
+      "types": [
+        "duel",
+        "spot"
+      ],
+      "tags": [
+        "navigation",
+        "language",
+        "rain-ok"
+      ],
+      "places": [
+        "station"
+      ],
+      "age": [
+        7,
+        14
+      ],
+      "difficulty": 2,
+      "minutes": 5,
+      "proof": [
+        "word",
+        "point"
+      ],
+      "needs": [],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "Find a train that leaves within 10 minutes",
+        "Which train goes furthest? Guess, then check on the map"
+      ],
+      "fit_notes": "Only walk onto platforms with a valid ticket or where they are public.",
+      "sources": [],
+      "origin": "invented",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "echo-timer",
+      "name": "Echo hunt",
+      "mechanic": "Clap once under a bridge, in a gate passage or a big hall and listen for the echo; find the spot in the zone with the longest or loudest echo, and compare: here vs. there.",
+      "example": "Invented from the listening-walk sources: a sound task with a measurable comparison.",
+      "types": [
+        "measure",
+        "spot"
+      ],
+      "tags": [
+        "senses"
+      ],
+      "places": [
+        "church",
+        "bridge",
+        "gate",
+        "station",
+        "tower"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "time",
+        "parent-sees"
+      ],
+      "needs": [
+        "stopwatch"
+      ],
+      "mode": [
+        "co-op"
+      ],
+      "variations": [
+        "In a church only whisper a word and listen how long it hangs (no clapping)",
+        "Count seconds until the sound dies"
+      ],
+      "fit_notes": "Respect quiet places: in churches only listen to existing sounds.",
+      "sources": [],
+      "origin": "invented",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "centre-of-square",
+      "name": "Find the middle",
+      "mechanic": "Everyone stands where they think the exact centre of a square is; then the kid paces from two opposite sides (and the other two) to check whose spot is the middle; closest wins.",
+      "example": "Invented from a symmetry/centre-finding maths note (diagonals meet in the middle) and our guess-then-check duels.",
+      "types": [
+        "duel",
+        "measure"
+      ],
+      "tags": [
+        "estimation",
+        "maths"
+      ],
+      "places": [
+        "square",
+        "park",
+        "museum-room"
+      ],
+      "age": [
+        6,
+        14
+      ],
+      "difficulty": 1,
+      "minutes": 5,
+      "proof": [
+        "count"
+      ],
+      "needs": [],
+      "mode": [
+        "duel"
+      ],
+      "variations": [
+        "Find the centre of a round fountain",
+        "Eyes closed: walk to the centre from one corner"
+      ],
+      "fit_notes": "Only on a car-free square.",
+      "sources": [],
+      "origin": "invented",
+      "status": "new",
+      "added": "2026-11-14"
+    },
+    {
+      "id": "found-materials-replica",
+      "name": "Mini landmark",
+      "mechanic": "Build a small copy of the landmark in front of you (a windmill, a bridge, a tower) from what lies on the ground (sticks, stones, leaves); photograph it with the real one behind it in the same frame.",
+      "example": "Invented: combines our found-materials builds with the perspective-trick photo.",
+      "types": [
+        "build"
+      ],
+      "tags": [
+        "nature"
+      ],
+      "places": [
+        "park",
+        "square",
+        "beach",
+        "garden",
+        "windmill"
+      ],
+      "age": [
+        5,
+        12
+      ],
+      "difficulty": 2,
+      "minutes": 10,
+      "proof": [
+        "photo",
+        "parent-sees"
+      ],
+      "needs": [
+        "found-materials",
+        "camera"
+      ],
+      "mode": [
+        "solo"
+      ],
+      "variations": [
+        "Parents must say which landmark it is before seeing the real one",
+        "It must stand for 10 seconds"
+      ],
+      "fit_notes": "Only fallen material.",
+      "sources": [],
+      "origin": "invented",
+      "status": "new",
+      "added": "2026-11-14"
+    }
+  ]
+}

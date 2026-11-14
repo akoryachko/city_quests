@@ -138,8 +138,8 @@ An outside event that happens during the visit (a parade, an arrival) becomes th
 boss after the venue, or happens before going in. A **paid venue**
 (museum, tower) must hold more than one thing to do: two or three tasks
 inside, or a multi-step boss — Micropia's stamp card plus a live water bear
-under the microscope is the model. No drawing tasks — this
-kid dislikes drawing (check the profile); kids who like collecting stamps
+under the microscope is the model. Skip what the profile
+dislikes (this family: no drawing tasks); kids who like collecting stamps
 and stickers get one wherever a
 place offers a stamp (tourist office, museum desk) or a sticker, use it.
 

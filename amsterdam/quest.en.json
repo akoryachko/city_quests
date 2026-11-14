@@ -158,6 +158,7 @@
         {
           "type": "spot",
           "title": "Golden Coin",
+          "pattern": "spot-detail-race",
           "coins": 1,
           "text": "Who will be first to find, on the Zandhoek quay, the stone with a golden coin and an emperor? The coin gave its name to the Reael family, and the family gave its name to this island!",
           "answer": "Zandhoek 14, the \"De Gouden Reael\" stone: a real coin with Emperor Charles V.",
@@ -170,6 +171,7 @@
         {
           "type": "measure",
           "title": "Captains' Row",
+          "pattern": "pace-and-compare",
           "coins": 3,
           "text": "Pace out the width of one captain's house. There are 13 of these houses in the row. How many steps will the whole row take? Walk it and check!",
           "answer": "13 houses, nos. 2–14. Sum: steps for one house × 13 (= 10 times + 3 times). Compare with the walk.",
@@ -181,6 +183,7 @@
         {
           "type": "photo",
           "title": "Shipyard Birds",
+          "pattern": "wildlife-photo",
           "coins": 2,
           "text": "By the water on Prinseneiland, take a photo of two different birds in one picture: a duck, a coot, a gull, a heron, a goose…",
           "answer": "Check the photo yourselves. A coot is black with a white beak and a white \"bald\" patch; herons often stand on boats and posts. No luck? Try at the farm (ducks, geese).",
@@ -192,6 +195,7 @@
         {
           "type": "move",
           "title": "⏱ Playground Minute",
+          "pattern": "playground-circuit",
           "coins": 2,
           "text": "At the playground on Bickersgracht, touch 15 different things in 1 minute: swing, slide, bench, tree… A parent times you and counts!",
           "answer": "Self-check: a parent counts the touches out loud. Didn't make it? Second try.",
@@ -203,6 +207,7 @@
         {
           "type": "move",
           "title": "Farm Charades",
+          "pattern": "animal-charades",
           "coins": 3,
           "text": "At the De Dierencapel farm, act out 5 animals you can see in the yard, without sounds. The parents must guess at least 3!",
           "answer": "No staff needed: look into the yard (sheep, goats, pigs, rabbits, guinea pigs, ducks, geese, chickens). Fewer than 3 guessed? A new set of five. Farm open Tue–Sun 9–17, closed Mon.",
@@ -214,6 +219,7 @@
       ],
       "boss": {
         "title": "Bridge 320",
+        "pattern": "limitation-crossing",
         "coins": 6,
         "order": 2.5,
         "text": "Find the bridge with number 320 and read its name. Cross it with your eyes closed without touching the railings! Touched them or opened your eyes? Start again.",
@@ -241,6 +247,7 @@
         {
           "type": "photo",
           "title": "Photo Hunt: Three Fleets",
+          "pattern": "zone-photo-hunt",
           "coins": 5,
           "text": "As you walk the zone, photograph boats from three different companies: the name is on the side. Plus 5 places marked with a camera on the zone map: the church with two towers, the West India House, the bronze boy and girl from a book, the pink stone triangle by the water and Anne Frank's house. Any order, just finish before the boss!",
           "answer": "Boats: most at Damrak and Prins Hendrikkade: Stromma (Damrak piers), Lovers (orange, Prins Hendrikkade); also Flagship, Blue Boat, small open Those Dam Boat Guys boats (by Westerkerk). Any name on the side counts. Places in route order: 1) Posthoornkerk, Haarlemmerstraat 124. 2) West-Indisch Huis, Herenmarkt / Haarlemmerstraat 75. 3) Woutertje Pieterse and Femke, by Noordermarkt / Westerstraat (near 2.3). 4) Homomonument, by Westerkerk. 5) Anne Frank Huis, Prinsengracht 263, next to Westerkerk, before the boss. No timer: done if all photos are in before the boss.",
@@ -279,6 +286,7 @@
         {
           "type": "spot",
           "title": "Corner Warehouses",
+          "pattern": "read-and-translate",
           "coins": 2,
           "text": "On the warehouses of the Brouwersgracht canal, find the words Vijfhoek, Vierhoek and Driehoek and translate them! And which warehouse is named after a faraway island?",
           "answer": "No. 200 Vijfhoek (\"five corners\"), no. 205 Vierhoek (\"four corners\"), no. 207 Driehoek (\"three corners\"); the island is no. 204 Spitsbergen.",
@@ -290,6 +298,7 @@
         {
           "type": "move",
           "title": "⏱ Cross Church",
+          "pattern": "timed-lap",
           "coins": 2,
           "text": "The Noorderkerk is shaped like a cross, and little houses snuggle into the corners between its arms. Run around the church in 2 minutes and count the little houses!",
           "answer": "There are little houses in all four corners of the cross (check on the spot). Run on the Noordermarkt square and pavement, don't cross the road; on Saturdays and Mondays there's a market here, so walk then.",
@@ -301,6 +310,7 @@
         {
           "type": "talk",
           "title": "Dutch Pie",
+          "pattern": "kid-interpreter",
           "coins": 3,
           "text": "At Winkel 43, order apple pie with whipped cream in Dutch and ask how many pies they bake a day. What did they say? Translate it for us! Then rate the pie from 1 to 10.",
           "answer": "Order: \"Een appeltaart met slagroom, alstublieft\". Question: \"Hoeveel appeltaarten bakken jullie per dag?\" Per the Michelin Guide, up to 140. A slice ~5–7 €. Open daily, Sun from ~9–10. Queue on Saturdays because of the market.",
@@ -313,6 +323,7 @@
           "type": "duel",
           "duel": true,
           "title": "House of Heads",
+          "pattern": "spot-detail-race",
           "coins": 2,
           "text": "The legend: a maid caught six thieves, and now their heads are on the wall. Find by the heads: laurels, ears of wheat, grapes, a crescent moon and two different helmets. Can you find all six before a parent finds three?",
           "answer": "6 heads of Roman gods: laurels, Apollo; wheat, Ceres; grapes, Bacchus; crescent, Diana; helmets, Minerva and Mars (other sources: Mercury in a winged helmet). They are gods, not thieves.",
@@ -324,6 +335,7 @@
       ],
       "boss": {
         "title": "Tower Crown",
+        "pattern": "perspective-trick-photo",
         "coins": 6,
         "text": "Stand so that the crown on the city's tallest tower sits on your head: photo! Slipped off? Move and shoot again. Then, on the hour, count the bell strikes and jump that many times. Lost count? Wait for the next hour or try together with a parent.",
         "answer": "The crown is blue (gold from 1906 to 2006). Best photo from Westermarkt, south of the tower. Strikes on the hour (1–12). The Homomonument is next to it: it's quiet there, and we don't stand in the Anne Frank House queue.",
@@ -351,6 +363,7 @@
         {
           "type": "photo",
           "title": "Zone Photo Hunt",
+          "pattern": "zone-photo-hunt",
           "coins": 4,
           "text": "As you walk the zone, photograph 6 places marked with a camera on the zone map: the Munttoren tower, a flower stall on the water, the queen on a horse, the white stone pillar on Dam Square, the post-office palace with turrets and the New Church by the palace. Any order, just finish before the boss!",
           "answer": "1) Munttoren, Muntplein: the start. 2) Bloemenmarkt, Singel: stalls on barges, visible from the bridge at Muntplein. 3) Equestrian statue of Queen Wilhelmina, Rokin (between Muntplein and Spui). 4) Nationaal Monument, Dam Square: the 22 m white pillar. 5) Magna Plaza, Nieuwezijds Voorburgwal 182, opposite the back of the palace (3.5). 6) Nieuwe Kerk, by the palace on Dam. No timer: done if all photos are in before the boss.",
@@ -394,6 +407,7 @@
         {
           "type": "photo",
           "title": "Bronze Rascal",
+          "pattern": "statue-twin-pose",
           "coins": 2,
           "text": "On Spui square stands a bronze rascal of a boy. Stand next to him so you look like twins in the photo: same pose, same look!",
           "answer": "\"Het Lieverdje\" (1960). A parent watches the frame and adjusts until it matches. A lorry knocked the statue over in March 2024; it was repaired and returned to Spui in May 2024.",
@@ -405,6 +419,7 @@
         {
           "type": "trail",
           "title": "Secret Courtyard",
+          "pattern": "riddle-to-next-stop",
           "coins": 3,
           "text": "Go through the gate from Gedempte Begijnensloot street into a secret courtyard. Inside is the oldest wooden house in the city. Find its number!",
           "answer": "Begijnhof, house no. 34, about 500 years old. People live in the courtyard, so speak quietly! Enter through the gate on Gedempte Begijnensloot (the Spui door is closed to visitors). Daily 9:30–17:00 (summer until 18), free, no bikes or large groups.",
@@ -416,6 +431,7 @@
         {
           "type": "duel",
           "title": "Blindfold Sauce",
+          "pattern": "blind-taste-guess",
           "coins": 2,
           "text": "Get fries with two different sauces of your choice. Close your eyes: a parent gives you a fry 3 times, with one sauce or the other, and you say which. Then swap. Who guessed right more often?",
           "answer": "Any two sauces. Oorlog (\"war\"): mayonnaise, peanut satay sauce and raw onion. Vleminckx: Sat 11–19, Sun 12–19 (unofficial), usually a queue.",
@@ -428,6 +444,7 @@
         {
           "type": "spot",
           "title": "Animals from Faraway Lands",
+          "pattern": "count-the-feature",
           "coins": 3,
           "text": "Walk around the back of the palace. In the triangle under the giant Atlas, people from all over the world bring gifts to the city, and lead animals. Count all the animals! A parent counts separately. Same number? Done! If not, count together, pointing with your finger.",
           "answer": "The rear pediment \"The Four Continents Bring Gifts to Amsterdam\": the animals include an elephant and a lion (Africa), a camel and a crocodile with a boy riding it (Asia), plus small ones like a parrot. We found no exact number: it counts when the kid's and the parent's totals match. Watch from the pavement: trams run on Nieuwezijds Voorburgwal.",
@@ -439,6 +456,7 @@
       ],
       "boss": {
         "title": "Record Tower",
+        "pattern": "brick-build-challenge",
         "coins": 6,
         "text": "In the LEGO Store, build a tower from 4 different kinds of pieces, taller than your elbow when your arm rests on the table. It must stand on its own while a parent blows on it and counts to 5! Fell over? Build it stronger and try again.",
         "answer": "Ask whether you may build at the demo table (\"Mag ik hier bouwen?\", tel. +31 20 793 0620). If not, buy the smallest Pick & Build box from the wall (now paper boxes, price on the wall) and build with it right in the shop. No need to bring your own LEGO. Got a LEGO passport? Ask for a stamp.",
@@ -476,6 +494,7 @@
         {
           "type": "photo",
           "title": "Zone photo hunt",
+          "pattern": "zone-photo-hunt",
           "coins": 4,
           "text": "As you walk through the zone, photograph 6 places marked with a camera on the zone map: Sinterklaas's church with two towers, the wooden house \"At the Little Monkeys\", the Chinese palace temple, the Montelbaanstoren tower, the gate with the letters VOC and the Zuiderkerk tower. Any order, but before the boss!",
           "answer": "In route order: 1) He Hua Temple, Zeedijk 106–118, the start of the zone; bonus shot: a roof corner \"touching\" the Waag. 2) In 't Aepjen, Zeedijk 1, at the end of Zeedijk, on the way to Tony's. 3) Basiliek van de Heilige Nicolaas, Prins Hendrikkade 73, on the way from Tony's to the Schreierstoren. 4) Montelbaanstoren, Oudeschans 2, from the Scheepvaarthuis (4.4) along Oudeschans. 5) Zuiderkerk, Zuiderkerkhof, on the way. 6) Oost-Indisch Huis: the VOC gate at Oude Hoogstraat 24, by the bridge to Kloveniersburgwal. No time limit: it counts if all photos are taken before the boss.",
@@ -519,6 +538,7 @@
         {
           "type": "taste",
           "title": "Blind chocolate tasting",
+          "pattern": "blind-taste-guess",
           "coins": 3,
           "text": "In the Tony's Chocolonely shop, pick 5 chocolate bars with different flavours, any you like! Then close your eyes: a parent gives you a piece of each in any order, and you name the flavour. Guess at least 4 out of 5!",
           "answer": "The kid picks 5 different flavours himself (a 180 g bar ≈ €4–5). The parent remembers the order (or notes it on the phone). Taste on a bench by the water at the Schreierstoren, the next stop (5 minutes along Prins Hendrikkade). 4 out of 5 counts; fewer, and you can try again later with other pieces.",
@@ -540,6 +560,7 @@
         {
           "type": "spot",
           "title": "Traveller's Tower",
+          "pattern": "house-sign-detail",
           "coins": 3,
           "text": "In 1609 Captain Hudson sailed from here, towards the future New York! Find the stone on the tower: a woman points at a ship but has turned away. What year is on it?",
           "answer": "The stone of 1569 (a weeping woman and a ship on the waves). On the left of the tower is a 1927 plaque to Hudson; there is also a stone for the first voyage to the East Indies (1595).",
@@ -561,6 +582,7 @@
         {
           "type": "photo",
           "title": "Sea monsters",
+          "pattern": "pick-your-favourite-photo",
           "coins": 2,
           "text": "Stone sea monsters, gods and ships live on the Scheepvaarthuis, the shipping house. Find the scariest monster and take a photo!",
           "answer": "The facade is covered in stone and iron carvings: sea monsters, dolphins, Neptune, seahorses, ships and maps. The kid picks the scariest. Look from the pavement of Prins Hendrikkade (a busy street).",
@@ -571,6 +593,7 @@
         },
         {
           "title": "Door-Wide House",
+          "pattern": "pace-and-compare",
           "coins": 2,
           "text": "The legend: the rich Trip family's coachman asked for a house as wide as their door, and got one! Stand by the little house and spread your arms: how many of you wide is it? You and your parents guess: how many little houses fit into the big house opposite? Who's closest? Bonus: the Trip brothers sold weapons. Find chimneys like cannons on their roof!",
           "answer": "Kleine Trippenhuis 2.44 m (≈ 2 of the kid's arm spans); the Trippenhuis (no. 29) opposite is over 22 m with 7 windows in a row → ≈ 9 little houses. The roof chimneys are shaped like mortars. The coachman legend was made up later.",
@@ -603,6 +626,7 @@
       "boss": {
         "type": "move",
         "title": "⏱ Guild masters",
+        "pattern": "close-up-match",
         "coins": 6,
         "text": "A parent secretly takes close-up photos of three carved details on the Waag. In 3 minutes, find where each one is and say which guild worked behind that door. Too slow? Three new photos!",
         "answer": "Above the doors are 4 guilds: smiths, painters, masons, surgeons; Theatrum Anatomicum is the surgeons' entrance (skull and instruments). Pick details visible from the square, one each on different doors.",
@@ -629,6 +653,7 @@
       "challenges": [
         {
           "title": "Captain's orders",
+          "pattern": "sequence-memory-run",
           "coins": 3,
           "text": "On the ship Amsterdam, a parent names 5 places on deck just once: the wheel, the bell, a hammock, a cannon, the captain's cabin. Visit them in the same order in 3 minutes. Made a mistake? New order!",
           "answer": "You can swap places (galley, anchor, cargo hoist: \"lift the cargo\"). The original had 42 cannons. Entry with a museum ticket; do the ship first, while it is quiet.",
@@ -641,6 +666,7 @@
         {
           "type": "spot",
           "title": "Inside the Whale",
+          "pattern": "museum-exhibit-answer",
           "coins": 3,
           "text": "A huge whale is hiding in the museum. Walk into its mouth! In the last room, name 5 different kinds of rubbish that end up in the sea.",
           "answer": "On the museum map: \"Het verhaal van de walvis\" (The Tale of the Whale), west wing, 1st floor, 6+. You enter through the mouth of a bowhead whale; the last room (made with WWF) is about the \"plastic soup\". Exactly which rubbish is shown is not confirmed: count any 5 different kinds seen in the room (bottle, bag, battery…). The exhibition is permanent.",
@@ -652,6 +678,7 @@
         {
           "type": "spot",
           "title": "Wind Rose",
+          "pattern": "compass-guess",
           "coins": 1,
           "text": "In the museum courtyard, the glass roof is drawn like the wind rose on old sea charts. Stand where you think north is. A parent does too! Who's closest? Check with the phone compass.",
           "answer": "The courtyard is inside the museum (with a ticket). Use the phone compass; whoever's arm points more accurately is closest. The roof follows the compass lines of old charts (1,200 panes).",
@@ -664,6 +691,7 @@
         {
           "type": "move",
           "title": "⏱ Roof Record",
+          "pattern": "stairs-vs-lift",
           "coins": 2,
           "text": "Run up the stairs to the NEMO roof while a parent times you. Rest, go back down and try to beat your record!",
           "answer": "Write the time on the card. The roof is free, stairs on the east side; reopened after renovation on 23.05.2025, per iamsterdam daily 10–17:30 (winter and Monday hours not confirmed). Closed in bad weather. Per the NEMO website: Tue–Sun 10–17:30, free, stairs on the east side; may close in bad weather.",
@@ -676,6 +704,7 @@
       "boss": {
         "type": "talk",
         "title": "Sinterklaas Is Here!",
+        "pattern": "event-spot-list",
         "coins": 6,
         "text": "On 15 November Sinterklaas's steamboat docks at the museum. Before it ties up, find: the steamboat's name, a Piet on the mast and the white horse. Too slow? Keep looking while Sint comes ashore. Then shout \"Welcome!\" in Dutch! On another day the boss is \"Captain's orders\" with 7 places.",
         "answer": "\"Welkom, Sinterklaas!\" Sun 15.11.2026; time not yet published (in 2025: at the museum ~11:30). It will be very crowded: hold hands, agree to meet at the museum entrance, and put a card with your phone number in the kid's pocket. You can watch from above on the NEMO roof (if open). Sint's horse is Ozosnel (formerly Amerigo).",
@@ -732,6 +761,7 @@
         {
           "type": "spot",
           "title": "The windmill ostrich",
+          "pattern": "house-sign-detail",
           "coins": 2,
           "text": "Under the De Gooyer windmill is a brewery. A bird is painted on its sign. Which bird? And what is it holding?",
           "answer": "An ostrich with an egg (with the windmill next to it): the sign of Brouwerij 't IJ. You can't go inside the windmill. ~3 min walk from the Pontanusstraat stop (tram 14).",
@@ -743,6 +773,7 @@
         {
           "type": "move",
           "title": "⏱ Ostrich run",
+          "pattern": "funny-gait-timed",
           "coins": 2,
           "text": "Run along the Funenpark paths with ostrich steps, knees high! Reach the tree a parent picks in under 2 minutes. Walked normally? Start again!",
           "answer": "A tree ~150–200 m along the park paths (no cars). The parent times it and watches the knees.",
@@ -754,6 +785,7 @@
         {
           "type": "photo",
           "title": "Giraffe across the canal",
+          "pattern": "wildlife-photo",
           "coins": 2,
           "text": "Walk along the Entrepotdok canal. On the other bank is the zoo's savannah. Take a photo of a giraffe or a zebra without going into the zoo!",
           "answer": "The Artis savannah reaches the Entrepotdok canal; the animals can be seen from the quay (not always: in winter they may be kept indoors). Nobody there? Any zoo animal or bird counts.",
@@ -765,6 +797,7 @@
         {
           "type": "spot",
           "title": "Gate Words",
+          "pattern": "read-and-translate",
           "coins": 2,
           "text": "Three Latin words are written on the zoo gates. Read them! Two look like English words. Which ones, and what do they mean?",
           "answer": "NATURA ARTIS MAGISTRA: \"Nature is the teacher of art\". NATURA ≈ \"nature\", MAGISTRA ≈ \"master\" (teacher). That is where the name ARTIS comes from.",
@@ -776,6 +809,7 @@
         {
           "type": "spot",
           "title": "Kiss Microbes",
+          "pattern": "museum-exhibit-answer",
           "coins": 2,
           "text": "Find the Kiss-o-meter and kiss Mum or Dad on the cheek: more than a million microbes or fewer? Then stand in front of the scanner mirror: where are the microbes on you?",
           "answer": "Kiss-o-meter: a 10-second kiss passes ~80 million bacteria (a 2014 study), a kiss on the cheek far fewer. The scanner mirror follows your hands and shows microbes on legs, hands and nose (per a Jan 2026 blog).",
@@ -787,6 +821,7 @@
       ],
       "boss": {
         "title": "Stamps and Water Bear",
+        "pattern": "venue-kids-trail",
         "coins": 6,
         "text": "At the Micropia desk, ask for a stamp card. Collect 12 stamps in 40 minutes, then find a live water bear under the microscope and show on your fingers how many legs it has. Too slow? 20 more minutes for the missing ones!",
         "answer": "\"Mag ik een stempelkaart?\" 30 stamps in all, 12 is the boss goal. 8 legs (tardigrade). At the end the card goes into the scanner on the ground floor, and the collected microbes appear on the screen.",
@@ -825,6 +860,7 @@
         {
           "type": "ride",
           "title": "Tram 26",
+          "pattern": "ride-count-stops",
           "coins": 2,
           "text": "Ride tram 26 from Centraal and count the stops to Rietlandpark. Take a photo of a tram coming the other way!",
           "answer": "The 3rd stop: Muziekgebouw, Kattenburgerstraat, Rietlandpark. From 31.08.2026 the terminus is Strandeiland.",
@@ -836,6 +872,7 @@
         {
           "type": "duel",
           "title": "Java Bridges",
+          "pattern": "guess-then-count",
           "coins": 2,
           "text": "Guess: how many little bridges cross the canals of Java Island? Who is closer, you or the parents? Now walk across the island and count!",
           "answer": "The number of bridges isn't published: count on the spot (there are 4 canals across the island). Whoever's number is closer wins.",
@@ -847,6 +884,7 @@
         {
           "type": "move",
           "title": "⏱ Five Things",
+          "pattern": "playground-circuit",
           "coins": 2,
           "text": "At the Bogortuin playground, pick 5 different things to play on. In 2 minutes, visit each one: climb it, sit on it or swing!",
           "answer": "Self-check. What is at the playground is unconfirmed (only a point in OSM); if there's not much, a bench and a tree count too.",
@@ -858,6 +896,7 @@
         {
           "type": "spot",
           "title": "Harbour Crane",
+          "pattern": "find-the-number",
           "coins": 3,
           "text": "Behind the old Loods 6 warehouse stands a harbour crane. Find its number!",
           "answer": "2868.",
@@ -869,6 +908,7 @@
         {
           "type": "spot",
           "title": "House in the Water",
+          "pattern": "count-the-feature",
           "coins": 1,
           "text": "Find a huge round house growing right out of the water! How many floors does it have? Who counts faster, you or the parents?",
           "answer": "Emerald Empire on KNSM-eiland, a round house with a courtyard inside. The height changes around the ring: 7–9 floors (nl-Wikipedia), so any honestly counted number from 7 to 9 counts.",
@@ -881,6 +921,7 @@
       ],
       "boss": {
         "title": "Python Bridge",
+        "pattern": "limitation-crossing",
         "coins": 6,
         "order": 1.5,
         "text": "Find the bright red bridge that wiggles like a snake! Cross it and count the steps. Come back walking backwards, holding the railing!",
@@ -908,6 +949,7 @@
         {
           "type": "photo",
           "title": "Ferry Bingo",
+          "pattern": "ride-window-bingo",
           "coins": 2,
           "text": "From ferry F4, photograph 4 of these 6: the EYE film museum (a white \"flying saucer\"), the A'DAM tower, the Silodam house on stilts, the crane hotel, a tugboat, a cargo barge. Where are they? See the 📷 icons and dots on the zone map.",
           "answer": "Saucer: EYE film museum; tower: A'DAM; house on stilts: Silodam; crane: Faralda Crane Hotel at NDSM. Tugs and barges go by all the time. The crossing takes ~14 min.",
@@ -931,6 +973,7 @@
         {
           "type": "photo",
           "title": "Thumb Crane",
+          "pattern": "perspective-trick-photo",
           "coins": 2,
           "text": "Find the huge crane hotel. Walk away until it fits on your palm, and a parent takes the photo over your shoulder!",
           "answer": "Faralda Crane Hotel, the former crane no. 13 of the NDSM shipyard, 50 m.",
@@ -943,6 +986,7 @@
         {
           "type": "move",
           "title": "⏱ Container Arch",
+          "pattern": "timed-shuttle",
           "coins": 2,
           "text": "Count how many containers make up the arch at the shipyard. Then run under it and back 5 times in 1 minute!",
           "answer": "De Containerboog, an arch of shipping containers (count them on the spot).",
@@ -954,6 +998,7 @@
         {
           "type": "spot",
           "title": "STRAAT Hunt",
+          "pattern": "venue-kids-trail",
           "coins": 3,
           "text": "On the outside wall of STRAAT, find a huge portrait of a girl: it's Anne Frank. Inside, ask at the desk in Dutch for the kids' treasure hunt and do it!",
           "answer": "\"Let me be myself\" by Eduardo Kobra (2016, 240 m²), right above the museum entrance. The hunt for ages 6–12 is free, a sheet from the desk (\"Is er een speurtocht voor kinderen?\"); the colouring part can be skipped. Kids under 13 free with an adult. Tue–Sun 10–17, Mon 12–17.",
@@ -965,6 +1010,7 @@
         {
           "type": "taste",
           "title": "Pancake Boat",
+          "pattern": "local-food-name-rate",
           "coins": 3,
           "text": "On the pancake boat you take as many pancakes as you like: count how many you can manage! Decorate one with the Amsterdam flag, three crosses ××× like on the little posts by the road, and take a photo! Then spot the A'DAM tower from the window: we go there tonight.",
           "answer": "Crosses in strips of syrup, chocolate or slices. The boat is moored by the NDSM ferry, Ms. van Riemsdijkweg 33; the trip is 75 min, be on board 15 min early: the captain doesn't wait. Self-service: plain, apple, bacon, 30+ toppings. The route goes along the IJ past EYE and A'DAM.",
@@ -976,6 +1022,7 @@
       ],
       "boss": {
         "title": "A'DAM Tower",
+        "pattern": "viewpoint-point-out",
         "coins": 6,
         "text": "Time how many seconds the A'DAM lift takes to carry us up 20 floors. At the top, in 3 minutes, find and point to: the station, NEMO, the Westertoren crown and the crane hotel. Not in time? A parent names 3 new places, and you find them with one eye, the other covered by your hand! Brave? The swing over the edge is another +2 🪙!",
         "answer": "The lift takes ~20 s for 100 m. Centraal is straight across the river; NEMO is the green \"ship's bow\" further left, to the east; Westertoren is the tall tower with a blue crown to the right, to the south-west; the crane hotel is far to the west, at NDSM. New places: EYE (the white \"saucer\" below), a ferry on the river, the St Nicholas church with two towers by the station. Over the Edge swing: height from 1.20 m, +€7.50.",
@@ -1042,6 +1089,7 @@
         {
           "type": "photo",
           "title": "Ship House",
+          "pattern": "perspective-trick-photo",
           "coins": 2,
           "text": "Find a house that looks like a ship! Where is its bow, and where is its funnel? Take a photo so the house is \"sailing\" towards you.",
           "answer": "Het Schip (1917–1920, architect Michel de Klerk): the bow is the sharp corner of the block, the \"funnel\" is the little tower above it. Shoot from the Zaandammerplein side, not standing in the roadway of Oostzaanstraat.",
@@ -1053,6 +1101,7 @@
         {
           "type": "build",
           "title": "Den",
+          "pattern": "found-materials-build",
           "coins": 3,
           "text": "⏱ On the wild island Woeste Westen, collect 10 fallen sticks in 2 minutes. Then build a round den from them, like a gas holder. It must stand on its own while a parent counts to 10!",
           "answer": "Nature playground for up to age 13, always open and free; a supervisor at weekends. It's muddy: spare trousers!",
@@ -1064,6 +1113,7 @@
         {
           "type": "move",
           "title": "⏱ Gas Holder",
+          "pattern": "timed-lap",
           "coins": 2,
           "text": "Find the round building with no corners: it stored gas for the lamps of the whole city. Run all the way round it while a parent times you! Rest, then beat your record.",
           "answer": "Gashouder (1902), ~60 m across, so a lap is ~200 m. The gas holder was renovated in 2025–2026 and is open again by autumn 2026; if there's a fence around it, run round the building next door or in a circle by the pond.",
@@ -1075,6 +1125,7 @@
         {
           "type": "taste",
           "title": "Oliebol!",
+          "pattern": "blind-taste-guess",
           "coins": 2,
           "text": "Winter only (late October to New Year): the park sells oliebollen and their cousins. A parent secretly buys two different ones. Taste both, then find them in the stall window: what are they called? Out of season? A parent secretly orders two different snacks at a café: guess what they are by taste.",
           "answer": "Usually in the window: oliebol (plain, and with raisins: krentenbol), appelbeignet (an apple ring in batter), berliner (with cream), appelflap (a puff pastry with apple). Stalls from late October to New Year (Bakker's Oliebollenkraam is mentioned in Westerpark; check the 2026 spot on site). Year-round: bitterballen and fries at the Westergas café.",
@@ -1086,6 +1137,7 @@
         {
           "type": "spot",
           "title": "Shell Bike",
+          "pattern": "spot-detail-race",
           "coins": 1,
           "text": "In Amsterdam in Motion, go upstairs. Who will be first to find the bike pulled out of the bottom of a canal? It's covered in shells!",
           "answer": "The bike with mussels is in the canals room on the top floor.",
@@ -1098,6 +1150,7 @@
       ],
       "boss": {
         "title": "City in Miniature",
+        "pattern": "viewpoint-point-out",
         "coins": 6,
         "text": "⏱ On the huge model of Amsterdam, find 4 places we have already conquered in 2 minutes: Centraal station, Dam Square with the palace, the Westerkerk tower and green NEMO. Not in time? A parent names 4 new places!",
         "answer": "Model 1:1300, 200 m², 30,500 houses, 15-min show. Which buildings are easy to recognise is unconfirmed: if it doesn't work, count the IJ river, Westerpark and the gasworks you're standing in. New places: Rijksmuseum, Artis, De Gooyer windmill, A'DAM.",
@@ -1136,6 +1189,7 @@
         {
           "type": "ride",
           "title": "Giant Escalator",
+          "pattern": "guess-then-count",
           "coins": 1,
           "text": "De Pijp station is the deepest in the country! You and your parents guess: how many canal houses stacked on top of each other would reach the street? Who is closest?",
           "answer": "Depth ~27 m, a canal house ~12–14 m → ≈ 2 houses. For fun, also time the escalator ride up.",
@@ -1148,6 +1202,7 @@
         {
           "type": "photo",
           "title": "Zone Photo Hunt",
+          "pattern": "zone-photo-hunt",
           "coins": 4,
           "text": "As you walk through the zone, take photos of the 5 places with a camera icon on the map: the Albert Cuyp market, the red-brick brewery, the little castle-house with a tower, the white \"bathtub\" and the Van Gogh Museum with its round wing. Finish before the boss!",
           "answer": "In route order: 1) Albert Cuypmarkt: 150 m north of De Pijp metro (market Mon–Sat 9–17; no stalls on Sunday, then photograph the street sign). 2) Heineken Experience, Stadhouderskade 78: a ~250 m detour from Ruysdaelkade. 3) Moco Museum, Villa Alsberg, Honthorststraat 20, by Museumplein. 4) Stedelijk Museum, Museumplein 10: the white \"bathtub\" (de Badkuip). 5) Van Gogh Museum, Museumplein 6: the new wing is oval. No time limit: it counts if all the photos are taken before the boss.",
@@ -1186,6 +1241,7 @@
         {
           "type": "spot",
           "title": "Park Temple",
+          "pattern": "read-and-translate",
           "coins": 2,
           "text": "In Sarphatipark, find the temple in the middle of the water. The shields under the dome have three Dutch words: read and translate them! Which animals guard the water below?",
           "answer": "Shields: \"Volksvlyt – Onderwijs – Handel\" (people's industry, education, trade; \"y\" is an old spelling of \"ij\"). On the cornice: \"Sarphati – Stichter – Van 't Nieuw Amsterdam\". Below: lion heads and frogs (the fountain may be off in winter).",
@@ -1197,6 +1253,7 @@
         {
           "type": "move",
           "title": "⏱ Slide and Tunnel",
+          "pattern": "playground-circuit",
           "coins": 2,
           "text": "On Museumplein by Café Cobra, go down the slide 10 times in 3 minutes! Then walk under the Rijksmuseum through the tunnel: the museum entrance is right inside it.",
           "answer": "The playground was renewed in summer 2025: two slides, a net drum tower, a basket swing. The passage is free; stay on the pedestrian side (bikes!). From ~14.11 there is an ice rink on Museumplein: check the playground is open.",
@@ -1208,6 +1265,7 @@
         {
           "type": "photo",
           "title": "Lyre on a Finger",
+          "pattern": "perspective-trick-photo",
           "coins": 2,
           "text": "A golden lyre shines on the roof of the Concertgebouw concert hall. Walk back across Museumplein until the lyre sits on the tip of your finger. Photo!",
           "answer": "A gilded lyre has topped the gable since 1888 (today's is a 1993 copy, ~3 m). Walk back towards the Rijksmuseum; the square has no cars, but bikes cross it on a path.",
@@ -1219,6 +1277,7 @@
         {
           "type": "spot",
           "title": "Night Watch",
+          "pattern": "painting-detail-hunt",
           "coins": 3,
           "text": "Find Rembrandt's huge painting \"The Night Watch\". Where is the girl with a chicken on her belt? And the barking dog? It isn't a night scene at all: why that name? Ask your parents!",
           "answer": "The girl in the golden dress is left of centre, the chicken on her belt; the dog at the bottom right barks at the drummer. The name came later, when the varnish darkened. The painting is being restored in a glass room (Operatie Nachtwacht, probably until 2027), visible through the glass. The Night Watch room is at the end of the Gallery of Honour (number on the map).",
@@ -1230,6 +1289,7 @@
       ],
       "boss": {
         "title": "Doll's House",
+        "pattern": "look-and-remember",
         "coins": 6,
         "text": "Look at Petronella's doll's house for one minute, then turn away. A parent asks 5 questions: what hangs in the kitchen? how many floors? what colour are the curtains?… 4 right and you win. If not, look for another minute: new questions!",
         "answer": "Petronella Oortman's doll's house, room 2.20: 9 rooms, a cabinet with tortoiseshell and pewter inlay. Make up your own questions by looking at the house while he looks (kitchen, library, nurse with baby, baskets, paintings).",
@@ -1268,6 +1328,7 @@
         {
           "type": "spot",
           "title": "King's Gate",
+          "pattern": "count-the-feature",
           "coins": 2,
           "text": "King Willem II rode in through this gate! Count the columns in the passage. How many on each side?",
           "answer": "8 columns (check the split per side on site). The gate opened on 27.11.1840. Count from the pavement: bikes ride through the arch, don't stand in the passage.",
@@ -1279,6 +1340,7 @@
         {
           "type": "spot",
           "title": "Saw Mill",
+          "pattern": "find-the-mechanism",
           "coins": 2,
           "text": "The De Otter windmill has been a sawmill for almost 400 years! It turns to face the wind all in one piece, little house and all. Find what the miller turned it with. Stand where the mill looks straight at you. Photo!",
           "answer": "A paltrok: the whole body sits on a ring of rollers and is turned with a winch at the back (check on site). If it isn't working, look from outside; the sails may be missing.",
@@ -1290,6 +1352,7 @@
         {
           "type": "measure",
           "title": "Giant's Measure",
+          "pattern": "body-unit-caterpillar",
           "coins": 3,
           "text": "The De 1200 Roe windmill stands 1200 \"roe\" from the Haarlemmerpoort gate. One roe is almost 4 metres! A parent marks one out with 5 big steps on the grass, and you lie down like a caterpillar: stand up where the top of your head was, and lie down again. How many times did you fit?",
           "answer": "A roe ≈ 3.7 m (Amsterdam 3.68 m, Rhineland 3.77 m; sources differ). 5 adult steps of ~75 cm. A child ~1.25 m tall fits ~3 times. 1200 roe ≈ 4.5 km, about how far you came from the gate by bus. Do the caterpillar on the grass on the mill side, away from Haarlemmerweg (busy road).",
@@ -1303,6 +1366,7 @@
           "type": "duel",
           "duel": true,
           "title": "I'm a Windmill!",
+          "pattern": "arm-endurance-duel",
           "coins": 2,
           "text": "Your arms are windmill sails! Turn your straight arms in time with the real sails: one circle per sail. Who lasts longer? Lose the beat or drop an arm and you're out. No wind? Turn to a parent's count.",
           "answer": "The lawn by Molen van Sloten. Big circles, straight arms: the parent checks the kid plays fair, and the kid checks the parent.",
@@ -1314,6 +1378,7 @@
       ],
       "boss": {
         "title": "Inside the Windmill",
+        "pattern": "kid-interpreter",
         "coins": 6,
         "text": "Climb inside the Molen van Sloten windmill. Ask the miller in Dutch: how do the sails stand when there is a party? What did he say? Show it with your arms and hold while a parent counts to 20. Arms dropped? Start again! Then find the screw that lifts the water.",
         "answer": "A tour every hour, included in the ticket. In the attic, figures from Rembrandt's paintings (he was a miller's son), according to reviews. \"Hoe staan de wieken als er feest is?\" Joy (vreugdestand): the top sail stops just short of the very top; mourning (rouwstand): just past the top (check with the miller). An Archimedes screw (vijzel) lifts the water from the polder into the Ringvaart. In winter 10–16, last tour 15:00.",
@@ -1353,6 +1418,7 @@
           "type": "ride",
           "optional": true,
           "title": "Old Tram",
+          "pattern": "find-the-number",
           "coins": 4,
           "text": "Only in spring and summer: ride to the forest on the historic tram! Find the plate in the carriage: which city was our tram made in?",
           "answer": "The museum line runs on Sundays from April to October, 11–17 (check the 2027 season). The museum's trams come from Amsterdam, Vienna, Prague and other cities: the maker's plate is usually by the door or above a window.",
@@ -1365,6 +1431,7 @@
         {
           "type": "move",
           "title": "⏱ Race the Boat",
+          "pattern": "race-the-reference",
           "coins": 3,
           "text": "Run 100 metres along the Bosbaan rowing canal while a parent times you. A rowing eight does 100 metres in under 20 seconds. Who is faster? If a boat comes by, race it!",
           "answer": "Measure 100 m with phone GPS. An eight: 2000 m in ~5.5–6 min → 100 m in ~17–18 s. Rowers often train on Sundays.",
@@ -1376,6 +1443,7 @@
         },
         {
           "title": "Goat Farm",
+          "pattern": "local-food-name-rate",
           "coins": 3,
           "text": "At the Ridammerhoeve goat farm, pet a goat (kids in spring!). Then try something made with goat's milk in the farm café and find the word geit on a sign. Score it from 1 to 10!",
           "answer": "From 1.11 the farm is closed Mon and Tue, other days 10–17 (open Sunday). The café has goat's milk ice cream and coffee, the shop goat's cheese. There probably won't be kids in November.",
@@ -1388,6 +1456,7 @@
         {
           "type": "move",
           "title": "⏱ Human Wheelbarrow",
+          "pattern": "funny-gait-timed",
           "coins": 2,
           "text": "This forest was built with wheelbarrows! Find the wheelbarrow monument on the Big Meadow. Then become a wheelbarrow: a parent holds your legs and you walk 10 steps on your hands in 1 minute. Fall? Start again!",
           "answer": "\"De Kruiwagen\" is a monument to the unemployed who built the forest by hand in the 1930s. Wet grass: bring wipes; the parent holds at the knees, not the feet.",
@@ -1399,6 +1468,7 @@
         {
           "type": "spot",
           "title": "Weighted Bridges",
+          "pattern": "find-the-mechanism",
           "coins": 2,
           "text": "Find a little bridge in the forest with bright round balls. The balls are weights: they help the bridge lift up! How many balls are on the bridge? Where are the hinges it lifts on?",
           "answer": "The ball bridges are designed by Piet Kramer: no. 520 (1938) by the Big Meadow, one of a series of five by the Bosbaan; no. 549, the \"red\" one with 3 balls, at the east end of the Bosbaan; also no. 548 (6 balls) and no. 592. The balls are counterweights for the moving deck; the hinges are at one edge.",
@@ -1410,6 +1480,7 @@
       ],
       "boss": {
         "title": "Forest Boat with a Passenger",
+        "pattern": "found-materials-build",
         "coins": 6,
         "text": "By the water at the Speeleilanden, build a boat from sticks, bark and leaves: only things that have fallen on the ground. Put a passenger on it: an acorn or a pebble. The boat must float for 10 seconds without the passenger falling into the water!",
         "answer": "Sank, or the passenger fell off? Fix it and try again. Launch it holding a parent's hand. Don't break living branches, don't touch mushrooms, leave the boat in the forest.",

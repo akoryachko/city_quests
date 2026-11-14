@@ -102,6 +102,7 @@
         {
           "type": "trail",
           "title": "Gate Prince",
+          "pattern": "riddle-to-next-stop",
           "text": "Look for the gate with a prince standing on its roof. Hint: the street is the \"newest\" one in the old town. How many town coats of arms are on the front?",
           "coins": 2,
           "place": "Statenpoort, Nieuwstraat 23",
@@ -113,6 +114,7 @@
         {
           "type": "spot",
           "title": "Secret Letters",
+          "pattern": "spot-detail-race",
           "text": "Nearby, on Muntstraat, find the house with the letters VOC. Who will be first to find the letter H? And how many little angels hold the letters?",
           "coins": 2,
           "duel": true,
@@ -125,6 +127,7 @@
         {
           "type": "spot",
           "title": "Canal Under Your Feet",
+          "pattern": "find-the-hidden-trace",
           "text": "Under Kerkplein square hides a canal more than 500 years old! Find where you can see it: a window, a grate or a line in the paving. Can you see water?",
           "coins": 2,
           "place": "Kerkplein, by the Boterhal",
@@ -136,6 +139,7 @@
         {
           "type": "photo",
           "title": "Unicorn from Afar",
+          "pattern": "perspective-trick-photo",
           "text": "On Roode Steen, find the red unicorn. Step away 10 steps at a time until, at arm's length, it hides behind your little fingernail — then take a photo!",
           "coins": 2,
           "place": "Roode Steen",
@@ -147,6 +151,7 @@
         {
           "type": "move",
           "title": "⏱ Alley to the Harbour",
+          "pattern": "which-way-signs",
           "text": "Streets and alleys lead off the square. ⏱ In 2 minutes, run round the square reading the signs, and stand at the alley that leads to the harbour!",
           "coins": 2,
           "place": "Grote Havensteeg by Roode Steen",
@@ -158,6 +163,7 @@
       ],
       "boss": {
         "title": "Living Scales",
+        "pattern": "limitation-crossing",
         "text": "Cheese was weighed here! Arms out — you're the scales, a glove \"cheese\" on each palm. Walk heel to toe along the Weigh House. A cheese falls — start again!",
         "coins": 6,
         "place": "Waag, Roode Steen 8",
@@ -185,6 +191,7 @@
         {
           "type": "spot",
           "title": "Engine Number",
+          "pattern": "find-the-number",
           "text": "Find the bell, the whistle and the number on our engine: ______. Every steam tram engine had a bell — that's why they were called \"Bello\"!",
           "coins": 2,
           "place": "Tramstation Hoorn, Van Dedemstraat 8",
@@ -196,6 +203,7 @@
         {
           "type": "ride",
           "title": "Window Bingo",
+          "pattern": "ride-window-bingo",
           "text": "Look out of the tram window! Find a stolp — a farm with a pyramid roof — a windmill, a church tower and sheep. Seen one? Shout and point! Any three of the four — done.",
           "coins": 2,
           "answer": "A stolp (stolpboerderij) is a West Frisian farm: people, cows and hay all under one pyramid roof. A windmill may not come up on the way, so three of four is enough (the parent confirms)."
@@ -203,6 +211,7 @@
         {
           "type": "ride",
           "title": "Whistle!",
+          "pattern": "guess-then-count",
           "text": "Guess how many times the engine whistles in the first 10 minutes of the ride. The parent guesses too. Count together — whose guess is closer?",
           "coins": 2,
           "duel": true,
@@ -211,6 +220,7 @@
         {
           "type": "talk",
           "title": "Ask a Piet",
+          "pattern": "kid-interpreter",
           "text": "Ask a Piet in Dutch what Sinterklaas's horse is called and what it likes to eat. What did he say? Translate it for us!",
           "coins": 2,
           "answer": "The horse is Ozosnel (since 2019; before that Amerigo); children put a carrot in their shoe for it. Any honest translation counts. The poffertjes vouchers go to the buffet."
@@ -218,6 +228,7 @@
       ],
       "boss": {
         "title": "Song for Sint",
+        "pattern": "perform-on-one-foot",
         "text": "Kids sing songs to Sinterklaas! At the stop in Wognum, sing us all of «Sinterklaas kapoentje» on one foot: foot down or a mistake — start again. Done it? Sing it to Sint!",
         "coins": 6,
         "place": "Wognum-Nibbixwoud station",
@@ -266,6 +277,7 @@
         {
           "type": "collect",
           "title": "Brick Hunt",
+          "pattern": "venue-kids-trail",
           "text": "Pick up the search sheet (speurtocht) at the entrance and finish all of it.",
           "coins": 3,
           "place": "Brick City, Hoorn station hall",
@@ -277,6 +289,7 @@
         {
           "type": "spot",
           "title": "Diorama Train",
+          "pattern": "spot-detail-race",
           "duel": true,
           "text": "Start a train on the big diorama. While it does a lap, who's first to spot a LEGO steam engine or a Hoorn house on the diorama? The parent looks too! None found — another lap.",
           "coins": 2,
@@ -285,6 +298,7 @@
       ],
       "boss": {
         "title": "Gate with a House",
+        "pattern": "brick-build-challenge",
         "text": "Build a gate with a house on top. A LEGO car must drive through it, and the gate must stand alone for 5 seconds. It falls — start again!",
         "coins": 6,
         "answer": "Bricks are in the big boxes of the building area; borrow a car from the race track. It usually takes 2–3 tries."
@@ -318,6 +332,7 @@
         {
           "type": "taste",
           "title": "Kibbeling Fish",
+          "pattern": "local-food-name-rate",
           "text": "Try kibbeling — hot bites of fried fish with a sauce. What fish is it? Find the name on the sign by the counter. Rate it ⭐⭐⭐⭐⭐.",
           "coins": 2,
           "place": "Hoogland Vis, Gedempte Turfhaven 36",
@@ -329,6 +344,7 @@
         {
           "type": "move",
           "title": "⏱ Powder for the Tower",
+          "pattern": "timed-shuttle",
           "duel": true,
           "text": "The round tower stored gunpowder! ⏱ Bring 5 different leaves — \"powder bags\" — to the bench opposite, one at a time. The parent too! Who's first?",
           "coins": 2,
@@ -341,6 +357,7 @@
         {
           "type": "spot",
           "title": "The Last Gate",
+          "pattern": "count-the-feature",
           "text": "As you come along the canal path, count the arches of the bridge in front of the gate. Is the passage under the gate straight or curved? Does it look like your LEGO gate?",
           "coins": 2,
           "place": "Oosterpoort, Bij Oosterpoort",
@@ -352,6 +369,7 @@
         {
           "type": "spot",
           "title": "Sea Battle",
+          "pattern": "house-sign-detail",
           "text": "Little ships beat the big Spanish fleet! Find the biggest ship among the small ones in the carving on the houses. What year is on the corner house?",
           "coins": 2,
           "place": "Bossuhuizen, Slapershaven / Grote Oost 132",
@@ -363,6 +381,7 @@
         {
           "type": "measure",
           "title": "The Drawbridge",
+          "pattern": "pace-and-compare",
           "text": "Pace out the lifting part of the iron bridge. When the bridge is raised, how many of you, stacked up, reach its end?",
           "coins": 3,
           "place": "Hoogebrug bridge",
@@ -374,6 +393,7 @@
       ],
       "boss": {
         "title": "Fourth Ship's Boy",
+        "pattern": "statue-freeze-dont-laugh",
         "text": "Stand next to the three bronze ship's boys (don't climb!) and freeze in the pose of one of them for 30 seconds. The parent tries to make you laugh without touching. Laugh — start again!",
         "coins": 6,
         "place": "Scheepsjongens van Bontekoe, Hoofd",

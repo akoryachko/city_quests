@@ -81,6 +81,23 @@ Tell Claude how it went, for example *"Hoorn: the tram was a hit, the harbour
 was too long, finished as Kapitan"*. It records the lessons in the profile
 so the next city works better.
 
+To rate the challenges, say *"feedback on Amsterdam zone 1"*: the `quest-feedback`
+skill lists the zone's challenges and boss, you rate each 1–5 with a word or two,
+and it stores that in `<city>/feedback.json` (git-ignored). Ratings steer which
+kinds of challenge the next quest uses.
+
+## Challenge library
+
+`library/` collects reusable challenge **patterns**, one mechanic each (guess the
+steps, sound walk, collect a museum stamp…), with the places they fit, ages 4–14,
+difficulty and what they need. The `challenge-scout` agent searches the web in
+several languages (city rallies, museum family trails, scouting and playground
+games) and adds new patterns each run, keeping a search log so it doesn't repeat
+itself. Every quest challenge points to its pattern, so
+`.claude/skills/city-quest/scripts/challenge_ledger.py` can show which types each
+city used, how they were rated, and suggest patterns to try next. See
+`library/README.md`.
+
 ## Family profile
 
 `family-profile.md` is private: it is git-ignored and never committed. See
@@ -88,6 +105,10 @@ so the next city works better.
 wording, language and print format, likes and dislikes, standing challenges
 (e.g. LEGO passport stamps), transport habits, lessons from past trips and a
 trip log. Claude keeps it up to date; you can also edit it by hand.
+
+Quests for friends' families use their own profile, `profiles/<family>.md`
+(also git-ignored), and `"family": "<family>"` in their `quest.json`; the kid's
+age, likes and dislikes (e.g. drawing) come from that profile.
 
 The quests themselves are public and generic: they use the profile's
 preferences (age, wording, likes) but no names, addresses or other personal
@@ -173,6 +194,7 @@ are conquered; both A5 halves on one A4 landscape sheet, or each face at the bin
 its own A4 page). The child's photo, name and the
 renders live only in the git-ignored `covers/` folder.
 | `scripts/route_report.py` | quest.json → walking-route report (`quest-routes.md`) |
+| `scripts/challenge_ledger.py` | Challenge types, library patterns and ratings per quest; pattern suggestions; library check |
 
 Two agents (separate Claude workers with their own brief, in `.claude/agents/`)
 help the skill:

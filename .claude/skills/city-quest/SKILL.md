@@ -23,7 +23,16 @@ that holds this skill in `.claude/skills/city-quest/`).
 - Family profile: `family-profile.md` —
   who plays, likes/dislikes, format and transport preferences, lessons from
   past trips. Read it first; keep it up to date (see step 7). It is private
-  and git-ignored; `family-profile.example.md` shows the shape.
+  and git-ignored; `family-profile.example.md` shows the shape. Quests for
+  another family (friends) use `profiles/<family-slug>.md` (also git-ignored), and
+  their `quest.json` gets `"family": "<family-slug>"`; no `family` means the home
+  family's `family-profile.md`.
+- Challenge library: `library/` (see `library/README.md`) — reusable challenge
+  **patterns** from the web and from past quests, with the places they fit, ages
+  (4–14) and what they need. The `challenge-scout` agent fills it;
+  `scripts/challenge_ledger.py` reports which types and patterns each quest used and
+  how the family rated them (`<city>/feedback.json`, written by the `quest-feedback`
+  skill, git-ignored).
 - Output: `<city-slug>/` (slug =
   lowercase English city name: `hoorn`, `new-york`), holding `quest.json` and
   the rendered files. `quest.json` is in the profile's main booklet language;
@@ -45,7 +54,9 @@ except through the wording itself.
 
 ### 1. Read the profile and the city folder
 
-Read the family profile.
+Read the family profile. If the quest is for another family, use (or create)
+`profiles/<family-slug>.md` instead and ask about it the same way; their
+likes, dislikes and age rule the quest, not the home family's.
 
 - **No profile yet** (first run, or a fresh clone): before planning, set it
   up with the user in one or two AskUserQuestion rounds: the kid's age and
@@ -111,10 +122,28 @@ LEGO passport in the visited city):
   Nominatim, one request per second, with a User-Agent:
   `curl -s -A "city-quest-skill/1.0" "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=<urlencoded place, city>"`.
 
+**Pick challenge patterns first.** Run the ledger for this family and the
+library suggestions for the kid's age, leaving out what the profile dislikes
+(map dislikes onto the README's `needs`, e.g. drawing):
+
+```bash
+S=.claude/skills/city-quest/scripts
+python3 $S/challenge_ledger.py --family <slug>
+python3 $S/challenge_ledger.py --family <slug> --suggest --age <age> --exclude-needs drawing
+```
+
+If the library is thin (under ~50 patterns) or a type the family needs has few
+patterns, run the **`challenge-scout`** agent first (in parallel with the
+researchers is fine), with the city named so it also collects that city's own
+kids' trails into `library/cities/<city>.json`. From the suggestions, take the
+types that are missing or rated well, and the place kinds those patterns need
+(stairs, a fountain, a market…): put them in each researcher's brief.
+
 Run the **`city-researcher`** agent (`.claude/agents/city-researcher.md`)
 once per zone or area, in parallel: brief each with the city and area, the
 outing day and time window, the kid's age, the family's likes and dislikes
-(from the profile, without personal details) and what is already planned.
+(from the profile, without personal details), what is already planned and the
+wanted patterns with the place kinds they need, so it looks for places that fit.
 Each returns 8–12 candidate stops with checkable details, stories, hours,
 coordinates and the nicest walking connections; pick from them, verify
 anything flagged as unconfirmed, and keep the bulky research out of this
@@ -165,7 +194,10 @@ Write `<output folder>/quest.json` following `references/example-quest.json`
   parents), `challenges[]`, `boss`, `logistics` (`where`, `hours`,
   `cost`, `food`, `toilets`). Zone `lat`/`lon` only if no challenge has coordinates.
 - challenge / boss fields: `type` (spot, trail, taste, photo, build, collect,
-  ride, talk, move, measure, duel, quiz), `title`, `text`, `coins`, optional
+  ride, talk, move, measure, duel, quiz), `title`, `text`, `coins`, `pattern`
+  (the library pattern id it uses; if it's a new mechanic of our own, add it to
+  `library/patterns.json` with `origin: "own"`, and set a used pattern's `status` to
+  `used`; same in the translations), optional
   `duel: true` (for a duel, `coins` is what the kid gets for playing; a win
   adds one more, printed as «🪙×2+1»), `optional: true` (for extras that may not happen, e.g. an
   unbooked boat ride), `answer` (short, for checking), `facts` (the story of
@@ -362,7 +394,9 @@ Update the family profile whenever you learn something durable: a new like or
 dislike, a format preference, how a past quest went ("too many challenges",
 "loved the tram"). Add the trip to the trip log with a one-line outcome. If
 the user comes back after a trip, ask how it went and record the lessons —
-they are what makes the next city better. Don't store one-off trip details
+they are what makes the next city better. To rate challenges ("feedback on zone 1"),
+use the **`quest-feedback`** skill: it stores 1–5 ratings and comments in
+`<city>/feedback.json`, which the ledger uses to choose challenges next time. Don't store one-off trip details
 there; those live in the city's `quest.json`.
 
 ## Profile template
@@ -371,7 +405,7 @@ there; those live in the city's `quest.json`.
 # Family profile for city quests
 
 ## Players
-- Kid: age, boy/girl (wording), name on booklet or not, languages spoken
+- Kid: age (or birth year, so it stays right), boy/girl (wording), name on booklet or not, languages spoken
 - Parents: who plays
 - Home city (for campaigns), without the address
 

@@ -35,6 +35,11 @@ Keep personal details from the profile out of your report.
 3. **Food**: 1–3 local snacks a child will try and where, with hours; a café with toilets.
 4. **Practical**: toilets, playgrounds for a break, transport to/from the area.
 
+5. **Places for wanted patterns**: if the brief lists challenge patterns with the place kinds
+   they need (stairs, a fountain, a long facade, a staffed desk), find a real place in the
+   area for each and say which pattern it fits and the detail that makes it work (how many
+   steps, is the fountain on in this season). Say when the area has none.
+
 ## Report
 
 Return markdown, at most ~80 lines: a table of candidate stops (name, coordinates, kid
