@@ -4,10 +4,11 @@
 Usage:
     python3 build_stickers.py path/to/quest.json [more/quest.json …] [--big 2] [--small 0] [--medal 2] [--rank-medal 2] [--out FILE]
 
-Print in colour on A4 sticker paper at 100 % scale and cut along the circles.
+Print in colour on A4 sticker paper at 100 % scale and cut out the circles.
 Every zone gets a block: `--big` stickers of 18 mm (they cover the "sticker" circle on the
 zone card; a spare goes in the collection) and, if asked, `--small` 10 mm number stickers (for the
-zone on the city map), coloured to the edge with 0.6 mm bleed past the white dotted cut line. Each zone has its own colour, the same as in the colour booklet; the big sticker shows "CLAIMED" on top, the zone
+zone on the city map), coloured to the edge and 0.6 mm past it, with no cut line: cut along the colour's edge; a little
+oversize is fine, it covers the circle on the card better. Each zone has its own colour, the same as in the colour booklet; the big sticker shows "CLAIMED" on top, the zone
 number below and the zone emoji in the middle. Every quest also gets `--medal` 32 mm city stickers
 for the medal circle on the certificate: a gold medal, "CONQUEROR OF <city>" around it, a dot
 for every zone in its colour and the cover emoji under a crown. And `--rank-medal` pairs of 30 mm stickers
@@ -58,7 +59,6 @@ def big_sticker(zi, z, uid):
   <text class="arc"><textPath href="#{top}" startOffset="50%">{esc(LABELS['claimed'])}</textPath></text>
   <text class="arc"><textPath href="#{bottom}" startOffset="50%">★ {esc(LABELS['zone'].upper())} {zi} ★</textPath></text>
   <text class="emoji" x="{r}" y="{r+1.9}">{esc(z.get('emoji', '🏳️'))}</text>
-  <circle class="cutline" cx="{r}" cy="{r}" r="{r}"/>
 </svg>"""
 
 
@@ -70,7 +70,6 @@ def small_sticker(zi):
     return f"""<svg class="st" viewBox="{-B} {-B} {W} {W}" style="width:{W}mm;height:{W}mm">
   <circle cx="{r}" cy="{r}" r="{r+B}" fill="{ring}"/>
   <text class="num" x="{r}" y="{r+1.9}">{zi}</text>
-  <circle class="cutline" cx="{r}" cy="{r}" r="{r}"/>
 </svg>"""
 
 
@@ -200,7 +199,6 @@ h2 {{ font-size: 9pt; margin: 1mm 0 1mm; }}
 .name {{ font-size: 6.5pt; color: #444; white-space: nowrap; overflow: hidden; }}
 .row {{ display: flex; align-items: center; gap: {GAP}mm; }}
 .cut {{ fill: #fff; stroke: #aaa; stroke-width: .12; }}
-.cutline {{ fill: none; stroke: #fff; stroke-opacity: .9; stroke-width: .08; stroke-dasharray: .6 .6; }}
 .arc {{ font-size: 2.1px; font-weight: bold; letter-spacing: .15px; text-anchor: middle; fill: #fff; }}
 .emoji {{ font-size: 5.6px; text-anchor: middle; }}
 .marc {{ font-size: 2.6px; font-weight: bold; letter-spacing: .2px; text-anchor: middle; fill: #4a3200; }}
@@ -239,10 +237,11 @@ def main():
             label = "🏅 медаль: лицевая сторона и оборот" if lang == "ru" else "🏅 medal: front and back"
             blocks.append(f'<div class="zone"><div class="name">{label} · {esc(top_rank(q))}</div><div class="row">{pairs}</div></div>')
         sections.append(f'<h2>{esc(q.get("title", q.get("city", "")))}</h2><div class="grid">{"".join(blocks)}</div>')
-    hint = ("Печатать в цвете на A4 бумаге-наклейке в 100 % масштабе, цветные и золотые наклейки — по белому пунктиру "
-            "(цвет чуть выходит за линию), медаль для грамоты — по тонкому серому кругу.") if lang == "ru" \
-        else ("Print in colour on A4 sticker paper at 100 % scale; cut the coloured and gold stickers along the white dotted line "
-              "(the colour runs a little past it), the certificate medal along the thin grey circle.")
+    hint = ("Печатать в цвете на A4 бумаге-наклейке в 100 % масштабе. Цветные наклейки зон — по краю цвета "
+            "(чуть больше — не страшно: лучше закроют круг), золотые медали — по белому пунктиру, медаль для грамоты — по тонкому серому кругу.") if lang == "ru" \
+        else ("Print in colour on A4 sticker paper at 100 % scale. Cut the coloured zone stickers along the colour's edge "
+              "(a bit oversize is fine: they cover the circle better), the gold medals along the white dotted line, "
+              "the certificate medal along the thin grey circle.")
     doc = f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(sections)}<div class="hint">{hint}</div></body></html>'
     first = Path(a.quests[0])
     pdf = Path(a.out) if a.out else (first.parent / f"{first.parent.name}-stickers.pdf" if len(a.quests) == 1 else Path("stickers.pdf"))
