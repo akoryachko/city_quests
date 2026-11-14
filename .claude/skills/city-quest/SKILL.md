@@ -324,7 +324,11 @@ and a `WARNING: economy` line for anything out of range — fix those;
 `build_quest.py <folder>/quest.json --economy` runs only this check, instantly,
 after any change to coins, perks or ranks. Card text is auto-sized; exit code 2
 lists cards that still overflow — shorten those texts (or split a big zone
-into two) and rebuild.
+into two) and rebuild. The coin dots at the foot of a zone card must not touch the
+"coins needed" label: the build shortens the label to "13 🏁" (then moves it to its own
+line) when the row is full, and exits 2 with `COIN LINE` if the dots still touch — give
+that zone fewer coins (a row holds about 25 dots, navigation dots included) and rebuild. Look at the
+foot of the zone with the most coins on the rendered PDF.
 
 **Ring binder.** The family files the kid's cards in a ring binder, so every kid sheet
 with challenges (zone cards, and the map cards that share their sheet) must show where to
@@ -366,7 +370,8 @@ the main quest's (`quest-map*.png`, `quest-pins.json`).
 **Stickers.** `python3 .claude/skills/city-quest/scripts/build_stickers.py <folder>/quest.json [other/quest.json …]`
 writes a colour A4 sheet of round zone-capture stickers for sticker paper (`<city>-stickers.pdf`,
 or `stickers.pdf` for several quests on one sheet): per zone 2 × 18 mm (they cover the sticker
-circle on the zone card), one colour per zone printed 0.6 mm past a white dotted cut line, plus two 32 mm
+circle on the zone card), one colour per zone with no cut line (cut along the colour's edge; a little oversize covers
+the card's circle better), plus two 32 mm
 gold city medals for the certificate's medal circle, and two front + back pairs of 30 mm stickers
 for a real gold sports medal (its empty 30 mm discs): the city's top rank («АДМИРАЛ АМСТЕРДАМА»)
 around an engraved picture of the city on the front, «ПОКОРИТЕЛЬ АМСТЕРДАМА», a compass rose and the zone count

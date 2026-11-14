@@ -38,6 +38,10 @@ the quest relies on; say which source you used.
 - Measures: every entry in `measures` (the blanks the kid fills in at home) is used by some
   challenge or boss, and every body measure a challenge needs (step, height, palm, a
   timed floor of stairs) is in `measures`. Flag unused ones to remove and missing ones to add.
+- Coin line: a zone's coin dots (every challenge's and the boss's coins, plus a duel's win
+  coin and the 🧭 navigation dots) must fit in one row without touching the "coins needed"
+  label. If a build output is given, flag every `COIN LINE` and `OVERFLOW` card; otherwise
+  count the dots per zone and flag any zone over 25 (a row holds about that many).
 
 **Challenge scorecard** — score *every* challenge and boss 0–2 on each criterion
 (0 = fails, 1 = so-so, 2 = good):

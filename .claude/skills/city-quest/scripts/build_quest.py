@@ -19,7 +19,9 @@ bold street names on top; the overview map uses OpenStreetMap tiles (cached in
 ~/.cache/city-quest/tiles). Both need internet on the first build.
 
 Text that does not fit a card is shrunk; if it still does not fit, the card is
-reported as overflowing (exit code 2).
+reported as overflowing (exit code 2). A zone whose coin dots run into the
+"coins needed" label shows only the number (then, if needed, gets its own line); if they still touch, that is
+reported too (exit code 2).
 """
 import argparse
 import base64
@@ -1104,7 +1106,7 @@ def zone_card(z, zi, nav=0, links=False):
         <p class="story">{esc(z.get('story', ''))}</p>
         <ul class="challenges">{chs}</ul>
         {boss_html}
-        <footer class="zone-foot">{coin_track(z, nav)}<span class="need">{LABELS['coins_needed']}: <b>{esc(z.get('coins_to_claim', ''))}</b> 🏁</span></footer>
+        <footer class="zone-foot">{coin_track(z, nav)}<span class="need"><span class="need-w">{LABELS['coins_needed']}: </span><b>{esc(z.get('coins_to_claim', ''))}</b> 🏁</span></footer>
         """,
         "zone",
         zone_colour(zi, z),
@@ -1392,6 +1394,10 @@ ul.hunt li { display: flex; justify-content: space-between; align-items: center;
 .dot { width: 5mm; height: 5mm; border: .4mm solid #222; border-radius: 50%; display: inline-block; }
 .flag { font-size: 1em; }
 .need { white-space: nowrap; }
+.foot-short .need-w { display: none; }
+.zone-foot.foot-wrap { flex-wrap: wrap; row-gap: 1mm; }
+.foot-wrap .track { flex-basis: 100%; }
+.foot-wrap .need { margin-left: auto; }
 /* collection */
 .slots { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-top: 2mm; }
 .slot { border: .5mm dashed #444; border-radius: 3mm; display: flex; align-items: flex-end; justify-content: center; padding: 1.5mm; font-size: .8em; color: #444; }
@@ -1435,14 +1441,32 @@ th, td { border: .3mm solid #999; padding: 1.5mm 2mm; text-align: left; }
 
 FIT_JS = r"""
 (function () {
+  // a zone's coin dots run into the "coins needed" label when the row is full
+  function footBad(el) {
+    var bad = false;
+    el.querySelectorAll('.zone-foot').forEach(function (f) {
+      var t = f.querySelector('.track'), n = f.querySelector('.need');
+      if (t && t.scrollWidth > t.clientWidth + 1) bad = true;
+      if (t && n && f.scrollWidth > f.clientWidth + 1) bad = true;
+    });
+    return bad;
+  }
+  // then the label drops its words ("13 🏁": the flag in the dots marks the same coin),
+  // and if that is not enough, it goes on its own line under the dots
+  function fixFoot(el) {
+    ['foot-short', 'foot-wrap'].forEach(function (cls) {
+      if (footBad(el)) el.querySelectorAll('.zone-foot').forEach(function (f) { f.classList.add(cls); });
+    });
+  }
   document.querySelectorAll('.fit').forEach(function (el) {
     var size = parseFloat(getComputedStyle(el).fontSize);
     var min = size * 0.72;
+    fixFoot(el);
     // zone cards are read by the kid: grow the text to use free space
     if (el.closest('.zone, .huntcard')) {
       var max = size * 1.35;
       while (el.scrollHeight <= el.clientHeight && size < max) {
-        size += 0.25; el.style.fontSize = size + 'px';
+        size += 0.25; el.style.fontSize = size + 'px'; fixFoot(el);
       }
     }
     while (el.scrollHeight > el.clientHeight + 1 && size > min) {
@@ -1450,6 +1474,9 @@ FIT_JS = r"""
     }
     if (el.scrollHeight > el.clientHeight + 1) {
       el.closest('.card').setAttribute('data-overflow', '1');
+    }
+    if (footBad(el)) {
+      el.closest('.card').setAttribute('data-footbad', '1');
     }
   });
   document.body.setAttribute('data-fitted', '1');
@@ -1853,6 +1880,12 @@ def main():
     if over:
         print("OVERFLOW: these cards are too long even after shrinking; shorten their text:")
         for cls, t in over:
+            print(f"  - [{cls}] {re.sub('<[^>]+>', '', t).strip()}")
+        sys.exit(2)
+    bad = re.findall(r'<section class="card ([a-z]+)"[^>]*data-footbad="1"[^>]*>.*?<h2[^>]*>(.*?)</h2>', dom, re.S)
+    if bad:
+        print("COIN LINE: the coin dots run into the 'coins needed' label on these cards; fewer coins or a shorter label:")
+        for cls, t in bad:
             print(f"  - [{cls}] {re.sub('<[^>]+>', '', t).strip()}")
         sys.exit(2)
 
