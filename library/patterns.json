@@ -36,7 +36,7 @@
         "Parent searches with one hand over one eye",
         "A model railway lap as the time limit"
       ],
-      "fit_notes": "Give the kid a fair chance (head start, handicap).",
+      "fit_notes": "Give the kid a fair chance (head start, handicap). Feedback Amsterdam 1.1 (4/5): too easy as a race when the card describes an obvious detail; pick a hidden one or use the handicap. The history behind the detail was the best part.",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -156,7 +156,7 @@
       "variations": [
         "Fill the number into a blank on the card as a souvenir"
       ],
-      "fit_notes": "",
+      "fit_notes": "Feedback Amsterdam 7.4 (4/5): seeing the landmark and its history was good, but finding one visible number is too easy for a 7-year-old; add a second step.",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -199,7 +199,7 @@
         "Count standing on one foot",
         "Count only one side, guess the total"
       ],
-      "fit_notes": "Counting alone is weak; pair it with a question that leads somewhere.",
+      "fit_notes": "Counting alone is weak; pair it with a question that leads somewhere. Feedback Amsterdam 7.5 (4/5): too easy; and route to a 'wow' landmark from the side where the effect shows (a building rising from the water seen from the water side).",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -471,7 +471,7 @@
       "variations": [
         "Guess the number of stops first"
       ],
-      "fit_notes": "",
+      "fit_notes": "Feedback Amsterdam 7.1 (5/5): spotting a passing tram is luck-dependent (the first one came near the last stop); give a fallback (the return ride, the stop).",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -512,7 +512,7 @@
         "Guess in body units",
         "Check with a sign or the parent page"
       ],
-      "fit_notes": "",
+      "fit_notes": "Feedback Amsterdam 7.2 (5/5): counting something spread over the whole area (bridges on an island) makes the family explore it, and the guess makes it a competition. Strong pattern.",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -553,7 +553,7 @@
         "Guess duel before measuring",
         "Use arm spans instead of steps"
       ],
-      "fit_notes": "The kid's step and arm span come from the family's measures field.",
+      "fit_notes": "The kid's step and arm span come from the family's measures field. Feedback Amsterdam 1.2 (4/5): a kid's steps change size while counting and walking at once, so totals don't match; let a parent count while the kid walks, or pace heel-to-toe.",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -678,7 +678,7 @@
         "Three species",
         "A bird in flight"
       ],
-      "fit_notes": "",
+      "fit_notes": "Feedback Amsterdam 1.3 (4/5): depends on luck (few birds in November); name a backup spot with reliable animals.",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -833,7 +833,7 @@
         "Beat your record",
         "Only red things"
       ],
-      "fit_notes": "Use where a zone needs a breather.",
+      "fit_notes": "Use where a zone needs a breather. Feedback Amsterdam 1.4 (4/5): scale the target to the playground; a small toddler playground made it trivial (done in half the time). Feedback Amsterdam 7.3 (5/5): park-like playground with little equipment, 5 items barely found; the kid loved running anyway. 'N different things to climb, ride or play on' is more fun than just touching things, so keep it; the problem was too little equipment. Check what the playground has (photos, OSM) and set N to fit it.",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -1410,7 +1410,7 @@
         "co-op"
       ],
       "variations": [],
-      "fit_notes": "Co-op with a threshold, not a duel.",
+      "fit_notes": "Co-op with a threshold, not a duel. Feedback Amsterdam 1.5 (5/5): say that each animal must be guessed at the first attempt.",
       "sources": [],
       "origin": "own",
       "status": "used",
@@ -1493,7 +1493,7 @@
         "Count the steps on the way",
         "One hand behind your back"
       ],
-      "fit_notes": "Boss pattern. Parent walks behind; only when no bikes come.",
+      "fit_notes": "Boss pattern. Parent walks behind; only when no bikes come. Feedback Amsterdam 1.B (5/5, zone favourite): took 3 attempts, fun and challenging; tying it to the bridge's name, place and history made it. Feedback Amsterdam 7.B (5/5): physical, failable and hard enough even when done on the first attempt (walking backwards down stairs holding the rail).",
       "sources": [],
       "origin": "own",
       "status": "used",

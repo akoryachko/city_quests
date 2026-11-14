@@ -77,12 +77,14 @@ like the family profile.
   profile under "Lessons from past trips", one dated line per review, the way the existing
   lines read. The quest's `family` field says which profile: missing or `home` →
   `family-profile.md`, otherwise `profiles/<family>.md`.
-- **Quest**: if a fix is clear and the zone will be played again or by another family
-  (a wrong answer, a closed venue, a too-easy boss), offer to fix it in the quest; don't
-  change the quest without asking.
+- **Not the quest**: feedback is for improving future cities, not for correcting zones
+  the family has already played. Don't offer to change the rated quest; turn each comment
+  into a general lesson (library `fit_notes`, profile) that the next city's planning will
+  use. Only touch the quest when the user asks.
 
 ## 5. Report
 
-Show the zone's average, the best and worst item with the reason, what was written where,
+Show the zone's average, the best and worst item with the reason, the general lessons taken
+for future cities, what was written where,
 and one line on what the ledger now says about the type balance (run it without flags and
 pick the line that matters).
